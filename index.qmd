@@ -1,0 +1,49 @@
+---
+title: "Exploring Complex Survey Data Analysis"
+subtitle: "A Tidy Introduction with {srvyr} and {survey}"
+---
+
+:::: {layout="[ 70, 30 ]"}
+
+::: {#abstract}
+
+
+Surveys are powerful tools for gathering information, uncovering insights, and facilitating decision-making. However, to ensure the accurate interpretation of results, they require specific analysis methods. In this book, readers embark on an in-depth journey into conducting complex survey analysis with the {srvyr} package and tidyverse family of functions from the R programming language. Intended for intermediate R users familiar with the basics of the tidyverse, this book gives readers a deeper understanding of applying appropriate survey analysis techniques using {srvyr}, {survey}, and other related packages. With practical walkthroughs featuring real-world datasets, such as the American National Election Studies and Residential Energy Consumption Survey, readers will develop the skills necessary to perform impactful survey analysis on survey data collected through a randomized sample design. Additionally, this book teaches readers how to interpret and communicate results of survey data effectively.
+
+Key Features:
+
+- Uses the {srvyr} package and tidyverse family of packages.
+- Grants a conceptual understanding of the statistical methods that the functions apply to.
+- Includes practical walkthroughs using publicly available survey data.
+- Provides the reader with the tools for interpreting, visualizing, and presenting results.
+:::
+
+::: {#cover}
+![](images/cover.png){fig-alt="Book cover with author names, title, and imaginative map drawing with fields that look like bar charts, buildings with error bars, and pie chart hills." style="border: 5px solid white"}
+:::
+
+::::
+
+# Where to get the book 
+
+Print copies:
+
+- [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867)
+- [Your local bookstore](https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867)
+- [Amazon](https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860)
+
+Online version:
+
+- <https://tidy-survey-r.github.io/tidy-survey-book/>
+
+# Data package
+
+Examples throughout the book include usage of several datasets. Most of these datasets are included in the R package {srvyrexploR} available on [GitHub](https://tidy-survey-r.github.io/srvyrexploR/).
+
+# Authors
+
+**Stephanie Zimmer**, PhD, is a senior survey statistician with 10 years experience in survey sampling and design, survey weighting and analysis, and data management. She is an expert statistical programmer in R, SAS, and SUDAAN. She earned her PhD in Statistics from Iowa State University and her BS in Statistics from NC State. After earning the RStudio Tidyverse Trainer certification, she co-taught two courses on tidy survey analysis in R. She is currently a Senior Research Statistician at RTI International. Connect with her on [LinkedIn](https://www.linkedin.com/in/stephanie-zimmer/) or [BlueSky](https://bsky.app/profile/statsteph.bsky.social).
+
+**Rebecca J. Powell**, PhD, is the Director of Data Management and Survey Programming at Fors Marsh.  Her research interests focus on visual design of questionnaires and contact materials. Dr. Powell is a Certified RStudio Tidyverse Trainer and has taught courses and webinars on data management in R and tidy survey analysis in R at both AAPOR and MAPOR.  She has a PhD in Survey Research and Methodology from the University of Nebraska-Lincoln and a BS and MS in Applied Statistics from Rochester Institute of Technology. Connect with her on [LinkedIn](https://www.linkedin.com/in/rebecca-powell-1416226b/).
+
+**Isabella Velásquez** is a content strategist, data enthusiast, and author. Her experience spans data collection, grantmaking, strategy development, and survey instrument development. She earned her MSc in Analytics and BA in Economics and East Asian Languages and Civilizations from the University of Chicago. She currently works as a Sr. Product Marketing Manager at Posit Software, PBC. Follow her [blog](https://ivelasq.rbind.io/) or connect with her on [LinkedIn](https://www.linkedin.com/in/ivelasq/) or [BlueSky](https://bsky.app/profile/ivelasq3.bsky.social).
