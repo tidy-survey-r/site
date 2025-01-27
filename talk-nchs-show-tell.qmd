@@ -11,7 +11,7 @@ title-slide-attributes:
       style: "text-align: left; right: 15%"
 ---
 
-## About Us
+## About us
 
 :::: {.columns style="text-align: center"}
 
@@ -68,7 +68,7 @@ Posit
 - Does not include how to create weights
 :::
 
-## R, SAS, & SUDAAN Capabilities {.smaller}
+## R, SAS, & SUDAAN capabilities {.smaller}
 
 
 ```{r}
@@ -263,7 +263,7 @@ summary(recs_2020)
 - There are two functions for creating the design object depending on if using replicate weights or not
 :::
 
-## Syntax: Common Sampling Designs
+## Syntax: common sampling designs
 
 The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
 
@@ -292,7 +292,7 @@ as_survey_design(
 - The `weights` argument is for the main analytic weight that should be used
 :::
 
-## Syntax: Replicate Weights
+## Syntax: replicate weights
 
 For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
 
@@ -625,7 +625,7 @@ recs_tab %>%
   fmt_currency()
 ```
 
-# The End {background-color='{{< brand color secondary >}}'}
+# Wrap-up {background-color='{{< brand color secondary >}}'}
 
 ## References {.smaller}
 
