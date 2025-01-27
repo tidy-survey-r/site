@@ -9,6 +9,8 @@ website:
       - text: "Home"
         href: index.qmd
       - Talks.qmd
+      - text: "Short courses"
+        href: short-courses.qmd
 
 editor: source
 
