@@ -5,4 +5,4 @@ format: html
 
 - [Tidy Survey Analysis in R: Workshop Series](https://tidy-survey-r.github.io/tidy-survey-short-course/) - an online short course taught in 3 sessions of 1.5 hours each for the 2022 Midwest Association for Public Opinion Research (MAPOR) Spring Webinar Series
 
-- [Tidy Survey Analysis in R using the srvyr Package](https://github.com/szimmer/tidy-survey-aapor-2021) - a one-day online short course at the 2021 American Association for Public Opinion Research conference
+- [Tidy Survey Analysis in R using the srvyr Package](https://github.com/szimmer/tidy-survey-aapor-2021) - a one-day online short course at the 2021 American Association for Public Opinion Research virtual conference
