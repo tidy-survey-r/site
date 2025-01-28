@@ -378,22 +378,63 @@ survey_mean(
 
 Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
 
-```r
+```{r}
+#| eval: false
+#| label: calc-mean-nohl
 recs_des %>%
-  summarize(elec_bill = survey_mean(DOLLAREL, # <1>
-                                    vartype = c("se", "ci"))) # <2>
+  summarize(elec_bill = survey_mean(DOLLAREL, 
+                                    vartype = c("se", "ci"))) 
 ```
 
-1. Calculate mean of `DOLLAREL` variable
-2. Include standard error and confidence interval
+## Implementation {auto-animate=true}
 
-::: {.notes}
-- Use the survey design object not the raw data
-- As with {dplyr}, need to call the `survey_mean()` function *within* the `summarize()` function
+Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
+
+```{r}
+#| eval: false
+#| label: calc-mean-hl-des
+#| code-line-numbers: "1"
+recs_des %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+- Use the survey design object, not raw data
+
+## Implementation {auto-animate=true}
+
+Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
+
+```{r}
+#| eval: false
+#| label: calc-mean-hl-summary
+#| code-line-numbers: '2'
+recs_des %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+- Use the survey design object, not raw data
+- Call `survey_mean()` *within* `summarize()` function
+
+## Implementation {auto-animate=true}
+
+Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
+
+```{r}
+#| eval: false
+#| label: calc-mean-hl-vartype
+#| code-line-numbers: '3'
+recs_des %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+- Use the survey design object, not raw data
+- Call `survey_mean()` *within* `summarize()` function
 - Specify the type of variance output, here we output the standard error and confidence interval
-:::
 
-## Results
+## Results {auto-animate=true}
 
 Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
 
@@ -416,7 +457,22 @@ recs_des %>%
 Calculate the estimated average cost of electricity in the U.S. (`DOLLAREL`) **by each region** (`Region`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
 
 ```{r}
-#| label: calc-mean-with-groups
+#| label: calc-mean-with-groups-nohl
+#| eval: false
+recs_des %>%
+  group_by(Region) %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+## Calculate means with groups {auto-animate=true}
+
+Calculate the estimated average cost of electricity in the U.S. (`DOLLAREL`) **by each region** (`Region`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
+
+```{r}
+#| label: calc-mean-with-groups-hl-group
+#| eval: false
+#| code-line-numbers: '2'
 recs_des %>%
   group_by(Region) %>%
   summarize(elec_bill = survey_mean(DOLLAREL,
@@ -426,6 +482,21 @@ recs_des %>%
 ::: {.notes}
 - When working with subgroups, need to subset (`filter()`) or define groups (`group_by()`) before calculating the estimates
 - Here we are interested in cost of electrictiy for each of the U.S. Census Regions
+:::
+
+## Calculate means with groups {auto-animate=true}
+
+Calculate the estimated average cost of electricity in the U.S. (`DOLLAREL`) **by each region** (`Region`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
+
+```{r}
+#| label: calc-mean-with-groups
+recs_des %>%
+  group_by(Region) %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+::: {.notes}
 - Output has a row for each region
 :::
 
@@ -443,11 +514,19 @@ svyttest(formula,
          ...)
 ```
 
-## Implementation: one-sample t-test
+::: {.notes}
+- Similar to `t.test()` function in base R with the formula and the data arguments
+:::
+
+## Implementation: one-sample t-test {auto-animate=true}
 
 Stephanie usually sets her home to 68&deg;F at night during the summer. Is this different from the average household in the U.S.?
 
-What is the estimated average nighttime temperature U.S. households set their homes to during the summer (`SummerTempNight`)?
+## Implementation: one-sample t-test {auto-animate=true}
+
+Stephanie usually sets her home to 68&deg;F at night during the summer. Is this different from the average household in the U.S.?
+
+First, look at the estimated average nighttime temperature U.S. households set their homes to during the summer (`SummerTempNight`).
 
 ```{r}
 #| label: calc-mean-2
@@ -455,25 +534,64 @@ recs_des %>%
   summarize(mu = survey_mean(SummerTempNight, na.rm = TRUE))
 ```
 
-## Implementation: one-sample t-test
+::: {.notes}
+- Note if you don't specify a variance type, the default is to output the standard error
+:::
+
+## Implementation: one-sample t-test 
 
 Test if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
 
-```r
+``` {r}
+#| eval: false
+#| label: calc-t-test-nohl
 recs_des %>%
   svyttest(
-    formula = SummerTempNight - 68 ~ 0, # <1>
-    design = ., # <2>
+    formula = SummerTempNight - 68 ~ 0, 
+    design = ., 
     na.rm = TRUE
   )
 ```
 
-1. Formula to test if the true mean of `SummerTempNight` variable minus 68&deg;F is equal to 0
-2. Dot notation `.` that passes the `recs_des` object into the `design` argument
+## Implementation: one-sample t-test {auto-animate=true}
 
-## Results: one-sample t-test
+Test if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
 
-See if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
+``` {r}
+#| eval: false
+#| label: calc-t-test-hl-formula
+#| code-line-numbers: '3'
+recs_des %>%
+  svyttest(
+    formula = SummerTempNight - 68 ~ 0, 
+    design = ., 
+    na.rm = TRUE
+  )
+```
+
+- Formula to test if the true mean of `SummerTempNight` variable minus 68&deg;F is equal to 0
+
+## Implementation: one-sample t-test {auto-animate=true}
+
+Test if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
+
+``` {r}
+#| eval: false
+#| label: calc-t-test-hl-des
+#| code-line-numbers: '4'
+recs_des %>%
+  svyttest(
+    formula = SummerTempNight - 68 ~ 0, 
+    design = ., 
+    na.rm = TRUE
+  )
+```
+- Formula to test if the true mean of `SummerTempNight` variable minus 68&deg;F is equal to 0
+- Dot notation `.` that passes the `recs_des` object into the `design` argument
+
+## Results: one-sample t-test {auto-animate=true}
+
+Test if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
 
 ```{r}
 #| label: calc-t-test
@@ -485,9 +603,20 @@ recs_des %>%
   )
 ```
 
-## Implementation: two-sample t-test
+::: {.notes}
+- Sample estimate mean is the difference between the U.S. average and Stephanie's house
+- Result: Stephanie keeps her house cold in the summer!
+:::
+
+## Implementation: two-sample t-test 
 
 On average, is there a significant different electric bill for households with and without air-conditioning?
+
+## Implementation: two-sample t-test {auto-animate=true}
+
+On average, is there a significant different electric bill for households with and without air-conditioning?
+
+First, look at the estimated average for households with and without air-condition.
 
 ```{r}
 #| label: ac-bill-summary
@@ -496,24 +625,48 @@ recs_des %>%
   summarize(mean = survey_mean(DOLLAREL, na.rm = TRUE))
 ```
 
+::: {.notes}
+- Add in the group_by here to see the means for each group
+:::
+
 ## Implementation: two-sample t-test
 
-Test if the electricity expenditure is significantly different between homes with and without air-conditioning `svyttest()`:
+Test if the electricity expenditure is significantly different for homes with and without air-conditioning:
 
-```r
+
+```{r}
+#| eval: false
+#| label: ac-bill-test-nohl
 recs_des %>%
   svyttest(
-    formula = DOLLAREL ~ ACUsed, # <1>
+    formula = DOLLAREL ~ ACUsed,
     design = ., 
     na.rm = TRUE
   )
 ```
 
-1. Formula with electricity expenditure on the left and air-conditioning usage on the right
+## Implementation: two-sample t-test {auto-animate=true}
 
-## Results: two-sample t-test
+Test if the electricity expenditure is significantly different for homes with and without air-conditioning:
 
-See if the electricity expenditure is significantly different between homes with and without air-conditioning `svyttest()`:
+
+```{r}
+#| eval: false
+#| label: ac-bill-test-hl-form
+#| code-line-numbers: '3'
+recs_des %>%
+  svyttest(
+    formula = DOLLAREL ~ ACUsed,
+    design = ., 
+    na.rm = TRUE
+  )
+```
+
+- Formula with electricity expenditure on the left and air-conditioning usage on the right
+
+## Results: two-sample t-test {auto-animate=true}
+
+Test if the electricity expenditure is significantly different for homes with and without air-conditioning:
 
 ```{r}
 #| label: ac-bill-test
@@ -525,7 +678,9 @@ recs_des %>%
   )
 ```
 
-
+::: {.notes}
+- Household with AC have higher electrical bill
+:::
 
 
 # Create tables {background-color='{{< brand color secondary >}}'}
