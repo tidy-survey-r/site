@@ -284,11 +284,115 @@ as_survey_design(
 )
 ```
 
+## Syntax: common sampling designs {auto-animate=true}
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```{r}
+#| label: survey-des-hl-strata
+#| eval: false
+#| code-line-numbers: "5"
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
 ::: {.notes}
-- First, syntax for studies without replicate weights
 - For a stratified sample, use the `strata` argument to specify the variable with the strata information
+:::
+
+## Syntax: common sampling designs {auto-animate=true}
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```{r}
+#| label: survey-des-hl-ids
+#| eval: false
+#| code-line-numbers: "3"
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
+::: {.notes}
 - For a clustered sample, use the `ids` argument to specify the variable(s) for Primary Sampling Units (PSUs) and Secondary Sampling Units (SSUs)
+:::
+
+## Syntax: common sampling designs {auto-animate=true}
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```{r}
+#| label: survey-des-hl-fpc
+#| eval: false
+#| code-line-numbers: "7,8"
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
+::: {.notes}
 - Can also specify the fpc variable and if cluster IDs are nested within strata
+:::
+
+## Syntax: common sampling designs {auto-animate=true}
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```{r}
+#| label: survey-des-hl-weights
+#| eval: false
+#| code-line-numbers: "10"
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
+::: {.notes}
 - The `weights` argument is for the main analytic weight that should be used
 :::
 
@@ -302,8 +406,36 @@ as_survey_rep(
   variables = NULL,
   weights = NULL,
   repweights = NULL,
-  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", "successive-difference", "ACS",
-    "other"),
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-weights
+#| eval: false
+#| code-line-numbers: "4"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS","other"),
   combined_weights = TRUE,
   rho = NULL,
   bootstrap_average = NULL,
@@ -319,8 +451,101 @@ as_survey_rep(
 
 ::: {.notes}
 - As with the first function, there is a `weights` argument for the main analytic weight
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-repweights
+#| eval: false
+#| code-line-numbers: "5"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
 - Also has the `repweights` argument to indicate the variables that hold the replicate weights
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-type
+#| eval: false
+#| code-line-numbers: "6,7"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
 - Need to include the type of replicate weights: Balanced Repeated Replicates (BRR), Fay, Jackknife (JK), etc.
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-params
+#| eval: false
+#| code-line-numbers: "9,11,12,15"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
 - Have separate arguments for the various parameters for the replicate weights: rho, scale, etc.
 :::
 
@@ -347,8 +572,6 @@ recs_des <- recs_2020 %>%
 :::
 
 ## Results
-
-Viewing the design object, we confirm RECS is an "unstratified cluster jacknife (JK1) with 60 replicates and MSE variances."
 
 ```{r}
 #| label: view-design-object
