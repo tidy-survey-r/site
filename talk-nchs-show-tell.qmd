@@ -242,7 +242,7 @@ apistrat_des %>%
 ```{r}
 #| label: load-pack
 # install.packages(c("survey", "srvyr", "gt"))
-# pak::pak("tidy-survey-r/srvyrexploR)
+# pak::pak("tidy-survey-r/srvyrexploR")
 library(survey)
 library(srvyr)
 library(gt)
@@ -911,13 +911,14 @@ recs_des %>%
 With the {gt} package, supply the input data table to `gt()` and add options to modify and format your table.
 
 ```r
-gt(data) %>%
+data %>%
+  gt() %>%
   ... add options here...
 ```
 
 ## Implementation
 
-Create a table for estimated average household electricity bill: 
+Create a table for estimated average household electricity bill by region:
 
 ```{r}
 #| label: table-default
