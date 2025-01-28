@@ -136,9 +136,6 @@ gt(comp_df) %>%
 ## Comparison with dplyr
 
 - dplyr: summary functions called within `summarize()`
-- srvyr: `survey_*()` functions called with `summarize()`
-
-::: {.panel-tabset .nav-pills}
 
 ### dplyr
 
@@ -148,9 +145,9 @@ gt(comp_df) %>%
 library(dplyr)
 ```
 
-
 ```{r}
 #| label: dplyr-towny-example
+#| code-line-numbers: "|1|2|3,6|4,5|"
 towny %>%
   group_by(status) %>%
   summarize(
@@ -159,6 +156,10 @@ towny %>%
   )
 ```
 
+## Comparison with dplyr
+
+- srvyr: `survey_*()` functions called with `summarize()`
+
 ### srvyr
 
 ```{r}
@@ -166,7 +167,7 @@ towny %>%
 #| echo: false
 
 library(srvyr)
-data(api, package="survey")
+data(api, package = "survey")
 
 apistrat_des <- apistrat %>%
   as_survey_design(
@@ -175,9 +176,9 @@ apistrat_des <- apistrat %>%
   )
 ```
 
-
 ```{r}
 #| label: srvyr-api-example
+#| code-line-numbers: "|1|2|3,6|4,5|"
 apistrat_des %>%
   group_by(stype) %>%
   summarize(
@@ -185,8 +186,6 @@ apistrat_des %>%
     api00_med = survey_median(api00)
   )
 ```
-
-:::
 
 ::: {.notes}
 - If you already use {tidyverse}/{dplyr}, the syntax {srvyr} will come easily
@@ -235,7 +234,6 @@ apistrat_des %>%
 ::: {.notes}
 - Only last step changes from descriptive analysis. Syntax mirrors glm, coxph, etc functions for non-survey data
 :::
-
 
 # Load packages and data {background-color='{{< brand color secondary >}}'}
 
@@ -931,7 +929,7 @@ recs_tab <- recs_des %>%
 recs_tab
 ```
 
-## Implementation
+## Implementation {auto-animate=true}
 
 Pipe (`%>%`) your data frame (`recs_tab`) into the `gt()` function:
 
