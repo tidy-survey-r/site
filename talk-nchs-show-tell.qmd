@@ -11,7 +11,7 @@ title-slide-attributes:
       style: "text-align: left; right: 15%"
 ---
 
-## About Us
+## About us
 
 :::: {.columns style="text-align: center"}
 
@@ -68,7 +68,7 @@ Posit
 - Does not include how to create weights
 :::
 
-## R, SAS, & SUDAAN Capabilities {.smaller}
+## R, SAS, & SUDAAN capabilities {.smaller}
 
 
 ```{r}
@@ -255,18 +255,159 @@ summary(recs_2020)
 
 # Design object {background-color='{{< brand color secondary >}}'}
 
-## Syntax
+::: {.notes}
+- After loading packages and data
+- First step is to create design object
+- Account for the sampling design or replicate weights
+- Accurately calculate the estimates (using the correct underlying formulas)
+- There are two functions for creating the design object depending on if using replicate weights or not
+:::
 
-The `as_survey_rep()` function creates a survey object with replicate weights. 
+## Syntax: common sampling designs
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```r
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
+## Syntax: common sampling designs {auto-animate=true}
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```{r}
+#| label: survey-des-hl-strata
+#| eval: false
+#| code-line-numbers: "5"
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
+::: {.notes}
+- For a stratified sample, use the `strata` argument to specify the variable with the strata information
+:::
+
+## Syntax: common sampling designs {auto-animate=true}
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```{r}
+#| label: survey-des-hl-ids
+#| eval: false
+#| code-line-numbers: "3"
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
+::: {.notes}
+- For a clustered sample, use the `ids` argument to specify the variable(s) for Primary Sampling Units (PSUs) and Secondary Sampling Units (SSUs)
+:::
+
+## Syntax: common sampling designs {auto-animate=true}
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```{r}
+#| label: survey-des-hl-fpc
+#| eval: false
+#| code-line-numbers: "7,8"
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
+::: {.notes}
+- Can also specify the fpc variable and if cluster IDs are nested within strata
+:::
+
+## Syntax: common sampling designs {auto-animate=true}
+
+The `as_survey_design()` function is used for most common sampling designs, such as stratified or clustered designs.
+
+```{r}
+#| label: survey-des-hl-weights
+#| eval: false
+#| code-line-numbers: "10"
+as_survey_design(
+  .data,
+  ids = NULL,
+  probs = NULL,
+  strata = NULL,
+  variables = NULL,
+  fpc = NULL,
+  nest = FALSE,
+  check_strata = !nest,
+  weights = NULL,
+  pps = FALSE,
+  variance = c("HT", "YG"),
+  ...
+)
+```
+
+::: {.notes}
+- The `weights` argument is for the main analytic weight that should be used
+:::
+
+## Syntax: replicate weights
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
 
 ```r
 as_survey_rep(
   .data,
   variables = NULL,
-  repweights = NULL,
   weights = NULL,
-  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", "successive-difference", "ACS",
-    "other"),
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
   combined_weights = TRUE,
   rho = NULL,
   bootstrap_average = NULL,
@@ -279,6 +420,134 @@ as_survey_rep(
   ...
 )
 ```
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-weights
+#| eval: false
+#| code-line-numbers: "4"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS","other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
+- As with the first function, there is a `weights` argument for the main analytic weight
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-repweights
+#| eval: false
+#| code-line-numbers: "5"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
+- Also has the `repweights` argument to indicate the variables that hold the replicate weights
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-type
+#| eval: false
+#| code-line-numbers: "6,7"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
+- Need to include the type of replicate weights: Balanced Repeated Replicates (BRR), Fay, Jackknife (JK), etc.
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-params
+#| eval: false
+#| code-line-numbers: "9,11,12,15"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
+- Have separate arguments for the various parameters for the replicate weights: rho, scale, etc.
+:::
 
 ## Implementation
 
@@ -297,9 +566,12 @@ recs_des <- recs_2020 %>%
 1. Main analytic weight in `NWEIGHT` variable
 2. Jackknife weights in `NWEIGHT1`-`NWEIGHT60` variables
 
-## Results
+::: {.notes}
+- The RECS data has jackknife replicate weights, so using the second function (`as_survey_rep()`)
+- Using the documention for RECS, learn the variable names for the weights, the type, and the scale
+:::
 
-Viewing the design object, we confirm RECS is an "unstratified cluster jacknife (JK1) with 60 replicates and MSE variances."
+## Results
 
 ```{r}
 #| label: view-design-object
@@ -327,20 +599,67 @@ survey_mean(
 
 ## Implementation
 
-Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States using `summarize` and `survey_mean`:
+Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
 
-```r
+```{r}
+#| eval: false
+#| label: calc-mean-nohl
 recs_des %>%
-  summarize(elec_bill = survey_mean(DOLLAREL, # <1>
-                                    vartype = c("se", "ci"))) # <2>
+  summarize(elec_bill = survey_mean(DOLLAREL, 
+                                    vartype = c("se", "ci"))) 
 ```
 
-1. Calculate mean of `DOLLAREL` variable
-2. Include standard error and confidence interval
+## Implementation {auto-animate=true}
 
-## Results
+Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
 
-Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States using `summarize` and `survey_mean`:
+```{r}
+#| eval: false
+#| label: calc-mean-hl-des
+#| code-line-numbers: "1"
+recs_des %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+- Use the survey design object, not raw data
+
+## Implementation {auto-animate=true}
+
+Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
+
+```{r}
+#| eval: false
+#| label: calc-mean-hl-summary
+#| code-line-numbers: '2'
+recs_des %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+- Use the survey design object, not raw data
+- Call `survey_mean()` *within* `summarize()` function
+
+## Implementation {auto-animate=true}
+
+Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
+
+```{r}
+#| eval: false
+#| label: calc-mean-hl-vartype
+#| code-line-numbers: '3'
+recs_des %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+- Use the survey design object, not raw data
+- Call `survey_mean()` *within* `summarize()` function
+- Specify the type of variance output, here we output the standard error and confidence interval
+
+## Results {auto-animate=true}
+
+Calculate the estimated average cost of electricity (`DOLLAREL`) in the United States:
 
 ```{r}
 #| label: calc-mean
@@ -349,9 +668,48 @@ recs_des %>%
                                     vartype = c("se", "ci")))
 ```
 
+::: {.notes}
+- Estimated average cost of electricity is in the first column
+- Standard error is in the second column
+- Confidence interval is in the third and fourth columns (lower bound, upper bound)
+- This is the standard R output, we will show later on how to make these into prettier tables
+:::
+
 ## Calculate means with groups
 
-Calculate the estimated average cost of electricity in the U.S. (`DOLLAREL`) **by each region** (`Region`) by including a `group_by` function with the variable of interest *before* the `summarize()` function:
+Calculate the estimated average cost of electricity in the U.S. (`DOLLAREL`) **by each region** (`Region`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
+
+```{r}
+#| label: calc-mean-with-groups-nohl
+#| eval: false
+recs_des %>%
+  group_by(Region) %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+## Calculate means with groups {auto-animate=true}
+
+Calculate the estimated average cost of electricity in the U.S. (`DOLLAREL`) **by each region** (`Region`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
+
+```{r}
+#| label: calc-mean-with-groups-hl-group
+#| eval: false
+#| code-line-numbers: '2'
+recs_des %>%
+  group_by(Region) %>%
+  summarize(elec_bill = survey_mean(DOLLAREL,
+                                    vartype = c("se", "ci")))
+```
+
+::: {.notes}
+- When working with subgroups, need to subset (`filter()`) or define groups (`group_by()`) before calculating the estimates
+- Here we are interested in cost of electrictiy for each of the U.S. Census Regions
+:::
+
+## Calculate means with groups {auto-animate=true}
+
+Calculate the estimated average cost of electricity in the U.S. (`DOLLAREL`) **by each region** (`Region`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
 
 ```{r}
 #| label: calc-mean-with-groups
@@ -360,6 +718,10 @@ recs_des %>%
   summarize(elec_bill = survey_mean(DOLLAREL,
                                     vartype = c("se", "ci")))
 ```
+
+::: {.notes}
+- Output has a row for each region
+:::
 
 # Conduct t-tests {background-color='{{< brand color secondary >}}'}
 
@@ -375,11 +737,19 @@ svyttest(formula,
          ...)
 ```
 
-## Implementation: one-sample t-test
+::: {.notes}
+- Similar to `t.test()` function in base R with the formula and the data arguments
+:::
+
+## Implementation: one-sample t-test {auto-animate=true}
 
 Stephanie usually sets her home to 68&deg;F at night during the summer. Is this different from the average household in the U.S.?
 
-What is the estimated average nighttime temperature U.S. households set their homes to during the summer (`SummerTempNight`)?
+## Implementation: one-sample t-test {auto-animate=true}
+
+Stephanie usually sets her home to 68&deg;F at night during the summer. Is this different from the average household in the U.S.?
+
+First, look at the estimated average nighttime temperature U.S. households set their homes to during the summer (`SummerTempNight`).
 
 ```{r}
 #| label: calc-mean-2
@@ -387,25 +757,64 @@ recs_des %>%
   summarize(mu = survey_mean(SummerTempNight, na.rm = TRUE))
 ```
 
-## Implementation: one-sample t-test
+::: {.notes}
+- Note if you don't specify a variance type, the default is to output the standard error
+:::
+
+## Implementation: one-sample t-test 
 
 Test if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
 
-```r
+``` {r}
+#| eval: false
+#| label: calc-t-test-nohl
 recs_des %>%
   svyttest(
-    formula = SummerTempNight - 68 ~ 0, # <1>
-    design = ., # <2>
+    formula = SummerTempNight - 68 ~ 0, 
+    design = ., 
     na.rm = TRUE
   )
 ```
 
-1. Formula to test if the true mean of `SummerTempNight` variable minus 68&deg;F is equal to 0
-2. Dot notation `.` that passes the `recs_des` object into the `design` argument
+## Implementation: one-sample t-test {auto-animate=true}
 
-## Results: one-sample t-test
+Test if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
 
-See if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
+``` {r}
+#| eval: false
+#| label: calc-t-test-hl-formula
+#| code-line-numbers: '3'
+recs_des %>%
+  svyttest(
+    formula = SummerTempNight - 68 ~ 0, 
+    design = ., 
+    na.rm = TRUE
+  )
+```
+
+- Formula to test if the true mean of `SummerTempNight` variable minus 68&deg;F is equal to 0
+
+## Implementation: one-sample t-test {auto-animate=true}
+
+Test if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
+
+``` {r}
+#| eval: false
+#| label: calc-t-test-hl-des
+#| code-line-numbers: '4'
+recs_des %>%
+  svyttest(
+    formula = SummerTempNight - 68 ~ 0, 
+    design = ., 
+    na.rm = TRUE
+  )
+```
+- Formula to test if the true mean of `SummerTempNight` variable minus 68&deg;F is equal to 0
+- Dot notation `.` that passes the `recs_des` object into the `design` argument
+
+## Results: one-sample t-test {auto-animate=true}
+
+Test if the average U.S. household sets its temperature at a value different from 68&deg;F using `svyttest()`:
 
 ```{r}
 #| label: calc-t-test
@@ -417,9 +826,20 @@ recs_des %>%
   )
 ```
 
-## Implementation: two-sample t-test
+::: {.notes}
+- Sample estimate mean is the difference between the U.S. average and Stephanie's house
+- Result: Stephanie keeps her house cold in the summer!
+:::
+
+## Implementation: two-sample t-test 
 
 On average, is there a significant different electric bill for households with and without air-conditioning?
+
+## Implementation: two-sample t-test {auto-animate=true}
+
+On average, is there a significant different electric bill for households with and without air-conditioning?
+
+First, look at the estimated average for households with and without air-condition.
 
 ```{r}
 #| label: ac-bill-summary
@@ -428,24 +848,48 @@ recs_des %>%
   summarize(mean = survey_mean(DOLLAREL, na.rm = TRUE))
 ```
 
+::: {.notes}
+- Add in the group_by here to see the means for each group
+:::
+
 ## Implementation: two-sample t-test
 
-Test if the electricity expenditure is significantly different between homes with and without air-conditioning `svyttest()`:
+Test if the electricity expenditure is significantly different for homes with and without air-conditioning:
 
-```r
+
+```{r}
+#| eval: false
+#| label: ac-bill-test-nohl
 recs_des %>%
   svyttest(
-    formula = DOLLAREL ~ ACUsed, # <1>
+    formula = DOLLAREL ~ ACUsed,
     design = ., 
     na.rm = TRUE
   )
 ```
 
-1. Formula with electricity expenditure on the left and air-conditioning usage on the right
+## Implementation: two-sample t-test {auto-animate=true}
 
-## Results: two-sample t-test
+Test if the electricity expenditure is significantly different for homes with and without air-conditioning:
 
-See if the electricity expenditure is significantly different between homes with and without air-conditioning `svyttest()`:
+
+```{r}
+#| eval: false
+#| label: ac-bill-test-hl-form
+#| code-line-numbers: '3'
+recs_des %>%
+  svyttest(
+    formula = DOLLAREL ~ ACUsed,
+    design = ., 
+    na.rm = TRUE
+  )
+```
+
+- Formula with electricity expenditure on the left and air-conditioning usage on the right
+
+## Results: two-sample t-test {auto-animate=true}
+
+Test if the electricity expenditure is significantly different for homes with and without air-conditioning:
 
 ```{r}
 #| label: ac-bill-test
@@ -457,7 +901,9 @@ recs_des %>%
   )
 ```
 
-
+::: {.notes}
+- Household with AC have higher electrical bill
+:::
 
 
 # Create tables {background-color='{{< brand color secondary >}}'}
@@ -557,7 +1003,7 @@ recs_tab %>%
   fmt_currency()
 ```
 
-# The End {background-color='{{< brand color secondary >}}'}
+# Wrap-up {background-color='{{< brand color secondary >}}'}
 
 ## References {.smaller}
 
