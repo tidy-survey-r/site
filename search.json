@@ -53,7 +53,14 @@
     "href": "talk-nchs-show-tell.html#comparison-with-dplyr",
     "title": "Tidy Data,Weighted Insights",
     "section": "Comparison with dplyr",
-    "text": "Comparison with dplyr\n\ndplyr: summary functions called within summarize()\nsrvyr: survey_*() functions called with summarize()\n\n\ndplyrsrvyr\n\n\n\ntowny %&gt;%\n  group_by(status) %&gt;%\n  summarize(\n    area_mean = mean(land_area_km2),\n    area_median = median(land_area_km2)\n  )\n\n# A tibble: 2 × 3\n  status      area_mean area_median\n  &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;\n1 lower-tier       362.        310.\n2 single-tier      388.        194.\n\n\n\n\n\napistrat_des %&gt;%\n  group_by(stype) %&gt;%\n  summarize(\n    api00_mean = survey_mean(api00),\n    api00_med = survey_median(api00)\n  )\n\n# A tibble: 3 × 5\n  stype api00_mean api00_mean_se api00_med api00_med_se\n  &lt;fct&gt;      &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;\n1 E           674.          12.5       671         20.7\n2 H           626.          15.5       635         21.6\n3 M           637.          16.6       648         24.1\n\n\n\n\n\n\n\nIf you already use {tidyverse}/{dplyr}, the syntax {srvyr} will come easily\nFunctions commonly used like group_by, filter, and summarize also used in srvyr\nNote that the survey estimates also generate standard deviations - can also add options to get CIs, deffs, and variances"
+    "text": "Comparison with dplyr\n\ndplyr: summary functions called within summarize()\n\ndplyr\n\ntowny %&gt;%\n  group_by(status) %&gt;%\n  summarize(\n    area_mean = mean(land_area_km2),\n    area_median = median(land_area_km2)\n  )\n\n# A tibble: 2 × 3\n  status      area_mean area_median\n  &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;\n1 lower-tier       362.        310.\n2 single-tier      388.        194."
+  },
+  {
+    "objectID": "talk-nchs-show-tell.html#comparison-with-dplyr-1",
+    "href": "talk-nchs-show-tell.html#comparison-with-dplyr-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Comparison with dplyr",
+    "text": "Comparison with dplyr\n\nsrvyr: survey_*() functions called with summarize()\n\nsrvyr\n\napistrat_des %&gt;%\n  group_by(stype) %&gt;%\n  summarize(\n    api00_mean = survey_mean(api00),\n    api00_med = survey_median(api00)\n  )\n\n# A tibble: 3 × 5\n  stype api00_mean api00_mean_se api00_med api00_med_se\n  &lt;fct&gt;      &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;\n1 E           674.          12.5       671         20.7\n2 H           626.          15.5       635         21.6\n3 M           637.          16.6       648         24.1\n\n\n\n\nIf you already use {tidyverse}/{dplyr}, the syntax {srvyr} will come easily\nFunctions commonly used like group_by, filter, and summarize also used in srvyr\nNote that the survey estimates also generate standard deviations - can also add options to get CIs, deffs, and variances"
   },
   {
     "objectID": "talk-nchs-show-tell.html#steps-for-descriptive-analysis",
