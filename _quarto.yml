@@ -2,6 +2,7 @@ project:
   type: website
   
 website:
+  favicon: images/favicon.png
   navbar:
     background: primary
     search: true
