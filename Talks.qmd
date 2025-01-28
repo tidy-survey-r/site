@@ -3,4 +3,5 @@ title: "Talks"
 format: html
 ---
 
+- [R-Ladies Amsterdam & RTP](talk-rladies-ams-rtp.qmd): 2025-02-25
 - [NCHS DRM Show & Tell](talk-nchs-show-tell.qmd): 2025-01-28
