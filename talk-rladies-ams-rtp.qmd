@@ -70,7 +70,31 @@ Posit
 
 ## Why weight?
 
-TODO
+- Weights are constructed based on the probability of selection into survey and adjusted for coverage population
+- Using weights reduces the potential of bias
+- Weights are often adjusted by demographics and variables likely correlated with outcomes
+
+::: {.notes}
+- Example 1: Survey of inmates (hypothetical). More predominately male facilities than female facilities so female facilities are oversampled. Weights are calculated to reflect the actual proportion for the population
+- Example 2: Survey of households about energy consumption and expenditure (RECS). Weighting accounts for age of housing unit, type of housing unit, and state
+- Example 3: Sample of US citizens about election (ANES). Weighting accounts for:
+Age by gender;
+    - Race/ethnicity by educational attainment;
+    - Marital status by gender;
+    - Race/ethnicity by Census region;
+    - Nation of birth;
+    - Home tenure by Metropolitan status;
+    - Population density;
+    - Household income;
+    - Early voter status
+:::
+
+## Strata? PSU? Clusters? Replicate weights?
+
+- The strata/PSU or replicate weights are used to accurately estimate standard errors and perform statistical tests (correct degrees of freedom)
+- The packages we introduce take these as parameters and accurately calculate standard errors, confidence intervals, and p-values accounting for the covariance structure
+- Only need to specify once - documentation will help you identify elements and sometimes provides SAS, SUDAAN, or even R syntax to get started
+
 
 # Setup {background-color='{{< brand color secondary >}}'}
 
