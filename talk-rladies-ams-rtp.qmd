@@ -995,8 +995,6 @@ recs_tab %>%
 
 - Freedman Ellis, Greg, and Ben Schneider. 2024. *srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data*. <http://gdfe.co/srvyr/>.
 - Lumley, Thomas. 2010. *Complex Surveys: A Guide to Analysis Using R*. John Wiley & Sons. <https://r-survey.r-forge.r-project.org/survey/>.
-- Research Triangle Institute (2012). *SUDAAN Language Manual, Volumes 1 and 2, Relase 11*. Research Triangle Park, NC: Research Triangle Institute.
-- SAS Institute Inc. 2023. *SAS/STAT® 15.3 User’s Guide*. Cary, NC: SAS Institute Inc. [Introduction to Survey Sampling and Analysis Procedures](https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.5/statug/statug_introsamp_toc.htm)
 - Zimmer, S. A., Powell, R. J., & Velásquez, I. C. (2024). *Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}*. Chapman & Hall: CRC Press. <https://tidy-survey-r.github.io/tidy-survey-book/>
 
 ## Where to find our book
