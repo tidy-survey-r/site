@@ -25,7 +25,21 @@
     "href": "talk-rladies-ams-rtp.html#why-weight",
     "title": "Tidy Data,Weighted Insights",
     "section": "Why weight?",
-    "text": "Why weight?\n\nWeights are constructed based on the probability of selection into survey and adjusted for coverage population\nUsing weights reduces the potential of bias\nWeights are often adjusted by demographics and variables likely correlated with outcomes\n\n\n\nExample 1: Survey of inmates (hypothetical). More predominately male facilities than female facilities so female facilities are oversampled. Weights are calculated to reflect the actual proportion for the population\nExample 2: Survey of households about energy consumption and expenditure (RECS). Weighting accounts for age of housing unit, type of housing unit, and state\nExample 3: Sample of US citizens about election (ANES). Weighting accounts for: Age by gender;\n\nRace/ethnicity by educational attainment;\nMarital status by gender;\nRace/ethnicity by Census region;\nNation of birth;\nHome tenure by Metropolitan status;\nPopulation density;\nHousehold income;\nEarly voter status"
+    "text": "Why weight?\n\nWeights are constructed based on the probability of selection into survey and adjusted for coverage population\nUsing weights reduces the potential of bias\nWeights are often adjusted by demographics and variables likely correlated with outcomes"
+  },
+  {
+    "objectID": "talk-rladies-ams-rtp.html#why-weight-1",
+    "href": "talk-rladies-ams-rtp.html#why-weight-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Why weight?",
+    "text": "Why weight?\n\n\n\nExample 1: Survey of inmates (hypothetical). More predominately male facilities than female facilities so female facilities are oversampled. Weights are calculated to reflect the actual proportion for the population\nExample 2: Survey of households about energy consumption and expenditure (RECS). Weighting accounts for age of housing unit, type of housing unit, and state\nExample 3: Sample of US citizens about election (ANES). Weighting accounts for: Age by gender;\n\nRace/ethnicity by educational attainment;\nMarital status by gender;\nRace/ethnicity by Census region;\nNation of birth;\nHome tenure by Metropolitan status;\nPopulation density;\nHousehold income;\nEarly voter status"
+  },
+  {
+    "objectID": "talk-rladies-ams-rtp.html#why-weight-2",
+    "href": "talk-rladies-ams-rtp.html#why-weight-2",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Why weight?",
+    "text": "Why weight?\n\n\n\n\n\n\n\nThe 1936 Literary Digest Poll is a classic example of a flawed survey. They polled millions of people to predict the U.S. presidential election and forecasted a landslide victory for Alf Landon over Franklin D. Roosevelt. However, their survey sample was biased because it relied on telephone directories and automobile registration lists, which disproportionately included wealthier (and more Republican-leaning) voters. The result was a wildly inaccurate prediction.\n\n\nTruman Library Institute"
   },
   {
     "objectID": "talk-rladies-ams-rtp.html#strata-psu-clusters-replicate-weights",
@@ -368,7 +382,7 @@
     "href": "talk-rladies-ams-rtp.html#references",
     "title": "Tidy Data,Weighted Insights",
     "section": "References",
-    "text": "References\n\nFreedman Ellis, Greg, and Ben Schneider. 2024. srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data. http://gdfe.co/srvyr/.\nLumley, Thomas. 2010. Complex Surveys: A Guide to Analysis Using R. John Wiley & Sons. https://r-survey.r-forge.r-project.org/survey/.\nResearch Triangle Institute (2012). SUDAAN Language Manual, Volumes 1 and 2, Relase 11. Research Triangle Park, NC: Research Triangle Institute.\nSAS Institute Inc. 2023. SAS/STAT® 15.3 User’s Guide. Cary, NC: SAS Institute Inc. Introduction to Survey Sampling and Analysis Procedures\nZimmer, S. A., Powell, R. J., & Velásquez, I. C. (2024). Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}. Chapman & Hall: CRC Press. https://tidy-survey-r.github.io/tidy-survey-book/"
+    "text": "References\n\nFreedman Ellis, Greg, and Ben Schneider. 2024. srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data. http://gdfe.co/srvyr/.\nLumley, Thomas. 2010. Complex Surveys: A Guide to Analysis Using R. John Wiley & Sons. https://r-survey.r-forge.r-project.org/survey/.\nZimmer, S. A., Powell, R. J., & Velásquez, I. C. (2024). Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}. Chapman & Hall: CRC Press. https://tidy-survey-r.github.io/tidy-survey-book/"
   },
   {
     "objectID": "talk-rladies-ams-rtp.html#where-to-find-our-book",

@@ -283,7 +283,11 @@
 <li>Using weights reduces the potential of bias</li>
 <li>Weights are often adjusted by demographics and variables likely correlated with outcomes</li>
 </ul>
-<aside class="notes">
+</section>
+<section id="why-weight-1" class="slide level2">
+<h2>Why weight?</h2>
+
+<img data-src="talk-rladies-ams-rtp_files/figure-revealjs/why-weight-example-1.png" width="960" class="r-stretch"><aside class="notes">
 <ul>
 <li>Example 1: Survey of inmates (hypothetical). More predominately male facilities than female facilities so female facilities are oversampled. Weights are calculated to reflect the actual proportion for the population</li>
 <li>Example 2: Survey of households about energy consumption and expenditure (RECS). Weighting accounts for age of housing unit, type of housing unit, and state</li>
@@ -311,6 +315,30 @@
           display:block!important;
       }</style></aside>
 </section>
+<section id="why-weight-2" class="slide level2">
+<h2>Why weight?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dewey-defeats-truman.jpg" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>The 1936 Literary Digest Poll is a classic example of a flawed survey. They polled millions of people to predict the U.S. presidential election and forecasted a landslide victory for Alf Landon over Franklin D. Roosevelt. However, their survey sample was biased because it relied on telephone directories and automobile registration lists, which disproportionately included wealthier (and more Republican-leaning) voters. The result was a wildly inaccurate prediction.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><a href="https://www.trumanlibraryinstitute.org/dewey-defeats-truman/">Truman Library Institute</a></p>
+</div></aside></section>
 <section id="strata-psu-clusters-replicate-weights" class="slide level2">
 <h2>Strata? PSU? Clusters? Replicate weights?</h2>
 <ul>
@@ -1651,23 +1679,23 @@ difference in mean
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb46-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
 <span id="cb46-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="czrubedram" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#czrubedram table {
+<div id="ulczjnfeva" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ulczjnfeva table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#czrubedram thead, #czrubedram tbody, #czrubedram tfoot, #czrubedram tr, #czrubedram td, #czrubedram th {
+#ulczjnfeva thead, #ulczjnfeva tbody, #ulczjnfeva tfoot, #ulczjnfeva tr, #ulczjnfeva td, #ulczjnfeva th {
   border-style: none;
 }
 
-#czrubedram p {
+#ulczjnfeva p {
   margin: 0;
   padding: 0;
 }
 
-#czrubedram .gt_table {
+#ulczjnfeva .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1693,12 +1721,12 @@ difference in mean
   border-left-color: #D3D3D3;
 }
 
-#czrubedram .gt_caption {
+#ulczjnfeva .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#czrubedram .gt_title {
+#ulczjnfeva .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1710,7 +1738,7 @@ difference in mean
   border-bottom-width: 0;
 }
 
-#czrubedram .gt_subtitle {
+#ulczjnfeva .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1722,7 +1750,7 @@ difference in mean
   border-top-width: 0;
 }
 
-#czrubedram .gt_heading {
+#ulczjnfeva .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1734,13 +1762,13 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#czrubedram .gt_bottom_border {
+#ulczjnfeva .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#czrubedram .gt_col_headings {
+#ulczjnfeva .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1755,7 +1783,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#czrubedram .gt_col_heading {
+#ulczjnfeva .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1775,7 +1803,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#czrubedram .gt_column_spanner_outer {
+#ulczjnfeva .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1787,15 +1815,15 @@ difference in mean
   padding-right: 4px;
 }
 
-#czrubedram .gt_column_spanner_outer:first-child {
+#ulczjnfeva .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#czrubedram .gt_column_spanner_outer:last-child {
+#ulczjnfeva .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#czrubedram .gt_column_spanner {
+#ulczjnfeva .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1807,11 +1835,11 @@ difference in mean
   width: 100%;
 }
 
-#czrubedram .gt_spanner_row {
+#ulczjnfeva .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#czrubedram .gt_group_heading {
+#ulczjnfeva .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1837,7 +1865,7 @@ difference in mean
   text-align: left;
 }
 
-#czrubedram .gt_empty_group_heading {
+#ulczjnfeva .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1852,15 +1880,15 @@ difference in mean
   vertical-align: middle;
 }
 
-#czrubedram .gt_from_md > :first-child {
+#ulczjnfeva .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#czrubedram .gt_from_md > :last-child {
+#ulczjnfeva .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#czrubedram .gt_row {
+#ulczjnfeva .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1879,7 +1907,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#czrubedram .gt_stub {
+#ulczjnfeva .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1892,7 +1920,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#czrubedram .gt_stub_row_group {
+#ulczjnfeva .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1906,15 +1934,15 @@ difference in mean
   vertical-align: top;
 }
 
-#czrubedram .gt_row_group_first td {
+#ulczjnfeva .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#czrubedram .gt_row_group_first th {
+#ulczjnfeva .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#czrubedram .gt_summary_row {
+#ulczjnfeva .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1924,16 +1952,16 @@ difference in mean
   padding-right: 5px;
 }
 
-#czrubedram .gt_first_summary_row {
+#ulczjnfeva .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#czrubedram .gt_first_summary_row.thick {
+#ulczjnfeva .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#czrubedram .gt_last_summary_row {
+#ulczjnfeva .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1943,7 +1971,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#czrubedram .gt_grand_summary_row {
+#ulczjnfeva .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1953,7 +1981,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#czrubedram .gt_first_grand_summary_row {
+#ulczjnfeva .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1963,7 +1991,7 @@ difference in mean
   border-top-color: #D3D3D3;
 }
 
-#czrubedram .gt_last_grand_summary_row_top {
+#ulczjnfeva .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1973,11 +2001,11 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#czrubedram .gt_striped {
+#ulczjnfeva .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#czrubedram .gt_table_body {
+#ulczjnfeva .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1986,7 +2014,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#czrubedram .gt_footnotes {
+#ulczjnfeva .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2000,7 +2028,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#czrubedram .gt_footnote {
+#ulczjnfeva .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2009,7 +2037,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#czrubedram .gt_sourcenotes {
+#ulczjnfeva .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2023,7 +2051,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#czrubedram .gt_sourcenote {
+#ulczjnfeva .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2031,72 +2059,72 @@ difference in mean
   padding-right: 5px;
 }
 
-#czrubedram .gt_left {
+#ulczjnfeva .gt_left {
   text-align: left;
 }
 
-#czrubedram .gt_center {
+#ulczjnfeva .gt_center {
   text-align: center;
 }
 
-#czrubedram .gt_right {
+#ulczjnfeva .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#czrubedram .gt_font_normal {
+#ulczjnfeva .gt_font_normal {
   font-weight: normal;
 }
 
-#czrubedram .gt_font_bold {
+#ulczjnfeva .gt_font_bold {
   font-weight: bold;
 }
 
-#czrubedram .gt_font_italic {
+#ulczjnfeva .gt_font_italic {
   font-style: italic;
 }
 
-#czrubedram .gt_super {
+#ulczjnfeva .gt_super {
   font-size: 65%;
 }
 
-#czrubedram .gt_footnote_marks {
+#ulczjnfeva .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#czrubedram .gt_asterisk {
+#ulczjnfeva .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#czrubedram .gt_indent_1 {
+#ulczjnfeva .gt_indent_1 {
   text-indent: 5px;
 }
 
-#czrubedram .gt_indent_2 {
+#ulczjnfeva .gt_indent_2 {
   text-indent: 10px;
 }
 
-#czrubedram .gt_indent_3 {
+#ulczjnfeva .gt_indent_3 {
   text-indent: 15px;
 }
 
-#czrubedram .gt_indent_4 {
+#ulczjnfeva .gt_indent_4 {
   text-indent: 20px;
 }
 
-#czrubedram .gt_indent_5 {
+#ulczjnfeva .gt_indent_5 {
   text-indent: 25px;
 }
 
-#czrubedram .katex-display {
+#ulczjnfeva .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#czrubedram div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ulczjnfeva div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2149,23 +2177,23 @@ difference in mean
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb47-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
 <span id="cb47-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="cuabxwamsk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cuabxwamsk table {
+<div id="pykgarkrem" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pykgarkrem table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cuabxwamsk thead, #cuabxwamsk tbody, #cuabxwamsk tfoot, #cuabxwamsk tr, #cuabxwamsk td, #cuabxwamsk th {
+#pykgarkrem thead, #pykgarkrem tbody, #pykgarkrem tfoot, #pykgarkrem tr, #pykgarkrem td, #pykgarkrem th {
   border-style: none;
 }
 
-#cuabxwamsk p {
+#pykgarkrem p {
   margin: 0;
   padding: 0;
 }
 
-#cuabxwamsk .gt_table {
+#pykgarkrem .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2191,12 +2219,12 @@ difference in mean
   border-left-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_caption {
+#pykgarkrem .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cuabxwamsk .gt_title {
+#pykgarkrem .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2208,7 +2236,7 @@ difference in mean
   border-bottom-width: 0;
 }
 
-#cuabxwamsk .gt_subtitle {
+#pykgarkrem .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2220,7 +2248,7 @@ difference in mean
   border-top-width: 0;
 }
 
-#cuabxwamsk .gt_heading {
+#pykgarkrem .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2232,13 +2260,13 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_bottom_border {
+#pykgarkrem .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_col_headings {
+#pykgarkrem .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2253,7 +2281,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_col_heading {
+#pykgarkrem .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2273,7 +2301,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#cuabxwamsk .gt_column_spanner_outer {
+#pykgarkrem .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2285,15 +2313,15 @@ difference in mean
   padding-right: 4px;
 }
 
-#cuabxwamsk .gt_column_spanner_outer:first-child {
+#pykgarkrem .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cuabxwamsk .gt_column_spanner_outer:last-child {
+#pykgarkrem .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cuabxwamsk .gt_column_spanner {
+#pykgarkrem .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2305,11 +2333,11 @@ difference in mean
   width: 100%;
 }
 
-#cuabxwamsk .gt_spanner_row {
+#pykgarkrem .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cuabxwamsk .gt_group_heading {
+#pykgarkrem .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2335,7 +2363,7 @@ difference in mean
   text-align: left;
 }
 
-#cuabxwamsk .gt_empty_group_heading {
+#pykgarkrem .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2350,15 +2378,15 @@ difference in mean
   vertical-align: middle;
 }
 
-#cuabxwamsk .gt_from_md > :first-child {
+#pykgarkrem .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cuabxwamsk .gt_from_md > :last-child {
+#pykgarkrem .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cuabxwamsk .gt_row {
+#pykgarkrem .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2377,7 +2405,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#cuabxwamsk .gt_stub {
+#pykgarkrem .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2390,7 +2418,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#cuabxwamsk .gt_stub_row_group {
+#pykgarkrem .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2404,15 +2432,15 @@ difference in mean
   vertical-align: top;
 }
 
-#cuabxwamsk .gt_row_group_first td {
+#pykgarkrem .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cuabxwamsk .gt_row_group_first th {
+#pykgarkrem .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cuabxwamsk .gt_summary_row {
+#pykgarkrem .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2422,16 +2450,16 @@ difference in mean
   padding-right: 5px;
 }
 
-#cuabxwamsk .gt_first_summary_row {
+#pykgarkrem .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_first_summary_row.thick {
+#pykgarkrem .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cuabxwamsk .gt_last_summary_row {
+#pykgarkrem .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2441,7 +2469,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_grand_summary_row {
+#pykgarkrem .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2451,7 +2479,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#cuabxwamsk .gt_first_grand_summary_row {
+#pykgarkrem .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2461,7 +2489,7 @@ difference in mean
   border-top-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_last_grand_summary_row_top {
+#pykgarkrem .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2471,11 +2499,11 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_striped {
+#pykgarkrem .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cuabxwamsk .gt_table_body {
+#pykgarkrem .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2484,7 +2512,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_footnotes {
+#pykgarkrem .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2498,7 +2526,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_footnote {
+#pykgarkrem .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2507,7 +2535,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#cuabxwamsk .gt_sourcenotes {
+#pykgarkrem .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2521,7 +2549,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#cuabxwamsk .gt_sourcenote {
+#pykgarkrem .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2529,72 +2557,72 @@ difference in mean
   padding-right: 5px;
 }
 
-#cuabxwamsk .gt_left {
+#pykgarkrem .gt_left {
   text-align: left;
 }
 
-#cuabxwamsk .gt_center {
+#pykgarkrem .gt_center {
   text-align: center;
 }
 
-#cuabxwamsk .gt_right {
+#pykgarkrem .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cuabxwamsk .gt_font_normal {
+#pykgarkrem .gt_font_normal {
   font-weight: normal;
 }
 
-#cuabxwamsk .gt_font_bold {
+#pykgarkrem .gt_font_bold {
   font-weight: bold;
 }
 
-#cuabxwamsk .gt_font_italic {
+#pykgarkrem .gt_font_italic {
   font-style: italic;
 }
 
-#cuabxwamsk .gt_super {
+#pykgarkrem .gt_super {
   font-size: 65%;
 }
 
-#cuabxwamsk .gt_footnote_marks {
+#pykgarkrem .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cuabxwamsk .gt_asterisk {
+#pykgarkrem .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cuabxwamsk .gt_indent_1 {
+#pykgarkrem .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cuabxwamsk .gt_indent_2 {
+#pykgarkrem .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cuabxwamsk .gt_indent_3 {
+#pykgarkrem .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cuabxwamsk .gt_indent_4 {
+#pykgarkrem .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cuabxwamsk .gt_indent_5 {
+#pykgarkrem .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cuabxwamsk .katex-display {
+#pykgarkrem .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cuabxwamsk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pykgarkrem div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2652,23 +2680,23 @@ difference in mean
 <span id="cb48-6" class="hljs-ln-code"><a></a>    <span class="at">elec_bill_upp =</span> <span class="st">"Upper"</span></span>
 <span id="cb48-7" class="hljs-ln-code"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="ykwgkqlyxy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ykwgkqlyxy table {
+<div id="xulcnrkaqd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xulcnrkaqd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ykwgkqlyxy thead, #ykwgkqlyxy tbody, #ykwgkqlyxy tfoot, #ykwgkqlyxy tr, #ykwgkqlyxy td, #ykwgkqlyxy th {
+#xulcnrkaqd thead, #xulcnrkaqd tbody, #xulcnrkaqd tfoot, #xulcnrkaqd tr, #xulcnrkaqd td, #xulcnrkaqd th {
   border-style: none;
 }
 
-#ykwgkqlyxy p {
+#xulcnrkaqd p {
   margin: 0;
   padding: 0;
 }
 
-#ykwgkqlyxy .gt_table {
+#xulcnrkaqd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2694,12 +2722,12 @@ difference in mean
   border-left-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_caption {
+#xulcnrkaqd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ykwgkqlyxy .gt_title {
+#xulcnrkaqd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2711,7 +2739,7 @@ difference in mean
   border-bottom-width: 0;
 }
 
-#ykwgkqlyxy .gt_subtitle {
+#xulcnrkaqd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2723,7 +2751,7 @@ difference in mean
   border-top-width: 0;
 }
 
-#ykwgkqlyxy .gt_heading {
+#xulcnrkaqd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2735,13 +2763,13 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_bottom_border {
+#xulcnrkaqd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_col_headings {
+#xulcnrkaqd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2756,7 +2784,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_col_heading {
+#xulcnrkaqd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2776,7 +2804,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#ykwgkqlyxy .gt_column_spanner_outer {
+#xulcnrkaqd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2788,15 +2816,15 @@ difference in mean
   padding-right: 4px;
 }
 
-#ykwgkqlyxy .gt_column_spanner_outer:first-child {
+#xulcnrkaqd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ykwgkqlyxy .gt_column_spanner_outer:last-child {
+#xulcnrkaqd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ykwgkqlyxy .gt_column_spanner {
+#xulcnrkaqd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2808,11 +2836,11 @@ difference in mean
   width: 100%;
 }
 
-#ykwgkqlyxy .gt_spanner_row {
+#xulcnrkaqd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ykwgkqlyxy .gt_group_heading {
+#xulcnrkaqd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2838,7 +2866,7 @@ difference in mean
   text-align: left;
 }
 
-#ykwgkqlyxy .gt_empty_group_heading {
+#xulcnrkaqd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2853,15 +2881,15 @@ difference in mean
   vertical-align: middle;
 }
 
-#ykwgkqlyxy .gt_from_md > :first-child {
+#xulcnrkaqd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ykwgkqlyxy .gt_from_md > :last-child {
+#xulcnrkaqd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ykwgkqlyxy .gt_row {
+#xulcnrkaqd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2880,7 +2908,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#ykwgkqlyxy .gt_stub {
+#xulcnrkaqd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2893,7 +2921,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#ykwgkqlyxy .gt_stub_row_group {
+#xulcnrkaqd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2907,15 +2935,15 @@ difference in mean
   vertical-align: top;
 }
 
-#ykwgkqlyxy .gt_row_group_first td {
+#xulcnrkaqd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ykwgkqlyxy .gt_row_group_first th {
+#xulcnrkaqd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ykwgkqlyxy .gt_summary_row {
+#xulcnrkaqd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2925,16 +2953,16 @@ difference in mean
   padding-right: 5px;
 }
 
-#ykwgkqlyxy .gt_first_summary_row {
+#xulcnrkaqd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_first_summary_row.thick {
+#xulcnrkaqd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ykwgkqlyxy .gt_last_summary_row {
+#xulcnrkaqd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2944,7 +2972,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_grand_summary_row {
+#xulcnrkaqd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2954,7 +2982,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#ykwgkqlyxy .gt_first_grand_summary_row {
+#xulcnrkaqd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2964,7 +2992,7 @@ difference in mean
   border-top-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_last_grand_summary_row_top {
+#xulcnrkaqd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2974,11 +3002,11 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_striped {
+#xulcnrkaqd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ykwgkqlyxy .gt_table_body {
+#xulcnrkaqd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2987,7 +3015,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_footnotes {
+#xulcnrkaqd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3001,7 +3029,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_footnote {
+#xulcnrkaqd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3010,7 +3038,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#ykwgkqlyxy .gt_sourcenotes {
+#xulcnrkaqd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3024,7 +3052,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#ykwgkqlyxy .gt_sourcenote {
+#xulcnrkaqd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3032,72 +3060,72 @@ difference in mean
   padding-right: 5px;
 }
 
-#ykwgkqlyxy .gt_left {
+#xulcnrkaqd .gt_left {
   text-align: left;
 }
 
-#ykwgkqlyxy .gt_center {
+#xulcnrkaqd .gt_center {
   text-align: center;
 }
 
-#ykwgkqlyxy .gt_right {
+#xulcnrkaqd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ykwgkqlyxy .gt_font_normal {
+#xulcnrkaqd .gt_font_normal {
   font-weight: normal;
 }
 
-#ykwgkqlyxy .gt_font_bold {
+#xulcnrkaqd .gt_font_bold {
   font-weight: bold;
 }
 
-#ykwgkqlyxy .gt_font_italic {
+#xulcnrkaqd .gt_font_italic {
   font-style: italic;
 }
 
-#ykwgkqlyxy .gt_super {
+#xulcnrkaqd .gt_super {
   font-size: 65%;
 }
 
-#ykwgkqlyxy .gt_footnote_marks {
+#xulcnrkaqd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ykwgkqlyxy .gt_asterisk {
+#xulcnrkaqd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ykwgkqlyxy .gt_indent_1 {
+#xulcnrkaqd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ykwgkqlyxy .gt_indent_2 {
+#xulcnrkaqd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ykwgkqlyxy .gt_indent_3 {
+#xulcnrkaqd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ykwgkqlyxy .gt_indent_4 {
+#xulcnrkaqd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ykwgkqlyxy .gt_indent_5 {
+#xulcnrkaqd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ykwgkqlyxy .katex-display {
+#xulcnrkaqd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ykwgkqlyxy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xulcnrkaqd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3158,23 +3186,23 @@ difference in mean
 <span id="cb49-9" class="hljs-ln-code"><a></a>    <span class="at">label =</span> <span class="st">"Cost of electricity in the U.S. by region"</span>,</span>
 <span id="cb49-10" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(elec_bill, elec_bill_low, elec_bill_upp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="cejusrknew" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cejusrknew table {
+<div id="dmzarfizwj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dmzarfizwj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cejusrknew thead, #cejusrknew tbody, #cejusrknew tfoot, #cejusrknew tr, #cejusrknew td, #cejusrknew th {
+#dmzarfizwj thead, #dmzarfizwj tbody, #dmzarfizwj tfoot, #dmzarfizwj tr, #dmzarfizwj td, #dmzarfizwj th {
   border-style: none;
 }
 
-#cejusrknew p {
+#dmzarfizwj p {
   margin: 0;
   padding: 0;
 }
 
-#cejusrknew .gt_table {
+#dmzarfizwj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3200,12 +3228,12 @@ difference in mean
   border-left-color: #D3D3D3;
 }
 
-#cejusrknew .gt_caption {
+#dmzarfizwj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cejusrknew .gt_title {
+#dmzarfizwj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3217,7 +3245,7 @@ difference in mean
   border-bottom-width: 0;
 }
 
-#cejusrknew .gt_subtitle {
+#dmzarfizwj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3229,7 +3257,7 @@ difference in mean
   border-top-width: 0;
 }
 
-#cejusrknew .gt_heading {
+#dmzarfizwj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3241,13 +3269,13 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#cejusrknew .gt_bottom_border {
+#dmzarfizwj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cejusrknew .gt_col_headings {
+#dmzarfizwj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3262,7 +3290,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#cejusrknew .gt_col_heading {
+#dmzarfizwj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3282,7 +3310,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#cejusrknew .gt_column_spanner_outer {
+#dmzarfizwj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3294,15 +3322,15 @@ difference in mean
   padding-right: 4px;
 }
 
-#cejusrknew .gt_column_spanner_outer:first-child {
+#dmzarfizwj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cejusrknew .gt_column_spanner_outer:last-child {
+#dmzarfizwj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cejusrknew .gt_column_spanner {
+#dmzarfizwj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3314,11 +3342,11 @@ difference in mean
   width: 100%;
 }
 
-#cejusrknew .gt_spanner_row {
+#dmzarfizwj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cejusrknew .gt_group_heading {
+#dmzarfizwj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3344,7 +3372,7 @@ difference in mean
   text-align: left;
 }
 
-#cejusrknew .gt_empty_group_heading {
+#dmzarfizwj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3359,15 +3387,15 @@ difference in mean
   vertical-align: middle;
 }
 
-#cejusrknew .gt_from_md > :first-child {
+#dmzarfizwj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cejusrknew .gt_from_md > :last-child {
+#dmzarfizwj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cejusrknew .gt_row {
+#dmzarfizwj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3386,7 +3414,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#cejusrknew .gt_stub {
+#dmzarfizwj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3399,7 +3427,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#cejusrknew .gt_stub_row_group {
+#dmzarfizwj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3413,15 +3441,15 @@ difference in mean
   vertical-align: top;
 }
 
-#cejusrknew .gt_row_group_first td {
+#dmzarfizwj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cejusrknew .gt_row_group_first th {
+#dmzarfizwj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cejusrknew .gt_summary_row {
+#dmzarfizwj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3431,16 +3459,16 @@ difference in mean
   padding-right: 5px;
 }
 
-#cejusrknew .gt_first_summary_row {
+#dmzarfizwj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cejusrknew .gt_first_summary_row.thick {
+#dmzarfizwj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cejusrknew .gt_last_summary_row {
+#dmzarfizwj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3450,7 +3478,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#cejusrknew .gt_grand_summary_row {
+#dmzarfizwj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3460,7 +3488,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#cejusrknew .gt_first_grand_summary_row {
+#dmzarfizwj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3470,7 +3498,7 @@ difference in mean
   border-top-color: #D3D3D3;
 }
 
-#cejusrknew .gt_last_grand_summary_row_top {
+#dmzarfizwj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3480,11 +3508,11 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#cejusrknew .gt_striped {
+#dmzarfizwj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cejusrknew .gt_table_body {
+#dmzarfizwj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3493,7 +3521,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#cejusrknew .gt_footnotes {
+#dmzarfizwj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3507,7 +3535,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#cejusrknew .gt_footnote {
+#dmzarfizwj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3516,7 +3544,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#cejusrknew .gt_sourcenotes {
+#dmzarfizwj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3530,7 +3558,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#cejusrknew .gt_sourcenote {
+#dmzarfizwj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3538,72 +3566,72 @@ difference in mean
   padding-right: 5px;
 }
 
-#cejusrknew .gt_left {
+#dmzarfizwj .gt_left {
   text-align: left;
 }
 
-#cejusrknew .gt_center {
+#dmzarfizwj .gt_center {
   text-align: center;
 }
 
-#cejusrknew .gt_right {
+#dmzarfizwj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cejusrknew .gt_font_normal {
+#dmzarfizwj .gt_font_normal {
   font-weight: normal;
 }
 
-#cejusrknew .gt_font_bold {
+#dmzarfizwj .gt_font_bold {
   font-weight: bold;
 }
 
-#cejusrknew .gt_font_italic {
+#dmzarfizwj .gt_font_italic {
   font-style: italic;
 }
 
-#cejusrknew .gt_super {
+#dmzarfizwj .gt_super {
   font-size: 65%;
 }
 
-#cejusrknew .gt_footnote_marks {
+#dmzarfizwj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cejusrknew .gt_asterisk {
+#dmzarfizwj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cejusrknew .gt_indent_1 {
+#dmzarfizwj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cejusrknew .gt_indent_2 {
+#dmzarfizwj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cejusrknew .gt_indent_3 {
+#dmzarfizwj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cejusrknew .gt_indent_4 {
+#dmzarfizwj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cejusrknew .gt_indent_5 {
+#dmzarfizwj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cejusrknew .katex-display {
+#dmzarfizwj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cejusrknew div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dmzarfizwj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3676,23 +3704,23 @@ Cost of electricity in the U.S. by region
 <span id="cb50-10" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(elec_bill, elec_bill_low, elec_bill_upp)) <span class="sc">%&gt;%</span></span>
 <span id="cb50-11" class="hljs-ln-code"><a></a>  <span class="fu">fmt_currency</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="empdudcfwt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#empdudcfwt table {
+<div id="kwttofhcmy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kwttofhcmy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#empdudcfwt thead, #empdudcfwt tbody, #empdudcfwt tfoot, #empdudcfwt tr, #empdudcfwt td, #empdudcfwt th {
+#kwttofhcmy thead, #kwttofhcmy tbody, #kwttofhcmy tfoot, #kwttofhcmy tr, #kwttofhcmy td, #kwttofhcmy th {
   border-style: none;
 }
 
-#empdudcfwt p {
+#kwttofhcmy p {
   margin: 0;
   padding: 0;
 }
 
-#empdudcfwt .gt_table {
+#kwttofhcmy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3718,12 +3746,12 @@ Cost of electricity in the U.S. by region
   border-left-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_caption {
+#kwttofhcmy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#empdudcfwt .gt_title {
+#kwttofhcmy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3735,7 +3763,7 @@ Cost of electricity in the U.S. by region
   border-bottom-width: 0;
 }
 
-#empdudcfwt .gt_subtitle {
+#kwttofhcmy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3747,7 +3775,7 @@ Cost of electricity in the U.S. by region
   border-top-width: 0;
 }
 
-#empdudcfwt .gt_heading {
+#kwttofhcmy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3759,13 +3787,13 @@ Cost of electricity in the U.S. by region
   border-right-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_bottom_border {
+#kwttofhcmy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_col_headings {
+#kwttofhcmy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3780,7 +3808,7 @@ Cost of electricity in the U.S. by region
   border-right-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_col_heading {
+#kwttofhcmy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3800,7 +3828,7 @@ Cost of electricity in the U.S. by region
   overflow-x: hidden;
 }
 
-#empdudcfwt .gt_column_spanner_outer {
+#kwttofhcmy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3812,15 +3840,15 @@ Cost of electricity in the U.S. by region
   padding-right: 4px;
 }
 
-#empdudcfwt .gt_column_spanner_outer:first-child {
+#kwttofhcmy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#empdudcfwt .gt_column_spanner_outer:last-child {
+#kwttofhcmy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#empdudcfwt .gt_column_spanner {
+#kwttofhcmy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3832,11 +3860,11 @@ Cost of electricity in the U.S. by region
   width: 100%;
 }
 
-#empdudcfwt .gt_spanner_row {
+#kwttofhcmy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#empdudcfwt .gt_group_heading {
+#kwttofhcmy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3862,7 +3890,7 @@ Cost of electricity in the U.S. by region
   text-align: left;
 }
 
-#empdudcfwt .gt_empty_group_heading {
+#kwttofhcmy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3877,15 +3905,15 @@ Cost of electricity in the U.S. by region
   vertical-align: middle;
 }
 
-#empdudcfwt .gt_from_md > :first-child {
+#kwttofhcmy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#empdudcfwt .gt_from_md > :last-child {
+#kwttofhcmy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#empdudcfwt .gt_row {
+#kwttofhcmy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3904,7 +3932,7 @@ Cost of electricity in the U.S. by region
   overflow-x: hidden;
 }
 
-#empdudcfwt .gt_stub {
+#kwttofhcmy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3917,7 +3945,7 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#empdudcfwt .gt_stub_row_group {
+#kwttofhcmy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3931,15 +3959,15 @@ Cost of electricity in the U.S. by region
   vertical-align: top;
 }
 
-#empdudcfwt .gt_row_group_first td {
+#kwttofhcmy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#empdudcfwt .gt_row_group_first th {
+#kwttofhcmy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#empdudcfwt .gt_summary_row {
+#kwttofhcmy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3949,16 +3977,16 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#empdudcfwt .gt_first_summary_row {
+#kwttofhcmy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_first_summary_row.thick {
+#kwttofhcmy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#empdudcfwt .gt_last_summary_row {
+#kwttofhcmy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3968,7 +3996,7 @@ Cost of electricity in the U.S. by region
   border-bottom-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_grand_summary_row {
+#kwttofhcmy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3978,7 +4006,7 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#empdudcfwt .gt_first_grand_summary_row {
+#kwttofhcmy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3988,7 +4016,7 @@ Cost of electricity in the U.S. by region
   border-top-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_last_grand_summary_row_top {
+#kwttofhcmy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3998,11 +4026,11 @@ Cost of electricity in the U.S. by region
   border-bottom-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_striped {
+#kwttofhcmy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#empdudcfwt .gt_table_body {
+#kwttofhcmy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4011,7 +4039,7 @@ Cost of electricity in the U.S. by region
   border-bottom-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_footnotes {
+#kwttofhcmy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4025,7 +4053,7 @@ Cost of electricity in the U.S. by region
   border-right-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_footnote {
+#kwttofhcmy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4034,7 +4062,7 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#empdudcfwt .gt_sourcenotes {
+#kwttofhcmy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4048,7 +4076,7 @@ Cost of electricity in the U.S. by region
   border-right-color: #D3D3D3;
 }
 
-#empdudcfwt .gt_sourcenote {
+#kwttofhcmy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4056,72 +4084,72 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#empdudcfwt .gt_left {
+#kwttofhcmy .gt_left {
   text-align: left;
 }
 
-#empdudcfwt .gt_center {
+#kwttofhcmy .gt_center {
   text-align: center;
 }
 
-#empdudcfwt .gt_right {
+#kwttofhcmy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#empdudcfwt .gt_font_normal {
+#kwttofhcmy .gt_font_normal {
   font-weight: normal;
 }
 
-#empdudcfwt .gt_font_bold {
+#kwttofhcmy .gt_font_bold {
   font-weight: bold;
 }
 
-#empdudcfwt .gt_font_italic {
+#kwttofhcmy .gt_font_italic {
   font-style: italic;
 }
 
-#empdudcfwt .gt_super {
+#kwttofhcmy .gt_super {
   font-size: 65%;
 }
 
-#empdudcfwt .gt_footnote_marks {
+#kwttofhcmy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#empdudcfwt .gt_asterisk {
+#kwttofhcmy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#empdudcfwt .gt_indent_1 {
+#kwttofhcmy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#empdudcfwt .gt_indent_2 {
+#kwttofhcmy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#empdudcfwt .gt_indent_3 {
+#kwttofhcmy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#empdudcfwt .gt_indent_4 {
+#kwttofhcmy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#empdudcfwt .gt_indent_5 {
+#kwttofhcmy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#empdudcfwt .katex-display {
+#kwttofhcmy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#empdudcfwt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kwttofhcmy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4188,8 +4216,6 @@ Cost of electricity in the U.S. by region
 <ul>
 <li>Freedman Ellis, Greg, and Ben Schneider. 2024. <em>srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data</em>. <a href="http://gdfe.co/srvyr/" class="uri">http://gdfe.co/srvyr/</a>.</li>
 <li>Lumley, Thomas. 2010. <em>Complex Surveys: A Guide to Analysis Using R</em>. John Wiley &amp; Sons. <a href="https://r-survey.r-forge.r-project.org/survey/" class="uri">https://r-survey.r-forge.r-project.org/survey/</a>.</li>
-<li>Research Triangle Institute (2012). <em>SUDAAN Language Manual, Volumes 1 and 2, Relase 11</em>. Research Triangle Park, NC: Research Triangle Institute.</li>
-<li>SAS Institute Inc.&nbsp;2023. <em>SAS/STAT® 15.3 User’s Guide</em>. Cary, NC: SAS Institute Inc.&nbsp;<a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.5/statug/statug_introsamp_toc.htm">Introduction to Survey Sampling and Analysis Procedures</a></li>
 <li>Zimmer, S. A., Powell, R. J., &amp; Velásquez, I. C. (2024). <em>Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}</em>. Chapman &amp; Hall: CRC Press. <a href="https://tidy-survey-r.github.io/tidy-survey-book/" class="uri">https://tidy-survey-r.github.io/tidy-survey-book/</a></li>
 </ul>
 </section>
