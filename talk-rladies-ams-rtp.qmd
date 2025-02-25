@@ -128,6 +128,18 @@ Age by gender;
     - Early voter status
 :::
 
+## Why weight?
+
+![](images/dewey-defeats-truman.jpg){fig-align="center" width=60%}
+
+::: aside
+[Truman Library Institute](https://www.trumanlibraryinstitute.org/dewey-defeats-truman/)
+:::
+
+::: notes
+The 1936 Literary Digest Poll is a classic example of a flawed survey. They polled millions of people to predict the U.S. presidential election and forecasted a landslide victory for Alf Landon over Franklin D. Roosevelt. However, their survey sample was biased because it relied on telephone directories and automobile registration lists, which disproportionately included wealthier (and more Republican-leaning) voters. The result was a wildly inaccurate prediction.
+:::
+
 ## Strata? PSU? Clusters? Replicate weights?
 
 - The strata/PSU or replicate weights are used to accurately estimate standard errors and perform statistical tests (correct degrees of freedom)
