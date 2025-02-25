@@ -74,6 +74,45 @@ Posit
 - Using weights reduces the potential of bias
 - Weights are often adjusted by demographics and variables likely correlated with outcomes
 
+## Why weight?
+
+```{r}
+#| label: why-weight-example
+#| echo: false
+
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(survey)
+library(srvyr)
+data(api, package = "survey")
+
+apistrat_des <- apistrat %>%
+  as_survey_design(
+    strata = stype,
+    weights = pw
+  )
+
+bind_rows(apistrat %>% 
+            group_by(cname) %>% 
+            summarize(api=mean(growth)) %>% 
+            mutate(type="Unweighted"),
+          apistrat_des %>% 
+            group_by(cname) %>% 
+            summarize(api=survey_mean(growth)) %>% 
+            mutate(type="Weighted")) %>% 
+  filter(str_detect(cname,"^M") | str_detect(cname,"^N") | str_detect(cname,"^P") | cname=="Los Angeles") %>% 
+  ggplot() + 
+  geom_col(aes(x=cname,y=api,fill=type),position="dodge") +
+  theme_bw() +
+  labs(y="Change in Academic Performance Index",
+       x="County Name") + 
+  scale_fill_manual(name = "Estimate Type",
+                    values = c("#087e8b", "#ff8484"))
+
+```
+
+
 ::: {.notes}
 - Example 1: Survey of inmates (hypothetical). More predominately male facilities than female facilities so female facilities are oversampled. Weights are calculated to reflect the actual proportion for the population
 - Example 2: Survey of households about energy consumption and expenditure (RECS). Weighting accounts for age of housing unit, type of housing unit, and state
