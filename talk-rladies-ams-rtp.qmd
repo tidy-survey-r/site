@@ -74,6 +74,45 @@ Posit
 - Using weights reduces the potential of bias
 - Weights are often adjusted by demographics and variables likely correlated with outcomes
 
+## Why weight?
+
+```{r}
+#| label: why-weight-example
+#| echo: false
+
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(survey)
+library(srvyr)
+data(api, package = "survey")
+
+apistrat_des <- apistrat %>%
+  as_survey_design(
+    strata = stype,
+    weights = pw
+  )
+
+bind_rows(apistrat %>% 
+            group_by(cname) %>% 
+            summarize(api=mean(growth)) %>% 
+            mutate(type="Unweighted"),
+          apistrat_des %>% 
+            group_by(cname) %>% 
+            summarize(api=survey_mean(growth)) %>% 
+            mutate(type="Weighted")) %>% 
+  filter(str_detect(cname,"^M") | str_detect(cname,"^N") | str_detect(cname,"^P") | cname=="Los Angeles") %>% 
+  ggplot() + 
+  geom_col(aes(x=cname,y=api,fill=type),position="dodge") +
+  theme_bw() +
+  labs(y="Change in Academic Performance Index",
+       x="County Name") + 
+  scale_fill_manual(name = "Estimate Type",
+                    values = c("#087e8b", "#ff8484"))
+
+```
+
+
 ::: {.notes}
 - Example 1: Survey of inmates (hypothetical). More predominately male facilities than female facilities so female facilities are oversampled. Weights are calculated to reflect the actual proportion for the population
 - Example 2: Survey of households about energy consumption and expenditure (RECS). Weighting accounts for age of housing unit, type of housing unit, and state
@@ -87,6 +126,18 @@ Age by gender;
     - Population density;
     - Household income;
     - Early voter status
+:::
+
+## Why weight?
+
+![](images/dewey-defeats-truman.jpg){fig-align="center" width=60%}
+
+::: aside
+[Truman Library Institute](https://www.trumanlibraryinstitute.org/dewey-defeats-truman/)
+:::
+
+::: notes
+The 1936 Literary Digest Poll is a classic example of a flawed survey. They polled millions of people to predict the U.S. presidential election and forecasted a landslide victory for Alf Landon over Franklin D. Roosevelt. However, their survey sample was biased because it relied on telephone directories and automobile registration lists, which disproportionately included wealthier (and more Republican-leaning) voters. The result was a wildly inaccurate prediction.
 :::
 
 ## Strata? PSU? Clusters? Replicate weights?
@@ -995,8 +1046,6 @@ recs_tab %>%
 
 - Freedman Ellis, Greg, and Ben Schneider. 2024. *srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data*. <http://gdfe.co/srvyr/>.
 - Lumley, Thomas. 2010. *Complex Surveys: A Guide to Analysis Using R*. John Wiley & Sons. <https://r-survey.r-forge.r-project.org/survey/>.
-- Research Triangle Institute (2012). *SUDAAN Language Manual, Volumes 1 and 2, Relase 11*. Research Triangle Park, NC: Research Triangle Institute.
-- SAS Institute Inc. 2023. *SAS/STAT® 15.3 User’s Guide*. Cary, NC: SAS Institute Inc. [Introduction to Survey Sampling and Analysis Procedures](https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.5/statug/statug_introsamp_toc.htm)
 - Zimmer, S. A., Powell, R. J., & Velásquez, I. C. (2024). *Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}*. Chapman & Hall: CRC Press. <https://tidy-survey-r.github.io/tidy-survey-book/>
 
 ## Where to find our book
