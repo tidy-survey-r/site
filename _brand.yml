@@ -52,7 +52,7 @@ typography:
     decoration: underline
     
 defaults:
-  bootstrap:
+  # bootstrap:
     # bootstrap variable definitions
   quarto:
     format:
