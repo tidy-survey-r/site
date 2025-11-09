@@ -9,7 +9,7 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - Talks.qmd
+      - talks/Talks.qmd
       - text: "Short courses"
         href: short-courses.qmd
 
