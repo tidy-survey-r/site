@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<link href="./images/favicon.png" rel="icon" type="image/png">
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-57476271c5f0467c372e20ff5d25630e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.40">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a14e345711173c227b21482e2eb4cc70.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>Tidy Data, Weighted Insights</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -94,11 +95,11 @@
     code span.vs { color: #da4453; } /* VerbatimString */
     code span.wa { color: #da4453; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-8164cf76d6be4ed125fa33063385f9fc.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-e245aca1a93a2c5565dc2f71a60f4883.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -276,528 +277,32 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="r-sas-sudaan-capabilities" class="slide level2 smaller">
-<h2>R, SAS, &amp; SUDAAN capabilities</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div id="hthswnvssj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hthswnvssj table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#hthswnvssj thead, #hthswnvssj tbody, #hthswnvssj tfoot, #hthswnvssj tr, #hthswnvssj td, #hthswnvssj th {
-  border-style: none;
-}
-
-#hthswnvssj p {
-  margin: 0;
-  padding: 0;
-}
-
-#hthswnvssj .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#hthswnvssj .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#hthswnvssj .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#hthswnvssj .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#hthswnvssj .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#hthswnvssj .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#hthswnvssj .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#hthswnvssj .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#hthswnvssj .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#hthswnvssj .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#hthswnvssj .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#hthswnvssj .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#hthswnvssj .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#hthswnvssj .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#hthswnvssj .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#hthswnvssj .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#hthswnvssj .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#hthswnvssj .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#hthswnvssj .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#hthswnvssj .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#hthswnvssj .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#hthswnvssj .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#hthswnvssj .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#hthswnvssj .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#hthswnvssj .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#hthswnvssj .gt_left {
-  text-align: left;
-}
-
-#hthswnvssj .gt_center {
-  text-align: center;
-}
-
-#hthswnvssj .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#hthswnvssj .gt_font_normal {
-  font-weight: normal;
-}
-
-#hthswnvssj .gt_font_bold {
-  font-weight: bold;
-}
-
-#hthswnvssj .gt_font_italic {
-  font-style: italic;
-}
-
-#hthswnvssj .gt_super {
-  font-size: 65%;
-}
-
-#hthswnvssj .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#hthswnvssj .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#hthswnvssj .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#hthswnvssj .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#hthswnvssj .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#hthswnvssj .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#hthswnvssj .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#hthswnvssj .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#hthswnvssj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_col_headings header">
-<th id="Feature" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Feature</th>
-<th id="R" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">R {survey} package</th>
-<th id="SAS" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">SAS survey procs</th>
-<th id="SUDAAN" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">SUDAAN procs</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Feature">Descriptive (out of the box)</td>
-<td class="gt_row gt_left" headers="R">mean, total, proportion, percentage, quantile, ratio, variance, <strong>correlation</strong></td>
-<td class="gt_row gt_left" headers="SAS">mean, total, proportion, percentage, <strong>geometric mean</strong>, quantile, ratio, variance</td>
-<td class="gt_row gt_left" headers="SUDAAN">mean, total, proportion, percentage, <strong>geometric mean</strong>, quantile, ratio, variance, <strong>correlation</strong></td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Feature">Custom descriptive functions</td>
-<td class="gt_row gt_left" headers="R">Yes, but must use delta method</td>
-<td class="gt_row gt_left" headers="SAS">No method in docs</td>
-<td class="gt_row gt_left" headers="SUDAAN">Yes, through vargen proc</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Feature">Testing</td>
-<td class="gt_row gt_left" headers="R">means, proportions, <strong>quantiles</strong>, assocation, GOF</td>
-<td class="gt_row gt_left" headers="SAS">means, proportions, assocation, GOF</td>
-<td class="gt_row gt_left" headers="SUDAAN">means, proportions, assocation, GOF</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Feature">Design effects</td>
-<td class="gt_row gt_left" headers="R">Not for quantiles, variances, or correlations</td>
-<td class="gt_row gt_left" headers="SAS">Only for proportions</td>
-<td class="gt_row gt_left" headers="SUDAAN">All ests</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Feature">Imputation</td>
-<td class="gt_row gt_left" headers="R">None</td>
-<td class="gt_row gt_left" headers="SAS">Hot-deck, approximate Bayesian bootstrap, fully efficient fractional, two-stage fully efficient fractional, fractional hot-deck</td>
-<td class="gt_row gt_left" headers="SUDAAN">Weighted sequential hot deck, cell mean, regression-based (linear and logistic)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Feature">Weighting</td>
-<td class="gt_row gt_left" headers="R">Post-stratification in estimation, calibration (linear, raking, logit)</td>
-<td class="gt_row gt_left" headers="SAS">Post-stratification in estimation</td>
-<td class="gt_row gt_left" headers="SUDAAN">Post-stratification in estimation, calibration: nonresponse and post-stratification (WTADJUST), Using variables only known for respondents in models (WTADJX)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Feature">Modeling</td>
-<td class="gt_row gt_left" headers="R">Linear, Logistic, Cox proportional hazards, <strong>Kaplan-Meier</strong>, <strong>Multinomial</strong>, <strong>Poisson</strong>, <strong>Log-linear</strong></td>
-<td class="gt_row gt_left" headers="SAS">Linear, Logistic, Cox proportional hazards</td>
-<td class="gt_row gt_left" headers="SUDAAN">Linear, Logistic, Cox proportional hazards, <strong>Kaplan-Meier</strong>, <strong>Multinomial</strong>, <strong>Poisson-like count</strong></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<aside class="notes">
+<section id="why-weight" class="slide level2">
+<h2>Why weight?</h2>
 <ul>
-<li>R comparison only includes survey and srvyr packages, not other R packages</li>
-<li>Bold entries in rows with bold indicate differences since there are some long lists</li>
-<li>R and SUDAAN allow for more customization than SAS but harder in R (need calculus to do delta method)</li>
-<li>R is only software doing testing of quantiles - some papers on how to do in others but requires custom macros</li>
-<li>SAS doesn’t broadly do design effects but there are some macros out there. We won’t go into details but more <strong>types</strong> of design effects in SUDAAN than R</li>
-<li>Imputation is done in other R packages</li>
-<li>Weighting: all allow post-stratification while doing analysis, common in health research. Other packages in R do more than survey package</li>
-<li>SAS does sample selection</li>
+<li>Weights are constructed based on the probability of selection into survey and adjusted for coverage population</li>
+<li>Using weights reduces the potential of bias</li>
+<li>Weights are often adjusted by demographics and variables likely correlated with outcomes</li>
+</ul>
+</section>
+<section id="why-weight-1" class="slide level2">
+<h2>Why weight?</h2>
+
+<img data-src="talk-rladies-ams-rtp_files/figure-revealjs/why-weight-example-1.png" width="960" class="r-stretch"><aside class="notes">
+<ul>
+<li>Example 1: Survey of inmates (hypothetical). More predominately male facilities than female facilities so female facilities are oversampled. Weights are calculated to reflect the actual proportion for the population</li>
+<li>Example 2: Survey of households about energy consumption and expenditure (RECS). Weighting accounts for age of housing unit, type of housing unit, and state</li>
+<li>Example 3: Sample of US citizens about election (ANES). Weighting accounts for: Age by gender;
+<ul>
+<li>Race/ethnicity by educational attainment;</li>
+<li>Marital status by gender;</li>
+<li>Race/ethnicity by Census region;</li>
+<li>Nation of birth;</li>
+<li>Home tenure by Metropolitan status;</li>
+<li>Population density;</li>
+<li>Household income;</li>
+<li>Early voter status</li>
+</ul></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -810,6 +315,38 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="why-weight-2" class="slide level2">
+<h2>Why weight?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dewey-defeats-truman.jpg" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>The 1936 Literary Digest Poll is a classic example of a flawed survey. They polled millions of people to predict the U.S. presidential election and forecasted a landslide victory for Alf Landon over Franklin D. Roosevelt. However, their survey sample was biased because it relied on telephone directories and automobile registration lists, which disproportionately included wealthier (and more Republican-leaning) voters. The result was a wildly inaccurate prediction.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><a href="https://www.trumanlibraryinstitute.org/dewey-defeats-truman/">Truman Library Institute</a></p>
+</div></aside></section>
+<section id="strata-psu-clusters-replicate-weights" class="slide level2">
+<h2>Strata? PSU? Clusters? Replicate weights?</h2>
+<ul>
+<li>The strata/PSU or replicate weights are used to accurately estimate standard errors and perform statistical tests (correct degrees of freedom)</li>
+<li>The packages we introduce take these as parameters and accurately calculate standard errors, confidence intervals, and p-values accounting for the covariance structure</li>
+<li>Only need to specify once - documentation will help you identify elements and sometimes provides SAS, SUDAAN, or even R syntax to get started</li>
+</ul>
 </section></section>
 <section>
 <section id="setup" class="title-slide slide level1 center" data-background-color="#087e8b">
@@ -863,12 +400,12 @@
 </ul>
 <h3 id="dplyr">dplyr</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|1|2|3,6|4,5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>towny <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|1|2|3,6|4,5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>towny <span class="sc">%&gt;%</span></span>
 <span id="cb1-2"><a></a>  <span class="fu">group_by</span>(status) <span class="sc">%&gt;%</span></span>
 <span id="cb1-3"><a></a>  <span class="fu">summarize</span>(</span>
 <span id="cb1-4"><a></a>    <span class="at">area_mean =</span> <span class="fu">mean</span>(land_area_km2),</span>
 <span id="cb1-5"><a></a>    <span class="at">area_median =</span> <span class="fu">median</span>(land_area_km2)</span>
-<span id="cb1-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   status      area_mean area_median
@@ -885,12 +422,12 @@
 </ul>
 <h3 id="srvyr">srvyr</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|1|2|3,6|4,5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>apistrat_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|1|2|3,6|4,5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>apistrat_des <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a></a>  <span class="fu">group_by</span>(stype) <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a></a>  <span class="fu">summarize</span>(</span>
 <span id="cb3-4"><a></a>    <span class="at">api00_mean =</span> <span class="fu">survey_mean</span>(api00),</span>
 <span id="cb3-5"><a></a>    <span class="at">api00_med =</span> <span class="fu">survey_median</span>(api00)</span>
-<span id="cb3-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   stype api00_mean api00_mean_se api00_med api00_med_se
@@ -999,14 +536,14 @@
 <section id="load-packages-and-data-1" class="slide level2">
 <h2>Load packages and data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># install.packages(c("survey", "srvyr", "gt"))</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># install.packages(c("survey", "srvyr", "gt"))</span></span>
 <span id="cb5-2"><a></a><span class="co"># pak::pak("tidy-survey-r/srvyrexploR")</span></span>
 <span id="cb5-3"><a></a><span class="fu">library</span>(survey)</span>
 <span id="cb5-4"><a></a><span class="fu">library</span>(srvyr)</span>
 <span id="cb5-5"><a></a><span class="fu">library</span>(gt)</span>
 <span id="cb5-6"><a></a><span class="fu">library</span>(srvyrexploR)</span>
 <span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a><span class="fu">summary</span>(recs_2020)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a></a><span class="fu">summary</span>(recs_2020)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     DOEID           ClimateRegion_BA         Urbanicity          Region    
  Min.   :100001   Cold       :7116    Urban Area   :12395   Northeast:3657  
@@ -1261,7 +798,7 @@
 <section id="syntax-common-sampling-designs" class="slide level2">
 <h2>Syntax: common sampling designs</h2>
 <p>The <code>as_survey_design()</code> function is used for most common sampling designs, such as stratified or clustered designs.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">as_survey_design</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">as_survey_design</span>(</span>
 <span id="cb7-2"><a></a>  .data,</span>
 <span id="cb7-3"><a></a>  <span class="at">ids =</span> <span class="cn">NULL</span>,</span>
 <span id="cb7-4"><a></a>  <span class="at">probs =</span> <span class="cn">NULL</span>,</span>
@@ -1274,13 +811,13 @@
 <span id="cb7-11"><a></a>  <span class="at">pps =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb7-12"><a></a>  <span class="at">variance =</span> <span class="fu">c</span>(<span class="st">"HT"</span>, <span class="st">"YG"</span>),</span>
 <span id="cb7-13"><a></a>  ...</span>
-<span id="cb7-14"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-14"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="syntax-common-sampling-designs-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Syntax: common sampling designs</h2>
 <p>The <code>as_survey_design()</code> function is used for most common sampling designs, such as stratified or clustered designs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb8-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_design</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb8-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_design</span>(</span>
 <span id="cb8-2" class="hljs-ln-code"><a></a>  .data,</span>
 <span id="cb8-3" class="hljs-ln-code"><a></a>  <span class="at">ids =</span> <span class="cn">NULL</span>,</span>
 <span id="cb8-4" class="hljs-ln-code"><a></a>  <span class="at">probs =</span> <span class="cn">NULL</span>,</span>
@@ -1293,7 +830,7 @@
 <span id="cb8-11" class="hljs-ln-code"><a></a>  <span class="at">pps =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb8-12" class="hljs-ln-code"><a></a>  <span class="at">variance =</span> <span class="fu">c</span>(<span class="st">"HT"</span>, <span class="st">"YG"</span>),</span>
 <span id="cb8-13" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb8-14" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-14" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1315,7 +852,7 @@
 <h2 data-id="quarto-animate-title">Syntax: common sampling designs</h2>
 <p>The <code>as_survey_design()</code> function is used for most common sampling designs, such as stratified or clustered designs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb9-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_design</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb9-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_design</span>(</span>
 <span id="cb9-2" class="hljs-ln-code"><a></a>  .data,</span>
 <span id="cb9-3" class="hljs-ln-code"><a></a>  <span class="at">ids =</span> <span class="cn">NULL</span>,</span>
 <span id="cb9-4" class="hljs-ln-code"><a></a>  <span class="at">probs =</span> <span class="cn">NULL</span>,</span>
@@ -1328,7 +865,7 @@
 <span id="cb9-11" class="hljs-ln-code"><a></a>  <span class="at">pps =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb9-12" class="hljs-ln-code"><a></a>  <span class="at">variance =</span> <span class="fu">c</span>(<span class="st">"HT"</span>, <span class="st">"YG"</span>),</span>
 <span id="cb9-13" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb9-14" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-14" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1350,7 +887,7 @@
 <h2 data-id="quarto-animate-title">Syntax: common sampling designs</h2>
 <p>The <code>as_survey_design()</code> function is used for most common sampling designs, such as stratified or clustered designs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="7,8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb10-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_design</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="7,8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb10-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_design</span>(</span>
 <span id="cb10-2" class="hljs-ln-code"><a></a>  .data,</span>
 <span id="cb10-3" class="hljs-ln-code"><a></a>  <span class="at">ids =</span> <span class="cn">NULL</span>,</span>
 <span id="cb10-4" class="hljs-ln-code"><a></a>  <span class="at">probs =</span> <span class="cn">NULL</span>,</span>
@@ -1363,7 +900,7 @@
 <span id="cb10-11" class="hljs-ln-code"><a></a>  <span class="at">pps =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb10-12" class="hljs-ln-code"><a></a>  <span class="at">variance =</span> <span class="fu">c</span>(<span class="st">"HT"</span>, <span class="st">"YG"</span>),</span>
 <span id="cb10-13" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb10-14" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-14" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1385,7 +922,7 @@
 <h2 data-id="quarto-animate-title">Syntax: common sampling designs</h2>
 <p>The <code>as_survey_design()</code> function is used for most common sampling designs, such as stratified or clustered designs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb11-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_design</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb11-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_design</span>(</span>
 <span id="cb11-2" class="hljs-ln-code"><a></a>  .data,</span>
 <span id="cb11-3" class="hljs-ln-code"><a></a>  <span class="at">ids =</span> <span class="cn">NULL</span>,</span>
 <span id="cb11-4" class="hljs-ln-code"><a></a>  <span class="at">probs =</span> <span class="cn">NULL</span>,</span>
@@ -1398,7 +935,7 @@
 <span id="cb11-11" class="hljs-ln-code"><a></a>  <span class="at">pps =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb11-12" class="hljs-ln-code"><a></a>  <span class="at">variance =</span> <span class="fu">c</span>(<span class="st">"HT"</span>, <span class="st">"YG"</span>),</span>
 <span id="cb11-13" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb11-14" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-14" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1419,7 +956,7 @@
 <section id="syntax-replicate-weights" class="slide level2">
 <h2>Syntax: replicate weights</h2>
 <p>For studies with replicate weights, create the survey object using the <code>as_survey_rep()</code> function.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">as_survey_rep</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">as_survey_rep</span>(</span>
 <span id="cb12-2"><a></a>  .data,</span>
 <span id="cb12-3"><a></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
 <span id="cb12-4"><a></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
@@ -1436,13 +973,13 @@
 <span id="cb12-15"><a></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
 <span id="cb12-16"><a></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
 <span id="cb12-17"><a></a>  ...</span>
-<span id="cb12-18"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-18"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="syntax-replicate-weights-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Syntax: replicate weights</h2>
 <p>For studies with replicate weights, create the survey object using the <code>as_survey_rep()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb13-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb13-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
 <span id="cb13-2" class="hljs-ln-code"><a></a>  .data,</span>
 <span id="cb13-3" class="hljs-ln-code"><a></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
 <span id="cb13-4" class="hljs-ln-code"><a></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
@@ -1459,7 +996,7 @@
 <span id="cb13-15" class="hljs-ln-code"><a></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
 <span id="cb13-16" class="hljs-ln-code"><a></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
 <span id="cb13-17" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb13-18" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-18" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1481,7 +1018,7 @@
 <h2 data-id="quarto-animate-title">Syntax: replicate weights</h2>
 <p>For studies with replicate weights, create the survey object using the <code>as_survey_rep()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb14-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb14-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
 <span id="cb14-2" class="hljs-ln-code"><a></a>  .data,</span>
 <span id="cb14-3" class="hljs-ln-code"><a></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
 <span id="cb14-4" class="hljs-ln-code"><a></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
@@ -1498,7 +1035,7 @@
 <span id="cb14-15" class="hljs-ln-code"><a></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
 <span id="cb14-16" class="hljs-ln-code"><a></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
 <span id="cb14-17" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb14-18" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-18" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1520,7 +1057,7 @@
 <h2 data-id="quarto-animate-title">Syntax: replicate weights</h2>
 <p>For studies with replicate weights, create the survey object using the <code>as_survey_rep()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="6,7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb15-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="6,7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb15-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
 <span id="cb15-2" class="hljs-ln-code"><a></a>  .data,</span>
 <span id="cb15-3" class="hljs-ln-code"><a></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
 <span id="cb15-4" class="hljs-ln-code"><a></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
@@ -1537,7 +1074,7 @@
 <span id="cb15-15" class="hljs-ln-code"><a></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
 <span id="cb15-16" class="hljs-ln-code"><a></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
 <span id="cb15-17" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb15-18" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-18" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1559,7 +1096,7 @@
 <h2 data-id="quarto-animate-title">Syntax: replicate weights</h2>
 <p>For studies with replicate weights, create the survey object using the <code>as_survey_rep()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="9,11,12,15"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb16-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-code-line-numbers="9,11,12,15"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb16-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
 <span id="cb16-2" class="hljs-ln-code"><a></a>  .data,</span>
 <span id="cb16-3" class="hljs-ln-code"><a></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
 <span id="cb16-4" class="hljs-ln-code"><a></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
@@ -1576,7 +1113,7 @@
 <span id="cb16-15" class="hljs-ln-code"><a></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
 <span id="cb16-16" class="hljs-ln-code"><a></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
 <span id="cb16-17" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb16-18" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-18" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1597,14 +1134,14 @@
 <section id="implementation" class="slide level2">
 <h2>Implementation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>recs_des <span class="ot">&lt;-</span> recs_2020 <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a>recs_des <span class="ot">&lt;-</span> recs_2020 <span class="sc">%&gt;%</span></span>
 <span id="annotated-cell-14-2"><a href="#annotated-cell-14-2"></a>  <span class="fu">as_survey_rep</span>(</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a>    <span class="at">weights =</span> NWEIGHT,</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a>    <span class="at">repweights =</span> NWEIGHT1<span class="sc">:</span>NWEIGHT60,</span>
 <span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a>    <span class="at">type =</span> <span class="st">"JK1"</span>,</span>
 <span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a>    <span class="at">scale =</span> <span class="dv">59</span> <span class="sc">/</span> <span class="dv">60</span>,</span>
 <span id="annotated-cell-14-7"><a href="#annotated-cell-14-7"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span></span>
-<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
@@ -1638,7 +1175,7 @@
 <section id="results" class="slide level2">
 <h2>Results</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>recs_des</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>recs_des</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: Called via srvyr
 Unstratified cluster jacknife (JK1) with 60 replicates and MSE variances.
@@ -1692,7 +1229,7 @@ Data variables:
 <section id="syntax" class="slide level2">
 <h2>Syntax</h2>
 <p>The <code>survey_mean()</code> calculates means while taking into account the survey design elements.</p>
-<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a><span class="fu">survey_mean</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a><span class="fu">survey_mean</span>(</span>
 <span id="annotated-cell-16-2"><a href="#annotated-cell-16-2"></a>  x,</span>
 <span id="annotated-cell-16-3"><a href="#annotated-cell-16-3"></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
 <span id="annotated-cell-16-4"><a href="#annotated-cell-16-4"></a>  <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"var"</span>, <span class="st">"cv"</span>),</span>
@@ -1701,24 +1238,24 @@ Data variables:
 <span id="annotated-cell-16-7"><a href="#annotated-cell-16-7"></a>  <span class="at">prop_method =</span> <span class="fu">c</span>(<span class="st">"logit"</span>, <span class="st">"likelihood"</span>, <span class="st">"asin"</span>, <span class="st">"beta"</span>, <span class="st">"mean"</span>),</span>
 <span id="annotated-cell-16-8"><a href="#annotated-cell-16-8"></a>  <span class="at">deff =</span> <span class="cn">FALSE</span>,</span>
 <span id="annotated-cell-16-9"><a href="#annotated-cell-16-9"></a>  <span class="at">df =</span> <span class="cn">NULL</span></span>
-<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="implementation-1" class="slide level2">
 <h2>Implementation</h2>
 <p>Calculate the estimated average cost of electricity (<code>DOLLAREL</code>) in the United States:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL, </span>
-<span id="cb19-3"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-3"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="implementation-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Calculate the estimated average cost of electricity (<code>DOLLAREL</code>) in the United States:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb20-2" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL,</span>
-<span id="cb20-3" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Use the survey design object, not raw data</li>
@@ -1728,9 +1265,9 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Calculate the estimated average cost of electricity (<code>DOLLAREL</code>) in the United States:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb21-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb21-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb21-2" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL,</span>
-<span id="cb21-3" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Use the survey design object, not raw data</li>
@@ -1741,9 +1278,9 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Calculate the estimated average cost of electricity (<code>DOLLAREL</code>) in the United States:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb22-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb22-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb22-2" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL,</span>
-<span id="cb22-3" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Use the survey design object, not raw data</li>
@@ -1755,9 +1292,9 @@ Data variables:
 <h2 data-id="quarto-animate-title">Results</h2>
 <p>Calculate the estimated average cost of electricity (<code>DOLLAREL</code>) in the United States:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb23-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb23-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb23-2" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL,</span>
-<span id="cb23-3" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   elec_bill elec_bill_se elec_bill_low elec_bill_upp
@@ -1788,20 +1325,20 @@ Data variables:
 <h2>Calculate means with groups</h2>
 <p>Calculate the estimated average cost of electricity in the U.S. (<code>DOLLAREL</code>) <strong>by each region</strong> (<code>Region</code>) by including a <code>group_by()</code> function with the variable of interest <em>before</em> the <code>summarize()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a></a>  <span class="fu">group_by</span>(Region) <span class="sc">%&gt;%</span></span>
 <span id="cb25-3"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL,</span>
-<span id="cb25-4"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-4"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="calculate-means-with-groups-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Calculate means with groups</h2>
 <p>Calculate the estimated average cost of electricity in the U.S. (<code>DOLLAREL</code>) <strong>by each region</strong> (<code>Region</code>) by including a <code>group_by()</code> function with the variable of interest <em>before</em> the <code>summarize()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb26-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb26-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb26-2" class="hljs-ln-code"><a></a>  <span class="fu">group_by</span>(Region) <span class="sc">%&gt;%</span></span>
 <span id="cb26-3" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL,</span>
-<span id="cb26-4" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-4" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1824,10 +1361,10 @@ Data variables:
 <h2 data-id="quarto-animate-title">Calculate means with groups</h2>
 <p>Calculate the estimated average cost of electricity in the U.S. (<code>DOLLAREL</code>) <strong>by each region</strong> (<code>Region</code>) by including a <code>group_by()</code> function with the variable of interest <em>before</em> the <code>summarize()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb27-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb27-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb27-2" class="hljs-ln-code"><a></a>  <span class="fu">group_by</span>(Region) <span class="sc">%&gt;%</span></span>
 <span id="cb27-3" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL,</span>
-<span id="cb27-4" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-4" class="hljs-ln-code"><a></a>                                    <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   Region    elec_bill elec_bill_se elec_bill_low elec_bill_upp
@@ -1863,9 +1400,9 @@ Data variables:
 <h2>Syntax</h2>
 <p>Use the <code>svyttest()</code> function to compare two proportions or means.</p>
 <p>Syntax:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">svyttest</span>(formula,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">svyttest</span>(formula,</span>
 <span id="cb29-2"><a></a>         design,</span>
-<span id="cb29-3"><a></a>         ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a></a>         ...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <ul>
 <li>Similar to <code>t.test()</code> function in base R with the formula and the data arguments</li>
@@ -1891,8 +1428,8 @@ Data variables:
 <p>Stephanie usually sets her home to 68°F at night during the summer. Is this different from the average household in the U.S.?</p>
 <p>First, look at the estimated average nighttime temperature U.S. households set their homes to during the summer (<code>SummerTempNight</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb30-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
-<span id="cb30-2" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">mu =</span> <span class="fu">survey_mean</span>(SummerTempNight, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb30-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<span id="cb30-2" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">mu =</span> <span class="fu">survey_mean</span>(SummerTempNight, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
      mu  mu_se
@@ -1920,24 +1457,24 @@ Data variables:
 <h2>Implementation: one-sample t-test</h2>
 <p>Test if the average U.S. household sets its temperature at a value different from 68°F using <code>svyttest()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb32-2"><a></a>  <span class="fu">svyttest</span>(</span>
 <span id="cb32-3"><a></a>    <span class="at">formula =</span> SummerTempNight <span class="sc">-</span> <span class="dv">68</span> <span class="sc">~</span> <span class="dv">0</span>, </span>
 <span id="cb32-4"><a></a>    <span class="at">design =</span> ., </span>
 <span id="cb32-5"><a></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb32-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="implementation-one-sample-t-test-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Implementation: one-sample t-test</h2>
 <p>Test if the average U.S. household sets its temperature at a value different from 68°F using <code>svyttest()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb33-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb33-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb33-2" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
 <span id="cb33-3" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> SummerTempNight <span class="sc">-</span> <span class="dv">68</span> <span class="sc">~</span> <span class="dv">0</span>, </span>
 <span id="cb33-4" class="hljs-ln-code"><a></a>    <span class="at">design =</span> ., </span>
 <span id="cb33-5" class="hljs-ln-code"><a></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb33-6" class="hljs-ln-code"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-6" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Formula to test if the true mean of <code>SummerTempNight</code> variable minus 68°F is equal to 0</li>
@@ -1947,12 +1484,12 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation: one-sample t-test</h2>
 <p>Test if the average U.S. household sets its temperature at a value different from 68°F using <code>svyttest()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb34-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb34-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb34-2" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
 <span id="cb34-3" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> SummerTempNight <span class="sc">-</span> <span class="dv">68</span> <span class="sc">~</span> <span class="dv">0</span>, </span>
 <span id="cb34-4" class="hljs-ln-code"><a></a>    <span class="at">design =</span> ., </span>
 <span id="cb34-5" class="hljs-ln-code"><a></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb34-6" class="hljs-ln-code"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-6" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Formula to test if the true mean of <code>SummerTempNight</code> variable minus 68°F is equal to 0</li>
@@ -1963,12 +1500,12 @@ Data variables:
 <h2 data-id="quarto-animate-title">Results: one-sample t-test</h2>
 <p>Test if the average U.S. household sets its temperature at a value different from 68°F using <code>svyttest()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb35-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb35-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb35-2" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
 <span id="cb35-3" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> SummerTempNight <span class="sc">-</span> <span class="dv">68</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
 <span id="cb35-4" class="hljs-ln-code"><a></a>    <span class="at">design =</span> .,</span>
 <span id="cb35-5" class="hljs-ln-code"><a></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb35-6" class="hljs-ln-code"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-6" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Design-based one-sample t-test
@@ -2009,9 +1546,9 @@ sample estimates:
 <p>On average, is there a significant different electric bill for households with and without air-conditioning?</p>
 <p>First, look at the estimated average for households with and without air-condition.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb37-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb37-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb37-2" class="hljs-ln-code"><a></a>  <span class="fu">group_by</span>(ACUsed) <span class="sc">%&gt;%</span></span>
-<span id="cb37-3" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">survey_mean</span>(DOLLAREL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-3" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">survey_mean</span>(DOLLAREL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   ACUsed  mean mean_se
@@ -2040,24 +1577,24 @@ sample estimates:
 <h2>Implementation: two-sample t-test</h2>
 <p>Test if the electricity expenditure is significantly different for homes with and without air-conditioning:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a></a>  <span class="fu">svyttest</span>(</span>
 <span id="cb39-3"><a></a>    <span class="at">formula =</span> DOLLAREL <span class="sc">~</span> ACUsed,</span>
 <span id="cb39-4"><a></a>    <span class="at">design =</span> ., </span>
 <span id="cb39-5"><a></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb39-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="implementation-two-sample-t-test-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Implementation: two-sample t-test</h2>
 <p>Test if the electricity expenditure is significantly different for homes with and without air-conditioning:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb40-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb40-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb40-2" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
 <span id="cb40-3" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> DOLLAREL <span class="sc">~</span> ACUsed,</span>
 <span id="cb40-4" class="hljs-ln-code"><a></a>    <span class="at">design =</span> ., </span>
 <span id="cb40-5" class="hljs-ln-code"><a></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb40-6" class="hljs-ln-code"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-6" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Formula with electricity expenditure on the left and air-conditioning usage on the right</li>
@@ -2067,12 +1604,12 @@ sample estimates:
 <h2 data-id="quarto-animate-title">Results: two-sample t-test</h2>
 <p>Test if the electricity expenditure is significantly different for homes with and without air-conditioning:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb41-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb41-1" class="hljs-ln-code"><a></a>recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb41-2" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
 <span id="cb41-3" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> DOLLAREL <span class="sc">~</span> ACUsed,</span>
 <span id="cb41-4" class="hljs-ln-code"><a></a>    <span class="at">design =</span> ., </span>
 <span id="cb41-5" class="hljs-ln-code"><a></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb41-6" class="hljs-ln-code"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-6" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Design-based t-test
@@ -2111,20 +1648,20 @@ difference in mean
 <section id="syntax-2" class="slide level2">
 <h2>Syntax</h2>
 <p>With the {gt} package, supply the input data table to <code>gt()</code> and add options to modify and format your table.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb43-2"><a></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a></a>  ... add options here...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a></a>  ... add options here...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="implementation-5" class="slide level2">
 <h2>Implementation</h2>
 <p>Create a table for estimated average household electricity bill by region:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>recs_tab <span class="ot">&lt;-</span> recs_des <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>recs_tab <span class="ot">&lt;-</span> recs_des <span class="sc">%&gt;%</span></span>
 <span id="cb44-2"><a></a>  <span class="fu">group_by</span>(Region) <span class="sc">%&gt;%</span></span>
 <span id="cb44-3"><a></a>  <span class="fu">summarize</span>(<span class="at">elec_bill =</span> <span class="fu">survey_mean</span>(DOLLAREL,</span>
 <span id="cb44-4"><a></a>                                    <span class="at">vartype =</span> <span class="st">"ci"</span>))</span>
 <span id="cb44-5"><a></a></span>
-<span id="cb44-6"><a></a>recs_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-6"><a></a>recs_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   Region    elec_bill elec_bill_low elec_bill_upp
@@ -2140,26 +1677,26 @@ difference in mean
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Pipe (<code>%&gt;%</code>) your data frame (<code>recs_tab</code>) into the <code>gt()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb46-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
-<span id="cb46-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb46-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
+<span id="cb46-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="gzduuwmzhj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gzduuwmzhj table {
+<div id="lfxviquqri" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lfxviquqri table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gzduuwmzhj thead, #gzduuwmzhj tbody, #gzduuwmzhj tfoot, #gzduuwmzhj tr, #gzduuwmzhj td, #gzduuwmzhj th {
+#lfxviquqri thead, #lfxviquqri tbody, #lfxviquqri tfoot, #lfxviquqri tr, #lfxviquqri td, #lfxviquqri th {
   border-style: none;
 }
 
-#gzduuwmzhj p {
+#lfxviquqri p {
   margin: 0;
   padding: 0;
 }
 
-#gzduuwmzhj .gt_table {
+#lfxviquqri .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2185,12 +1722,12 @@ difference in mean
   border-left-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_caption {
+#lfxviquqri .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gzduuwmzhj .gt_title {
+#lfxviquqri .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2202,7 +1739,7 @@ difference in mean
   border-bottom-width: 0;
 }
 
-#gzduuwmzhj .gt_subtitle {
+#lfxviquqri .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2214,7 +1751,7 @@ difference in mean
   border-top-width: 0;
 }
 
-#gzduuwmzhj .gt_heading {
+#lfxviquqri .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2226,13 +1763,13 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_bottom_border {
+#lfxviquqri .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_col_headings {
+#lfxviquqri .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2247,7 +1784,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_col_heading {
+#lfxviquqri .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2267,7 +1804,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#gzduuwmzhj .gt_column_spanner_outer {
+#lfxviquqri .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2279,15 +1816,15 @@ difference in mean
   padding-right: 4px;
 }
 
-#gzduuwmzhj .gt_column_spanner_outer:first-child {
+#lfxviquqri .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gzduuwmzhj .gt_column_spanner_outer:last-child {
+#lfxviquqri .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gzduuwmzhj .gt_column_spanner {
+#lfxviquqri .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2299,11 +1836,11 @@ difference in mean
   width: 100%;
 }
 
-#gzduuwmzhj .gt_spanner_row {
+#lfxviquqri .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gzduuwmzhj .gt_group_heading {
+#lfxviquqri .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2329,7 +1866,7 @@ difference in mean
   text-align: left;
 }
 
-#gzduuwmzhj .gt_empty_group_heading {
+#lfxviquqri .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2344,15 +1881,15 @@ difference in mean
   vertical-align: middle;
 }
 
-#gzduuwmzhj .gt_from_md > :first-child {
+#lfxviquqri .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gzduuwmzhj .gt_from_md > :last-child {
+#lfxviquqri .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gzduuwmzhj .gt_row {
+#lfxviquqri .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2371,7 +1908,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#gzduuwmzhj .gt_stub {
+#lfxviquqri .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2384,7 +1921,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#gzduuwmzhj .gt_stub_row_group {
+#lfxviquqri .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2398,15 +1935,15 @@ difference in mean
   vertical-align: top;
 }
 
-#gzduuwmzhj .gt_row_group_first td {
+#lfxviquqri .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gzduuwmzhj .gt_row_group_first th {
+#lfxviquqri .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gzduuwmzhj .gt_summary_row {
+#lfxviquqri .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2416,16 +1953,16 @@ difference in mean
   padding-right: 5px;
 }
 
-#gzduuwmzhj .gt_first_summary_row {
+#lfxviquqri .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_first_summary_row.thick {
+#lfxviquqri .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gzduuwmzhj .gt_last_summary_row {
+#lfxviquqri .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2435,7 +1972,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_grand_summary_row {
+#lfxviquqri .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2445,7 +1982,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#gzduuwmzhj .gt_first_grand_summary_row {
+#lfxviquqri .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2455,7 +1992,7 @@ difference in mean
   border-top-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_last_grand_summary_row_top {
+#lfxviquqri .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2465,11 +2002,11 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_striped {
+#lfxviquqri .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gzduuwmzhj .gt_table_body {
+#lfxviquqri .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2478,7 +2015,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_footnotes {
+#lfxviquqri .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2492,7 +2029,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_footnote {
+#lfxviquqri .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2501,7 +2038,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#gzduuwmzhj .gt_sourcenotes {
+#lfxviquqri .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2515,7 +2052,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#gzduuwmzhj .gt_sourcenote {
+#lfxviquqri .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2523,77 +2060,77 @@ difference in mean
   padding-right: 5px;
 }
 
-#gzduuwmzhj .gt_left {
+#lfxviquqri .gt_left {
   text-align: left;
 }
 
-#gzduuwmzhj .gt_center {
+#lfxviquqri .gt_center {
   text-align: center;
 }
 
-#gzduuwmzhj .gt_right {
+#lfxviquqri .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gzduuwmzhj .gt_font_normal {
+#lfxviquqri .gt_font_normal {
   font-weight: normal;
 }
 
-#gzduuwmzhj .gt_font_bold {
+#lfxviquqri .gt_font_bold {
   font-weight: bold;
 }
 
-#gzduuwmzhj .gt_font_italic {
+#lfxviquqri .gt_font_italic {
   font-style: italic;
 }
 
-#gzduuwmzhj .gt_super {
+#lfxviquqri .gt_super {
   font-size: 65%;
 }
 
-#gzduuwmzhj .gt_footnote_marks {
+#lfxviquqri .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gzduuwmzhj .gt_asterisk {
+#lfxviquqri .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gzduuwmzhj .gt_indent_1 {
+#lfxviquqri .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gzduuwmzhj .gt_indent_2 {
+#lfxviquqri .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gzduuwmzhj .gt_indent_3 {
+#lfxviquqri .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gzduuwmzhj .gt_indent_4 {
+#lfxviquqri .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gzduuwmzhj .gt_indent_5 {
+#lfxviquqri .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gzduuwmzhj .katex-display {
+#lfxviquqri .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gzduuwmzhj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lfxviquqri div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="Region" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Census Region</th>
@@ -2638,26 +2175,26 @@ difference in mean
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Continue adding to your table, for example, designating <code>Region</code> as a “stub”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb47-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
-<span id="cb47-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb47-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
+<span id="cb47-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"Region"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="azeepbdtnj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#azeepbdtnj table {
+<div id="kslmkznfkl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kslmkznfkl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#azeepbdtnj thead, #azeepbdtnj tbody, #azeepbdtnj tfoot, #azeepbdtnj tr, #azeepbdtnj td, #azeepbdtnj th {
+#kslmkznfkl thead, #kslmkznfkl tbody, #kslmkznfkl tfoot, #kslmkznfkl tr, #kslmkznfkl td, #kslmkznfkl th {
   border-style: none;
 }
 
-#azeepbdtnj p {
+#kslmkznfkl p {
   margin: 0;
   padding: 0;
 }
 
-#azeepbdtnj .gt_table {
+#kslmkznfkl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2683,12 +2220,12 @@ difference in mean
   border-left-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_caption {
+#kslmkznfkl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#azeepbdtnj .gt_title {
+#kslmkznfkl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2700,7 +2237,7 @@ difference in mean
   border-bottom-width: 0;
 }
 
-#azeepbdtnj .gt_subtitle {
+#kslmkznfkl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2712,7 +2249,7 @@ difference in mean
   border-top-width: 0;
 }
 
-#azeepbdtnj .gt_heading {
+#kslmkznfkl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2724,13 +2261,13 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_bottom_border {
+#kslmkznfkl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_col_headings {
+#kslmkznfkl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2745,7 +2282,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_col_heading {
+#kslmkznfkl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2765,7 +2302,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#azeepbdtnj .gt_column_spanner_outer {
+#kslmkznfkl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2777,15 +2314,15 @@ difference in mean
   padding-right: 4px;
 }
 
-#azeepbdtnj .gt_column_spanner_outer:first-child {
+#kslmkznfkl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#azeepbdtnj .gt_column_spanner_outer:last-child {
+#kslmkznfkl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#azeepbdtnj .gt_column_spanner {
+#kslmkznfkl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2797,11 +2334,11 @@ difference in mean
   width: 100%;
 }
 
-#azeepbdtnj .gt_spanner_row {
+#kslmkznfkl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#azeepbdtnj .gt_group_heading {
+#kslmkznfkl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2827,7 +2364,7 @@ difference in mean
   text-align: left;
 }
 
-#azeepbdtnj .gt_empty_group_heading {
+#kslmkznfkl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2842,15 +2379,15 @@ difference in mean
   vertical-align: middle;
 }
 
-#azeepbdtnj .gt_from_md > :first-child {
+#kslmkznfkl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#azeepbdtnj .gt_from_md > :last-child {
+#kslmkznfkl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#azeepbdtnj .gt_row {
+#kslmkznfkl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2869,7 +2406,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#azeepbdtnj .gt_stub {
+#kslmkznfkl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2882,7 +2419,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#azeepbdtnj .gt_stub_row_group {
+#kslmkznfkl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2896,15 +2433,15 @@ difference in mean
   vertical-align: top;
 }
 
-#azeepbdtnj .gt_row_group_first td {
+#kslmkznfkl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#azeepbdtnj .gt_row_group_first th {
+#kslmkznfkl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#azeepbdtnj .gt_summary_row {
+#kslmkznfkl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2914,16 +2451,16 @@ difference in mean
   padding-right: 5px;
 }
 
-#azeepbdtnj .gt_first_summary_row {
+#kslmkznfkl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_first_summary_row.thick {
+#kslmkznfkl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#azeepbdtnj .gt_last_summary_row {
+#kslmkznfkl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2933,7 +2470,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_grand_summary_row {
+#kslmkznfkl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2943,7 +2480,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#azeepbdtnj .gt_first_grand_summary_row {
+#kslmkznfkl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2953,7 +2490,7 @@ difference in mean
   border-top-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_last_grand_summary_row_top {
+#kslmkznfkl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2963,11 +2500,11 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_striped {
+#kslmkznfkl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#azeepbdtnj .gt_table_body {
+#kslmkznfkl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2976,7 +2513,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_footnotes {
+#kslmkznfkl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2990,7 +2527,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_footnote {
+#kslmkznfkl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2999,7 +2536,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#azeepbdtnj .gt_sourcenotes {
+#kslmkznfkl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3013,7 +2550,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#azeepbdtnj .gt_sourcenote {
+#kslmkznfkl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3021,77 +2558,77 @@ difference in mean
   padding-right: 5px;
 }
 
-#azeepbdtnj .gt_left {
+#kslmkznfkl .gt_left {
   text-align: left;
 }
 
-#azeepbdtnj .gt_center {
+#kslmkznfkl .gt_center {
   text-align: center;
 }
 
-#azeepbdtnj .gt_right {
+#kslmkznfkl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#azeepbdtnj .gt_font_normal {
+#kslmkznfkl .gt_font_normal {
   font-weight: normal;
 }
 
-#azeepbdtnj .gt_font_bold {
+#kslmkznfkl .gt_font_bold {
   font-weight: bold;
 }
 
-#azeepbdtnj .gt_font_italic {
+#kslmkznfkl .gt_font_italic {
   font-style: italic;
 }
 
-#azeepbdtnj .gt_super {
+#kslmkznfkl .gt_super {
   font-size: 65%;
 }
 
-#azeepbdtnj .gt_footnote_marks {
+#kslmkznfkl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#azeepbdtnj .gt_asterisk {
+#kslmkznfkl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#azeepbdtnj .gt_indent_1 {
+#kslmkznfkl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#azeepbdtnj .gt_indent_2 {
+#kslmkznfkl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#azeepbdtnj .gt_indent_3 {
+#kslmkznfkl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#azeepbdtnj .gt_indent_4 {
+#kslmkznfkl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#azeepbdtnj .gt_indent_5 {
+#kslmkznfkl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#azeepbdtnj .katex-display {
+#kslmkznfkl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#azeepbdtnj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kslmkznfkl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
@@ -3102,25 +2639,25 @@ difference in mean
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Northeast</td>
+<th id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Northeast</th>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill">1342.647</td>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill_low">1313.386</td>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill_upp">1371.907</td>
 </tr>
 <tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Midwest</td>
+<th id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Midwest</th>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill">1293.233</td>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill_low">1269.827</td>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill_upp">1316.639</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">South</td>
+<th id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">South</th>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill">1547.653</td>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill_low">1527.115</td>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill_upp">1568.191</td>
 </tr>
 <tr class="even">
-<td id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">West</td>
+<th id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">West</th>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill">1211.020</td>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill_low">1187.045</td>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill_upp">1234.994</td>
@@ -3136,31 +2673,31 @@ difference in mean
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Add labels to columns:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb48-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb48-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
 <span id="cb48-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"Region"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb48-3" class="hljs-ln-code"><a></a>  <span class="fu">cols_label</span>(</span>
 <span id="cb48-4" class="hljs-ln-code"><a></a>    <span class="at">elec_bill =</span> <span class="st">"Average"</span>,</span>
 <span id="cb48-5" class="hljs-ln-code"><a></a>    <span class="at">elec_bill_low =</span> <span class="st">"Lower"</span>,</span>
 <span id="cb48-6" class="hljs-ln-code"><a></a>    <span class="at">elec_bill_upp =</span> <span class="st">"Upper"</span></span>
-<span id="cb48-7" class="hljs-ln-code"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-7" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="lfzujqjuyx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lfzujqjuyx table {
+<div id="udyhmwwkfk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#udyhmwwkfk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lfzujqjuyx thead, #lfzujqjuyx tbody, #lfzujqjuyx tfoot, #lfzujqjuyx tr, #lfzujqjuyx td, #lfzujqjuyx th {
+#udyhmwwkfk thead, #udyhmwwkfk tbody, #udyhmwwkfk tfoot, #udyhmwwkfk tr, #udyhmwwkfk td, #udyhmwwkfk th {
   border-style: none;
 }
 
-#lfzujqjuyx p {
+#udyhmwwkfk p {
   margin: 0;
   padding: 0;
 }
 
-#lfzujqjuyx .gt_table {
+#udyhmwwkfk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3186,12 +2723,12 @@ difference in mean
   border-left-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_caption {
+#udyhmwwkfk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lfzujqjuyx .gt_title {
+#udyhmwwkfk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3203,7 +2740,7 @@ difference in mean
   border-bottom-width: 0;
 }
 
-#lfzujqjuyx .gt_subtitle {
+#udyhmwwkfk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3215,7 +2752,7 @@ difference in mean
   border-top-width: 0;
 }
 
-#lfzujqjuyx .gt_heading {
+#udyhmwwkfk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3227,13 +2764,13 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_bottom_border {
+#udyhmwwkfk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_col_headings {
+#udyhmwwkfk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3248,7 +2785,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_col_heading {
+#udyhmwwkfk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3268,7 +2805,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#lfzujqjuyx .gt_column_spanner_outer {
+#udyhmwwkfk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3280,15 +2817,15 @@ difference in mean
   padding-right: 4px;
 }
 
-#lfzujqjuyx .gt_column_spanner_outer:first-child {
+#udyhmwwkfk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lfzujqjuyx .gt_column_spanner_outer:last-child {
+#udyhmwwkfk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lfzujqjuyx .gt_column_spanner {
+#udyhmwwkfk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3300,11 +2837,11 @@ difference in mean
   width: 100%;
 }
 
-#lfzujqjuyx .gt_spanner_row {
+#udyhmwwkfk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lfzujqjuyx .gt_group_heading {
+#udyhmwwkfk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3330,7 +2867,7 @@ difference in mean
   text-align: left;
 }
 
-#lfzujqjuyx .gt_empty_group_heading {
+#udyhmwwkfk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3345,15 +2882,15 @@ difference in mean
   vertical-align: middle;
 }
 
-#lfzujqjuyx .gt_from_md > :first-child {
+#udyhmwwkfk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lfzujqjuyx .gt_from_md > :last-child {
+#udyhmwwkfk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lfzujqjuyx .gt_row {
+#udyhmwwkfk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3372,7 +2909,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#lfzujqjuyx .gt_stub {
+#udyhmwwkfk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3385,7 +2922,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#lfzujqjuyx .gt_stub_row_group {
+#udyhmwwkfk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3399,15 +2936,15 @@ difference in mean
   vertical-align: top;
 }
 
-#lfzujqjuyx .gt_row_group_first td {
+#udyhmwwkfk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lfzujqjuyx .gt_row_group_first th {
+#udyhmwwkfk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lfzujqjuyx .gt_summary_row {
+#udyhmwwkfk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3417,16 +2954,16 @@ difference in mean
   padding-right: 5px;
 }
 
-#lfzujqjuyx .gt_first_summary_row {
+#udyhmwwkfk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_first_summary_row.thick {
+#udyhmwwkfk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lfzujqjuyx .gt_last_summary_row {
+#udyhmwwkfk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3436,7 +2973,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_grand_summary_row {
+#udyhmwwkfk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3446,7 +2983,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#lfzujqjuyx .gt_first_grand_summary_row {
+#udyhmwwkfk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3456,7 +2993,7 @@ difference in mean
   border-top-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_last_grand_summary_row_top {
+#udyhmwwkfk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3466,11 +3003,11 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_striped {
+#udyhmwwkfk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lfzujqjuyx .gt_table_body {
+#udyhmwwkfk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3479,7 +3016,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_footnotes {
+#udyhmwwkfk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3493,7 +3030,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_footnote {
+#udyhmwwkfk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3502,7 +3039,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#lfzujqjuyx .gt_sourcenotes {
+#udyhmwwkfk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3516,7 +3053,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#lfzujqjuyx .gt_sourcenote {
+#udyhmwwkfk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3524,77 +3061,77 @@ difference in mean
   padding-right: 5px;
 }
 
-#lfzujqjuyx .gt_left {
+#udyhmwwkfk .gt_left {
   text-align: left;
 }
 
-#lfzujqjuyx .gt_center {
+#udyhmwwkfk .gt_center {
   text-align: center;
 }
 
-#lfzujqjuyx .gt_right {
+#udyhmwwkfk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lfzujqjuyx .gt_font_normal {
+#udyhmwwkfk .gt_font_normal {
   font-weight: normal;
 }
 
-#lfzujqjuyx .gt_font_bold {
+#udyhmwwkfk .gt_font_bold {
   font-weight: bold;
 }
 
-#lfzujqjuyx .gt_font_italic {
+#udyhmwwkfk .gt_font_italic {
   font-style: italic;
 }
 
-#lfzujqjuyx .gt_super {
+#udyhmwwkfk .gt_super {
   font-size: 65%;
 }
 
-#lfzujqjuyx .gt_footnote_marks {
+#udyhmwwkfk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lfzujqjuyx .gt_asterisk {
+#udyhmwwkfk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lfzujqjuyx .gt_indent_1 {
+#udyhmwwkfk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lfzujqjuyx .gt_indent_2 {
+#udyhmwwkfk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lfzujqjuyx .gt_indent_3 {
+#udyhmwwkfk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lfzujqjuyx .gt_indent_4 {
+#udyhmwwkfk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lfzujqjuyx .gt_indent_5 {
+#udyhmwwkfk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lfzujqjuyx .katex-display {
+#udyhmwwkfk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lfzujqjuyx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#udyhmwwkfk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
@@ -3605,25 +3142,25 @@ difference in mean
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Northeast</td>
+<th id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Northeast</th>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill">1342.647</td>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill_low">1313.386</td>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill_upp">1371.907</td>
 </tr>
 <tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Midwest</td>
+<th id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Midwest</th>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill">1293.233</td>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill_low">1269.827</td>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill_upp">1316.639</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">South</td>
+<th id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">South</th>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill">1547.653</td>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill_low">1527.115</td>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill_upp">1568.191</td>
 </tr>
 <tr class="even">
-<td id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">West</td>
+<th id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">West</th>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill">1211.020</td>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill_low">1187.045</td>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill_upp">1234.994</td>
@@ -3639,7 +3176,7 @@ difference in mean
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Add a spanner to break up the labels:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb49-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb49-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
 <span id="cb49-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"Region"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb49-3" class="hljs-ln-code"><a></a>  <span class="fu">cols_label</span>(</span>
 <span id="cb49-4" class="hljs-ln-code"><a></a>    <span class="at">elec_bill =</span> <span class="st">"Average"</span>,</span>
@@ -3648,25 +3185,25 @@ difference in mean
 <span id="cb49-7" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb49-8" class="hljs-ln-code"><a></a>  <span class="fu">tab_spanner</span>(</span>
 <span id="cb49-9" class="hljs-ln-code"><a></a>    <span class="at">label =</span> <span class="st">"Cost of electricity in the U.S. by region"</span>,</span>
-<span id="cb49-10" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(elec_bill, elec_bill_low, elec_bill_upp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-10" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(elec_bill, elec_bill_low, elec_bill_upp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="taafjoslcm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#taafjoslcm table {
+<div id="nrdbftoiyr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nrdbftoiyr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#taafjoslcm thead, #taafjoslcm tbody, #taafjoslcm tfoot, #taafjoslcm tr, #taafjoslcm td, #taafjoslcm th {
+#nrdbftoiyr thead, #nrdbftoiyr tbody, #nrdbftoiyr tfoot, #nrdbftoiyr tr, #nrdbftoiyr td, #nrdbftoiyr th {
   border-style: none;
 }
 
-#taafjoslcm p {
+#nrdbftoiyr p {
   margin: 0;
   padding: 0;
 }
 
-#taafjoslcm .gt_table {
+#nrdbftoiyr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3692,12 +3229,12 @@ difference in mean
   border-left-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_caption {
+#nrdbftoiyr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#taafjoslcm .gt_title {
+#nrdbftoiyr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3709,7 +3246,7 @@ difference in mean
   border-bottom-width: 0;
 }
 
-#taafjoslcm .gt_subtitle {
+#nrdbftoiyr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3721,7 +3258,7 @@ difference in mean
   border-top-width: 0;
 }
 
-#taafjoslcm .gt_heading {
+#nrdbftoiyr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3733,13 +3270,13 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_bottom_border {
+#nrdbftoiyr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_col_headings {
+#nrdbftoiyr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3754,7 +3291,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_col_heading {
+#nrdbftoiyr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3774,7 +3311,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#taafjoslcm .gt_column_spanner_outer {
+#nrdbftoiyr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3786,15 +3323,15 @@ difference in mean
   padding-right: 4px;
 }
 
-#taafjoslcm .gt_column_spanner_outer:first-child {
+#nrdbftoiyr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#taafjoslcm .gt_column_spanner_outer:last-child {
+#nrdbftoiyr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#taafjoslcm .gt_column_spanner {
+#nrdbftoiyr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3806,11 +3343,11 @@ difference in mean
   width: 100%;
 }
 
-#taafjoslcm .gt_spanner_row {
+#nrdbftoiyr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#taafjoslcm .gt_group_heading {
+#nrdbftoiyr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3836,7 +3373,7 @@ difference in mean
   text-align: left;
 }
 
-#taafjoslcm .gt_empty_group_heading {
+#nrdbftoiyr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3851,15 +3388,15 @@ difference in mean
   vertical-align: middle;
 }
 
-#taafjoslcm .gt_from_md > :first-child {
+#nrdbftoiyr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#taafjoslcm .gt_from_md > :last-child {
+#nrdbftoiyr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#taafjoslcm .gt_row {
+#nrdbftoiyr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3878,7 +3415,7 @@ difference in mean
   overflow-x: hidden;
 }
 
-#taafjoslcm .gt_stub {
+#nrdbftoiyr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3891,7 +3428,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#taafjoslcm .gt_stub_row_group {
+#nrdbftoiyr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3905,15 +3442,15 @@ difference in mean
   vertical-align: top;
 }
 
-#taafjoslcm .gt_row_group_first td {
+#nrdbftoiyr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#taafjoslcm .gt_row_group_first th {
+#nrdbftoiyr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#taafjoslcm .gt_summary_row {
+#nrdbftoiyr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3923,16 +3460,16 @@ difference in mean
   padding-right: 5px;
 }
 
-#taafjoslcm .gt_first_summary_row {
+#nrdbftoiyr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_first_summary_row.thick {
+#nrdbftoiyr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#taafjoslcm .gt_last_summary_row {
+#nrdbftoiyr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3942,7 +3479,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_grand_summary_row {
+#nrdbftoiyr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3952,7 +3489,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#taafjoslcm .gt_first_grand_summary_row {
+#nrdbftoiyr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3962,7 +3499,7 @@ difference in mean
   border-top-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_last_grand_summary_row_top {
+#nrdbftoiyr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3972,11 +3509,11 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_striped {
+#nrdbftoiyr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#taafjoslcm .gt_table_body {
+#nrdbftoiyr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3985,7 +3522,7 @@ difference in mean
   border-bottom-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_footnotes {
+#nrdbftoiyr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3999,7 +3536,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_footnote {
+#nrdbftoiyr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4008,7 +3545,7 @@ difference in mean
   padding-right: 5px;
 }
 
-#taafjoslcm .gt_sourcenotes {
+#nrdbftoiyr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4022,7 +3559,7 @@ difference in mean
   border-right-color: #D3D3D3;
 }
 
-#taafjoslcm .gt_sourcenote {
+#nrdbftoiyr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4030,77 +3567,77 @@ difference in mean
   padding-right: 5px;
 }
 
-#taafjoslcm .gt_left {
+#nrdbftoiyr .gt_left {
   text-align: left;
 }
 
-#taafjoslcm .gt_center {
+#nrdbftoiyr .gt_center {
   text-align: center;
 }
 
-#taafjoslcm .gt_right {
+#nrdbftoiyr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#taafjoslcm .gt_font_normal {
+#nrdbftoiyr .gt_font_normal {
   font-weight: normal;
 }
 
-#taafjoslcm .gt_font_bold {
+#nrdbftoiyr .gt_font_bold {
   font-weight: bold;
 }
 
-#taafjoslcm .gt_font_italic {
+#nrdbftoiyr .gt_font_italic {
   font-style: italic;
 }
 
-#taafjoslcm .gt_super {
+#nrdbftoiyr .gt_super {
   font-size: 65%;
 }
 
-#taafjoslcm .gt_footnote_marks {
+#nrdbftoiyr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#taafjoslcm .gt_asterisk {
+#nrdbftoiyr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#taafjoslcm .gt_indent_1 {
+#nrdbftoiyr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#taafjoslcm .gt_indent_2 {
+#nrdbftoiyr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#taafjoslcm .gt_indent_3 {
+#nrdbftoiyr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#taafjoslcm .gt_indent_4 {
+#nrdbftoiyr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#taafjoslcm .gt_indent_5 {
+#nrdbftoiyr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#taafjoslcm .katex-display {
+#nrdbftoiyr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#taafjoslcm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nrdbftoiyr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -4122,25 +3659,25 @@ Cost of electricity in the U.S. by region
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Northeast</td>
+<th id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Northeast</th>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill">1342.647</td>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill_low">1313.386</td>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill_upp">1371.907</td>
 </tr>
 <tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Midwest</td>
+<th id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Midwest</th>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill">1293.233</td>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill_low">1269.827</td>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill_upp">1316.639</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">South</td>
+<th id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">South</th>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill">1547.653</td>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill_low">1527.115</td>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill_upp">1568.191</td>
 </tr>
 <tr class="even">
-<td id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">West</td>
+<th id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">West</th>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill">1211.020</td>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill_low">1187.045</td>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill_upp">1234.994</td>
@@ -4156,7 +3693,7 @@ Cost of electricity in the U.S. by region
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Format numbers using the <code>fmt_*()</code> functions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb50-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb50-1" class="hljs-ln-code"><a></a>recs_tab <span class="sc">%&gt;%</span></span>
 <span id="cb50-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"Region"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb50-3" class="hljs-ln-code"><a></a>  <span class="fu">cols_label</span>(</span>
 <span id="cb50-4" class="hljs-ln-code"><a></a>    <span class="at">elec_bill =</span> <span class="st">"Average"</span>,</span>
@@ -4166,25 +3703,25 @@ Cost of electricity in the U.S. by region
 <span id="cb50-8" class="hljs-ln-code"><a></a>  <span class="fu">tab_spanner</span>(</span>
 <span id="cb50-9" class="hljs-ln-code"><a></a>    <span class="at">label =</span> <span class="st">"Cost of electricity in the U.S. by region"</span>,</span>
 <span id="cb50-10" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(elec_bill, elec_bill_low, elec_bill_upp)) <span class="sc">%&gt;%</span></span>
-<span id="cb50-11" class="hljs-ln-code"><a></a>  <span class="fu">fmt_currency</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-11" class="hljs-ln-code"><a></a>  <span class="fu">fmt_currency</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="wuybwcjaja" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wuybwcjaja table {
+<div id="mjktovzton" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mjktovzton table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wuybwcjaja thead, #wuybwcjaja tbody, #wuybwcjaja tfoot, #wuybwcjaja tr, #wuybwcjaja td, #wuybwcjaja th {
+#mjktovzton thead, #mjktovzton tbody, #mjktovzton tfoot, #mjktovzton tr, #mjktovzton td, #mjktovzton th {
   border-style: none;
 }
 
-#wuybwcjaja p {
+#mjktovzton p {
   margin: 0;
   padding: 0;
 }
 
-#wuybwcjaja .gt_table {
+#mjktovzton .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4210,12 +3747,12 @@ Cost of electricity in the U.S. by region
   border-left-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_caption {
+#mjktovzton .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wuybwcjaja .gt_title {
+#mjktovzton .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4227,7 +3764,7 @@ Cost of electricity in the U.S. by region
   border-bottom-width: 0;
 }
 
-#wuybwcjaja .gt_subtitle {
+#mjktovzton .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4239,7 +3776,7 @@ Cost of electricity in the U.S. by region
   border-top-width: 0;
 }
 
-#wuybwcjaja .gt_heading {
+#mjktovzton .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4251,13 +3788,13 @@ Cost of electricity in the U.S. by region
   border-right-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_bottom_border {
+#mjktovzton .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_col_headings {
+#mjktovzton .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4272,7 +3809,7 @@ Cost of electricity in the U.S. by region
   border-right-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_col_heading {
+#mjktovzton .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4292,7 +3829,7 @@ Cost of electricity in the U.S. by region
   overflow-x: hidden;
 }
 
-#wuybwcjaja .gt_column_spanner_outer {
+#mjktovzton .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4304,15 +3841,15 @@ Cost of electricity in the U.S. by region
   padding-right: 4px;
 }
 
-#wuybwcjaja .gt_column_spanner_outer:first-child {
+#mjktovzton .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wuybwcjaja .gt_column_spanner_outer:last-child {
+#mjktovzton .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wuybwcjaja .gt_column_spanner {
+#mjktovzton .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4324,11 +3861,11 @@ Cost of electricity in the U.S. by region
   width: 100%;
 }
 
-#wuybwcjaja .gt_spanner_row {
+#mjktovzton .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wuybwcjaja .gt_group_heading {
+#mjktovzton .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4354,7 +3891,7 @@ Cost of electricity in the U.S. by region
   text-align: left;
 }
 
-#wuybwcjaja .gt_empty_group_heading {
+#mjktovzton .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4369,15 +3906,15 @@ Cost of electricity in the U.S. by region
   vertical-align: middle;
 }
 
-#wuybwcjaja .gt_from_md > :first-child {
+#mjktovzton .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wuybwcjaja .gt_from_md > :last-child {
+#mjktovzton .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wuybwcjaja .gt_row {
+#mjktovzton .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4396,7 +3933,7 @@ Cost of electricity in the U.S. by region
   overflow-x: hidden;
 }
 
-#wuybwcjaja .gt_stub {
+#mjktovzton .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4409,7 +3946,7 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#wuybwcjaja .gt_stub_row_group {
+#mjktovzton .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4423,15 +3960,15 @@ Cost of electricity in the U.S. by region
   vertical-align: top;
 }
 
-#wuybwcjaja .gt_row_group_first td {
+#mjktovzton .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wuybwcjaja .gt_row_group_first th {
+#mjktovzton .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wuybwcjaja .gt_summary_row {
+#mjktovzton .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4441,16 +3978,16 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#wuybwcjaja .gt_first_summary_row {
+#mjktovzton .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_first_summary_row.thick {
+#mjktovzton .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wuybwcjaja .gt_last_summary_row {
+#mjktovzton .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4460,7 +3997,7 @@ Cost of electricity in the U.S. by region
   border-bottom-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_grand_summary_row {
+#mjktovzton .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4470,7 +4007,7 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#wuybwcjaja .gt_first_grand_summary_row {
+#mjktovzton .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4480,7 +4017,7 @@ Cost of electricity in the U.S. by region
   border-top-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_last_grand_summary_row_top {
+#mjktovzton .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4490,11 +4027,11 @@ Cost of electricity in the U.S. by region
   border-bottom-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_striped {
+#mjktovzton .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wuybwcjaja .gt_table_body {
+#mjktovzton .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4503,7 +4040,7 @@ Cost of electricity in the U.S. by region
   border-bottom-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_footnotes {
+#mjktovzton .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4517,7 +4054,7 @@ Cost of electricity in the U.S. by region
   border-right-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_footnote {
+#mjktovzton .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4526,7 +4063,7 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#wuybwcjaja .gt_sourcenotes {
+#mjktovzton .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4540,7 +4077,7 @@ Cost of electricity in the U.S. by region
   border-right-color: #D3D3D3;
 }
 
-#wuybwcjaja .gt_sourcenote {
+#mjktovzton .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4548,77 +4085,77 @@ Cost of electricity in the U.S. by region
   padding-right: 5px;
 }
 
-#wuybwcjaja .gt_left {
+#mjktovzton .gt_left {
   text-align: left;
 }
 
-#wuybwcjaja .gt_center {
+#mjktovzton .gt_center {
   text-align: center;
 }
 
-#wuybwcjaja .gt_right {
+#mjktovzton .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wuybwcjaja .gt_font_normal {
+#mjktovzton .gt_font_normal {
   font-weight: normal;
 }
 
-#wuybwcjaja .gt_font_bold {
+#mjktovzton .gt_font_bold {
   font-weight: bold;
 }
 
-#wuybwcjaja .gt_font_italic {
+#mjktovzton .gt_font_italic {
   font-style: italic;
 }
 
-#wuybwcjaja .gt_super {
+#mjktovzton .gt_super {
   font-size: 65%;
 }
 
-#wuybwcjaja .gt_footnote_marks {
+#mjktovzton .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wuybwcjaja .gt_asterisk {
+#mjktovzton .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wuybwcjaja .gt_indent_1 {
+#mjktovzton .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wuybwcjaja .gt_indent_2 {
+#mjktovzton .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wuybwcjaja .gt_indent_3 {
+#mjktovzton .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wuybwcjaja .gt_indent_4 {
+#mjktovzton .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wuybwcjaja .gt_indent_5 {
+#mjktovzton .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wuybwcjaja .katex-display {
+#mjktovzton .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wuybwcjaja div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mjktovzton div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -4640,25 +4177,25 @@ Cost of electricity in the U.S. by region
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Northeast</td>
+<th id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Northeast</th>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill">$1,342.65</td>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill_low">$1,313.39</td>
 <td class="gt_row gt_right" headers="stub_1_1 elec_bill_upp">$1,371.91</td>
 </tr>
 <tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Midwest</td>
+<th id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Midwest</th>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill">$1,293.23</td>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill_low">$1,269.83</td>
 <td class="gt_row gt_right" headers="stub_1_2 elec_bill_upp">$1,316.64</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">South</td>
+<th id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">South</th>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill">$1,547.65</td>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill_low">$1,527.12</td>
 <td class="gt_row gt_right" headers="stub_1_3 elec_bill_upp">$1,568.19</td>
 </tr>
 <tr class="even">
-<td id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">West</td>
+<th id="stub_1_4" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">West</th>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill">$1,211.02</td>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill_low">$1,187.05</td>
 <td class="gt_row gt_right" headers="stub_1_4 elec_bill_upp">$1,234.99</td>
@@ -4680,8 +4217,6 @@ Cost of electricity in the U.S. by region
 <ul>
 <li>Freedman Ellis, Greg, and Ben Schneider. 2024. <em>srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data</em>. <a href="http://gdfe.co/srvyr/" class="uri">http://gdfe.co/srvyr/</a>.</li>
 <li>Lumley, Thomas. 2010. <em>Complex Surveys: A Guide to Analysis Using R</em>. John Wiley &amp; Sons. <a href="https://r-survey.r-forge.r-project.org/survey/" class="uri">https://r-survey.r-forge.r-project.org/survey/</a>.</li>
-<li>Research Triangle Institute (2012). <em>SUDAAN Language Manual, Volumes 1 and 2, Relase 11</em>. Research Triangle Park, NC: Research Triangle Institute.</li>
-<li>SAS Institute Inc.&nbsp;2023. <em>SAS/STAT® 15.3 User’s Guide</em>. Cary, NC: SAS Institute Inc.&nbsp;<a href="https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.5/statug/statug_introsamp_toc.htm">Introduction to Survey Sampling and Analysis Procedures</a></li>
 <li>Zimmer, S. A., Powell, R. J., &amp; Velásquez, I. C. (2024). <em>Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}</em>. Chapman &amp; Hall: CRC Press. <a href="https://tidy-survey-r.github.io/tidy-survey-book/" class="uri">https://tidy-survey-r.github.io/tidy-survey-book/</a></li>
 </ul>
 </section>
@@ -4727,26 +4262,26 @@ Cost of electricity in the U.S. by region
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="images/favicon.png" class="slide-logo"></p>
+<p><img src="../images/favicon.png" class="slide-logo"></p>
 <div class="footer footer-default">
 
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -4915,7 +4450,7 @@ Cost of electricity in the U.S. by region
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -4980,190 +4515,173 @@ Cost of electricity in the U.S. by region
     </script>
 
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/tidy-survey-r\.github\.io\/site\/");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/tidy-survey-r\.github\.io\/site\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

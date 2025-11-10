@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tidy-survey-r.github.io/site/talk-rladies-ams-rtp.html</loc>
-    <lastmod>2025-02-25T14:19:07.253Z</lastmod>
+    <loc>https://tidy-survey-r.github.io/site/talks/talk-rladies-ams-rtp.html</loc>
+    <lastmod>2025-11-10T03:20:57.296Z</lastmod>
   </url>
   <url>
-    <loc>https://tidy-survey-r.github.io/site/short-courses.html</loc>
-    <lastmod>2025-02-25T14:19:07.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tidy-survey-r.github.io/site/talk-nchs-show-tell.html</loc>
-    <lastmod>2025-02-25T14:19:07.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tidy-survey-r.github.io/site/Talks.html</loc>
-    <lastmod>2025-02-25T14:19:07.244Z</lastmod>
+    <loc>https://tidy-survey-r.github.io/site/talks/Talks.html</loc>
+    <lastmod>2025-11-10T03:20:57.296Z</lastmod>
   </url>
   <url>
     <loc>https://tidy-survey-r.github.io/site/index.html</loc>
-    <lastmod>2025-02-25T14:19:07.253Z</lastmod>
+    <lastmod>2025-11-10T03:20:57.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tidy-survey-r.github.io/site/short-courses.html</loc>
+    <lastmod>2025-11-10T03:20:57.296Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tidy-survey-r.github.io/site/talks/talk-nchs-show-tell.html</loc>
+    <lastmod>2025-11-10T03:20:57.296Z</lastmod>
   </url>
 </urlset>
