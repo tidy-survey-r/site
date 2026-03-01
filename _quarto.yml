@@ -17,7 +17,8 @@ editor: source
 
 execute:
   echo: true
-  
+  freeze: auto
+
 highlight-style: atom-one
 
 # atom-one

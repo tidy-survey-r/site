@@ -16,21 +16,21 @@ title-slide-attributes:
 :::: {.columns style="text-align: center"}
 
 ::: {.column width="33%"}
-![](images/StephanieZimmer_Headshot.jpeg)
+![](../images/StephanieZimmer_Headshot.jpeg)
 <b>Stephanie Zimmer</b>
 
 RTI International
 :::
 
 ::: {.column width="33%"}
-![](images/RebeccaPowell_Headshot.jpeg)
+![](../images/RebeccaPowell_Headshot.jpeg)
 <b>Rebecca Powell</b>
 
 Fors Marsh
 :::
 
 ::: {.column width="34%"}
-![](images/IsabellaVelasquez_Headshot.jpeg)
+![](../images/IsabellaVelasquez_Headshot.jpeg)
 <b>Isabella Velásquez</b>
 
 Posit
