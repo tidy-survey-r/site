@@ -1,0 +1,488 @@
+---
+title: "Tidy Data,<br>Weighted Insights"
+subtitle: "Analyzing Complex Survey Data in R"
+format: revealjs
+slide-number: true
+title-slide-attributes: 
+      data-background: "#087e8b"
+      data-background-image: "images/cover.png"
+      data-background-position: 90% center
+      data-background-size: 30%
+      style: "text-align: left; right: 15%"
+---
+
+## About us
+
+:::: {.columns style="text-align: center"}
+
+::: {.column width="33%"}
+![](../images/StephanieZimmer_Headshot.jpeg)
+<b>Stephanie Zimmer</b>
+
+RTI International
+:::
+
+::: {.column width="33%"}
+![](../images/RebeccaPowell_Headshot.jpeg)
+<b>Rebecca Powell</b>
+
+Fors Marsh
+:::
+
+::: {.column width="34%"}
+![](../images/IsabellaVelasquez_Headshot.jpeg)
+<b>Isabella Velásquez</b>
+
+Posit
+:::
+
+::::
+
+# Book overview {background-color='{{< brand color secondary >}}'}
+
+## Motivation
+- We are R users who work with survey data regularly
+- Share knowledge with
+  - R users who are inaccurately analyzing survey data
+  - SAS/SUDAAN/Stata users who may not know about the capabilities of R
+- {srvyr} package developed using tidyverse style syntax
+- Stephanie and Rebecca conducted a virtual short course at AAPOR conference in 2021
+- Connected with Isabella to turn the short course into a book
+
+::: {.notes}
+- {survey} original survey analysis package -- book by Thomas Lumley
+- {srvyr} builds off the {survey} package, but uses easier to understand tidyverse syntax style
+:::
+
+## What's in the book
+- High level overview of survey process
+- Comparison of syntax between {dplyr} and {srvyr}
+- How to read survey documentation
+- Descriptive analysis, statistical testing, and modeling
+- Publication ready tables and figures accounting for error
+- Creating the survey design object
+- Analysis examples using real world data
+
+::: {.notes}
+- Assume that weights are already on the dataset
+- Does not include how to create weights
+:::
+
+## R, SAS, & SUDAAN capabilities {.smaller}
+
+
+```{r}
+#| label: feature-compare
+#| echo: false
+
+library(tibble)
+library(gt)
+
+comp_df <- tribble(
+~Feature, ~R, ~SAS, ~SUDAAN,
+"Descriptive (out of the box)", "mean, total, proportion, percentage, quantile, ratio, variance, **correlation**", "mean, total, proportion, percentage, **geometric mean**, quantile, ratio, variance", "mean, total, proportion, percentage, **geometric mean**, quantile, ratio, variance, **correlation**",
+"Custom descriptive functions", "Yes, but must use delta method", "No method in docs", "Yes, through vargen proc",
+"Testing", "means, proportions, **quantiles**, assocation, GOF", "means, proportions, assocation, GOF", "means, proportions, assocation, GOF",
+"Design effects", "Not for quantiles, variances, or correlations", "Only for proportions", "All ests",
+"Imputation", "None", "Hot-deck, approximate Bayesian bootstrap, fully efficient fractional, two-stage fully efficient fractional, fractional hot-deck", "Weighted sequential hot deck, cell mean, regression-based (linear and logistic)",
+"Weighting", "Post-stratification in estimation, calibration (linear, raking, logit)", "Post-stratification in estimation", "Post-stratification in estimation, calibration: nonresponse and post-stratification (WTADJUST), Using variables only known for respondents in models (WTADJX)",
+"Modeling", "Linear, Logistic, Cox proportional hazards, **Kaplan-Meier**, **Multinomial**, **Poisson**, **Log-linear**", "Linear, Logistic, Cox proportional hazards", "Linear, Logistic, Cox proportional hazards, **Kaplan-Meier**, **Multinomial**, **Poisson-like count**"
+)
+
+gt(comp_df) %>%
+  fmt_markdown() %>%
+  cols_label(
+    R="R {survey} package",
+    SAS="SAS survey procs",
+    SUDAAN="SUDAAN procs"
+  ) 
+```
+
+
+::: {.notes}
+- R comparison only includes survey and srvyr packages, not other R packages
+- Bold entries in rows with bold indicate differences since there are some long lists
+- R and SUDAAN allow for more customization than SAS but harder in R (need calculus to do delta method)
+- R is only software doing testing of quantiles - some papers on how to do in others but requires custom macros
+- SAS doesn't broadly do design effects but there are some macros out there. We won't go into details but more **types** of design effects in SUDAAN than R
+- Imputation is done in other R packages
+- Weighting: all allow post-stratification while doing analysis, common in health research. Other packages in R do more than survey package
+- SAS does sample selection
+:::
+
+# Setup {background-color='{{< brand color secondary >}}'}
+
+## R packages for survey analysis {.smaller}
+
+- {survey} package first on CRAN in 2003
+    - descriptive analysis
+    - statistical testing
+    - modeling
+    - weighting
+- {srvyr} package first on CRAN in 2016
+    - "wrapper" for {survey} with {tidyverse}-style syntax
+    - only descriptive analysis
+- {gtsummary} package first on CRAN in 2016
+    - creates publication-ready tables from survey data
+    - currently cannot handle replicate weights
+
+::: {.notes}
+- R packages are a collection of functions
+- This is not an exhaustive list of packages that work with survey data
+- Several packages for imputation, more complex weighting, and more
+- gtsummary won't be discussed today
+:::
+
+## Comparison with dplyr
+
+- dplyr: summary functions called within `summarize()`
+
+### dplyr
+
+```{r}
+#| label: dplyr-load
+#| echo: false
+library(dplyr)
+```
+
+```{r}
+#| label: dplyr-towny-example
+#| code-line-numbers: "|1|2|3,6|4,5|"
+towny %>%
+  group_by(status) %>%
+  summarize(
+    area_mean = mean(land_area_km2),
+    area_median = median(land_area_km2)
+  )
+```
+
+## Comparison with dplyr
+
+- srvyr: `survey_*()` functions called with `summarize()`
+
+### srvyr
+
+```{r}
+#| label: apistrat-set-up
+#| echo: false
+
+library(srvyr)
+data(api, package = "survey")
+
+apistrat_des <- apistrat %>%
+  as_survey_design(
+    strata = stype,
+    weights = pw
+  )
+```
+
+```{r}
+#| label: srvyr-api-example
+#| code-line-numbers: "|1|2|3,6|4,5|"
+apistrat_des %>%
+  group_by(stype) %>%
+  summarize(
+    api00_mean = survey_mean(api00),
+    api00_med = survey_median(api00)
+  )
+```
+
+::: {.notes}
+- If you already use {tidyverse}/{dplyr}, the syntax {srvyr} will come easily
+- Functions commonly used like group_by, filter, and summarize also used in srvyr
+- Note that the survey estimates also generate standard deviations - can also add options to get CIs, deffs, and variances
+:::
+
+## Steps for descriptive analysis
+
+1. Create a `tbl_svy` object (a survey object) using: `as_survey_design()` or `as_survey_rep()`
+
+2. Subset data (if needed) using `filter()` (to create subpopulations)
+
+3. Specify domains of analysis using `group_by()` 
+
+4. Within `summarize()`, specify variables to calculate, including means, totals, proportions, quantiles, and more
+
+::: {.notes}
+- Survey object involves specifying weights, strata and/or clusters (PSUs) OR replicate weights
+- Survey object can be used over and over for the same data and different analyses
+- This is necessary for getting appropriate weighted estimates and standard errors. More public use files are providing this syntax
+- Can also use `cascade()` instead of `summarize()` to get the total row
+:::
+
+## Steps for testing
+
+1. Create a `tbl_svy` object (a survey object) using: `as_survey_design()` or `as_survey_rep()`
+
+2. Subset data (if needed) using `filter()` (to create subpopulations)
+
+3. Use `svyttest()` for comparisons of proportions and means, `svygofchisq()` for GOF test, or `svychisq()` for test of independence and test of homogeneity
+
+::: {.notes}
+- Only last step changes from descriptive analysis. 
+:::
+
+
+## Steps for modeling
+
+1. Create a `tbl_svy` object (a survey object) using: `as_survey_design()` or `as_survey_rep()`
+
+2. Subset data (if needed) using `filter()` (to create subpopulations)
+
+3. Use `svyglm()` for linear models and logistic models, `svycoxph()` for Cox proportional-hazards, `svykm()` for Kaplan-Meier, `svyloglin()` for log-linear models, `svyolr()` for multinomial
+
+::: {.notes}
+- Only last step changes from descriptive analysis. Syntax mirrors glm, coxph, etc functions for non-survey data
+:::
+
+# Load packages and data {background-color='{{< brand color secondary >}}'}
+
+## Load packages and data
+
+```{r}
+#| label: load-pack
+# install.packages(c("survey", "srvyr", "duckdb", "dbplyr", "gt"))
+library(survey)
+library(srvyr)
+library(duckdb)
+library(dbplyr)
+library(gt)
+
+```
+
+# Design object {background-color='{{< brand color secondary >}}'}
+
+::: {.notes}
+- After loading packages and data
+- First step is to create design object
+- Account for the sampling design or replicate weights
+- Accurately calculate the estimates (using the correct underlying formulas)
+- There are two functions for creating the design object depending on if using replicate weights or not
+:::
+
+## Syntax: replicate weights
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```r
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-weights
+#| eval: false
+#| code-line-numbers: "4"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS","other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
+- As with the first function, there is a `weights` argument for the main analytic weight
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-repweights
+#| eval: false
+#| code-line-numbers: "5"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
+- Also has the `repweights` argument to indicate the variables that hold the replicate weights
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-type
+#| eval: false
+#| code-line-numbers: "6,7"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
+- Need to include the type of replicate weights: Balanced Repeated Replicates (BRR), Fay, Jackknife (JK), etc.
+:::
+
+## Syntax: replicate weights {auto-animate=true}
+
+For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
+
+```{r}
+#| label: survey-rep-hl-params
+#| eval: false
+#| code-line-numbers: "9,11,12,15"
+as_survey_rep(
+  .data,
+  variables = NULL,
+  weights = NULL,
+  repweights = NULL,
+  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
+           "successive-difference", "ACS", "other"),
+  combined_weights = TRUE,
+  rho = NULL,
+  bootstrap_average = NULL,
+  scale = NULL,
+  rscales = NULL,
+  fpc = NULL,
+  fpctype = c("fraction", "correction"),
+  mse = getOption("survey.replicates.mse"),
+  degf = NULL,
+  ...
+)
+```
+
+::: {.notes}
+- Have separate arguments for the various parameters for the replicate weights: rho, scale, etc.
+:::
+
+## Database detour
+
+- Initiate DuckDB database
+- Load CSV into database - data does NOT go into RAM
+- nread creates a small check that the number of records loaded as expected
+
+```{r}
+#| label: load-data
+
+con <- dbConnect(duckdb())
+nread <- duckdb_read_csv(
+  conn=con, 
+  name="c2021_ind",
+  here::here("RawDat", "data_donnees_2021_ind_v2.csv")
+)
+nread
+```
+
+::: {.notes}
+- For this example, we create a duckdb database. You could be pointing to existing database
+:::
+
+
+## Database tables in R
+
+- Make a R object pointing to the table
+- This R object is NOT a data.frame
+
+```{r}
+#| label: load-data-tab-ref
+
+c2021_ind_db <- dplyr::tbl(con, I("c2021_ind"))
+object.size(c2021_ind_db) |> print(units="Kb")
+c2021_ind_db
+```
+
+
+## Implementation - design object
+
+```{r}
+#| label: create-design-object
+cens_des <- c2021_ind_db |>
+  as_survey_rep(
+    weights = WEIGHT, # <1>
+    repweights = WT1:WT16, # <2>
+    type = "other",
+    scale = 1/35, # <3>
+    mse = TRUE, # <4>
+    rscales = 1) # <5>
+```
+
+1. Main analytic weight in `WEIGHT` variable
+2. Replicate weights start with `WT1`-`WT16` variables
+3. Scaling per documentation is dividing by 35
+4. Center replicates around main estimate, not mean of replicates
+5. When specifying `type="other"`, must specify rscales
+
+::: {.notes}
+- The RECS data has jackknife replicate weights, so using the second function (`as_survey_rep()`)
+- Using the documention for RECS, learn the variable names for the weights, the type, and the scale
+:::
+
+## Results
+
+- Design object contains all the design data (i.e., weights)
+- Remaining data is in the database only
+- Efficiency opportunity: specify degrees of freedom when creating design object
+
+```{r}
+#| label: view-design-object
+object.size(cens_des) |> print(units="Kb")
+cens_des
+```
