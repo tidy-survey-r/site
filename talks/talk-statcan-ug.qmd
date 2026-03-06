@@ -1,11 +1,13 @@
 ---
 title: "Tidy Data,<br>Weighted Insights"
 subtitle: "Analyzing Complex Survey Data in R"
-format: revealjs
+format: 
+  revealjs:
+    logo: "../images/favicon.png"
 slide-number: true
 title-slide-attributes: 
       data-background: "#087e8b"
-      data-background-image: "images/cover.png"
+      data-background-image: "../images/cover.png"
       data-background-position: 90% center
       data-background-size: 30%
       style: "text-align: left; right: 15%"
@@ -486,3 +488,196 @@ cens_des <- c2021_ind_db |>
 object.size(cens_des) |> print(units="Kb")
 cens_des
 ```
+
+
+# Calculate means {background-color='{{< brand color secondary >}}'}
+
+## Syntax
+
+The `survey_mean()` calculates means while taking into account the survey design elements.
+
+```r
+survey_mean(
+  x, # <1>
+  na.rm = FALSE, # <2>
+  vartype = c("se", "ci", "var", "cv"), # <3>
+  level = 0.95, # <4>
+  proportion = FALSE,
+  prop_method = c("logit", "likelihood", "asin", "beta", "mean"), # <5>
+  deff = FALSE, # <6>
+  df = NULL # <7>
+)
+```
+
+## Implementation
+
+Calculate the estimated average cost of housing (`SHELCO`) in Canada:
+
+```{r}
+#| eval: false
+#| label: calc-mean-nohl
+cens_des %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) 
+```
+
+## Implementation {auto-animate=true}
+
+Calculate the estimated average cost of housing (`SHELCO`) in Canada:
+
+```{r}
+#| eval: false
+#| label: calc-mean-hl-des
+#| code-line-numbers: "1"
+cens_des %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) 
+```
+
+- Use the survey design object, not raw data
+
+## Implementation {auto-animate=true}
+
+Calculate the estimated average cost of housing (`SHELCO`) in Canada:
+
+```{r}
+#| eval: false
+#| label: calc-mean-hl-summary
+#| code-line-numbers: '2'
+cens_des %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) 
+```
+
+- Use the survey design object, not raw data
+- Call `survey_mean()` *within* `summarize()` function
+
+## Implementation {auto-animate=true}
+
+Calculate the estimated average cost of housing (`SHELCO`) in Canada:
+
+```{r}
+#| eval: false
+#| label: calc-mean-hl-vartype
+#| code-line-numbers: '3'
+cens_des %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) 
+```
+
+- Use the survey design object, not raw data
+- Call `survey_mean()` *within* `summarize()` function
+- Specify the type of variance output, here we output the standard error and confidence interval
+
+## Results {auto-animate=true}
+
+Calculate the estimated average cost of housing (`SHELCO`) in Canada:
+
+```{r}
+#| label: calc-mean
+cens_des %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) 
+```
+
+::: {.notes}
+- Estimated average cost of electricity is in the first column
+- Standard error is in the second column
+- Confidence interval is in the third and fourth columns (lower bound, upper bound)
+- This is the standard R output, we will show later on how to make these into prettier tables
+:::
+
+## Calculate means with groups
+
+Calculate the estimated average cost of housing (`SHELCO`) in Canada **by each province** (`PR`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
+
+```{r}
+#| label: calc-mean-with-groups-nohl
+#| eval: false
+#| code-line-numbers: '2'
+cens_des %>%
+  group_by(PR) %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) 
+```
+
+::: {.notes}
+- When working with subgroups, need to subset (`filter()`) or define groups (`group_by()`) before calculating the estimates
+- Here we are interested in cost of housing for each province
+:::
+
+## Calculate means with groups {.smaller}
+
+Calculate the estimated average cost of housing (`SHELCO`) in Canada **by each province** (`PR`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
+
+```{r}
+#| label: calc-mean-with-groups
+cens_des %>%
+  group_by(PR) %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) 
+```
+
+::: {.notes}
+- Output has a row for each province
+- Missing labels
+:::
+
+## Database detour: Factors/Labelled Data
+
+- Working with databases is fast and helpful with large data!  BUT...
+
+- Cannot have labelled data or factors, so our output may not be meaningful
+
+- Couple of options:
+    1. Create a new variable that is the labelled data
+    2. After completing your analyses, collect the output and label the final tables
+    
+## Factors/Labelled Data - Option 1 {.smaller}
+
+```{r}
+#| label: calc-mean-with-groups-label1
+#| code-line-numbers: 2-12
+cens_des %>%
+mutate(Province = case_when(PR == 10 ~ "Newfoundland and Labrador",
+                            PR == 11 ~ "Prince Edward Island",
+                            PR == 12 ~ "Nova Scotia",
+                            PR == 13 ~ "New Brunswick",
+                            PR == 24 ~ "Quebec",
+                            PR == 35 ~ "Ontario",
+                            PR == 46 ~ "Manitoba",
+                            PR == 47 ~ "Saskatchewan",
+                            PR == 48 ~ "Alberta",
+                            PR == 59 ~ "British Columbia",
+                            PR == 70 ~ "Northern Canada")) %>% 
+  group_by(Province) %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) 
+```
+
+::: {.notes}
+- Output auto sorts alphabetically
+:::
+
+## Database detour: Factors/Labelled Data - Option 2 {.smaller}
+
+```{r}
+#| label: calc-mean-with-groups-label2
+#| code-line-numbers: 6-12
+cens_des %>%
+  group_by(PR) %>%
+  summarize(housing_cost = survey_mean(SHELCO, 
+                                       vartype = c("se", "ci"))) %>%
+  collect() %>%
+  mutate(PR = factor(as.character(PR),
+                     levels=c("10", "11", "12", "13", "24", "35", "46",
+                              "47", "48", "59", "70"),
+                     labels=c("Newfoundland and Labrador", "Prince Edward Island", 
+                              "Nova Scotia", "New Brunswick", "Quebec", "Ontario",
+                              "Manitoba", "Saskatchewan", "Alberta", 
+                              "British Columbia", "Northern Canada")))
+```
+
+::: {.notes}
+- Output maintains ordering
+:::
