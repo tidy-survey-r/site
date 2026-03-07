@@ -1,11 +1,13 @@
 ---
 title: "Tidy Data,<br>Weighted Insights"
 subtitle: "Analyzing Complex Survey Data in R"
-format: revealjs
+format: 
+  revealjs:
+    logo: "../images/favicon.png"
 slide-number: true
 title-slide-attributes: 
       data-background: "#087e8b"
-      data-background-image: "images/cover.png"
+      data-background-image: "../images/cover.png"
       data-background-position: 90% center
       data-background-size: 30%
       style: "text-align: left; right: 15%"
@@ -130,7 +132,7 @@ Age by gender;
 
 ## Why weight?
 
-![](images/dewey-defeats-truman.jpg){fig-align="center" width=60%}
+![](../images/dewey-defeats-truman.jpg){fig-align="center" width=60%}
 
 ::: aside
 [Truman Library Institute](https://www.trumanlibraryinstitute.org/dewey-defeats-truman/)
@@ -1060,7 +1062,7 @@ Online version:
 
 - <https://tidy-survey-r.github.io/tidy-survey-book/>
 
-## Q & A {.center background-image="images/header.png" fig-alt="Imaginative drawing of a map with barplots in the fields, pie graphs as hay bales, error bars on sky scrapers"} 
+## Q & A {.center background-image="../images/header.png" fig-alt="Imaginative drawing of a map with barplots in the fields, pie graphs as hay bales, error bars on sky scrapers"} 
 
 ```{css}
 #| echo: false
