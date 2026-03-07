@@ -679,3 +679,68 @@ cens_des %>%
 ::: {.notes}
 - Output maintains ordering
 :::
+
+# Conduct t-tests {background-color='{{< brand color secondary >}}'}
+
+## Syntax
+
+Use the `svyttest()` function to compare two proportions or means.
+
+Syntax:
+  
+```r
+svyttest(formula,
+         design,
+         ...)
+```
+
+::: {.notes}
+- Similar to `t.test()` function in base R with the formula and the data arguments
+:::
+  
+## Syntax with databases
+
+1. Select the variables involved in the test
+2. Collect the design object
+3. Perform the test
+
+```r
+design %>%
+  select(var1, var2) %>% # select variables involved in testing
+  collect() %>%
+  svyttest(formula,
+           design = .,
+           ...)
+```
+
+## Implementation: one-sample t-test {auto-animate=true}
+
+Is the proportion of females^[measured on the binary] in Canada different from 50%?
+
+```{r}
+#| label: test1-descr-setup
+cens_des %>%
+  filter(between(AGEGRP, 17, 21)) %>%
+  mutate(Woman=if_else(Gender==1, 1, 0)) %>%
+  summarize(
+    WomenPct=survey_mean(Woman, proportion = TRUE, vartype = "ci")
+  )
+```
+
+## Implementation: one-sample t-test {auto-animate=true}
+
+Is the proportion of women in Canada different from 50% among those 65 years old and over?
+
+```{r}
+#| label: test1-descr-imp
+cens_des %>%
+  filter(between(AGEGRP, 17, 21)) %>%
+  mutate(Woman=if_else(Gender==1, 1, 0)) %>%
+  select(Woman) %>%
+  collect() %>%
+  svyttest(
+    formula = Woman - 0.5 ~ 0, 
+    design = .) %>%
+  broom::tidy()
+```
+
