@@ -706,14 +706,14 @@ svyttest(formula,
 
 ```r
 design %>%
-  select(var1, var2) %>% # select variables involved in testing
+  select(var1, var2) %>%
   collect() %>%
   svyttest(formula,
            design = .,
            ...)
 ```
 
-## Implementation: one-sample t-test {auto-animate=true}
+## Implementation: one-sample t-test {auto-animate=true .smaller}
 
 Is the proportion of females^[measured on the binary] in Canada different from 50%?
 
@@ -727,11 +727,37 @@ cens_des %>%
   )
 ```
 
-## Implementation: one-sample t-test {auto-animate=true}
+## Implementation: one-sample t-test {auto-animate=true .smaller}
 
 Is the proportion of women in Canada different from 50% among those 65 years old and over?
 
 ```{r}
+#| eval: false
+#| label: test1-descr-imp-wt
+cens_des %>%
+  filter(between(AGEGRP, 17, 21)) %>% # <1>
+  mutate(Woman=if_else(Gender==1, 1, 0)) %>% # <2>
+  select(Woman) %>% # <3>
+  collect() %>% # <4>
+  svyttest(
+    formula = Woman - 0.5 ~ 0, # <5>
+    design = .) %>%
+  broom::tidy() # <6>
+```
+
+1. Subset data to those age 65 and older
+2. Specify `Woman` variable as 0/1 to calculate proportion
+3. Select the variable needed for test
+4. Bring data out of database to R for testing
+5. Specify one-sided formula, always compared to 0
+6. `broom::tidy()` returns the test as a nice tibble
+
+## Implementation: one-sample t-test {auto-animate=true .smaller}
+
+Is the proportion of women in Canada different from 50% among those 65 years old and over?
+
+```{r}
+#| eval: true
 #| label: test1-descr-imp
 cens_des %>%
   filter(between(AGEGRP, 17, 21)) %>%
@@ -739,8 +765,43 @@ cens_des %>%
   select(Woman) %>%
   collect() %>%
   svyttest(
-    formula = Woman - 0.5 ~ 0, 
+    formula = Woman - 0.5 ~ 0,
     design = .) %>%
   broom::tidy()
 ```
 
+## Implementation: two-sample t-test {auto-animate=true .smaller}
+
+On average, is there a significant difference in salary between adult women and men among those who were employees?
+
+First, look at the estimated average employment income for women and men, who are adult full-time employees.
+
+```{r}
+#| label: sal-diff-descr
+cenc_des_ftw_adult <- cens_des %>%
+  filter(between(AGEGRP, 7, 21), COW == 1, !EmpIn %in% c(88888888, 99999999), FPTWK == 1) %>%
+  mutate(
+    GenderC=if_else(Gender==1, "Woman", "Man")
+  )
+cenc_des_ftw_adult %>%
+  group_by(GenderC) %>%
+  summarize(
+    EmpInMn = survey_mean(EmpIn)
+  )
+```
+
+## Implementation: two-sample t-test {auto-animate=true .smaller}
+
+Test if the employment income is significantly different for women and men:
+
+```{r}
+#| label: sal-diff-test
+cenc_des_ftw_adult %>%
+  select(EmpIn, GenderC)  %>%
+  collect() %>%
+  svyttest(
+    formula = EmpIn ~ GenderC,
+    design = .
+  ) %>%
+    broom::tidy()
+```
