@@ -438,7 +438,7 @@ nread
 :::
 
 
-## Database tables in R
+## Database tables in R {.smaller}
 
 - Make a R object pointing to the table
 - This R object is NOT a data.frame
@@ -447,7 +447,7 @@ nread
 #| label: load-data-tab-ref
 
 c2021_ind_db <- dplyr::tbl(con, I("c2021_ind"))
-object.size(c2021_ind_db) |> print(units="Kb")
+object.size(c2021_ind_db) %>% print(units="Kb")
 c2021_ind_db
 ```
 
@@ -456,7 +456,7 @@ c2021_ind_db
 
 ```{r}
 #| label: create-design-object
-cens_des <- c2021_ind_db |>
+cens_des <- c2021_ind_db %>%
   as_survey_rep(
     weights = WEIGHT, # <1>
     repweights = WT1:WT16, # <2>
@@ -473,19 +473,18 @@ cens_des <- c2021_ind_db |>
 5. When specifying `type="other"`, must specify rscales
 
 ::: {.notes}
-- The RECS data has jackknife replicate weights, so using the second function (`as_survey_rep()`)
-- Using the documention for RECS, learn the variable names for the weights, the type, and the scale
+- Using the documention for the 2021 Canadian Census, learn the variable names for the weights, the type, and the scale
 :::
 
-## Results
+## Results {.smaller}
 
-- Design object contains all the design data (i.e., weights)
+- Design object contains all the design data (i.e., replicate weights)
 - Remaining data is in the database only
 - Efficiency opportunity: specify degrees of freedom when creating design object
 
 ```{r}
 #| label: view-design-object
-object.size(cens_des) |> print(units="Kb")
+object.size(cens_des) %>% print(units="Kb")
 cens_des
 ```
 
@@ -581,7 +580,7 @@ cens_des %>%
 ```
 
 ::: {.notes}
-- Estimated average cost of electricity is in the first column
+- Estimated average cost of housing cost is in the first column
 - Standard error is in the second column
 - Confidence interval is in the third and fourth columns (lower bound, upper bound)
 - This is the standard R output, we will show later on how to make these into prettier tables
@@ -631,7 +630,7 @@ cens_des %>%
 
 - Couple of options:
     1. Create a new variable that is the labelled data
-    2. After completing your analyses, collect the output and label the final tables
+    2. After completing your analyses, label the final tables
     
 ## Factors/Labelled Data - Option 1 {.smaller}
 
@@ -659,16 +658,15 @@ mutate(Province = case_when(PR == 10 ~ "Newfoundland and Labrador",
 - Output auto sorts alphabetically
 :::
 
-## Database detour: Factors/Labelled Data - Option 2 {.smaller}
+## Factors/Labelled Data - Option 2 {.smaller}
 
 ```{r}
 #| label: calc-mean-with-groups-label2
-#| code-line-numbers: 6-12
+#| code-line-numbers: 5-11
 cens_des %>%
   group_by(PR) %>%
   summarize(housing_cost = survey_mean(SHELCO, 
                                        vartype = c("se", "ci"))) %>%
-  collect() %>%
   mutate(PR = factor(as.character(PR),
                      levels=c("10", "11", "12", "13", "24", "35", "46",
                               "47", "48", "59", "70"),

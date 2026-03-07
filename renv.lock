@@ -625,8 +625,8 @@
     },
     "dbplyr": {
       "Package": "dbplyr",
-      "Version": "2.5.2",
-      "Source": "Repository",
+      "Version": "2.5.2.9000",
+      "Source": "GitHub",
       "Type": "Package",
       "Title": "A 'dplyr' Back End for Databases",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")), person(\"Maximilian\", \"Girlich\", role = \"aut\"), person(\"Edgar\", \"Ruiz\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -635,7 +635,7 @@
       "URL": "https://dbplyr.tidyverse.org/, https://github.com/tidyverse/dbplyr",
       "BugReports": "https://github.com/tidyverse/dbplyr/issues",
       "Depends": [
-        "R (>= 3.6)"
+        "R (>= 4.1)"
       ],
       "Imports": [
         "blob (>= 1.2.0)",
@@ -664,6 +664,7 @@
         "Lahman",
         "nycflights13",
         "odbc (>= 1.4.2)",
+        "RJDBC",
         "RMariaDB (>= 1.2.2)",
         "rmarkdown",
         "RPostgres (>= 1.4.5)",
@@ -677,12 +678,19 @@
       "Config/testthat/parallel": "TRUE",
       "Encoding": "UTF-8",
       "Language": "en-gb",
+      "Roxygen": "list(markdown = TRUE)",
       "RoxygenNote": "7.3.3",
-      "Collate": "'db-sql.R' 'utils-check.R' 'import-standalone-types-check.R' 'import-standalone-obj-type.R' 'utils.R' 'sql.R' 'escape.R' 'translate-sql-cut.R' 'translate-sql-quantile.R' 'translate-sql-string.R' 'translate-sql-paste.R' 'translate-sql-helpers.R' 'translate-sql-window.R' 'translate-sql-conditional.R' 'backend-.R' 'backend-access.R' 'backend-hana.R' 'backend-hive.R' 'backend-impala.R' 'verb-copy-to.R' 'backend-mssql.R' 'backend-mysql.R' 'backend-odbc.R' 'backend-oracle.R' 'backend-postgres.R' 'backend-postgres-old.R' 'backend-redshift.R' 'backend-snowflake.R' 'backend-spark-sql.R' 'backend-sqlite.R' 'backend-teradata.R' 'build-sql.R' 'data-cache.R' 'data-lahman.R' 'data-nycflights13.R' 'db-escape.R' 'db-io.R' 'db.R' 'dbplyr.R' 'explain.R' 'ident.R' 'import-standalone-s3-register.R' 'join-by-compat.R' 'join-cols-compat.R' 'lazy-join-query.R' 'lazy-ops.R' 'lazy-query.R' 'lazy-select-query.R' 'lazy-set-op-query.R' 'memdb.R' 'optimise-utils.R' 'pillar.R' 'progress.R' 'sql-build.R' 'query-join.R' 'query-select.R' 'query-semi-join.R' 'query-set-op.R' 'query.R' 'reexport.R' 'remote.R' 'rows.R' 'schema.R' 'simulate.R' 'sql-clause.R' 'sql-expr.R' 'src-sql.R' 'src_dbi.R' 'table-name.R' 'tbl-lazy.R' 'tbl-sql.R' 'test-frame.R' 'testthat.R' 'tidyeval-across.R' 'tidyeval.R' 'translate-sql.R' 'utils-format.R' 'verb-arrange.R' 'verb-compute.R' 'verb-count.R' 'verb-distinct.R' 'verb-do-query.R' 'verb-do.R' 'verb-expand.R' 'verb-fill.R' 'verb-filter.R' 'verb-group_by.R' 'verb-head.R' 'verb-joins.R' 'verb-mutate.R' 'verb-pivot-longer.R' 'verb-pivot-wider.R' 'verb-pull.R' 'verb-select.R' 'verb-set-ops.R' 'verb-slice.R' 'verb-summarise.R' 'verb-uncount.R' 'verb-window.R' 'zzz.R'",
+      "Collate": "'verb-copy-inline.R' 'verb-copy-to.R' 'db-sql.R' 'db.R' 'utils-check.R' 'import-standalone-types-check.R' 'import-standalone-obj-type.R' 'utils.R' 'sql.R' 'escape.R' 'translate-sql-cut.R' 'translate-sql-string.R' 'translate-sql-aggregate.R' 'translate-sql-scalar.R' 'translate-sql-helpers.R' 'translate-sql-window.R' 'translate-sql-conditional.R' 'backend-.R' 'backend-access.R' 'backend-hana.R' 'backend-hive.R' 'backend-impala.R' 'backend-jdbc.R' 'backend-mssql.R' 'backend-mysql.R' 'backend-odbc.R' 'backend-oracle.R' 'backend-postgres.R' 'backend-postgres-old.R' 'backend-redshift.R' 'backend-snowflake.R' 'backend-spark-sql.R' 'backend-sqlite.R' 'backend-teradata.R' 'backward-compatibility.R' 'bind-queries.R' 'data-cache.R' 'data-lahman.R' 'data-nycflights13.R' 'db-io.R' 'dbplyr.R' 'ident.R' 'import-standalone-s3-register.R' 'join-by-compat.R' 'join-cols-compat.R' 'lazy-ops.R' 'memdb.R' 'optimise-utils.R' 'progress.R' 'query-base.R' 'query-join.R' 'query-rf-join.R' 'query-select.R' 'query-semi-join.R' 'query-set-op.R' 'query-union.R' 'query.R' 'remote.R' 'rows.R' 'schema.R' 'sql-build.R' 'sql-clause.R' 'sql-dialect.R' 'sql-glue.R' 'sql-quote.R' 'sql-superseded.R' 'src-sql.R' 'src_dbi.R' 'table-name.R' 'tbl-lazy.R' 'tbl-sql.R' 'tidyeval-across.R' 'tidyeval.R' 'translate-sql.R' 'utils-format.R' 'verb-arrange.R' 'verb-collapse.R' 'verb-collect.R' 'verb-compute.R' 'verb-count.R' 'verb-distinct.R' 'verb-do-query.R' 'verb-do.R' 'verb-expand.R' 'verb-explain.R' 'verb-fill.R' 'verb-filter.R' 'verb-group_by.R' 'verb-head.R' 'verb-joins.R' 'verb-mutate.R' 'verb-pivot-longer.R' 'verb-pivot-wider.R' 'verb-pull.R' 'verb-select.R' 'verb-set-ops.R' 'verb-slice.R' 'verb-summarise.R' 'verb-uncount.R' 'verb-window.R' 'with-dialect.R' 'zzz.R'",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "dbplyr",
+      "RemoteUsername": "szimmer",
+      "RemotePkgRef": "szimmer/dbplyr@pull-null-name-quosure",
+      "RemoteRef": "pull-null-name-quosure",
+      "RemoteSha": "20b54ac7bb6ebbe8436baf766a3e343851f6ed27",
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre], Maximilian Girlich [aut], Edgar Ruiz [aut], Posit Software, PBC [cph, fnd]",
-      "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "CRAN"
+      "Maintainer": "Hadley Wickham <hadley@posit.co>"
     },
     "digest": {
       "Package": "digest",
@@ -2377,12 +2385,12 @@
     },
     "srvyr": {
       "Package": "srvyr",
-      "Version": "1.3.0",
-      "Source": "Repository",
+      "Version": "1.3.1.9000",
+      "Source": "GitHub",
       "Type": "Package",
       "Title": "'dplyr'-Like Syntax for Summary Statistics of Survey Data",
       "Description": "Use piping, verbs like 'group_by' and 'summarize', and other 'dplyr' inspired syntactic style when calculating summary statistics on survey data using functions from the 'survey' package.",
-      "Date": "2024-08-19",
+      "Date": "2026-02-01",
       "Authors@R": "c(person(\"Greg\", \"Freedman Ellis\", email = \"greg.freedman@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Thomas\", \"Lumley\", role = \"ctb\"), person(\"Tomasz\", \"\\u017b\\u00F3\\u0142tak\", role = \"ctb\"), person(\"Ben\", \"Schneider\", role = c(\"aut\", \"ctb\")), person(\"Pavel N.\", \"Krivitsky\", email = \"pavel@statnet.org\", role = c(\"ctb\")))",
       "URL": "http://gdfe.co/srvyr/, https://github.com/gergness/srvyr/",
       "BugReports": "https://github.com/gergness/srvyr/issues",
@@ -2416,12 +2424,18 @@
       ],
       "Encoding": "UTF-8",
       "VignetteBuilder": "knitr",
-      "RoxygenNote": "7.3.2",
+      "RoxygenNote": "7.3.3",
       "Language": "en-US",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "srvyr",
+      "RemoteUsername": "gergness",
+      "RemotePkgRef": "gergness/srvyr",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "51f55c859400403c9ca954d519f6aefc2683405a",
       "NeedsCompilation": "no",
       "Author": "Greg Freedman Ellis [aut, cre], Thomas Lumley [ctb], Tomasz Żółtak [ctb], Ben Schneider [aut, ctb], Pavel N. Krivitsky [ctb]",
-      "Maintainer": "Greg Freedman Ellis <greg.freedman@gmail.com>",
-      "Repository": "CRAN"
+      "Maintainer": "Greg Freedman Ellis <greg.freedman@gmail.com>"
     },
     "srvyrexploR": {
       "Package": "srvyrexploR",
