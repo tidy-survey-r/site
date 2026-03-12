@@ -827,7 +827,8 @@ Create a table for estimated monthly cost of housing in Canada by province:
 cens_tab <- cens_des %>%
   group_by(PR) %>%
   summarize(housing_cost =
-              survey_mean(SHELCO, vartype = c("se", "ci"))) 
+              survey_mean(SHELCO, vartype = c("se", "ci"))) %>%
+  mutate(PR = as.character(PR))
 ```
 
 ## Implementation {auto-animate=true}
@@ -951,18 +952,18 @@ cens_tab %>%
   ) %>%
   fmt_number(decimals = 2) %>%
   text_case_match(
-    10 ~ "Newfoundland and Labrador",
-    11 ~ "Prince Edward Island",
-    12 ~ "Nova Scotia",
-    13 ~ "New Brunswick",
-    24 ~ "Quebec", 
-    35 ~ "Ontario",
-    46 ~ "Manitoba",
-    47 ~ "Saskatchewan",
-    48 ~ "Alberta",
-    59 ~ "British Columbia",
-    70 ~ "Northern Canada",
-    .locations = cells_body(columns = PR)
+    "10" ~ "Newfoundland and Labrador",
+    "11" ~ "Prince Edward Island",
+    "12" ~ "Nova Scotia",
+    "13" ~ "New Brunswick",
+    "24" ~ "Quebec", 
+    "35" ~ "Ontario",
+    "46" ~ "Manitoba",
+    "47" ~ "Saskatchewan",
+    "48" ~ "Alberta",
+    "59" ~ "British Columbia",
+    "70" ~ "Northern Canada",
+    .locations = cells_stub()
   )
 ```
 
@@ -989,18 +990,18 @@ cens_tab %>%
   ) %>%
   fmt_number(decimals = 2) %>%
   text_case_match(
-    10 ~ "Newfoundland and Labrador",
-    11 ~ "Prince Edward Island",
-    12 ~ "Nova Scotia",
-    13 ~ "New Brunswick",
-    24 ~ "Quebec", 
-    35 ~ "Ontario",
-    46 ~ "Manitoba",
-    47 ~ "Saskatchewan",
-    48 ~ "Alberta",
-    59 ~ "British Columbia",
-    70 ~ "Northern Canada",
-    .locations = cells_body(columns = PR)
+    "10" ~ "Newfoundland and Labrador",
+    "11" ~ "Prince Edward Island",
+    "12" ~ "Nova Scotia",
+    "13" ~ "New Brunswick",
+    "24" ~ "Quebec", 
+    "35" ~ "Ontario",
+    "46" ~ "Manitoba",
+    "47" ~ "Saskatchewan",
+    "48" ~ "Alberta",
+    "59" ~ "British Columbia",
+    "70" ~ "Northern Canada",
+    .locations = cells_stub()
   ) %>%
   tab_source_note(source_note = "Statistica Canada. 2021 Canadian Census of Population.")
 ```
