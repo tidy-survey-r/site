@@ -805,3 +805,227 @@ cenc_des_ftw_adult %>%
   ) %>%
     broom::tidy()
 ```
+
+# Create tables {background-color='{{< brand color secondary >}}'}
+
+## Syntax
+
+With the {gt} package, supply the input data table to `gt()` and add options to modify and format your table.
+
+```r
+data %>%
+  gt() %>%
+  ... add options here...
+```
+
+## Implementation {auto-animate=true}
+
+Create a table for estimated monthly cost of housing in Canada by province:
+
+```{r}
+#| label: table-gt-1
+cens_tab <- cens_des %>%
+  group_by(PR) %>%
+  summarize(housing_cost =
+              survey_mean(SHELCO, vartype = c("se", "ci"))) 
+```
+
+## Implementation {auto-animate=true}
+
+Pipe (`%>%`) your data frame (`cens_tab`) into the `gt()` function:
+
+```{r}
+#| label: table-gt-2
+cens_tab %>%
+  gt()
+```
+
+## Implementation {auto-animate=true}
+
+Continue adding to your table, for example, designating Province as a “stub”:
+
+```{r}
+#| label: table-gt-3
+cens_tab %>%
+  gt(rowname_col = "PR")
+```
+
+## Implementation {auto-animate=true}
+
+Add a title:
+
+```{r}
+#| label: table-gt-4
+#| code-line-numbers: "3"
+cens_tab %>%
+  gt(rowname_col = "PR") %>%
+  tab_header(title = "Monthly cost of housing in Canada by province")
+```
+
+## Implementation {auto-animate=true}
+
+Add more informative labels:
+
+```{r}
+#| label: table-gt-5
+#| code-line-numbers: "4-9"
+#| output-location: slide
+cens_tab %>%
+  gt(rowname_col = "PR") %>%
+  tab_header(title = "Cost of housing in Canada by province") %>%
+  cols_label(
+    housing_cost = "Average",
+    housing_cost_se = "SE",
+    housing_cost_low = "Lower",
+    housing_cost_upp = "Upper"
+  )
+```
+
+## Implementation {auto-animate=true}
+
+Label certain columns using spanners:
+
+```{r}
+#| label: table-gt-6
+#| code-line-numbers: "10-13"
+#| output-location: slide
+cens_tab %>%
+  gt(rowname_col = "PR") %>%
+  tab_header(title = "Cost of housing in Canada by province") %>%
+  cols_label(
+    housing_cost = "Average",
+    housing_cost_se = "SE",
+    housing_cost_low = "Lower",
+    housing_cost_upp = "Upper"
+  ) %>%
+  tab_spanner(
+    label = "Dollars",
+    columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)
+  )
+```
+
+## Implementation {auto-animate=true}
+
+Format numbers with the `fmt_*()` functions:
+
+```{r}
+#| label: table-gt-7
+#| code-line-numbers: "14"
+#| output-location: slide
+cens_tab %>%
+  gt(rowname_col = "PR") %>%
+  tab_header(title = "Cost of housing in Canada by province") %>%
+  cols_label(
+    housing_cost = "Average",
+    housing_cost_se = "SE",
+    housing_cost_low = "Lower",
+    housing_cost_upp = "Upper"
+  ) %>%
+  tab_spanner(
+    label = "Dollars",
+    columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)
+  ) %>%
+  fmt_number(decimals = 2)
+```
+
+## Implementation {auto-animate=true}
+
+Change row labels (without editing your data):
+
+```{r}
+#| label: table-gt-8
+#| code-line-numbers: "15-28"
+#| output-location: slide
+cens_tab %>%
+  gt(rowname_col = "PR") %>%
+  tab_header(title = "Cost of housing in Canada by province") %>%
+  cols_label(
+    housing_cost = "Average",
+    housing_cost_se = "SE",
+    housing_cost_low = "Lower",
+    housing_cost_upp = "Upper"
+  ) %>%
+  tab_spanner(
+    label = "Dollars",
+    columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)
+  ) %>%
+  fmt_number(decimals = 2) %>%
+  text_case_match(
+    10 ~ "Newfoundland and Labrador",
+    11 ~ "Prince Edward Island",
+    12 ~ "Nova Scotia",
+    13 ~ "New Brunswick",
+    24 ~ "Quebec", 
+    35 ~ "Ontario",
+    46 ~ "Manitoba",
+    47 ~ "Saskatchewan",
+    48 ~ "Alberta",
+    59 ~ "British Columbia",
+    70 ~ "Northern Canada",
+    .locations = cells_body(columns = PR)
+  )
+```
+
+## Implementation {auto-animate=true}
+
+Finish by adding a source ✨
+
+```{r}
+#| label: table-gt-9
+#| output-location: slide
+#| code-line-numbers: "21"
+cens_tab %>%
+  gt(rowname_col = "PR") %>%
+  tab_header(title = "Cost of housing in Canada by province") %>%
+  cols_label(
+    housing_cost = "Average",
+    housing_cost_se = "SE",
+    housing_cost_low = "Lower",
+    housing_cost_upp = "Upper"
+  ) %>%
+  tab_spanner(
+    label = "Dollars",
+    columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)
+  ) %>%
+  fmt_number(decimals = 2) %>%
+  # text_case_match(
+  #   vec_fmt_spelled_num(1:4) ~ "one to four",
+  #   vec_fmt_spelled_num(5:6) ~ "five or six",
+  #   .default = "seven or more",
+  #   .locations = cells_body(columns = fctr)
+  # ) %>%
+  tab_source_note(source_note = "Statistica Canada. 2021 Canadian Census of Population.")
+```
+
+# Wrap-up {background-color='{{< brand color secondary >}}'}
+
+## References {.smaller}
+
+- Freedman Ellis, Greg, and Ben Schneider. 2024. *srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data*. <http://gdfe.co/srvyr/>.
+- Lumley, Thomas. 2010. *Complex Surveys: A Guide to Analysis Using R*. John Wiley & Sons. <https://r-survey.r-forge.r-project.org/survey/>.
+- Zimmer, S. A., Powell, R. J., & Velásquez, I. C. (2024). *Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}*. Chapman & Hall: CRC Press. <https://tidy-survey-r.github.io/tidy-survey-book/>
+
+## Where to find our book
+
+Print copies:
+
+- [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867)
+- [Your local bookstore](https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867)
+- [Amazon](https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860)
+
+Online version:
+
+- <https://tidy-survey-r.github.io/tidy-survey-book/>
+
+## Q & A {.center background-image="../images/header.png" fig-alt="Imaginative drawing of a map with barplots in the fields, pie graphs as hay bales, error bars on sky scrapers"} 
+
+```{css}
+#| echo: false
+.center h2 {
+  text-align: center;
+}
+```
+
+::: {.notes}
+- Contact info will be shared in the chat
+:::
