@@ -973,7 +973,7 @@ Finish by adding a source ✨
 ```{r}
 #| label: table-gt-9
 #| output-location: slide
-#| code-line-numbers: "21"
+#| code-line-numbers: "29"
 cens_tab %>%
   gt(rowname_col = "PR") %>%
   tab_header(title = "Cost of housing in Canada by province") %>%
@@ -988,16 +988,38 @@ cens_tab %>%
     columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)
   ) %>%
   fmt_number(decimals = 2) %>%
-  # text_case_match(
-  #   vec_fmt_spelled_num(1:4) ~ "one to four",
-  #   vec_fmt_spelled_num(5:6) ~ "five or six",
-  #   .default = "seven or more",
-  #   .locations = cells_body(columns = fctr)
-  # ) %>%
+  text_case_match(
+    10 ~ "Newfoundland and Labrador",
+    11 ~ "Prince Edward Island",
+    12 ~ "Nova Scotia",
+    13 ~ "New Brunswick",
+    24 ~ "Quebec", 
+    35 ~ "Ontario",
+    46 ~ "Manitoba",
+    47 ~ "Saskatchewan",
+    48 ~ "Alberta",
+    59 ~ "British Columbia",
+    70 ~ "Northern Canada",
+    .locations = cells_body(columns = PR)
+  ) %>%
   tab_source_note(source_note = "Statistica Canada. 2021 Canadian Census of Population.")
 ```
 
 # Wrap-up {background-color='{{< brand color secondary >}}'}
+
+## Python option {.smaller}
+
+svy: a Python Package for the Design, Analysis, and Reporting of Complex Survey Data
+
+- Designed to provide equivalent design-based inference to R’s survey package
+  - Complex survey design (strata, clusters, weights)
+  - Design-based estimation with valid standard errors
+  - Replication methods (BRR, bootstrap, jackknife)
+  - Small Area Estimation (area- and unit-level models)
+  - Explicit, inspectable, reproducible outputs
+  - Integration with Polars, NumPy, SciPy, and JAX-based tooling
+
+Link to documentation: <https://svylab.com/docs/svy/>
 
 ## References {.smaller}
 
