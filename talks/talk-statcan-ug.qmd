@@ -1033,7 +1033,7 @@ Link to documentation: <https://svylab.com/docs/svy/>
 Print copies:
 
 - [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867)
-- [Your local bookstore](https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867)
+- [Your local bookstore](https://www.indiebookstores.ca/book/9781032302867/)
 - [Amazon](https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860)
 
 Online version:
