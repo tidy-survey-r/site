@@ -40,38 +40,17 @@ Posit
 
 ::::
 
-# Book overview {background-color='{{< brand color secondary >}}'}
+## Overview
 
-## Motivation
-- We are R users who work with survey data regularly
-- Share knowledge with
-  - R users who are inaccurately analyzing survey data
-  - SAS/SUDAAN/Stata users who may not know about the capabilities of R
-- {srvyr} package developed using tidyverse style syntax
-- Stephanie and Rebecca conducted a virtual short course at AAPOR conference in 2021
-- Connected with Isabella to turn the short course into a book
-
-::: {.notes}
-- {survey} original survey analysis package -- book by Thomas Lumley
-- {srvyr} builds off the {survey} package, but uses easier to understand tidyverse syntax style
-:::
-
-## What's in the book
-- High level overview of survey process
-- Comparison of syntax between {dplyr} and {srvyr}
-- How to read survey documentation
-- Descriptive analysis, statistical testing, and modeling
-- Publication ready tables and figures accounting for error
-- Creating the survey design object
-- Analysis examples using real world data
-
-::: {.notes}
-- Assume that weights are already on the dataset
-- Does not include how to create weights
-:::
+- Using R for survey analysis
+- Setting up your analysis
+- Introducing databases
+- Calculating means
+- Conducting t-tests
+- Creating tables
+- Wrap up
 
 ## R, SAS, & SUDAAN capabilities {.smaller}
-
 
 ```{r}
 #| label: feature-compare
@@ -112,7 +91,7 @@ gt(comp_df) %>%
 - SAS does sample selection
 :::
 
-# Setup {background-color='{{< brand color secondary >}}'}
+# Introduction to {survey} and {srvyr} {background-color='{{< brand color secondary >}}'}
 
 ## R packages for survey analysis {.smaller}
 
@@ -195,15 +174,17 @@ apistrat_des %>%
 - Note that the survey estimates also generate standard deviations - can also add options to get CIs, deffs, and variances
 :::
 
+# Survey analysis process {background-color='{{< brand color secondary >}}'}
+
 ## Steps for descriptive analysis
 
 1. Create a `tbl_svy` object (a survey object) using: `as_survey_design()` or `as_survey_rep()`
 
 2. Subset data (if needed) using `filter()` (to create subpopulations)
 
-3. Specify domains of analysis using `group_by()` 
+**3. Specify domains of analysis using `group_by()`**
 
-4. Within `summarize()`, specify variables to calculate, including means, totals, proportions, quantiles, and more
+**4. Within `summarize()`, specify variables to calculate, including means, totals, proportions, quantiles, and more**
 
 ::: {.notes}
 - Survey object involves specifying weights, strata and/or clusters (PSUs) OR replicate weights
@@ -218,7 +199,7 @@ apistrat_des %>%
 
 2. Subset data (if needed) using `filter()` (to create subpopulations)
 
-3. Use `svyttest()` for comparisons of proportions and means, `svygofchisq()` for GOF test, or `svychisq()` for test of independence and test of homogeneity
+**3. Use `svyttest()` for comparisons of proportions and means, `svygofchisq()` for GOF test, or `svychisq()` for test of independence and test of homogeneity**
 
 ::: {.notes}
 - Only last step changes from descriptive analysis. 
@@ -231,7 +212,7 @@ apistrat_des %>%
 
 2. Subset data (if needed) using `filter()` (to create subpopulations)
 
-3. Use `svyglm()` for linear models and logistic models, `svycoxph()` for Cox proportional-hazards, `svykm()` for Kaplan-Meier, `svyloglin()` for log-linear models, `svyolr()` for multinomial
+**3. Use `svyglm()` for linear models and logistic models, `svycoxph()` for Cox proportional-hazards, `svykm()` for Kaplan-Meier, `svyloglin()` for log-linear models, `svyolr()` for multinomial**
 
 ::: {.notes}
 - Only last step changes from descriptive analysis. Syntax mirrors glm, coxph, etc functions for non-survey data
@@ -239,7 +220,7 @@ apistrat_des %>%
 
 # Load packages and data {background-color='{{< brand color secondary >}}'}
 
-## Load packages and data
+## Load packages
 
 ```{r}
 #| label: load-pack
@@ -249,7 +230,50 @@ library(srvyr)
 library(duckdb)
 library(dbplyr)
 library(gt)
+```
 
+## Today's data
+
+Data from the 2021 Census of Population conducted by Statistics Canada
+
+- Public-use microdata from the long-form census sample, named `data_donnees_2021_ind_v2.csv`
+- Analysis uses survey weights and replicate weights provided with the data
+- 980,868 rows and 144 columns (604 MB)
+- Available online at: <https://www150.statcan.gc.ca/n1/pub/98m0001x/index-eng.htm>
+
+## Database detour
+
+- Initiate DuckDB database
+- Load CSV into database - data does NOT go into RAM
+- nread creates a small check that the number of records loaded as expected
+
+```{r}
+#| label: load-data
+con <- dbConnect(duckdb())
+nread <- duckdb_read_csv(
+  conn = con,
+  name = "c2021_ind",
+  here::here("RawDat", "data_donnees_2021_ind_v2.csv")
+)
+
+nread
+```
+
+::: {.notes}
+- For this example, we create a duckdb database. You could be pointing to existing database
+:::
+
+## Database tables in R {.smaller}
+
+- Make a R object pointing to the table
+- This R object is NOT a data.frame
+
+```{r}
+#| label: load-data-tab-ref
+
+c2021_ind_db <- dplyr::tbl(con, I("c2021_ind"))
+object.size(c2021_ind_db) %>% print(units="Kb")
+c2021_ind_db
 ```
 
 # Design object {background-color='{{< brand color secondary >}}'}
@@ -294,7 +318,7 @@ For studies with replicate weights, create the survey object using the `as_surve
 ```{r}
 #| label: survey-rep-hl-weights
 #| eval: false
-#| code-line-numbers: "4"
+#| code-line-numbers: "4|5|6,7|9,11,12,15"
 as_survey_rep(
   .data,
   variables = NULL,
@@ -317,140 +341,10 @@ as_survey_rep(
 
 ::: {.notes}
 - As with the first function, there is a `weights` argument for the main analytic weight
-:::
-
-## Syntax: replicate weights {auto-animate=true}
-
-For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
-
-```{r}
-#| label: survey-rep-hl-repweights
-#| eval: false
-#| code-line-numbers: "5"
-as_survey_rep(
-  .data,
-  variables = NULL,
-  weights = NULL,
-  repweights = NULL,
-  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
-           "successive-difference", "ACS", "other"),
-  combined_weights = TRUE,
-  rho = NULL,
-  bootstrap_average = NULL,
-  scale = NULL,
-  rscales = NULL,
-  fpc = NULL,
-  fpctype = c("fraction", "correction"),
-  mse = getOption("survey.replicates.mse"),
-  degf = NULL,
-  ...
-)
-```
-
-::: {.notes}
 - Also has the `repweights` argument to indicate the variables that hold the replicate weights
-:::
-
-## Syntax: replicate weights {auto-animate=true}
-
-For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
-
-```{r}
-#| label: survey-rep-hl-type
-#| eval: false
-#| code-line-numbers: "6,7"
-as_survey_rep(
-  .data,
-  variables = NULL,
-  weights = NULL,
-  repweights = NULL,
-  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
-           "successive-difference", "ACS", "other"),
-  combined_weights = TRUE,
-  rho = NULL,
-  bootstrap_average = NULL,
-  scale = NULL,
-  rscales = NULL,
-  fpc = NULL,
-  fpctype = c("fraction", "correction"),
-  mse = getOption("survey.replicates.mse"),
-  degf = NULL,
-  ...
-)
-```
-
-::: {.notes}
 - Need to include the type of replicate weights: Balanced Repeated Replicates (BRR), Fay, Jackknife (JK), etc.
-:::
-
-## Syntax: replicate weights {auto-animate=true}
-
-For studies with replicate weights, create the survey object using the `as_survey_rep()` function. 
-
-```{r}
-#| label: survey-rep-hl-params
-#| eval: false
-#| code-line-numbers: "9,11,12,15"
-as_survey_rep(
-  .data,
-  variables = NULL,
-  weights = NULL,
-  repweights = NULL,
-  type = c("BRR", "Fay", "JK1", "JKn", "bootstrap", 
-           "successive-difference", "ACS", "other"),
-  combined_weights = TRUE,
-  rho = NULL,
-  bootstrap_average = NULL,
-  scale = NULL,
-  rscales = NULL,
-  fpc = NULL,
-  fpctype = c("fraction", "correction"),
-  mse = getOption("survey.replicates.mse"),
-  degf = NULL,
-  ...
-)
-```
-
-::: {.notes}
 - Have separate arguments for the various parameters for the replicate weights: rho, scale, etc.
 :::
-
-## Database detour
-
-- Initiate DuckDB database
-- Load CSV into database - data does NOT go into RAM
-- nread creates a small check that the number of records loaded as expected
-
-```{r}
-#| label: load-data
-
-con <- dbConnect(duckdb())
-nread <- duckdb_read_csv(
-  conn=con, 
-  name="c2021_ind",
-  here::here("RawDat", "data_donnees_2021_ind_v2.csv")
-)
-nread
-```
-
-::: {.notes}
-- For this example, we create a duckdb database. You could be pointing to existing database
-:::
-
-
-## Database tables in R {.smaller}
-
-- Make a R object pointing to the table
-- This R object is NOT a data.frame
-
-```{r}
-#| label: load-data-tab-ref
-
-c2021_ind_db <- dplyr::tbl(con, I("c2021_ind"))
-object.size(c2021_ind_db) %>% print(units="Kb")
-c2021_ind_db
-```
-
 
 ## Implementation - design object
 
@@ -783,6 +677,7 @@ cenc_des_ftw_adult <- cens_des %>%
   mutate(
     GenderC=if_else(Gender==1, "Woman", "Man")
   )
+
 cenc_des_ftw_adult %>%
   group_by(GenderC) %>%
   summarize(
@@ -829,6 +724,8 @@ cens_tab <- cens_des %>%
   summarize(housing_cost =
               survey_mean(SHELCO, vartype = c("se", "ci"))) %>%
   mutate(PR = as.character(PR))
+
+cens_tab
 ```
 
 ## Implementation {auto-animate=true}
@@ -1008,7 +905,47 @@ cens_tab %>%
 
 # Wrap-up {background-color='{{< brand color secondary >}}'}
 
-## Python option {.smaller}
+## Learn more {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+![](../images/cover.png){fig-alt="Book cover with author names, title, and imaginative map drawing with fields that look like bar charts, buildings with error bars, and pie chart hills." style="border: 5px solid white" width=70%}
+:::
+
+::: {.column width="60%"}
+
+- High level overview of survey process
+- Comparison of syntax between {dplyr} and {srvyr}
+- How to read survey documentation
+- Descriptive analysis, statistical testing, and modeling
+- Publication ready tables and figures accounting for error
+- Creating the survey design object
+- Analysis examples using real world data
+
+:::
+
+::::
+
+::: {.notes}
+- Assume that weights are already on the dataset
+- Does not include how to create weights
+:::
+
+## Where to find our book
+
+Print copies:
+
+- [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867)
+- [Your local bookstore](https://www.indiebookstores.ca/book/9781032302867/)
+- [Amazon](https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860)
+
+Online version:
+
+- <https://tidy-survey-r.github.io/tidy-survey-book/>
+
+## Python package: svy {.smaller}
 
 svy: a Python Package for the Design, Analysis, and Reporting of Complex Survey Data
 
@@ -1028,17 +965,6 @@ Link to documentation: <https://svylab.com/docs/svy/>
 - Lumley, Thomas. 2010. *Complex Surveys: A Guide to Analysis Using R*. John Wiley & Sons. <https://r-survey.r-forge.r-project.org/survey/>.
 - Zimmer, S. A., Powell, R. J., & Velásquez, I. C. (2024). *Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}*. Chapman & Hall: CRC Press. <https://tidy-survey-r.github.io/tidy-survey-book/>
 
-## Where to find our book
-
-Print copies:
-
-- [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867)
-- [Your local bookstore](https://www.indiebookstores.ca/book/9781032302867/)
-- [Amazon](https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860)
-
-Online version:
-
-- <https://tidy-survey-r.github.io/tidy-survey-book/>
 
 ## Q & A {.center background-image="../images/header.png" fig-alt="Imaginative drawing of a map with barplots in the fields, pie graphs as hay bales, error bars on sky scrapers"} 
 
