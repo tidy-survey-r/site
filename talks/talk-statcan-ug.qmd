@@ -4,6 +4,9 @@ subtitle: "Analyzing Complex Survey Data in R"
 format: 
   revealjs:
     logo: "../images/favicon.png"
+    title-slide-attributes:
+      data-footer: "false"
+    footer: "[https://tidy-survey-r.github.io/site/talks/statcan-ug.html](https://tidy-survey-r.github.io/site/talks/statcan-ug.html)"
 slide-number: true
 title-slide-attributes: 
       data-background: "#087e8b"
@@ -50,47 +53,6 @@ Posit
 - Creating tables
 - Wrap up
 
-## R, SAS, & SUDAAN capabilities {.smaller}
-
-```{r}
-#| label: feature-compare
-#| echo: false
-
-library(tibble)
-library(gt)
-
-comp_df <- tribble(
-~Feature, ~R, ~SAS, ~SUDAAN,
-"Descriptive (out of the box)", "mean, total, proportion, percentage, quantile, ratio, variance, **correlation**", "mean, total, proportion, percentage, **geometric mean**, quantile, ratio, variance", "mean, total, proportion, percentage, **geometric mean**, quantile, ratio, variance, **correlation**",
-"Custom descriptive functions", "Yes, but must use delta method", "No method in docs", "Yes, through vargen proc",
-"Testing", "means, proportions, **quantiles**, assocation, GOF", "means, proportions, assocation, GOF", "means, proportions, assocation, GOF",
-"Design effects", "Not for quantiles, variances, or correlations", "Only for proportions", "All ests",
-"Imputation", "None", "Hot-deck, approximate Bayesian bootstrap, fully efficient fractional, two-stage fully efficient fractional, fractional hot-deck", "Weighted sequential hot deck, cell mean, regression-based (linear and logistic)",
-"Weighting", "Post-stratification in estimation, calibration (linear, raking, logit)", "Post-stratification in estimation", "Post-stratification in estimation, calibration: nonresponse and post-stratification (WTADJUST), Using variables only known for respondents in models (WTADJX)",
-"Modeling", "Linear, Logistic, Cox proportional hazards, **Kaplan-Meier**, **Multinomial**, **Poisson**, **Log-linear**", "Linear, Logistic, Cox proportional hazards", "Linear, Logistic, Cox proportional hazards, **Kaplan-Meier**, **Multinomial**, **Poisson-like count**"
-)
-
-gt(comp_df) %>%
-  fmt_markdown() %>%
-  cols_label(
-    R="R {survey} package",
-    SAS="SAS survey procs",
-    SUDAAN="SUDAAN procs"
-  ) 
-```
-
-
-::: {.notes}
-- R comparison only includes survey and srvyr packages, not other R packages
-- Bold entries in rows with bold indicate differences since there are some long lists
-- R and SUDAAN allow for more customization than SAS but harder in R (need calculus to do delta method)
-- R is only software doing testing of quantiles - some papers on how to do in others but requires custom macros
-- SAS doesn't broadly do design effects but there are some macros out there. We won't go into details but more **types** of design effects in SUDAAN than R
-- Imputation is done in other R packages
-- Weighting: all allow post-stratification while doing analysis, common in health research. Other packages in R do more than survey package
-- SAS does sample selection
-:::
-
 # Introduction to {survey} and {srvyr} {background-color='{{< brand color secondary >}}'}
 
 ## R packages for survey analysis {.smaller}
@@ -124,6 +86,7 @@ gt(comp_df) %>%
 #| label: dplyr-load
 #| echo: false
 library(dplyr)
+library(gt)
 ```
 
 ```{r}
@@ -272,7 +235,7 @@ nread
 #| label: load-data-tab-ref
 
 c2021_ind_db <- dplyr::tbl(con, I("c2021_ind"))
-object.size(c2021_ind_db) %>% print(units="Kb")
+object.size(c2021_ind_db) %>% print(units="Gb")
 c2021_ind_db
 ```
 
@@ -378,7 +341,7 @@ cens_des <- c2021_ind_db %>%
 
 ```{r}
 #| label: view-design-object
-object.size(cens_des) %>% print(units="Kb")
+object.size(cens_des) %>% print(units="Gb")
 cens_des
 ```
 
@@ -977,4 +940,47 @@ Link to documentation: <https://svylab.com/docs/svy/>
 
 ::: {.notes}
 - Contact info will be shared in the chat
+:::
+
+# Extra material {background-color='{{< brand color secondary >}}'}
+
+## R, SAS, & SUDAAN capabilities {.smaller}
+
+```{r}
+#| label: feature-compare
+#| echo: false
+
+library(tibble)
+library(gt)
+
+comp_df <- tribble(
+~Feature, ~R, ~SAS, ~SUDAAN,
+"Descriptive (out of the box)", "mean, total, proportion, percentage, quantile, ratio, variance, **correlation**", "mean, total, proportion, percentage, **geometric mean**, quantile, ratio, variance", "mean, total, proportion, percentage, **geometric mean**, quantile, ratio, variance, **correlation**",
+"Custom descriptive functions", "Yes, but must use delta method", "No method in docs", "Yes, through vargen proc",
+"Testing", "means, proportions, **quantiles**, assocation, GOF", "means, proportions, assocation, GOF", "means, proportions, assocation, GOF",
+"Design effects", "Not for quantiles, variances, or correlations", "Only for proportions", "All ests",
+"Imputation", "None", "Hot-deck, approximate Bayesian bootstrap, fully efficient fractional, two-stage fully efficient fractional, fractional hot-deck", "Weighted sequential hot deck, cell mean, regression-based (linear and logistic)",
+"Weighting", "Post-stratification in estimation, calibration (linear, raking, logit)", "Post-stratification in estimation", "Post-stratification in estimation, calibration: nonresponse and post-stratification (WTADJUST), Using variables only known for respondents in models (WTADJX)",
+"Modeling", "Linear, Logistic, Cox proportional hazards, **Kaplan-Meier**, **Multinomial**, **Poisson**, **Log-linear**", "Linear, Logistic, Cox proportional hazards", "Linear, Logistic, Cox proportional hazards, **Kaplan-Meier**, **Multinomial**, **Poisson-like count**"
+)
+
+gt(comp_df) %>%
+  fmt_markdown() %>%
+  cols_label(
+    R="R {survey} package",
+    SAS="SAS survey procs",
+    SUDAAN="SUDAAN procs"
+  ) 
+```
+
+
+::: {.notes}
+- R comparison only includes survey and srvyr packages, not other R packages
+- Bold entries in rows with bold indicate differences since there are some long lists
+- R and SUDAAN allow for more customization than SAS but harder in R (need calculus to do delta method)
+- R is only software doing testing of quantiles - some papers on how to do in others but requires custom macros
+- SAS doesn't broadly do design effects but there are some macros out there. We won't go into details but more **types** of design effects in SUDAAN than R
+- Imputation is done in other R packages
+- Weighting: all allow post-stratification while doing analysis, common in health research. Other packages in R do more than survey package
+- SAS does sample selection
 :::
