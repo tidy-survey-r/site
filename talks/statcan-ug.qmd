@@ -352,45 +352,41 @@ cens_des
 
 The `survey_mean()` calculates means while taking into account the survey design elements.
 
-```r
+```{r}
+#| eval: false
+#| label: mean-syntax
+#| code-line-numbers: "|2|4,5|6,7|8,9"
 survey_mean(
-  x, # <1>
-  na.rm = FALSE, # <2>
-  vartype = c("se", "ci", "var", "cv"), # <3>
-  level = 0.95, # <4>
+  x,
+  na.rm = FALSE,
+  vartype = c("se", "ci", "var", "cv"),
+  level = 0.95,
   proportion = FALSE,
-  prop_method = c("logit", "likelihood", "asin", "beta", "mean"), # <5>
-  deff = FALSE, # <6>
-  df = NULL # <7>
+  prop_method = c("logit", "likelihood", "asin", "beta", "mean"),
+  deff = FALSE,
+  df = NULL
 )
 ```
+
 
 ## Implementation
 
 Calculate the estimated average cost of housing (`SHELCO`) in Canada:
 
-```{r}
-#| eval: false
-#| label: calc-mean-nohl
-cens_des %>%
-  summarize(housing_cost = survey_mean(SHELCO, 
-                                       vartype = c("se", "ci"))) 
-```
-
-## Implementation {auto-animate=true}
-
-Calculate the estimated average cost of housing (`SHELCO`) in Canada:
-
+:::fragment
 ```{r}
 #| eval: false
 #| label: calc-mean-hl-des
-#| code-line-numbers: "1"
+#| code-line-numbers: "|1"
 cens_des %>%
   summarize(housing_cost = survey_mean(SHELCO, 
                                        vartype = c("se", "ci"))) 
 ```
+:::
 
+:::fragment
 - Use the survey design object, not raw data
+:::
 
 ## Implementation {auto-animate=true}
 
@@ -425,7 +421,7 @@ cens_des %>%
 - Call `survey_mean()` *within* `summarize()` function
 - Specify the type of variance output, here we output the standard error and confidence interval
 
-## Results {auto-animate=true}
+## Results
 
 Calculate the estimated average cost of housing (`SHELCO`) in Canada:
 
@@ -443,14 +439,14 @@ cens_des %>%
 - This is the standard R output, we will show later on how to make these into prettier tables
 :::
 
-## Calculate means with groups
+## Calculate means with groups {.smaller}
 
 Calculate the estimated average cost of housing (`SHELCO`) in Canada **by each province** (`PR`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
 
 ```{r}
 #| label: calc-mean-with-groups-nohl
-#| eval: false
-#| code-line-numbers: '2'
+#| code-line-numbers: '|2'
+#| output-location: fragment
 cens_des %>%
   group_by(PR) %>%
   summarize(housing_cost = survey_mean(SHELCO, 
@@ -460,21 +456,6 @@ cens_des %>%
 ::: {.notes}
 - When working with subgroups, need to subset (`filter()`) or define groups (`group_by()`) before calculating the estimates
 - Here we are interested in cost of housing for each province
-:::
-
-## Calculate means with groups {.smaller}
-
-Calculate the estimated average cost of housing (`SHELCO`) in Canada **by each province** (`PR`) by including a `group_by()` function with the variable of interest *before* the `summarize()` function:
-
-```{r}
-#| label: calc-mean-with-groups
-cens_des %>%
-  group_by(PR) %>%
-  summarize(housing_cost = survey_mean(SHELCO, 
-                                       vartype = c("se", "ci"))) 
-```
-
-::: {.notes}
 - Output has a row for each province
 - Missing labels
 :::
@@ -493,19 +474,20 @@ cens_des %>%
 
 ```{r}
 #| label: calc-mean-with-groups-label1
-#| code-line-numbers: 2-12
+#| code-line-numbers: "2-12|13"
+#| output-location: fragment
 cens_des %>%
-mutate(Province = case_when(PR == 10 ~ "Newfoundland and Labrador",
-                            PR == 11 ~ "Prince Edward Island",
-                            PR == 12 ~ "Nova Scotia",
-                            PR == 13 ~ "New Brunswick",
-                            PR == 24 ~ "Quebec",
-                            PR == 35 ~ "Ontario",
-                            PR == 46 ~ "Manitoba",
-                            PR == 47 ~ "Saskatchewan",
-                            PR == 48 ~ "Alberta",
-                            PR == 59 ~ "British Columbia",
-                            PR == 70 ~ "Northern Canada")) %>% 
+  mutate(Province = case_when(PR == 10 ~ "Newfoundland and Labrador",
+                              PR == 11 ~ "Prince Edward Island",
+                              PR == 12 ~ "Nova Scotia",
+                              PR == 13 ~ "New Brunswick",
+                              PR == 24 ~ "Quebec",
+                              PR == 35 ~ "Ontario",
+                              PR == 46 ~ "Manitoba",
+                              PR == 47 ~ "Saskatchewan",
+                              PR == 48 ~ "Alberta",
+                              PR == 59 ~ "British Columbia",
+                              PR == 70 ~ "Northern Canada")) %>% 
   group_by(Province) %>%
   summarize(housing_cost = survey_mean(SHELCO, 
                                        vartype = c("se", "ci"))) 
@@ -519,7 +501,8 @@ mutate(Province = case_when(PR == 10 ~ "Newfoundland and Labrador",
 
 ```{r}
 #| label: calc-mean-with-groups-label2
-#| code-line-numbers: 5-11
+#| code-line-numbers: "2|5-11"
+#| output-location: fragment
 cens_des %>%
   group_by(PR) %>%
   summarize(housing_cost = survey_mean(SHELCO, 
@@ -535,6 +518,7 @@ cens_des %>%
 
 ::: {.notes}
 - Output maintains ordering
+- Needs to be *after* the summarize, or it will try to edit the database and will not work.
 :::
 
 # Conduct t-tests {background-color='{{< brand color secondary >}}'}
@@ -545,34 +529,60 @@ Use the `svyttest()` function to compare two proportions or means.
 
 Syntax:
   
-```r
-svyttest(formula,
-         design,
-         ...)
+```{r}
+#| eval: false
+#| label: ttest-syntax
+#| code-line-numbers: "|2|3"
+svyttest(
+  formula,
+  design,
+  ...
+)
 ```
 
 ::: {.notes}
 - Similar to `t.test()` function in base R with the formula and the data arguments
+- Design object is the *second* argument
 :::
-  
-## Syntax with databases
+
+## Dot notation
+
+- Design object is not the first argument
+- Need to specify with dot notation in pipes
+
+```{r}
+#| eval: false
+#| label: ttest-syntax-dot
+#| code-line-numbers: "1-3|5-7"
+design_obj %>%
+  svyttest(formula = var1 ~ var2,
+           design = .)
+
+design_obj %>%
+  svyttest(design = .,
+           formula = var1 ~ var2)
+```
+
+## Syntax pipeline with databases
 
 1. Select the variables involved in the test
 2. Collect the design object
 3. Perform the test
 
-```r
-design %>%
+```{r}
+#| eval: false
+#| label: ttest-syntax-dat
+#| code-line-numbers: "1,4,5|2,3"
+design_obj %>%
   select(var1, var2) %>%
   collect() %>%
-  svyttest(formula,
-           design = .,
-           ...)
+  svyttest(formula = var1 ~ var2,
+           design = .)
 ```
 
-## Implementation: one-sample t-test {auto-animate=true .smaller}
+## Implementation: one-sample t-test {.smaller}
 
-Is the proportion of females^[measured on the binary] in Canada different from 50%?
+Is the proportion of females^[measured on the binary] in Canada different from 50% among those 65 years old and over?
 
 ```{r}
 #| label: test1-descr-setup
@@ -584,30 +594,131 @@ cens_des %>%
   )
 ```
 
+::: {.notes}
+- start by looking at the average age using `survey_mean()`
+- filtering to 5 levels of AGEGRP (17-21)
+- create new binary variable called 'Woman'
+:::
+
+## Implementation: one-sample t-test {.smaller}
+
+Is the proportion of women in Canada different from 50% among those 65 years old and over?
+
+```{r}
+#| eval: false
+#| label: test1-descr-imp-wt-1
+#| code-line-numbers: "1-3"
+cens_des %>%
+  filter(between(AGEGRP, 17, 21)) %>%
+  mutate(Woman=if_else(Gender==1, 1, 0)) %>% 
+  select(Woman) %>%
+  collect() %>%
+  svyttest(
+    formula = Woman - 0.5 ~ 0,
+    design = .) %>%
+  broom::tidy()
+```
+
+- Subset data to those age 65 and older
+- Specify `Woman` variable as 0/1 to calculate proportion
+
 ## Implementation: one-sample t-test {auto-animate=true .smaller}
 
 Is the proportion of women in Canada different from 50% among those 65 years old and over?
 
 ```{r}
 #| eval: false
-#| label: test1-descr-imp-wt
+#| label: test1-descr-imp-wt-2
+#| code-line-numbers: "4"
 cens_des %>%
-  filter(between(AGEGRP, 17, 21)) %>% # <1>
-  mutate(Woman=if_else(Gender==1, 1, 0)) %>% # <2>
-  select(Woman) %>% # <3>
-  collect() %>% # <4>
+  filter(between(AGEGRP, 17, 21)) %>%
+  mutate(Woman=if_else(Gender==1, 1, 0)) %>% 
+  select(Woman) %>%
+  collect() %>%
   svyttest(
-    formula = Woman - 0.5 ~ 0, # <5>
+    formula = Woman - 0.5 ~ 0,
     design = .) %>%
-  broom::tidy() # <6>
+  broom::tidy()
 ```
 
-1. Subset data to those age 65 and older
-2. Specify `Woman` variable as 0/1 to calculate proportion
-3. Select the variable needed for test
-4. Bring data out of database to R for testing
-5. Specify one-sided formula, always compared to 0
-6. `broom::tidy()` returns the test as a nice tibble
+- Subset data to those age 65 and older
+- Specify `Woman` variable as 0/1 to calculate proportion
+- Select the variable needed for test
+
+## Implementation: one-sample t-test {auto-animate=true .smaller}
+
+Is the proportion of women in Canada different from 50% among those 65 years old and over?
+
+```{r}
+#| eval: false
+#| label: test1-descr-imp-wt-3
+#| code-line-numbers: "5"
+cens_des %>%
+  filter(between(AGEGRP, 17, 21)) %>%
+  mutate(Woman=if_else(Gender==1, 1, 0)) %>% 
+  select(Woman) %>%
+  collect() %>%
+  svyttest(
+    formula = Woman - 0.5 ~ 0,
+    design = .) %>%
+  broom::tidy()
+```
+
+- Subset data to those age 65 and older
+- Specify `Woman` variable as 0/1 to calculate proportion
+- Select the variable needed for test
+- Bring data out of database to R for testing
+
+## Implementation: one-sample t-test {auto-animate=true .smaller}
+
+Is the proportion of women in Canada different from 50% among those 65 years old and over?
+
+```{r}
+#| eval: false
+#| label: test1-descr-imp-wt-4
+#| code-line-numbers: "6-8"
+cens_des %>%
+  filter(between(AGEGRP, 17, 21)) %>%
+  mutate(Woman=if_else(Gender==1, 1, 0)) %>% 
+  select(Woman) %>%
+  collect() %>%
+  svyttest(
+    formula = Woman - 0.5 ~ 0,
+    design = .) %>%
+  broom::tidy()
+```
+
+- Subset data to those age 65 and older
+- Specify `Woman` variable as 0/1 to calculate proportion
+- Select the variable needed for test
+- Bring data out of database to R for testing
+- Specify one-sided formula, always compared to 0
+
+## Implementation: one-sample t-test {auto-animate=true .smaller}
+
+Is the proportion of women in Canada different from 50% among those 65 years old and over?
+
+```{r}
+#| eval: false
+#| label: test1-descr-imp-wt-5
+#| code-line-numbers: "9"
+cens_des %>%
+  filter(between(AGEGRP, 17, 21)) %>%
+  mutate(Woman=if_else(Gender==1, 1, 0)) %>% 
+  select(Woman) %>%
+  collect() %>%
+  svyttest(
+    formula = Woman - 0.5 ~ 0,
+    design = .) %>%
+  broom::tidy()
+```
+
+- Subset data to those age 65 and older
+- Specify `Woman` variable as 0/1 to calculate proportion
+- Select the variable needed for test
+- Bring data out of database to R for testing
+- Specify one-sided formula, always compared to 0
+- `broom::tidy()` returns the test as a nice tibble
 
 ## Implementation: one-sample t-test {auto-animate=true .smaller}
 
@@ -631,15 +742,19 @@ cens_des %>%
 
 On average, is there a significant difference in salary between adult women and men among those who were employees?
 
+:::fragment
 First, look at the estimated average employment income for women and men, who are adult full-time employees.
 
 ```{r}
 #| label: sal-diff-descr
+#| code-line-numbers: "|2-5|6|8-12"
+#| output-location: fragment
 cenc_des_ftw_adult <- cens_des %>%
-  filter(between(AGEGRP, 7, 21), COW == 1, !EmpIn %in% c(88888888, 99999999), FPTWK == 1) %>%
-  mutate(
-    GenderC=if_else(Gender==1, "Woman", "Man")
-  )
+  filter(between(AGEGRP, 7, 21), 
+         COW == 1, 
+         !EmpIn %in% c(88888888, 99999999), 
+         FPTWK == 1) %>%
+  mutate(GenderC=if_else(Gender==1, "Woman", "Man"))
 
 cenc_des_ftw_adult %>%
   group_by(GenderC) %>%
@@ -647,6 +762,14 @@ cenc_des_ftw_adult %>%
     EmpInMn = survey_mean(EmpIn)
   )
 ```
+:::
+
+::: {.notes}
+- AGEGRP (Age groups) 7-21 gives us adults
+- COW (Class of Worker) 1 gives us "Employees" - not selfemployeed, unpaid
+- EmpIn removing missing data
+- FPTWK (full time/part time designation) 1 gives us mostly full time in 2020
+:::
 
 ## Implementation: two-sample t-test {auto-animate=true .smaller}
 
@@ -654,6 +777,8 @@ Test if the employment income is significantly different for women and men:
 
 ```{r}
 #| label: sal-diff-test
+#| code-line-numbers: "|1|2-3|5"
+#| output-location: fragment
 cenc_des_ftw_adult %>%
   select(EmpIn, GenderC)  %>%
   collect() %>%
@@ -663,6 +788,10 @@ cenc_des_ftw_adult %>%
   ) %>%
     broom::tidy()
 ```
+
+::: {.notes}
+- forumla becomes y ~ x: income ~ group
+:::
 
 # Create tables {background-color='{{< brand color secondary >}}'}
 
@@ -972,7 +1101,6 @@ gt(comp_df) %>%
     SUDAAN="SUDAAN procs"
   ) 
 ```
-
 
 ::: {.notes}
 - R comparison only includes survey and srvyr packages, not other R packages
