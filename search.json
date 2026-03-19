@@ -7,18 +7,410 @@
     "text": "Categorical Survey of Complex Survey Data in R - a half-day short course at the 2025 Midwest Association for Public Opinion Research (MAPOR) Conference in Chicago, IL\nComplex Survey Data Analysis: A Tidy Introduction with {srvyr} and {survey} - a half-day tutorial at 2025 useR conference in Durham, NC\nTidy Survey Analysis in R: Workshop Series - an online short course taught in 3 sessions of 1.5 hours each for the 2022 MAPOR Spring Webinar Series\nTidy Survey Analysis in R using the srvyr Package - a one-day online short course at the 2021 American Association for Public Opinion Research virtual conference"
   },
   {
-    "objectID": "talks/Talks.html",
-    "href": "talks/Talks.html",
-    "title": "Talks",
-    "section": "",
-    "text": "R-Ladies Amsterdam & RTP: 2025-02-25\nNCHS DRM Show & Tell: 2025-01-28"
+    "objectID": "talks/statcan-ug.html#about-us",
+    "href": "talks/statcan-ug.html#about-us",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "About us",
+    "text": "About us\n\n\n Stephanie Zimmer\nRTI International\n\n Rebecca Powell\nFors Marsh\n\n Isabella Velásquez\nPosit"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Exploring Complex Survey Data Analysis",
-    "section": "",
-    "text": "Surveys are powerful tools for gathering information, uncovering insights, and facilitating decision-making. However, to ensure the accurate interpretation of results, they require specific analysis methods. In this book, readers embark on an in-depth journey into conducting complex survey analysis with the {srvyr} package and tidyverse family of functions from the R programming language. Intended for intermediate R users familiar with the basics of the tidyverse, this book gives readers a deeper understanding of applying appropriate survey analysis techniques using {srvyr}, {survey}, and other related packages. With practical walkthroughs featuring real-world datasets, such as the American National Election Studies and Residential Energy Consumption Survey, readers will develop the skills necessary to perform impactful survey analysis on survey data collected through a randomized sample design. Additionally, this book teaches readers how to interpret and communicate results of survey data effectively.\nKey Features:\n\nUses the {srvyr} package and tidyverse family of packages.\nGrants a conceptual understanding of the statistical methods that the functions apply to.\nIncludes practical walkthroughs using publicly available survey data.\nProvides the reader with the tools for interpreting, visualizing, and presenting results.\n\n\n\n\n\n\n\n\nWhere to get the book\nPrint copies:\n\nRoutledge\nYour local bookstore\nAmazon\n\nOnline version:\n\nhttps://tidy-survey-r.github.io/tidy-survey-book/\n\n\n\nData package\nExamples throughout the book include usage of several datasets. Most of these datasets are included in the R package {srvyrexploR} available on GitHub.\n\n\nAuthors\nStephanie Zimmer, PhD, is a senior survey statistician with 10 years experience in survey sampling and design, survey weighting and analysis, and data management. She is an expert statistical programmer in R, SAS, and SUDAAN. She earned her PhD in Statistics from Iowa State University and her BS in Statistics from NC State. After earning the RStudio Tidyverse Trainer certification, she co-taught two courses on tidy survey analysis in R. She is currently a Senior Research Statistician at RTI International. Connect with her on LinkedIn or BlueSky.\nRebecca J. Powell, PhD, is the Director of Data & Research Operations at Fors Marsh. Her research interests focus on visual design of questionnaires and contact materials. Dr. Powell is a Certified RStudio Tidyverse Trainer and has taught courses and webinars on data management in R and tidy survey analysis in R at both AAPOR and MAPOR. She has a PhD in Survey Research and Methodology from the University of Nebraska-Lincoln and a BS and MS in Applied Statistics from Rochester Institute of Technology. Connect with her on LinkedIn.\nIsabella Velásquez is a content strategist, data enthusiast, and author. Her experience spans data collection, grantmaking, strategy development, and survey instrument development. She earned her MSc in Analytics and BA in Economics and East Asian Languages and Civilizations from the University of Chicago. She currently works as a Sr. Product Marketing Manager at Posit Software, PBC. Follow her blog or connect with her on LinkedIn or BlueSky."
+    "objectID": "talks/statcan-ug.html#overview",
+    "href": "talks/statcan-ug.html#overview",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Overview",
+    "text": "Overview\n\nUsing R for survey analysis\nSetting up your analysis\nIntroducing databases\nCalculating means\nConducting t-tests\nCreating tables\nWrap up"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#r-packages-for-survey-analysis",
+    "href": "talks/statcan-ug.html#r-packages-for-survey-analysis",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "R packages for survey analysis",
+    "text": "R packages for survey analysis\n\n{survey} package first on CRAN in 2003\n\ndescriptive analysis\nstatistical testing\nmodeling\nweighting\n\n{srvyr} package first on CRAN in 2016\n\n“wrapper” for {survey} with {tidyverse}-style syntax\nonly descriptive analysis\n\n{gtsummary} package first on CRAN in 2016\n\ncreates publication-ready tables from survey data\ncurrently cannot handle replicate weights\n\n\n\n\nR packages are a collection of functions\nThis is not an exhaustive list of packages that work with survey data\nSeveral packages for imputation, more complex weighting, and more\ngtsummary won’t be discussed today"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#comparison-with-dplyr",
+    "href": "talks/statcan-ug.html#comparison-with-dplyr",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Comparison with dplyr",
+    "text": "Comparison with dplyr\n\ndplyr: summary functions called within summarize()\n\ndplyr\n\ntowny %&gt;%\n  group_by(status) %&gt;%\n  summarize(\n    area_mean = mean(land_area_km2),\n    area_median = median(land_area_km2)\n  )\n\n# A tibble: 2 × 3\n  status      area_mean area_median\n  &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;\n1 lower-tier       362.        310.\n2 single-tier      388.        194."
+  },
+  {
+    "objectID": "talks/statcan-ug.html#comparison-with-dplyr-1",
+    "href": "talks/statcan-ug.html#comparison-with-dplyr-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Comparison with dplyr",
+    "text": "Comparison with dplyr\n\nsrvyr: survey_*() functions called with summarize()\n\nsrvyr\n\napistrat_des %&gt;%\n  group_by(stype) %&gt;%\n  summarize(\n    api00_mean = survey_mean(api00),\n    api00_med = survey_median(api00)\n  )\n\n# A tibble: 3 × 5\n  stype api00_mean api00_mean_se api00_med api00_med_se\n  &lt;fct&gt;      &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;\n1 E           674.          12.5       671         20.7\n2 H           626.          15.5       635         21.6\n3 M           637.          16.6       648         24.1\n\n\n\n\nIf you already use {tidyverse}/{dplyr}, the syntax {srvyr} will come easily\nFunctions commonly used like group_by, filter, and summarize also used in srvyr\nNote that the survey estimates also generate standard deviations - can also add options to get CIs, deffs, and variances"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#steps-for-descriptive-analysis",
+    "href": "talks/statcan-ug.html#steps-for-descriptive-analysis",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Steps for descriptive analysis",
+    "text": "Steps for descriptive analysis\n\nCreate a tbl_svy object (a survey object) using: as_survey_design() or as_survey_rep()\nSubset data (if needed) using filter() (to create subpopulations)\n\n3. Specify domains of analysis using group_by()\n4. Within summarize(), specify variables to calculate, including means, totals, proportions, quantiles, and more\n\n\nSurvey object involves specifying weights, strata and/or clusters (PSUs) OR replicate weights\nSurvey object can be used over and over for the same data and different analyses\nThis is necessary for getting appropriate weighted estimates and standard errors. More public use files are providing this syntax\nCan also use cascade() instead of summarize() to get the total row"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#steps-for-testing",
+    "href": "talks/statcan-ug.html#steps-for-testing",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Steps for testing",
+    "text": "Steps for testing\n\nCreate a tbl_svy object (a survey object) using: as_survey_design() or as_survey_rep()\nSubset data (if needed) using filter() (to create subpopulations)\n\n3. Use svyttest() for comparisons of proportions and means, svygofchisq() for GOF test, or svychisq() for test of independence and test of homogeneity\n\n\nOnly last step changes from descriptive analysis."
+  },
+  {
+    "objectID": "talks/statcan-ug.html#steps-for-modeling",
+    "href": "talks/statcan-ug.html#steps-for-modeling",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Steps for modeling",
+    "text": "Steps for modeling\n\nCreate a tbl_svy object (a survey object) using: as_survey_design() or as_survey_rep()\nSubset data (if needed) using filter() (to create subpopulations)\n\n3. Use svyglm() for linear models and logistic models, svycoxph() for Cox proportional-hazards, svykm() for Kaplan-Meier, svyloglin() for log-linear models, svyolr() for multinomial\n\n\nOnly last step changes from descriptive analysis. Syntax mirrors glm, coxph, etc functions for non-survey data"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#load-packages",
+    "href": "talks/statcan-ug.html#load-packages",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Load packages",
+    "text": "Load packages\n\n# install.packages(c(\"survey\", \"srvyr\", \"duckdb\", \"dbplyr\", \"gt\"))\nlibrary(survey)\nlibrary(srvyr)\nlibrary(duckdb)\nlibrary(dbplyr)\nlibrary(gt)"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#todays-data",
+    "href": "talks/statcan-ug.html#todays-data",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Today’s data",
+    "text": "Today’s data\nData from the 2021 Census of Population conducted by Statistics Canada\n\nPublic-use microdata from the long-form census sample, named data_donnees_2021_ind_v2.csv\nAnalysis uses survey weights and replicate weights provided with the data\n980,868 rows and 144 columns (604 MB)\nAvailable online at: https://www150.statcan.gc.ca/n1/pub/98m0001x/index-eng.htm"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#database-detour",
+    "href": "talks/statcan-ug.html#database-detour",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Database detour",
+    "text": "Database detour\n\nInitiate DuckDB database\nLoad CSV into database - data does NOT go into RAM\nnread creates a small check that the number of records loaded as expected\n\n\ncon &lt;- dbConnect(duckdb())\nnread &lt;- duckdb_read_csv(\n  conn = con,\n  name = \"c2021_ind\",\n  here::here(\"RawDat\", \"data_donnees_2021_ind_v2.csv\")\n)\n\nnread\n\n[1] 980868\n\n\n\n\nFor this example, we create a duckdb database. You could be pointing to existing database"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#database-tables-in-r",
+    "href": "talks/statcan-ug.html#database-tables-in-r",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Database tables in R",
+    "text": "Database tables in R\n\nMake a R object pointing to the table\nThis R object is NOT a data.frame\n\n\nc2021_ind_db &lt;- dplyr::tbl(con, I(\"c2021_ind\"))\nobject.size(c2021_ind_db) %&gt;% print(units=\"Gb\")\n\n0 Gb\n\nc2021_ind_db\n\n# A query:  ?? x 144\n# Database: DuckDB 1.4.4 [root@Darwin 22.5.0:R 4.5.2/:memory:]\n   PPSORT ABOID AGEGRP AGEIMM ATTSCH BFNMEMB BedRm CFInc CFInc_AT CFSTAT   CHDBN\n    &lt;int&gt; &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;  &lt;int&gt;   &lt;int&gt;\n 1      1     6     13      7      1       0     4    30       27      2 8.89 e7\n 2      2     6     11      5      1       0     3    18       18      2 1.15 e4\n 3      3     1     13     99      1       0     0     7        7      6 1.000e8\n 4      4     6     16     99      1       0     4    15       15      2 1.000e8\n 5      5     6     18     99      1       0     3    13       13      3 1.000e8\n 6      6     2     16     99      1       0     4     1        1      7 1.000e8\n 7      7     6     16     99      1       0     3    10       10      1 1.000e8\n 8      8     6     16      7      1       0     4    30       27      1 1.000e8\n 9      9     6     11     99      1       0     4    25       24      2 1.000e8\n10     10     6     12      6      1       0     4    22       22      2 1.000e8\n# ℹ more rows\n# ℹ 133 more variables: CIP2021 &lt;int&gt;, CIP2021_STEM_SUM &lt;int&gt;, CMA &lt;int&gt;,\n#   CONDO &lt;int&gt;, COVID_ERB &lt;int&gt;, COW &lt;int&gt;, CQPPB &lt;int&gt;, CapGn &lt;int&gt;,\n#   CfSize &lt;int&gt;, ChldC &lt;int&gt;, CitOth &lt;int&gt;, Citizen &lt;int&gt;, DIST &lt;int&gt;,\n#   DPGRSUM &lt;int&gt;, DTYPE &lt;int&gt;, EFDecile &lt;int&gt;, EFInc &lt;int&gt;, EFInc_AT &lt;int&gt;,\n#   EICBN &lt;int&gt;, ETHDER &lt;int&gt;, EfDIMBM_2018 &lt;int&gt;, EfSize &lt;int&gt;, EmpIn &lt;int&gt;,\n#   FOL &lt;int&gt;, FPTWK &lt;int&gt;, Gender &lt;int&gt;, GENSTAT &lt;int&gt;, GovtI &lt;int&gt;, …"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#syntax-replicate-weights",
+    "href": "talks/statcan-ug.html#syntax-replicate-weights",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Syntax: replicate weights",
+    "text": "Syntax: replicate weights\nFor studies with replicate weights, create the survey object using the as_survey_rep() function.\nas_survey_rep(\n  .data,\n  variables = NULL,\n  weights = NULL,\n  repweights = NULL,\n  type = c(\"BRR\", \"Fay\", \"JK1\", \"JKn\", \"bootstrap\", \n           \"successive-difference\", \"ACS\", \"other\"),\n  combined_weights = TRUE,\n  rho = NULL,\n  bootstrap_average = NULL,\n  scale = NULL,\n  rscales = NULL,\n  fpc = NULL,\n  fpctype = c(\"fraction\", \"correction\"),\n  mse = getOption(\"survey.replicates.mse\"),\n  degf = NULL,\n  ...\n)"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#syntax-replicate-weights-1",
+    "href": "talks/statcan-ug.html#syntax-replicate-weights-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Syntax: replicate weights",
+    "text": "Syntax: replicate weights\nFor studies with replicate weights, create the survey object using the as_survey_rep() function.\n\nas_survey_rep(\n  .data,\n  variables = NULL,\n  weights = NULL,\n  repweights = NULL,\n  type = c(\"BRR\", \"Fay\", \"JK1\", \"JKn\", \"bootstrap\", \n           \"successive-difference\", \"ACS\",\"other\"),\n  combined_weights = TRUE,\n  rho = NULL,\n  bootstrap_average = NULL,\n  scale = NULL,\n  rscales = NULL,\n  fpc = NULL,\n  fpctype = c(\"fraction\", \"correction\"),\n  mse = getOption(\"survey.replicates.mse\"),\n  degf = NULL,\n  ...\n)\n\n\n\nAs with the first function, there is a weights argument for the main analytic weight\nAlso has the repweights argument to indicate the variables that hold the replicate weights\nNeed to include the type of replicate weights: Balanced Repeated Replicates (BRR), Fay, Jackknife (JK), etc.\nHave separate arguments for the various parameters for the replicate weights: rho, scale, etc."
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation---design-object",
+    "href": "talks/statcan-ug.html#implementation---design-object",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation - design object",
+    "text": "Implementation - design object\n\ncens_des &lt;- c2021_ind_db %&gt;%\n  as_survey_rep(\n1    weights = WEIGHT,\n2    repweights = WT1:WT16,\n    type = \"other\",\n3    scale = 1/35,\n4    mse = TRUE,\n5    rscales = 1)\n\n\n1\n\nMain analytic weight in WEIGHT variable\n\n2\n\nReplicate weights start with WT1-WT16 variables\n\n3\n\nScaling per documentation is dividing by 35\n\n4\n\nCenter replicates around main estimate, not mean of replicates\n\n5\n\nWhen specifying type=\"other\", must specify rscales\n\n\n\n\n\n\nUsing the documention for the 2021 Canadian Census, learn the variable names for the weights, the type, and the scale"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#results",
+    "href": "talks/statcan-ug.html#results",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Results",
+    "text": "Results\n\nDesign object contains all the design data (i.e., replicate weights)\nRemaining data is in the database only\nEfficiency opportunity: specify degrees of freedom when creating design object\n\n\nobject.size(cens_des) %&gt;% print(units=\"Gb\")\n\n0.2 Gb\n\ncens_des\n\nCall: Called via srvyr\nwith 16 replicates and MSE variances.\nSampling variables:\n  - repweights: `WT1 + WT2 + WT3 + WT4 + WT5 + WT6 + WT7 + WT8 + WT9 + WT10 +\n    WT11 + WT12 + WT13 + WT14 + WT15 + WT16` \n  - weights: WEIGHT \nData variables: \n  - PPSORT (int), ABOID (int), AGEGRP (int), AGEIMM (int), ATTSCH (int),\n    BFNMEMB (int), BedRm (int), CFInc (int), CFInc_AT (int), CFSTAT (int),\n    CHDBN (int), CIP2021 (int), CIP2021_STEM_SUM (int), CMA (int), CONDO (int),\n    COVID_ERB (int), COW (int), CQPPB (int), CapGn (int), CfSize (int), ChldC\n    (int), CitOth (int), Citizen (int), DIST (int), DPGRSUM (int), DTYPE (int),\n    EFDecile (int), EFInc (int), EFInc_AT (int), EICBN (int), ETHDER (int),\n    EfDIMBM_2018 (int), EfSize (int), EmpIn (int), FOL (int), FPTWK (int),\n    Gender (int), GENSTAT (int), GovtI (int), GTRfs (int), HCORENEED_IND (int),\n    HDGREE (int), HHInc (int), HHInc_AT (int), HHMRKINC (int), HHSIZE (int),\n    HHTYPE (int), HLMOSTEN (int), HLMOSTFR (int), HLMOSTNO (int), HLREGEN\n    (int), HLREGFR (int), HLREGNO (int), IMMCAT5 (int), IMMSTAT (int), IncTax\n    (int), Invst (int), JOBPERM (int), KOL (int), LFACT (int), LICO_BT (int),\n    LICO_AT (int), LIPROGTYPE (int), LI_ELIG_OML_U18 (int), LOCSTUD (int),\n    LOC_ST_RES (int), LSTWRK (int), LWMOSTEN (int), LWMOSTFR (int), LWMOSTNO\n    (int), LWREGEN (int), LWREGFR (int), LWREGNO (int), LoLIMA (int), LoLIMB\n    (int), LoMBM_2018 (int), MODE (int), MTNEN (int), MTNFR (int), MTNNO (int),\n    MarStH (int), Mob1 (int), Mob5 (int), MrkInc (int), NAICS (int), NOC21\n    (int), NOL (int), NOS (int), OASGI (int), OtInc (int), PKID25 (int),\n    PKID0_1 (int), PKID15_24 (int), PKID2_5 (int), PKID6_14 (int), PKIDS (int),\n    POB (int), POBPAR1 (int), POBPAR2 (int), POWST (int), PR (int), PR1 (int),\n    PR5 (int), PresMortG (int), PRIHM (int), PWDUR (int), PWLEAVE (int), PWOCC\n    (int), PWPR (int), REGIND (int), Relig (int), REPAIR (int), ROOM (int),\n    Retir (int), SHELCO (int), SSGRAD (int), Subsidy (int), SempI (int), Tenur\n    (int), TotInc (int), TotInc_AT (int), VISMIN (int), Value (int), WKSWRK\n    (int), WRKACT (int), Wages (int), YRIM (int), WEIGHT (dbl), WT1 (dbl), WT2\n    (dbl), WT3 (dbl), WT4 (dbl), WT5 (dbl), WT6 (dbl), WT7 (dbl), WT8 (dbl),\n    WT9 (dbl), WT10 (dbl), WT11 (dbl), WT12 (dbl), WT13 (dbl), WT14 (dbl), WT15\n    (dbl), WT16 (dbl)"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#syntax",
+    "href": "talks/statcan-ug.html#syntax",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Syntax",
+    "text": "Syntax\nThe survey_mean() calculates means while taking into account the survey design elements.\n\nsurvey_mean(\n  x,\n  na.rm = FALSE,\n  vartype = c(\"se\", \"ci\", \"var\", \"cv\"),\n  level = 0.95,\n  proportion = FALSE,\n  prop_method = c(\"logit\", \"likelihood\", \"asin\", \"beta\", \"mean\"),\n  deff = FALSE,\n  df = NULL\n)"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation",
+    "href": "talks/statcan-ug.html#implementation",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nCalculate the estimated average cost of housing (SHELCO) in Canada:\n\n\ncens_des %&gt;%\n  summarize(housing_cost = survey_mean(SHELCO, \n                                       vartype = c(\"se\", \"ci\"))) \n\n\n\n\nUse the survey design object, not raw data"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-1",
+    "href": "talks/statcan-ug.html#implementation-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nCalculate the estimated average cost of housing (SHELCO) in Canada:\n\ncens_des %&gt;%\n  summarize(housing_cost = survey_mean(SHELCO, \n                                       vartype = c(\"se\", \"ci\"))) \n\n\nUse the survey design object, not raw data\nCall survey_mean() within summarize() function"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-2",
+    "href": "talks/statcan-ug.html#implementation-2",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nCalculate the estimated average cost of housing (SHELCO) in Canada:\n\ncens_des %&gt;%\n  summarize(housing_cost = survey_mean(SHELCO, \n                                       vartype = c(\"se\", \"ci\"))) \n\n\nUse the survey design object, not raw data\nCall survey_mean() within summarize() function\nSpecify the type of variance output, here we output the standard error and confidence interval"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#results-1",
+    "href": "talks/statcan-ug.html#results-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Results",
+    "text": "Results\nCalculate the estimated average cost of housing (SHELCO) in Canada:\n\ncens_des %&gt;%\n  summarize(housing_cost = survey_mean(SHELCO, \n                                       vartype = c(\"se\", \"ci\"))) \n\n# A tibble: 1 × 4\n  housing_cost housing_cost_se housing_cost_low housing_cost_upp\n         &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;\n1        1592.            1.12            1590.            1594.\n\n\n\n\nEstimated average cost of housing cost is in the first column\nStandard error is in the second column\nConfidence interval is in the third and fourth columns (lower bound, upper bound)\nThis is the standard R output, we will show later on how to make these into prettier tables"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#calculate-means-with-groups",
+    "href": "talks/statcan-ug.html#calculate-means-with-groups",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Calculate means with groups",
+    "text": "Calculate means with groups\nCalculate the estimated average cost of housing (SHELCO) in Canada by each province (PR) by including a group_by() function with the variable of interest before the summarize() function:\n\ncens_des %&gt;%\n  group_by(PR) %&gt;%\n  summarize(housing_cost = survey_mean(SHELCO, \n                                       vartype = c(\"se\", \"ci\"))) \n\n\n\n# A tibble: 11 × 5\n      PR housing_cost housing_cost_se housing_cost_low housing_cost_upp\n   &lt;int&gt;        &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;\n 1    10        1113.            7.75            1097.            1130.\n 2    11        1126.            8.33            1108.            1143.\n 3    12        1187.            5.14            1177.            1198.\n 4    13        1011.            3.42            1004.            1019.\n 5    24        1211.            1.77            1207.            1215.\n 6    35        1810.            2.05            1806.            1814.\n 7    46        1274.            6.39            1260.            1287.\n 8    47        1350.            4.80            1340.            1360.\n 9    48        1760.            2.70            1755.            1766.\n10    59        1845.            3.75            1837.            1853.\n11    70        1432.           18.0             1394.            1471.\n\n\n\n\nWhen working with subgroups, need to subset (filter()) or define groups (group_by()) before calculating the estimates\nHere we are interested in cost of housing for each province\nOutput has a row for each province\nMissing labels"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#database-detour-factorslabelled-data",
+    "href": "talks/statcan-ug.html#database-detour-factorslabelled-data",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Database detour: Factors/Labelled Data",
+    "text": "Database detour: Factors/Labelled Data\n\nWorking with databases is fast and helpful with large data! BUT…\nCannot have labelled data or factors, so our output may not be meaningful\nCouple of options:\n\nCreate a new variable that is the labelled data\nAfter completing your analyses, label the final tables"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#factorslabelled-data---option-1",
+    "href": "talks/statcan-ug.html#factorslabelled-data---option-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Factors/Labelled Data - Option 1",
+    "text": "Factors/Labelled Data - Option 1\n\ncens_des %&gt;%\n  mutate(Province = case_when(PR == 10 ~ \"Newfoundland and Labrador\",\n                              PR == 11 ~ \"Prince Edward Island\",\n                              PR == 12 ~ \"Nova Scotia\",\n                              PR == 13 ~ \"New Brunswick\",\n                              PR == 24 ~ \"Quebec\",\n                              PR == 35 ~ \"Ontario\",\n                              PR == 46 ~ \"Manitoba\",\n                              PR == 47 ~ \"Saskatchewan\",\n                              PR == 48 ~ \"Alberta\",\n                              PR == 59 ~ \"British Columbia\",\n                              PR == 70 ~ \"Northern Canada\")) %&gt;% \n  group_by(Province) %&gt;%\n  summarize(housing_cost = survey_mean(SHELCO, \n                                       vartype = c(\"se\", \"ci\"))) \n\n\n\n# A tibble: 11 × 5\n   Province       housing_cost housing_cost_se housing_cost_low housing_cost_upp\n   &lt;chr&gt;                 &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;\n 1 Alberta               1760.            2.70            1755.            1766.\n 2 British Colum…        1845.            3.75            1837.            1853.\n 3 Manitoba              1274.            6.39            1260.            1287.\n 4 New Brunswick         1011.            3.42            1004.            1019.\n 5 Newfoundland …        1113.            7.75            1097.            1130.\n 6 Northern Cana…        1432.           18.0             1394.            1471.\n 7 Nova Scotia           1187.            5.14            1177.            1198.\n 8 Ontario               1810.            2.05            1806.            1814.\n 9 Prince Edward…        1126.            8.33            1108.            1143.\n10 Quebec                1211.            1.77            1207.            1215.\n11 Saskatchewan          1350.            4.80            1340.            1360.\n\n\n\n\nOutput auto sorts alphabetically"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#factorslabelled-data---option-2",
+    "href": "talks/statcan-ug.html#factorslabelled-data---option-2",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Factors/Labelled Data - Option 2",
+    "text": "Factors/Labelled Data - Option 2\n\ncens_des %&gt;%\n  group_by(PR) %&gt;%\n  summarize(housing_cost = survey_mean(SHELCO, \n                                       vartype = c(\"se\", \"ci\"))) %&gt;%\n  mutate(PR = factor(as.character(PR),\n                     levels=c(\"10\", \"11\", \"12\", \"13\", \"24\", \"35\", \"46\",\n                              \"47\", \"48\", \"59\", \"70\"),\n                     labels=c(\"Newfoundland and Labrador\", \"Prince Edward Island\", \n                              \"Nova Scotia\", \"New Brunswick\", \"Quebec\", \"Ontario\",\n                              \"Manitoba\", \"Saskatchewan\", \"Alberta\", \n                              \"British Columbia\", \"Northern Canada\")))\n\n\n\n# A tibble: 11 × 5\n   PR             housing_cost housing_cost_se housing_cost_low housing_cost_upp\n   &lt;fct&gt;                 &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;\n 1 Newfoundland …        1113.            7.75            1097.            1130.\n 2 Prince Edward…        1126.            8.33            1108.            1143.\n 3 Nova Scotia           1187.            5.14            1177.            1198.\n 4 New Brunswick         1011.            3.42            1004.            1019.\n 5 Quebec                1211.            1.77            1207.            1215.\n 6 Ontario               1810.            2.05            1806.            1814.\n 7 Manitoba              1274.            6.39            1260.            1287.\n 8 Saskatchewan          1350.            4.80            1340.            1360.\n 9 Alberta               1760.            2.70            1755.            1766.\n10 British Colum…        1845.            3.75            1837.            1853.\n11 Northern Cana…        1432.           18.0             1394.            1471.\n\n\n\n\nOutput maintains ordering\nNeeds to be after the summarize, or it will try to edit the database and will not work."
+  },
+  {
+    "objectID": "talks/statcan-ug.html#syntax-1",
+    "href": "talks/statcan-ug.html#syntax-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Syntax",
+    "text": "Syntax\nUse the svyttest() function to compare two proportions or means.\nSyntax:\n\nsvyttest(\n  formula,\n  design,\n  ...\n)\n\n\n\nSimilar to t.test() function in base R with the formula and the data arguments\nDesign object is the second argument"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#dot-notation",
+    "href": "talks/statcan-ug.html#dot-notation",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Dot notation",
+    "text": "Dot notation\n\nDesign object is not the first argument\nNeed to specify with dot notation in pipes\n\n\ndesign_obj %&gt;%\n  svyttest(formula = var1 ~ var2,\n           design = .)\n\ndesign_obj %&gt;%\n  svyttest(design = .,\n           formula = var1 ~ var2)"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#syntax-pipeline-with-databases",
+    "href": "talks/statcan-ug.html#syntax-pipeline-with-databases",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Syntax pipeline with databases",
+    "text": "Syntax pipeline with databases\n\nSelect the variables involved in the test\nCollect the design object\nPerform the test\n\n\ndesign_obj %&gt;%\n  select(var1, var2) %&gt;%\n  collect() %&gt;%\n  svyttest(formula = var1 ~ var2,\n           design = .)"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-one-sample-t-test",
+    "href": "talks/statcan-ug.html#implementation-one-sample-t-test",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: one-sample t-test",
+    "text": "Implementation: one-sample t-test\nIs the proportion of females1 in Canada different from 50% among those 65 years old and over?\n\ncens_des %&gt;%\n  filter(between(AGEGRP, 17, 21)) %&gt;%\n  mutate(Woman=if_else(Gender==1, 1, 0)) %&gt;%\n  summarize(\n    WomenPct=survey_mean(Woman, proportion = TRUE, vartype = \"ci\")\n  )\n\n# A tibble: 1 × 3\n  WomenPct WomenPct_low WomenPct_upp\n     &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;\n1    0.532        0.529        0.535\n\n\n\n\nstart by looking at the average age using survey_mean()\nfiltering to 5 levels of AGEGRP (17-21)\ncreate new binary variable called ‘Woman’\n\n\nmeasured on the binary"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-one-sample-t-test-1",
+    "href": "talks/statcan-ug.html#implementation-one-sample-t-test-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: one-sample t-test",
+    "text": "Implementation: one-sample t-test\nIs the proportion of women in Canada different from 50% among those 65 years old and over?\n\ncens_des %&gt;%\n  filter(between(AGEGRP, 17, 21)) %&gt;%\n  mutate(Woman=if_else(Gender==1, 1, 0)) %&gt;% \n  select(Woman) %&gt;%\n  collect() %&gt;%\n  svyttest(\n    formula = Woman - 0.5 ~ 0,\n    design = .) %&gt;%\n  broom::tidy()\n\n\nSubset data to those age 65 and older\nSpecify Woman variable as 0/1 to calculate proportion"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-one-sample-t-test-2",
+    "href": "talks/statcan-ug.html#implementation-one-sample-t-test-2",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: one-sample t-test",
+    "text": "Implementation: one-sample t-test\nIs the proportion of women in Canada different from 50% among those 65 years old and over?\n\ncens_des %&gt;%\n  filter(between(AGEGRP, 17, 21)) %&gt;%\n  mutate(Woman=if_else(Gender==1, 1, 0)) %&gt;% \n  select(Woman) %&gt;%\n  collect() %&gt;%\n  svyttest(\n    formula = Woman - 0.5 ~ 0,\n    design = .) %&gt;%\n  broom::tidy()\n\n\nSubset data to those age 65 and older\nSpecify Woman variable as 0/1 to calculate proportion\nSelect the variable needed for test"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-one-sample-t-test-3",
+    "href": "talks/statcan-ug.html#implementation-one-sample-t-test-3",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: one-sample t-test",
+    "text": "Implementation: one-sample t-test\nIs the proportion of women in Canada different from 50% among those 65 years old and over?\n\ncens_des %&gt;%\n  filter(between(AGEGRP, 17, 21)) %&gt;%\n  mutate(Woman=if_else(Gender==1, 1, 0)) %&gt;% \n  select(Woman) %&gt;%\n  collect() %&gt;%\n  svyttest(\n    formula = Woman - 0.5 ~ 0,\n    design = .) %&gt;%\n  broom::tidy()\n\n\nSubset data to those age 65 and older\nSpecify Woman variable as 0/1 to calculate proportion\nSelect the variable needed for test\nBring data out of database to R for testing"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-one-sample-t-test-4",
+    "href": "talks/statcan-ug.html#implementation-one-sample-t-test-4",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: one-sample t-test",
+    "text": "Implementation: one-sample t-test\nIs the proportion of women in Canada different from 50% among those 65 years old and over?\n\ncens_des %&gt;%\n  filter(between(AGEGRP, 17, 21)) %&gt;%\n  mutate(Woman=if_else(Gender==1, 1, 0)) %&gt;% \n  select(Woman) %&gt;%\n  collect() %&gt;%\n  svyttest(\n    formula = Woman - 0.5 ~ 0,\n    design = .) %&gt;%\n  broom::tidy()\n\n\nSubset data to those age 65 and older\nSpecify Woman variable as 0/1 to calculate proportion\nSelect the variable needed for test\nBring data out of database to R for testing\nSpecify one-sided formula, always compared to 0"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-one-sample-t-test-5",
+    "href": "talks/statcan-ug.html#implementation-one-sample-t-test-5",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: one-sample t-test",
+    "text": "Implementation: one-sample t-test\nIs the proportion of women in Canada different from 50% among those 65 years old and over?\n\ncens_des %&gt;%\n  filter(between(AGEGRP, 17, 21)) %&gt;%\n  mutate(Woman=if_else(Gender==1, 1, 0)) %&gt;% \n  select(Woman) %&gt;%\n  collect() %&gt;%\n  svyttest(\n    formula = Woman - 0.5 ~ 0,\n    design = .) %&gt;%\n  broom::tidy()\n\n\nSubset data to those age 65 and older\nSpecify Woman variable as 0/1 to calculate proportion\nSelect the variable needed for test\nBring data out of database to R for testing\nSpecify one-sided formula, always compared to 0\nbroom::tidy() returns the test as a nice tibble"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-one-sample-t-test-6",
+    "href": "talks/statcan-ug.html#implementation-one-sample-t-test-6",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: one-sample t-test",
+    "text": "Implementation: one-sample t-test\nIs the proportion of women in Canada different from 50% among those 65 years old and over?\n\ncens_des %&gt;%\n  filter(between(AGEGRP, 17, 21)) %&gt;%\n  mutate(Woman=if_else(Gender==1, 1, 0)) %&gt;%\n  select(Woman) %&gt;%\n  collect() %&gt;%\n  svyttest(\n    formula = Woman - 0.5 ~ 0,\n    design = .) %&gt;%\n  broom::tidy()\n\n# A tibble: 1 × 8\n  estimate statistic  p.value parameter conf.low conf.high method    alternative\n     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      \n1   0.0323      23.8 1.03e-12        14   0.0294    0.0353 Design-b… two.sided"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-two-sample-t-test",
+    "href": "talks/statcan-ug.html#implementation-two-sample-t-test",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: two-sample t-test",
+    "text": "Implementation: two-sample t-test\nOn average, is there a significant difference in salary between adult women and men among those who were employees?\n\nFirst, look at the estimated average employment income for women and men, who are adult full-time employees.\n\ncenc_des_ftw_adult &lt;- cens_des %&gt;%\n  filter(between(AGEGRP, 7, 21), \n         COW == 1, \n         !EmpIn %in% c(88888888, 99999999), \n         FPTWK == 1) %&gt;%\n  mutate(GenderC=if_else(Gender==1, \"Woman\", \"Man\"))\n\ncenc_des_ftw_adult %&gt;%\n  group_by(GenderC) %&gt;%\n  summarize(\n    EmpInMn = survey_mean(EmpIn)\n  )\n\n\n\n# A tibble: 2 × 3\n  GenderC EmpInMn EmpInMn_se\n  &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n1 Man      74129.       196.\n2 Woman    57148.       147.\n\n\n\n\n\nAGEGRP (Age groups) 7-21 gives us adults\nCOW (Class of Worker) 1 gives us “Employees” - not selfemployeed, unpaid\nEmpIn removing missing data\nFPTWK (full time/part time designation) 1 gives us mostly full time in 2020"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-two-sample-t-test-1",
+    "href": "talks/statcan-ug.html#implementation-two-sample-t-test-1",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation: two-sample t-test",
+    "text": "Implementation: two-sample t-test\nTest if the employment income is significantly different for women and men:\n\ncenc_des_ftw_adult %&gt;%\n  select(EmpIn, GenderC)  %&gt;%\n  collect() %&gt;%\n  svyttest(\n    formula = EmpIn ~ GenderC,\n    design = .\n  ) %&gt;%\n    broom::tidy()\n\n\n\n# A tibble: 1 × 8\n  estimate statistic  p.value parameter conf.low conf.high method    alternative\n     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      \n1  -16982.     -60.1 2.66e-18        14  -17587.   -16376. Design-b… two.sided  \n\n\n\n\nforumla becomes y ~ x: income ~ group"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#syntax-2",
+    "href": "talks/statcan-ug.html#syntax-2",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Syntax",
+    "text": "Syntax\nWith the {gt} package, supply the input data table to gt() and add options to modify and format your table.\ndata %&gt;%\n  gt() %&gt;%\n  ... add options here..."
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-3",
+    "href": "talks/statcan-ug.html#implementation-3",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nCreate a table for estimated monthly cost of housing in Canada by province:\n\ncens_tab &lt;- cens_des %&gt;%\n  group_by(PR) %&gt;%\n  summarize(housing_cost =\n              survey_mean(SHELCO, vartype = c(\"se\", \"ci\"))) %&gt;%\n  mutate(PR = as.character(PR))\n\ncens_tab\n\n# A tibble: 11 × 5\n   PR    housing_cost housing_cost_se housing_cost_low housing_cost_upp\n   &lt;chr&gt;        &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;\n 1 10           1113.            7.75            1097.            1130.\n 2 11           1126.            8.33            1108.            1143.\n 3 12           1187.            5.14            1177.            1198.\n 4 13           1011.            3.42            1004.            1019.\n 5 24           1211.            1.77            1207.            1215.\n 6 35           1810.            2.05            1806.            1814.\n 7 46           1274.            6.39            1260.            1287.\n 8 47           1350.            4.80            1340.            1360.\n 9 48           1760.            2.70            1755.            1766.\n10 59           1845.            3.75            1837.            1853.\n11 70           1432.           18.0             1394.            1471."
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-4",
+    "href": "talks/statcan-ug.html#implementation-4",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nPipe (%&gt;%) your data frame (cens_tab) into the gt() function:\n\ncens_tab %&gt;%\n  gt()\n\n\n\n\n\n\n\nPR\nhousing_cost\nhousing_cost_se\nhousing_cost_low\nhousing_cost_upp\n\n\n\n\n10\n1113.273\n7.748895\n1096.757\n1129.790\n\n\n11\n1125.558\n8.331108\n1107.800\n1143.315\n\n\n12\n1187.458\n5.138334\n1176.506\n1198.410\n\n\n13\n1011.460\n3.418450\n1004.174\n1018.746\n\n\n24\n1211.113\n1.771247\n1207.337\n1214.888\n\n\n35\n1809.889\n2.046193\n1805.527\n1814.250\n\n\n46\n1273.580\n6.386941\n1259.967\n1287.193\n\n\n47\n1350.052\n4.799534\n1339.822\n1360.282\n\n\n48\n1760.305\n2.696103\n1754.559\n1766.052\n\n\n59\n1844.768\n3.753446\n1836.768\n1852.768\n\n\n70\n1432.166\n18.025602\n1393.745\n1470.586"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-5",
+    "href": "talks/statcan-ug.html#implementation-5",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nContinue adding to your table, for example, designating Province as a “stub”:\n\ncens_tab %&gt;%\n  gt(rowname_col = \"PR\")\n\n\n\n\n\n\n\n\nhousing_cost\nhousing_cost_se\nhousing_cost_low\nhousing_cost_upp\n\n\n\n\n10\n1113.273\n7.748895\n1096.757\n1129.790\n\n\n11\n1125.558\n8.331108\n1107.800\n1143.315\n\n\n12\n1187.458\n5.138334\n1176.506\n1198.410\n\n\n13\n1011.460\n3.418450\n1004.174\n1018.746\n\n\n24\n1211.113\n1.771247\n1207.337\n1214.888\n\n\n35\n1809.889\n2.046193\n1805.527\n1814.250\n\n\n46\n1273.580\n6.386941\n1259.967\n1287.193\n\n\n47\n1350.052\n4.799534\n1339.822\n1360.282\n\n\n48\n1760.305\n2.696103\n1754.559\n1766.052\n\n\n59\n1844.768\n3.753446\n1836.768\n1852.768\n\n\n70\n1432.166\n18.025602\n1393.745\n1470.586"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-6",
+    "href": "talks/statcan-ug.html#implementation-6",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nAdd a title:\n\ncens_tab %&gt;%\n  gt(rowname_col = \"PR\") %&gt;%\n  tab_header(title = \"Monthly cost of housing in Canada by province\")\n\n\n\n\n\n\n\nMonthly cost of housing in Canada by province\n\n\n\nhousing_cost\nhousing_cost_se\nhousing_cost_low\nhousing_cost_upp\n\n\n\n\n10\n1113.273\n7.748895\n1096.757\n1129.790\n\n\n11\n1125.558\n8.331108\n1107.800\n1143.315\n\n\n12\n1187.458\n5.138334\n1176.506\n1198.410\n\n\n13\n1011.460\n3.418450\n1004.174\n1018.746\n\n\n24\n1211.113\n1.771247\n1207.337\n1214.888\n\n\n35\n1809.889\n2.046193\n1805.527\n1814.250\n\n\n46\n1273.580\n6.386941\n1259.967\n1287.193\n\n\n47\n1350.052\n4.799534\n1339.822\n1360.282\n\n\n48\n1760.305\n2.696103\n1754.559\n1766.052\n\n\n59\n1844.768\n3.753446\n1836.768\n1852.768\n\n\n70\n1432.166\n18.025602\n1393.745\n1470.586"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-7",
+    "href": "talks/statcan-ug.html#implementation-7",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nAdd more informative labels:\n\ncens_tab %&gt;%\n  gt(rowname_col = \"PR\") %&gt;%\n  tab_header(title = \"Cost of housing in Canada by province\") %&gt;%\n  cols_label(\n    housing_cost = \"Average\",\n    housing_cost_se = \"SE\",\n    housing_cost_low = \"Lower\",\n    housing_cost_upp = \"Upper\"\n  )"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-7-output",
+    "href": "talks/statcan-ug.html#implementation-7-output",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\n\n\n\n\n\n\n\nCost of housing in Canada by province\n\n\n\nAverage\nSE\nLower\nUpper\n\n\n\n\n10\n1113.273\n7.748895\n1096.757\n1129.790\n\n\n11\n1125.558\n8.331108\n1107.800\n1143.315\n\n\n12\n1187.458\n5.138334\n1176.506\n1198.410\n\n\n13\n1011.460\n3.418450\n1004.174\n1018.746\n\n\n24\n1211.113\n1.771247\n1207.337\n1214.888\n\n\n35\n1809.889\n2.046193\n1805.527\n1814.250\n\n\n46\n1273.580\n6.386941\n1259.967\n1287.193\n\n\n47\n1350.052\n4.799534\n1339.822\n1360.282\n\n\n48\n1760.305\n2.696103\n1754.559\n1766.052\n\n\n59\n1844.768\n3.753446\n1836.768\n1852.768\n\n\n70\n1432.166\n18.025602\n1393.745\n1470.586"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-8",
+    "href": "talks/statcan-ug.html#implementation-8",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nLabel certain columns using spanners:\n\ncens_tab %&gt;%\n  gt(rowname_col = \"PR\") %&gt;%\n  tab_header(title = \"Cost of housing in Canada by province\") %&gt;%\n  cols_label(\n    housing_cost = \"Average\",\n    housing_cost_se = \"SE\",\n    housing_cost_low = \"Lower\",\n    housing_cost_upp = \"Upper\"\n  ) %&gt;%\n  tab_spanner(\n    label = \"Dollars\",\n    columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)\n  )"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-8-output",
+    "href": "talks/statcan-ug.html#implementation-8-output",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCost of housing in Canada by province\n\n\n\n\nDollars\n\n\n\nAverage\nSE\nLower\nUpper\n\n\n\n\n10\n1113.273\n7.748895\n1096.757\n1129.790\n\n\n11\n1125.558\n8.331108\n1107.800\n1143.315\n\n\n12\n1187.458\n5.138334\n1176.506\n1198.410\n\n\n13\n1011.460\n3.418450\n1004.174\n1018.746\n\n\n24\n1211.113\n1.771247\n1207.337\n1214.888\n\n\n35\n1809.889\n2.046193\n1805.527\n1814.250\n\n\n46\n1273.580\n6.386941\n1259.967\n1287.193\n\n\n47\n1350.052\n4.799534\n1339.822\n1360.282\n\n\n48\n1760.305\n2.696103\n1754.559\n1766.052\n\n\n59\n1844.768\n3.753446\n1836.768\n1852.768\n\n\n70\n1432.166\n18.025602\n1393.745\n1470.586"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-9",
+    "href": "talks/statcan-ug.html#implementation-9",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nFormat numbers with the fmt_*() functions:\n\ncens_tab %&gt;%\n  gt(rowname_col = \"PR\") %&gt;%\n  tab_header(title = \"Cost of housing in Canada by province\") %&gt;%\n  cols_label(\n    housing_cost = \"Average\",\n    housing_cost_se = \"SE\",\n    housing_cost_low = \"Lower\",\n    housing_cost_upp = \"Upper\"\n  ) %&gt;%\n  tab_spanner(\n    label = \"Dollars\",\n    columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)\n  ) %&gt;%\n  fmt_number(decimals = 2)"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-9-output",
+    "href": "talks/statcan-ug.html#implementation-9-output",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCost of housing in Canada by province\n\n\n\n\nDollars\n\n\n\nAverage\nSE\nLower\nUpper\n\n\n\n\n10\n1,113.27\n7.75\n1,096.76\n1,129.79\n\n\n11\n1,125.56\n8.33\n1,107.80\n1,143.31\n\n\n12\n1,187.46\n5.14\n1,176.51\n1,198.41\n\n\n13\n1,011.46\n3.42\n1,004.17\n1,018.75\n\n\n24\n1,211.11\n1.77\n1,207.34\n1,214.89\n\n\n35\n1,809.89\n2.05\n1,805.53\n1,814.25\n\n\n46\n1,273.58\n6.39\n1,259.97\n1,287.19\n\n\n47\n1,350.05\n4.80\n1,339.82\n1,360.28\n\n\n48\n1,760.31\n2.70\n1,754.56\n1,766.05\n\n\n59\n1,844.77\n3.75\n1,836.77\n1,852.77\n\n\n70\n1,432.17\n18.03\n1,393.75\n1,470.59"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-10",
+    "href": "talks/statcan-ug.html#implementation-10",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nChange row labels (without editing your data):\n\ncens_tab %&gt;%\n  gt(rowname_col = \"PR\") %&gt;%\n  tab_header(title = \"Cost of housing in Canada by province\") %&gt;%\n  cols_label(\n    housing_cost = \"Average\",\n    housing_cost_se = \"SE\",\n    housing_cost_low = \"Lower\",\n    housing_cost_upp = \"Upper\"\n  ) %&gt;%\n  tab_spanner(\n    label = \"Dollars\",\n    columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)\n  ) %&gt;%\n  fmt_number(decimals = 2) %&gt;%\n  text_case_match(\n    \"10\" ~ \"Newfoundland and Labrador\",\n    \"11\" ~ \"Prince Edward Island\",\n    \"12\" ~ \"Nova Scotia\",\n    \"13\" ~ \"New Brunswick\",\n    \"24\" ~ \"Quebec\", \n    \"35\" ~ \"Ontario\",\n    \"46\" ~ \"Manitoba\",\n    \"47\" ~ \"Saskatchewan\",\n    \"48\" ~ \"Alberta\",\n    \"59\" ~ \"British Columbia\",\n    \"70\" ~ \"Northern Canada\",\n    .locations = cells_stub()\n  )"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-10-output",
+    "href": "talks/statcan-ug.html#implementation-10-output",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCost of housing in Canada by province\n\n\n\n\nDollars\n\n\n\nAverage\nSE\nLower\nUpper\n\n\n\n\nNewfoundland and Labrador\n1,113.27\n7.75\n1,096.76\n1,129.79\n\n\nPrince Edward Island\n1,125.56\n8.33\n1,107.80\n1,143.31\n\n\nNova Scotia\n1,187.46\n5.14\n1,176.51\n1,198.41\n\n\nNew Brunswick\n1,011.46\n3.42\n1,004.17\n1,018.75\n\n\nQuebec\n1,211.11\n1.77\n1,207.34\n1,214.89\n\n\nOntario\n1,809.89\n2.05\n1,805.53\n1,814.25\n\n\nManitoba\n1,273.58\n6.39\n1,259.97\n1,287.19\n\n\nSaskatchewan\n1,350.05\n4.80\n1,339.82\n1,360.28\n\n\nAlberta\n1,760.31\n2.70\n1,754.56\n1,766.05\n\n\nBritish Columbia\n1,844.77\n3.75\n1,836.77\n1,852.77\n\n\nNorthern Canada\n1,432.17\n18.03\n1,393.75\n1,470.59"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-11",
+    "href": "talks/statcan-ug.html#implementation-11",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\nFinish by adding a source ✨\n\ncens_tab %&gt;%\n  gt(rowname_col = \"PR\") %&gt;%\n  tab_header(title = \"Cost of housing in Canada by province\") %&gt;%\n  cols_label(\n    housing_cost = \"Average\",\n    housing_cost_se = \"SE\",\n    housing_cost_low = \"Lower\",\n    housing_cost_upp = \"Upper\"\n  ) %&gt;%\n  tab_spanner(\n    label = \"Dollars\",\n    columns = c(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)\n  ) %&gt;%\n  fmt_number(decimals = 2) %&gt;%\n  text_case_match(\n    \"10\" ~ \"Newfoundland and Labrador\",\n    \"11\" ~ \"Prince Edward Island\",\n    \"12\" ~ \"Nova Scotia\",\n    \"13\" ~ \"New Brunswick\",\n    \"24\" ~ \"Quebec\", \n    \"35\" ~ \"Ontario\",\n    \"46\" ~ \"Manitoba\",\n    \"47\" ~ \"Saskatchewan\",\n    \"48\" ~ \"Alberta\",\n    \"59\" ~ \"British Columbia\",\n    \"70\" ~ \"Northern Canada\",\n    .locations = cells_stub()\n  ) %&gt;%\n  tab_source_note(source_note = \"Statistica Canada. 2021 Canadian Census of Population.\")"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#implementation-11-output",
+    "href": "talks/statcan-ug.html#implementation-11-output",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Implementation",
+    "text": "Implementation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCost of housing in Canada by province\n\n\n\n\nDollars\n\n\n\nAverage\nSE\nLower\nUpper\n\n\n\n\nNewfoundland and Labrador\n1,113.27\n7.75\n1,096.76\n1,129.79\n\n\nPrince Edward Island\n1,125.56\n8.33\n1,107.80\n1,143.31\n\n\nNova Scotia\n1,187.46\n5.14\n1,176.51\n1,198.41\n\n\nNew Brunswick\n1,011.46\n3.42\n1,004.17\n1,018.75\n\n\nQuebec\n1,211.11\n1.77\n1,207.34\n1,214.89\n\n\nOntario\n1,809.89\n2.05\n1,805.53\n1,814.25\n\n\nManitoba\n1,273.58\n6.39\n1,259.97\n1,287.19\n\n\nSaskatchewan\n1,350.05\n4.80\n1,339.82\n1,360.28\n\n\nAlberta\n1,760.31\n2.70\n1,754.56\n1,766.05\n\n\nBritish Columbia\n1,844.77\n3.75\n1,836.77\n1,852.77\n\n\nNorthern Canada\n1,432.17\n18.03\n1,393.75\n1,470.59\n\n\n\nStatistica Canada. 2021 Canadian Census of Population."
+  },
+  {
+    "objectID": "talks/statcan-ug.html#learn-more",
+    "href": "talks/statcan-ug.html#learn-more",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Learn more",
+    "text": "Learn more\n\n\n\n\n\nHigh level overview of survey process\nComparison of syntax between {dplyr} and {srvyr}\nHow to read survey documentation\nDescriptive analysis, statistical testing, and modeling\nPublication ready tables and figures accounting for error\nCreating the survey design object\nAnalysis examples using real world data\n\n\n\n\nAssume that weights are already on the dataset\nDoes not include how to create weights"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#where-to-find-our-book",
+    "href": "talks/statcan-ug.html#where-to-find-our-book",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Where to find our book",
+    "text": "Where to find our book\nPrint copies:\n\nRoutledge\nYour local bookstore\nAmazon\n\nOnline version:\n\nhttps://tidy-survey-r.github.io/tidy-survey-book/"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#python-package-svy",
+    "href": "talks/statcan-ug.html#python-package-svy",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Python package: svy",
+    "text": "Python package: svy\nsvy: a Python Package for the Design, Analysis, and Reporting of Complex Survey Data\n\nDesigned to provide equivalent design-based inference to R’s survey package\n\nComplex survey design (strata, clusters, weights)\nDesign-based estimation with valid standard errors\nReplication methods (BRR, bootstrap, jackknife)\nSmall Area Estimation (area- and unit-level models)\nExplicit, inspectable, reproducible outputs\nIntegration with Polars, NumPy, SciPy, and JAX-based tooling\n\n\nLink to documentation: https://svylab.com/docs/svy/"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#references",
+    "href": "talks/statcan-ug.html#references",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "References",
+    "text": "References\n\nFreedman Ellis, Greg, and Ben Schneider. 2024. srvyr: ’dplyr’-Like Syntax for Summary Statistics of Survey Data. http://gdfe.co/srvyr/.\nLumley, Thomas. 2010. Complex Surveys: A Guide to Analysis Using R. John Wiley & Sons. https://r-survey.r-forge.r-project.org/survey/.\nZimmer, S. A., Powell, R. J., & Velásquez, I. C. (2024). Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}. Chapman & Hall: CRC Press. https://tidy-survey-r.github.io/tidy-survey-book/"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#q-a",
+    "href": "talks/statcan-ug.html#q-a",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "Q & A",
+    "text": "Q & A\n\n\n\n\n\nContact info will be shared in the chat"
+  },
+  {
+    "objectID": "talks/statcan-ug.html#r-sas-sudaan-capabilities",
+    "href": "talks/statcan-ug.html#r-sas-sudaan-capabilities",
+    "title": "Tidy Data,Weighted Insights",
+    "section": "R, SAS, & SUDAAN capabilities",
+    "text": "R, SAS, & SUDAAN capabilities\n\n\n\n\n\n\n\n\nFeature\nR {survey} package\nSAS survey procs\nSUDAAN procs\n\n\n\n\nDescriptive (out of the box)\nmean, total, proportion, percentage, quantile, ratio, variance, correlation\nmean, total, proportion, percentage, geometric mean, quantile, ratio, variance\nmean, total, proportion, percentage, geometric mean, quantile, ratio, variance, correlation\n\n\nCustom descriptive functions\nYes, but must use delta method\nNo method in docs\nYes, through vargen proc\n\n\nTesting\nmeans, proportions, quantiles, assocation, GOF\nmeans, proportions, assocation, GOF\nmeans, proportions, assocation, GOF\n\n\nDesign effects\nNot for quantiles, variances, or correlations\nOnly for proportions\nAll ests\n\n\nImputation\nNone\nHot-deck, approximate Bayesian bootstrap, fully efficient fractional, two-stage fully efficient fractional, fractional hot-deck\nWeighted sequential hot deck, cell mean, regression-based (linear and logistic)\n\n\nWeighting\nPost-stratification in estimation, calibration (linear, raking, logit)\nPost-stratification in estimation\nPost-stratification in estimation, calibration: nonresponse and post-stratification (WTADJUST), Using variables only known for respondents in models (WTADJX)\n\n\nModeling\nLinear, Logistic, Cox proportional hazards, Kaplan-Meier, Multinomial, Poisson, Log-linear\nLinear, Logistic, Cox proportional hazards\nLinear, Logistic, Cox proportional hazards, Kaplan-Meier, Multinomial, Poisson-like count\n\n\n\n\n\n\n\n\n\nR comparison only includes survey and srvyr packages, not other R packages\nBold entries in rows with bold indicate differences since there are some long lists\nR and SUDAAN allow for more customization than SAS but harder in R (need calculus to do delta method)\nR is only software doing testing of quantiles - some papers on how to do in others but requires custom macros\nSAS doesn’t broadly do design effects but there are some macros out there. We won’t go into details but more types of design effects in SUDAAN than R\nImputation is done in other R packages\nWeighting: all allow post-stratification while doing analysis, common in health research. Other packages in R do more than survey package\nSAS does sample selection"
   },
   {
     "objectID": "talks/talk-nchs-show-tell.html#about-us",
@@ -397,6 +789,20 @@
     "title": "Tidy Data,Weighted Insights",
     "section": "Q & A",
     "text": "Q & A\n\n\n\n\n\nContact info will be shared in the chat"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Exploring Complex Survey Data Analysis",
+    "section": "",
+    "text": "Surveys are powerful tools for gathering information, uncovering insights, and facilitating decision-making. However, to ensure the accurate interpretation of results, they require specific analysis methods. In this book, readers embark on an in-depth journey into conducting complex survey analysis with the {srvyr} package and tidyverse family of functions from the R programming language. Intended for intermediate R users familiar with the basics of the tidyverse, this book gives readers a deeper understanding of applying appropriate survey analysis techniques using {srvyr}, {survey}, and other related packages. With practical walkthroughs featuring real-world datasets, such as the American National Election Studies and Residential Energy Consumption Survey, readers will develop the skills necessary to perform impactful survey analysis on survey data collected through a randomized sample design. Additionally, this book teaches readers how to interpret and communicate results of survey data effectively.\nKey Features:\n\nUses the {srvyr} package and tidyverse family of packages.\nGrants a conceptual understanding of the statistical methods that the functions apply to.\nIncludes practical walkthroughs using publicly available survey data.\nProvides the reader with the tools for interpreting, visualizing, and presenting results.\n\n\n\n\n\n\n\n\nWhere to get the book\nPrint copies:\n\nRoutledge\nYour local bookstore in USA\nYour local bookstore in Canada\nYour local bookstore in the UK\nAmazon\n\nOnline version:\n\nhttps://tidy-survey-r.github.io/tidy-survey-book/\n\n\n\nData package\nExamples throughout the book include usage of several datasets. Most of these datasets are included in the R package {srvyrexploR} available on GitHub.\n\n\nAuthors\nStephanie Zimmer, PhD, is a senior survey statistician with 10 years experience in survey sampling and design, survey weighting and analysis, and data management. She is an expert statistical programmer in R, SAS, and SUDAAN. She earned her PhD in Statistics from Iowa State University and her BS in Statistics from NC State. After earning the RStudio Tidyverse Trainer certification, she co-taught two courses on tidy survey analysis in R. She is currently a Senior Research Statistician at RTI International. Connect with her on LinkedIn or BlueSky.\nRebecca J. Powell, PhD, is the Director of Data & Research Operations at Fors Marsh. Her research interests focus on visual design of questionnaires and contact materials. Dr. Powell is a Certified RStudio Tidyverse Trainer and has taught courses and webinars on data management in R and tidy survey analysis in R at both AAPOR and MAPOR. She has a PhD in Survey Research and Methodology from the University of Nebraska-Lincoln and a BS and MS in Applied Statistics from Rochester Institute of Technology. Connect with her on LinkedIn.\nIsabella Velásquez is a content strategist, data enthusiast, and author. Her experience spans data collection, grantmaking, strategy development, and survey instrument development. She earned her MSc in Analytics and BA in Economics and East Asian Languages and Civilizations from the University of Chicago. She currently works as a Sr. Product Marketing Manager at Posit Software, PBC. Follow her blog or connect with her on LinkedIn or BlueSky."
+  },
+  {
+    "objectID": "talks/Talks.html",
+    "href": "talks/Talks.html",
+    "title": "Talks",
+    "section": "",
+    "text": "StatCan R and Python Users Group: 2026-03-20\nR-Ladies Amsterdam & RTP: 2025-02-25\nNCHS DRM Show & Tell: 2025-01-28"
   },
   {
     "objectID": "talks/talk-rladies-ams-rtp.html#about-us",
