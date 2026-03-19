@@ -3,7 +3,6 @@ title: "Tidy Data,<br>Weighted Insights"
 subtitle: "Analyzing Complex Survey Data in R"
 format: 
   revealjs:
-    logo: "../images/favicon.png"
     title-slide-attributes:
       data-footer: "false"
     footer: "[https://tidy-survey-r.github.io/site/talks/statcan-ug.html](https://tidy-survey-r.github.io/site/talks/statcan-ug.html)"
