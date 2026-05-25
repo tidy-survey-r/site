@@ -3,17 +3,29 @@ project:
   
 website:
   favicon: images/favicon.png
+  search: false
   navbar:
-    background: primary
-    search: true
+    pinned: true
+    background: $brand-lightblue
     left:
+      - text: "Tidy Survey Analysis in R"
+    right:
       - text: "Home"
         href: index.qmd
       - talks/Talks.qmd
       - text: "Short courses"
         href: short-courses.qmd
+      - text: "<button class='nav-btn'>Read the book →</button>"
+        href: https://tidy-survey-r.github.io/tidy-survey-book/
+  page-footer: TIDY SURVEY ANALYSIS IN R © 2024-2026. CC-BY-NC-ND 4.0.
 
 editor: source
+
+format:
+  html:
+    page-layout: full
+    theme: brand
+    css: styles.css
 
 execute:
   echo: true

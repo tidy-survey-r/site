@@ -48,9 +48,7 @@ typography:
   monospace-block:
     family: Source Code Pro
     background-color: lightblue2
-  link:
-    decoration: underline
-    
+
 defaults:
   # bootstrap:
     # bootstrap variable definitions
