@@ -39,6 +39,8 @@ typography:
       source: google
     - family: Source Code Pro
       source: google
+    - family: Diphylleia
+      source: google
   base: Telex
   headings: Ubuntu
   monospace: Source Code Pro

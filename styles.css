@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&display=swap');
+
 /*--- HERO ON FRONTPAGE ---*/
 
 .hero-banner {
@@ -239,7 +241,6 @@
 /*-- WAVY UNDERLINE --*/
 
 .wavy-underline {
-  font-style: italic;
   text-decoration: underline;
   text-decoration-style: wavy;
   color: var(--brand-pink);
@@ -251,6 +252,7 @@
   position: relative;
   white-space: nowrap;
   color: #ff8484;
+  font-family: "Diphylleia", serif;
 }
 
 .squiggle {
