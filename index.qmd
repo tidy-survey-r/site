@@ -35,8 +35,6 @@ listing:
 
 A Tidy Introduction with {srvyr} and {survey}
 
-<br>
-
 <a href="https://tidy-survey-r.github.io/tidy-survey-book/" target="_blank" class="btn btn-dark" href="#">Read the book --- free →</a> <a class="btn btn-light" href="#buy-book">Where to buy</a>
 :::
 
