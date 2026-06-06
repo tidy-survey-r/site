@@ -1,0 +1,13 @@
+---
+title: "Talks and short courses"
+listing:
+  contents:
+    - "event-metadata.yml"
+  type: grid
+  template: event-listing.ejs
+  sort: "date desc"
+page-layout: full
+format:
+  html:
+    theme: "events-listing.css"
+---

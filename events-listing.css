@@ -1,0 +1,336 @@
+/* ============================================================
+   events-listing.css
+   Styling for the Talks listing (talk-listing.ejs)
+   ------------------------------------------------------------
+   Brand tokens are declared here so the file is self-contained.
+   If you wire up _brand.yml, you can delete the :root block and
+   these vars will fall back to your theme values.
+   ============================================================ */
+
+/*-- scss:rules --*/
+
+:root {
+  --blue:       #0b3954;   /* foreground / primary */
+  --teal:       #087e8b;   /* secondary */
+  --lightblue:  #bfd7ea;   /* background */
+  --lightblue2: #ecf3f9;   /* cards / code bg */
+  --pink:       #ff8484;   /* accent */
+  --purple:     #8d6b94;
+
+  --ink:        var(--blue);
+  --shadow:     0 6px 0 -2px var(--blue);
+  --shadow-sm:  0 4px 0 -1px var(--blue);
+
+  --font-head: "Ubuntu", system-ui, sans-serif;
+  --font-body: "Telex", system-ui, sans-serif;
+  --font-mono: "Source Code Pro", ui-monospace, monospace;
+}
+
+/* ---- listing wrapper ------------------------------------- */
+.quarto-listing {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: 24px 24px 64px;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.talks-section + .talks-section { margin-top: 64px; }
+
+/* ---- section labels (✦ Upcoming / ↳ Archive) ------------- */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg, currentColor 0 6px, transparent 6px 12px);
+  opacity: 0.5;
+}
+.section-label--accent { color: var(--pink); }
+.section-label--leaf   { color: var(--teal); }
+
+/* ---- shared bits ----------------------------------------- */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.pill {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pill--accent { background: var(--pink); color: var(--lightblue2); }
+.pill--type {
+  background: color-mix(in oklab, var(--teal) 16%, var(--lightblue2));
+  color: var(--blue);
+  border: 1px solid var(--teal);
+}
+.muted        { color: color-mix(in oklab, var(--blue) 65%, transparent); font-family: var(--font-mono); font-size: 12px; white-space: nowrap; }
+.muted-italic { color: color-mix(in oklab, var(--blue) 72%, transparent); font-family: var(--font-head); font-style: italic; font-size: 14px; }
+.muted-mono   { color: color-mix(in oklab, var(--blue) 55%, transparent); font-family: var(--font-mono); font-size: 11px; margin-left: auto; white-space: nowrap; }
+
+.talk-title {
+  font-family: var(--font-head);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  text-wrap: balance;
+  margin: 0;
+}
+.talk-title a { color: inherit; text-decoration: none; }
+.talk-title a:hover { text-decoration: underline; text-decoration-color: var(--pink); text-underline-offset: 3px; }
+
+.byline {
+  font-family: var(--font-head);
+  font-style: italic;
+  color: color-mix(in oklab, var(--blue) 75%, transparent);
+  margin-top: 6px;
+}
+.summary {
+  line-height: 1.6;
+  color: color-mix(in oklab, var(--ink) 85%, transparent);
+  margin: 12px 0 0;
+}
+
+/* ---- buttons --------------------------------------------- */
+.materials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.btn, .btn-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1.5px solid var(--blue);
+  border-radius: 999px;
+  transition: transform 0.12s ease;
+  white-space: nowrap;
+}
+.btn    { font-family: var(--font-head); font-size: 14px; padding: 11px 18px; }
+.btn-sm { font-family: var(--font-mono); font-size: 12px; padding: 7px 13px; letter-spacing: 0.04em; }
+
+.btn--primary { background: var(--blue); color: var(--lightblue2); box-shadow: var(--shadow-sm); }
+.btn--ghost   { background: var(--lightblue2); color: var(--blue);
+                box-shadow: 0 4px 0 -1px color-mix(in oklab, var(--blue) 40%, transparent); }
+.btn:hover, .btn-sm:hover { transform: translateY(-1px); }
+.btn:active, .btn-sm:active { transform: translateY(2px); box-shadow: none; }
+
+/* ============================================================
+   UPCOMING — spotlight card
+   ============================================================ */
+.upcoming-card {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 32px 36px;
+  border: 1.5px solid var(--blue);
+  border-radius: 22px;
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--pink) 14%, var(--lightblue2)) 0%,
+    var(--lightblue2) 100%);
+  box-shadow: 0 8px 0 -2px var(--blue);
+  transform: rotate(-0.4deg);
+}
+.upcoming-card + .upcoming-card { margin-top: 22px; }
+
+.date-stamp {
+  text-align: center;
+  padding: 14px 18px 16px;
+  border: 1.5px solid var(--ink);
+  border-radius: 14px;
+  background: var(--blue);
+  color: var(--lightblue2);
+  box-shadow: var(--shadow-sm);
+  transform: rotate(2deg);
+}
+.date-stamp .m { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); }
+.date-stamp .d { display: block; font-family: var(--font-head); font-style: italic; font-weight: 500; font-size: 48px; line-height: 1; margin: 4px 0; }
+.date-stamp .y { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; opacity: 0.85; }
+
+.upcoming-body { min-width: 0; }
+.upcoming-body .talk-title { font-size: 32px; margin-top: 2px; }
+.upcoming-body .summary { max-width: 620px; }
+.upcoming-body .materials { margin-top: 20px; }
+
+.upcoming-art {
+  width: 150px;
+  transform: rotate(6deg);
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+}
+
+/* ============================================================
+   ARCHIVE — timeline
+   ============================================================ */
+.timeline { position: relative; }
+/* dashed spine */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 84px;
+  top: 12px;
+  bottom: 12px;
+  border-left: 2px dashed color-mix(in oklab, var(--blue) 30%, transparent);
+  pointer-events: none;
+}
+
+.year-marker {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 36px 0 16px -4px;
+}
+.year-marker .year {
+  width: 76px;
+  text-align: right;
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--blue);
+}
+.year-marker .dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--pink);
+  border: 2px solid var(--blue);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+.year-marker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(90deg,
+    color-mix(in oklab, var(--blue) 30%, transparent) 0 6px, transparent 6px 12px);
+}
+
+.talk-row {
+  display: grid;
+  grid-template-columns: 76px 28px 1fr;
+  align-items: start;
+  margin-bottom: 18px;
+}
+.row-date { text-align: right; padding: 22px 4px 0 0; }
+.row-date .m { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: color-mix(in oklab, var(--blue) 75%, transparent); }
+.row-date .d { display: block; font-family: var(--font-head); font-style: italic; font-weight: 500; font-size: 26px; line-height: 1; margin-top: 2px; color: var(--blue); }
+
+.row-dot { display: flex; justify-content: center; padding-top: 26px; }
+.row-dot::before {
+  content: "";
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--lightblue2);
+  border: 2px solid var(--blue);
+  box-shadow: 0 2px 0 -1px var(--blue);
+}
+
+/* the card */
+.talk-card {
+  position: relative;
+  margin-left: 12px;
+  padding: 20px 22px 22px;
+  border: 1.5px solid var(--blue);
+  border-radius: 16px;
+  background: var(--lightblue);
+  box-shadow: 0 5px 0 -2px var(--blue);
+  transform: rotate(-0.4deg);
+}
+.talk-row:nth-child(even) .talk-card { transform: rotate(0.4deg); }
+.talk-card .talk-title { font-size: 24px; padding-right: 70px; }
+.talk-card .kicker {
+  flex-wrap: nowrap;
+  padding-right: 80px;   /* clear the corner stamp */
+  min-width: 0;
+}
+.talk-card .muted-italic {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex-shrink: 1;
+}
+.talk-card .muted-mono {
+  margin-left: 0;        /* was auto — caused the wrap collision */
+  flex-shrink: 0;
+}
+.talk-card .muted-mono::before { content: "· "; }
+.talk-card .byline { font-size: 14px; }
+.talk-card .summary { font-size: 14.5px; margin-bottom: 14px; }
+
+/* corner illustration stamp */
+.corner-stamp {
+  position: absolute;
+  top: -14px; right: 22px;
+  width: 56px; height: 56px;
+  object-fit: contain;
+  padding: 6px;
+  background: var(--lightblue2);
+  border: 1.5px solid var(--blue);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transform: rotate(8deg);
+}
+
+/* footer row: buttons + tags */
+.row-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tags { display: flex; gap: 6px; margin-left: auto; list-style: none; padding: 0; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: color-mix(in oklab, var(--blue) 65%, transparent);
+}
+
+/* per-topic accent on the type pill via .color-* on the card */
+.talk-card.color-teal  .pill--type { border-color: var(--teal);   background: color-mix(in oklab, var(--teal) 16%, var(--lightblue2)); }
+.talk-card.color-berry .pill--type,
+.talk-card.color-purple .pill--type { border-color: var(--purple); background: color-mix(in oklab, var(--purple) 16%, var(--lightblue2)); }
+.talk-card.color-ochre .pill--type { border-color: var(--purple); background: color-mix(in oklab, var(--purple) 16%, var(--lightblue2)); }
+.talk-card.color-leaf  .pill--type { border-color: var(--teal);   background: color-mix(in oklab, var(--teal) 16%, var(--lightblue2)); }
+
+/* ---- hidden fields that power Quarto search/sort/filter --- */
+.listing-fields.hidden,
+.hidden { display: none; }
+
+/* ---- responsive ------------------------------------------ */
+@media (max-width: 720px) {
+  .upcoming-card { grid-template-columns: 1fr; }
+  .upcoming-art  { display: none; }
+  .talk-row      { grid-template-columns: 56px 20px 1fr; }
+  .timeline::before { left: 64px; }
+  .talk-card .talk-title { padding-right: 0; }
+  .corner-stamp { display: none; }
+}

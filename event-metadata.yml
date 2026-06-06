@@ -1,0 +1,93 @@
+- title: "Tidy Data, Weighted Insights"
+  type: Talk
+  speakers: [Stephanie Zimmer, Rebecca J. Powell, Isabella Velásquez]
+  venue: "StatCan R and Python Users Group"
+  location: Virtual
+  date: 2026-03-20
+  upcoming: false
+  image: images/allison/bar-whisker-building.svg
+  path: "talks/statcan-ug.html"
+  materials:
+    - { label: "Slides",   href: "./talks/statcan-ug.html" }
+    - { label: "GitHub repo", href: "https://github.com/tidy-survey-r/site/blob/main/talks/statcan-ug.qmd" }
+
+- title: "Tidy Data, Weighted Insights"
+  type: Talk
+  speakers: [Stephanie Zimmer, Rebecca J. Powell, Isabella Velásquez]
+  venue: "R-Ladies Amsterdam & RTP"
+  location: Virtual
+  date: 2025-02-25
+  upcoming: false
+  image: images/allison/bar-whisker-building.svg
+  path: "talks/talk-rladies-ams-rtp.html"
+  materials:
+    - { label: "Slides",   href: "./talks/talk-rladies-ams-rtp.html" }
+    - { label: "GitHub repo", href: "https://github.com/tidy-survey-r/site/blob/main/talks/talk-rladies-ams-rtp.qmd" }
+    - { label: "Recording",   href: "https://www.youtube.com/watch?v=ip78qoxoZGc" }
+
+- title: "Tidy Data, Weighted Insights"
+  type: Talk
+  speakers: [Stephanie Zimmer, Rebecca J. Powell, Isabella Velásquez]
+  venue: "NCHS DRM Show & Tell"
+  location: Virtual
+  date: 2025-01-28
+  upcoming: false
+  image: images/allison/bar-whisker-building.svg
+  path: "talks/talk-nchs-show-tell.html"
+  materials:
+    - { label: "Slides",   href: "./talks/talk-nchs-show-tell.html" }
+    - { label: "GitHub repo", href: "https://github.com/tidy-survey-r/site/blob/main/talks/talk-nchs-show-tell.qmd" }
+
+- title: "Complex Survey Data Analysis: A Tidy Introduction with {srvyr} and {survey}"
+  type: Workshop
+  speakers: [Stephanie Zimmer, Rebecca J. Powell, Isabella Velásquez]
+  venue: "2025 useR conference"
+  location: Durham, NC
+  date: 2025-08-08
+  upcoming: false
+  image: images/allison/bar-whisker-building.svg
+  path: "https://tidy-survey-r.github.io/user-2025-survey-data-tutorial/"
+  materials:
+    - { label: "Materials",   href: "https://tidy-survey-r.github.io/user-2025-survey-data-tutorial/" }
+    - { label: "GitHub repo", href: "https://github.com/tidy-survey-r/user-2025-survey-data-tutorial/" }
+
+- title: "Categorical Survey of Complex Survey Data in R"
+  type: Short Course
+  speakers: [Rebecca J. Powell, Isabella Velásquez]
+  venue: "2025 Midwest Association for Public Opinion Research (MAPOR) Conference"
+  location: Chicago, IL
+  date: 2025-11-21
+  upcoming: false
+  image: images/allison/bar-whisker-building.svg
+  path: "https://tidy-survey-r.github.io/mapor-2025-short-course/full-slide-deck.html#/title-slide"
+  materials:
+    - { label: "Slides",   href: "https://tidy-survey-r.github.io/mapor-2025-short-course/full-slide-deck.html#/title-slide" }
+    - { label: "GitHub repo", href: "https://github.com/tidy-survey-r/mapor-2025-short-course" }
+
+- title: "Tidy Survey Analysis in R: Workshop Series"
+  type: Short Course
+  speakers: [Stephanie Zimmer, Rebecca J. Powell, Isabella Velásquez]
+  venue: "2022 MAPOR Spring Webinar Series"
+  location: Virtual
+  date: 2022-04-15
+  upcoming: false
+  image: images/allison/bar-whisker-building.svg
+  path: "https://tidy-survey-r.github.io/tidy-survey-short-course/"
+  materials:
+    - { label: "Materials",   href: "https://tidy-survey-r.github.io/tidy-survey-short-course/" }
+    - { label: "GitHub repo", href: "https://github.com/tidy-survey-r/tidy-survey-short-course" }
+
+- title: "Tidy Survey Analysis in R using the srvyr Package"
+  type: Short Course
+  speakers: [Stephanie Zimmer, Rebecca J. Powell]
+  venue: "2021 American Association for Public Opinion Research Conferences"
+  location: Virtual
+  date: 2021-05-06
+  upcoming: false
+  image: images/allison/bar-whisker-building.svg
+  path: "https://github.com/szimmer/tidy-survey-aapor-2021/blob/main/Presentation/Slides.pdf"
+  materials:
+    - { label: "Materials",   href: "https://github.com/szimmer/tidy-survey-aapor-2021/blob/main/Presentation/Slides.pdf" }
+    - { label: "GitHub repo", href: "https://github.com/szimmer/tidy-survey-aapor-2021/" }
+
+
