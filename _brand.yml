@@ -39,6 +39,8 @@ typography:
       source: google
     - family: Source Code Pro
       source: google
+    - family: Diphylleia
+      source: google
   base: Telex
   headings: Ubuntu
   monospace: Source Code Pro
@@ -48,9 +50,7 @@ typography:
   monospace-block:
     family: Source Code Pro
     background-color: lightblue2
-  link:
-    decoration: underline
-    
+
 defaults:
   # bootstrap:
     # bootstrap variable definitions

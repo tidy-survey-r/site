@@ -1,0 +1,46 @@
+<%
+// build "SZ"-style initials from the name
+const initials = name =>
+  name.replace(/\./g, '').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+%>
+<div class="author-grid">
+<% items.forEach((item, i) => { %>
+<%
+const bg = item.bg || ['#bfd7ea', '#087e8b'];
+const n  = String(i + 1).padStart(2, '0');
+%>
+<article class="author-card">
+<% /* portrait: gradient + monogram + corner illustration */ %>
+<div class="author-portrait" style="--bg-1: <%= bg[0] %>; --bg-2: <%= bg[1] %>;">
+<span class="author-index"><%= n %> / <%= String(items.length).padStart(2,'0') %></span>
+<% if (item.headshot) { %>
+<img class="author-photo" src="<%= item.headshot %>" alt="<%= item.name %>">
+<% } else { %>
+<span class="author-monogram"><%= initials(item.name) %></span>
+<% } %>
+<% if (item.image) { %>
+<span class="author-stamp"><img src="<%= item.image %>" alt="" aria-hidden="true"></span>
+<% } %>
+</div>
+<div class="author-id">
+<div class="author-name" role="heading" aria-level="3"><%= item.name %></div>
+<div class="author-titleline"><%= item['title-line'] %></div>
+<div class="author-role"><%= item.role %></div>
+</div>
+<% if ((item.tags || []).length) { %>
+<ul class="author-tags">
+<% item.tags.forEach(t => { %><li><%= t %></li><% }) %>
+</ul>
+<% } %>
+<div class="author-bio"><%= item.bio %></div>
+<% if ((item.socials || []).length) { %>
+<ul class="author-socials">
+<% item.socials.forEach(s => { %>
+<li><a href="<%= s.href %>"><%= s.label %> ↗</a></li>
+<% }) %>
+</ul>
+<% } %>
+<div class="hidden"><span class="listing-title"><%= item.name %></span></div>
+</article>
+<% }) %>
+</div>

@@ -1,0 +1,16 @@
+- title: "Tidyverse principles"
+  description: "Uses the {srvyr} package and tidyverse family of packages."
+  image: images/allison/matrix-fields.svg
+  color: purple
+- title: "Statistical intuition"
+  description: "Grants a conceptual understanding of the statistical methods that the functions apply to."
+  image: images/allison/bar-whisker-building.svg
+  color: teal
+- title: "Public, reproducible data"
+  description: "Includes practical walkthroughs using publicly available survey data."
+  image: images/allison/heatmap-ship.svg
+  color: purple
+- title: "End-to-end examples"
+  description: "Provides the reader with the tools for interpreting, visualizing, and presenting results."
+  image: images/allison/donut-serpent.svg
+  color: teal
