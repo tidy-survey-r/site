@@ -2,17 +2,18 @@
 page-layout: full
 listing: 
   - id: chapter-listing
-    contents: "chapters/*.md"
+    contents: chapter-metadata.yml
+    template: chapter-listing.ejs
     type: grid
     grid-columns: 4
     sort: "title desc"
     image-height: fit
   - id: author-listing
-    contents: "authors/*.md"
+    contents: author-metadata.yml
+    template: author-listing.ejs
     type: grid
     grid-columns: 3
     image-height: fit
-    sort: "title desc"
     max-description-length: 2000
 ---
 
@@ -23,13 +24,12 @@ listing:
 :::: {.hero-banner}
 
 ::: {.hero-deco}
-![](images/allison/pie-hills.svg){.deco .deco-pie fig-alt=""}
 ![](images/allison/donut-serpent.svg){.deco .deco-donut .float fig-alt=""}
 :::
 
 ::: {.hero-text}
 
-<span class="book-label">A Chapman & Hall / CRC Book · 2024</span>
+<span class="book-label">· A Chapman & Hall / CRC Book · 2024</span>
 
 # Exploring<br><span class="squiggle-wrap"><i>Complex Survey</i><svg class="squiggle" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T298,5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" /></svg></span><br>Data Analysis<br>Using R
 
@@ -56,9 +56,14 @@ A Tidy Introduction with {srvyr} and {survey}
 
 ::::: {.white-bg}
 
+::: {.section-deco}
+![](images/allison/trees.svg){.deco .deco-about-1 .float fig-alt=""}
+![](images/allison/heatmap-ship.svg){.deco .deco-about-2 .float fig-alt=""}
+:::
+
 <span class="section-label">About the book</span>
 
-# From raw weights to publishable findings
+# From raw weights to <span class="squiggle-wrap"><i>publishable findings</i><svg class="squiggle" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T298,5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" /></svg></span><br>
 
 :::: columns
 
@@ -125,9 +130,15 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 :::::: {.lightblue-bg}
 
+::: {.section-deco}
+![](images/allison/table-ship.svg){.deco .deco-buy-1 .float fig-alt=""}
+:::
+
 <span class="section-label">Where to get the book </span>
 
-# [Read it free on the web, or ship one home in print]{#buy-book}
+# [Read it free on the web, or <span class="squiggle-wrap"><i>ship one home</i><svg class="squiggle" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T298,5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" /></svg></span> in print]{#buy-book}
+
+Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and eBook.
 
 ::::: columns
 
@@ -171,6 +182,10 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 ::::: {.darkblue-bg}
 
+::: {.section-deco}
+![](images/allison/stack-bar-building.svg){.deco .deco-data-1 .float fig-alt=""}
+:::
+
 <span class="section-label">Companion data package</span>
 
 # All the datasets in one tidy R package
@@ -181,7 +196,9 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 Examples throughout the book include usage of several datasets. Most of these datasets are included in the R package {srvyrexploR} available on GitHub.
 
-<a class="btn btn-light" href="https://tidy-survey-r.github.io/srvyrexploR/">View on GitHub ↗</a>
+<a class="btn btn-light" href="https://tidy-survey-r.github.io/srvyrexploR/">Package documentation ↗</a>
+
+<a href="https://github.com/tidy-survey-r/srvyrexploR/" target="_blank" class="btn btn-dark" href="#">View on GitHub  ↗</a> 
 
 :::
 
@@ -221,7 +238,13 @@ anes_des <- anes_adjwgt %>%
 
 ::::: {.white-bg}
 
-# About the authors
+::: {.section-deco}
+![](images/allison/pie-hills.svg){.deco .deco-authors-1 .float fig-alt=""}
+:::
+
+<span class="section-label">About the authors</span>
+
+# We ♡ what we do
 
 ::: {#author-listing}
 :::
