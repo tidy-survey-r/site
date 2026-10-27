@@ -12,9 +12,8 @@ website:
     right:
       - text: "Home"
         href: index.qmd
-      - talks/Talks.qmd
-      - text: "Short courses"
-        href: short-courses.qmd
+      - text: "Events"
+        href: events.qmd
       - text: "<button class='nav-btn'>Read the book →</button>"
         href: https://tidy-survey-r.github.io/tidy-survey-book/
         target: _blank
