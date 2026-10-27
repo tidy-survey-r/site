@@ -1,9 +1,9 @@
 - title: "Tidyverse principles"
-  description: "Uses the {srvyr} package and tidyverse family of packages."
+  description: "Uses familiar tidyverse style synax to analyze survey data with the {srvyr} package."
   image: images/allison/matrix-fields.svg
   color: purple
-- title: "Statistical intuition"
-  description: "Grants a conceptual understanding of the statistical methods that the functions apply to."
+- title: "Statistical understanding"
+  description: "Grants a conceptual understanding of statistical methods behind the functions."
   image: images/allison/bar-whisker-building.svg
   color: teal
 - title: "Public, reproducible data"
