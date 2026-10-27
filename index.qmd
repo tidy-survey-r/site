@@ -29,9 +29,9 @@ listing:
 
 ::: {.hero-text}
 
-<span class="book-label">· A Chapman & Hall / CRC Book · 2024</span>
+[A Chapman & Hall / CRC Book · 2024]{.book-label}
 
-# Exploring<br><span class="squiggle-wrap"><i>Complex Survey</i><svg class="squiggle" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T298,5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" /></svg></span><br>Data Analysis<br>Using R
+# Exploring<br>[Complex Survey]{.wavy-underline}<br>Data Analysis<br>Using R
 
 A Tidy Introduction with {srvyr} and {survey}
 
@@ -61,9 +61,9 @@ A Tidy Introduction with {srvyr} and {survey}
 ![](images/allison/heatmap-ship.svg){.deco .deco-about-2 .float fig-alt=""}
 :::
 
-<span class="section-label">About the book</span>
+[About the book]{.section-label}
 
-# From raw weights to <span class="squiggle-wrap"><i>publishable findings</i><svg class="squiggle" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T298,5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" /></svg></span><br>
+# From raw weights to [weighted]{.wavy-underline} publishable findings
 
 :::: columns
 
@@ -78,11 +78,10 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 ::: {.column width="4%"}
 :::
 
-::: {.column width="48%"}
-
+:::: {.column width="48%"}
+::: {.dataset-box}
+[Featured datasets]{.section-label}
 ```{=html}
-<div class="dataset-box">
-<span class="section-label">Featured datasets</span>
   <div class="row-item">
     <div class="code">ANES</div>
     <div class="text">
@@ -114,10 +113,9 @@ In this book, readers embark on an in-depth journey into conducting complex surv
       <div class="sub">Public opinion</div>
     </div>
   </div>
-
-</div>
 ```
 :::
+::::
 
 ::::
 
@@ -134,9 +132,9 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 ![](images/allison/table-ship.svg){.deco .deco-buy-1 .float fig-alt=""}
 :::
 
-<span class="section-label">Where to get the book </span>
+[Where to get the book]{.section-label}
 
-# [Read it free on the web, or <span class="squiggle-wrap"><i>ship one home</i><svg class="squiggle" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T298,5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" /></svg></span> in print]{#buy-book}
+# [Read it free on the web, or [ship one home]{.wavy-underline} in print]{#buy-book}
 
 Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and eBook.
 
@@ -145,11 +143,9 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 :::: {.column width="48%"}
 
 ::: {.rounded-box}
-<span class="section-label">FREE ONLINE EDITION · OPEN ACCESS</span>
+[FREE ONLINE EDITION · OPEN ACCESS]{.section-label}
 
 [The full book, on the web]{.span style="font-size: 1.5rem; font-weight: 600;"}
-
-[tidy-survey-r.github.io/tidy-survey-book](https://tidy-survey-r.github.io/tidy-survey-book){.span style="font-family: monospace;"}
 
 <a href="https://tidy-survey-r.github.io/tidy-survey-book/" target="_blank" class="btn btn-dark" href="#">Open the book ↗</a> 
 
@@ -164,7 +160,7 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 
 ::: {.rounded-box}
 
-<span class="section-label">↳ PRINT & EBOOK RETAILERS</span>
+[PRINT & EBOOK<br>RETAILERS]{.section-label}
 
 - [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867)
 - [Your local bookstore in USA](https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867)
@@ -186,9 +182,9 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 ![](images/allison/stack-bar-building.svg){.deco .deco-data-1 .float fig-alt=""}
 :::
 
-<span class="section-label">Companion data package</span>
+[Companion data package]{.section-label}
 
-# All the datasets in one tidy R package
+# All the datasets in one tidy [R package]{.wavy-underline}
 
 :::: columns
 
@@ -242,7 +238,7 @@ anes_des <- anes_adjwgt %>%
 ![](images/allison/pie-hills.svg){.deco .deco-authors-1 .float fig-alt=""}
 :::
 
-<span class="section-label">About the authors</span>
+[About the authors]{.section-label}
 
 # We ♡ what we do
 
