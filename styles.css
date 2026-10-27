@@ -140,7 +140,7 @@
 /* Line underneath navigation bar */
 .navbar {
   border-bottom: 1px solid var(--brand-lightblue2);
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 /* Navigation button */
@@ -150,7 +150,7 @@
   justify-content: center;
   width: fit-content;
 
-  background-color: var(--brand-blue);
+  background-color: var(--brand-pink);
   color: var(--brand-lightblue2);
   border: none;
 
@@ -209,6 +209,12 @@
   font-size: 36px;
   text-transform: uppercase;
   color: var(--brand-pink);
+}
+
+.section-label-nocolor {
+  font-family: Source Code Pro;
+  font-size: 36px;
+  text-transform: uppercase;
 }
 
 /*-- LINK BUTTONS --*/

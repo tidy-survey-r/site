@@ -35,7 +35,8 @@ listing:
 
 A Tidy Introduction with {srvyr} and {survey}
 
-<a href="https://tidy-survey-r.github.io/tidy-survey-book/" target="_blank" class="btn btn-dark" href="#">Read the book --- free →</a> <a class="btn btn-light" href="#buy-book">Where to buy</a>
+[Read the book --- free →](https://tidy-survey-r.github.io/tidy-survey-book/){.btn .btn-dark target="_blank"} [Where to buy](#buy-book){.btn .btn-light}
+
 :::
 
 ::: {.hero-image}
@@ -80,40 +81,20 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 :::: {.column width="48%"}
 ::: {.dataset-box}
-[Featured datasets]{.section-label}
-```{=html}
-  <div class="row-item">
-    <div class="code">ANES</div>
-    <div class="text">
-      <div class="desc">American National Election Studies</div>
-      <div class="sub">Demographics and voting</div>
-    </div>
-  </div>
+[Featured datasets]{.section-label-nocolor}
 
-  <div class="row-item">
-    <div class="code">RECS</div>
-    <div class="text">
-      <div class="desc">Residential Energy Consumption Survey</div>
-      <div class="sub">Energy and housing</div>
-    </div>
-  </div>
+::: {#tbl-no-header .list-table header-rows=0}
+* - [American National election Studies]{.desc}<br>[Demographics and voting]{.sub}
+  - [ANES]{.code}
+* - [Residential Energy Consumption Survey]{.desc}<br>[Energy and housing]{.sub}
+  - [RECS]{.code}
+* - [National Crime Victimization Survey]{.desc}<br>[Public safety]{.sub}
+  - [NCVS]{.code}
+* - [AmericasBarometer]{.desc}<br>[Public opinion]{.sub}
+  - 
+  
+:::
 
-  <div class="row-item">
-    <div class="code">NCVS</div>
-    <div class="text">
-      <div class="desc">National Crime Victimization Survey</div>
-      <div class="sub">Public safety</div>
-    </div>
-  </div>
-
-  <div class="row-item">
-    <div class="code"></div>
-    <div class="text">
-      <div class="desc">AmericasBarometer</div>
-      <div class="sub">Public opinion</div>
-    </div>
-  </div>
-```
 :::
 ::::
 
@@ -147,7 +128,7 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 
 [The full book, on the web]{.span style="font-size: 1.5rem; font-weight: 600;"}
 
-<a href="https://tidy-survey-r.github.io/tidy-survey-book/" target="_blank" class="btn btn-dark" href="#">Open the book ↗</a> 
+[Open the book ↗](https://tidy-survey-r.github.io/tidy-survey-book/){.btn .btn-dark target="_blank"}
 
 :::
 
@@ -162,11 +143,11 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 
 [PRINT & EBOOK<br>RETAILERS]{.section-label}
 
-- [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867)
-- [Your local bookstore in USA](https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867)
-- [Your local bookstore in Canada](https://www.indiebookstores.ca/book/9781032302867/)
-- [Your local bookstore in the UK](https://uk.bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-isabella-velasquez/7688018)
-- [Amazon](https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860)
+- [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867){target="_blank"}
+- [Your local bookstore in USA](https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867){target="_blank"}
+- [Your local bookstore in Canada](https://www.indiebookstores.ca/book/9781032302867/){target="_blank"}
+- [Your local bookstore in the UK](https://uk.bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-isabella-velasquez/7688018){target="_blank"}
+- [Amazon](https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860){target="_blank"}
 
 :::
 
@@ -190,11 +171,11 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 
 ::: {.column width="48%"}
 
-Examples throughout the book include usage of several datasets. Most of these datasets are included in the R package {srvyrexploR} available on GitHub.
+Examples throughout the book use publicly available datasets. Most of these datasets are included in the R package {srvyrexploR} available on GitHub.
 
-<a class="btn btn-light" href="https://tidy-survey-r.github.io/srvyrexploR/">Package documentation ↗</a>
+[Package documentation ↗](https://tidy-survey-r.github.io/srvyrexploR/){.btn .btn-light target="_blank"}
 
-<a href="https://github.com/tidy-survey-r/srvyrexploR/" target="_blank" class="btn btn-dark" href="#">View on GitHub  ↗</a> 
+[View on GitHub  ↗](https://github.com/tidy-survey-r/srvyrexploR/){.btn .btn-dark target="_blank"} 
 
 :::
 

@@ -17,6 +17,7 @@ website:
         href: short-courses.qmd
       - text: "<button class='nav-btn'>Read the book →</button>"
         href: https://tidy-survey-r.github.io/tidy-survey-book/
+        target: _blank
   page-footer: TIDY SURVEY ANALYSIS IN R © 2024-2026. CC-BY-NC-ND 4.0.
 
 editor: source
