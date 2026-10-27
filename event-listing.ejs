@@ -1,0 +1,104 @@
+```{=html}
+<%
+  // items arrive pre-sorted by the `sort:` field in talks.qmd.
+  const upcoming = items.filter(i => i.upcoming);
+  const past     = items.filter(i => !i.upcoming);
+
+  // small helpers
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const mo  = d => months[new Date(d).getMonth()];
+  const day = d => new Date(d).getDate();
+  const yr  = d => new Date(d).getFullYear();
+%>
+
+<% /* ---- UPCOMING SPOTLIGHT ---- */ %>
+<% if (upcoming.length) { %>
+<div class="talks-section">
+  <div class="section-label section-label--accent">✦ Upcoming</div>
+  <% upcoming.forEach(item => { %>
+  <div class="upcoming-card">
+    <div class="date-stamp">
+      <span class="m"><%= mo(item.date) %></span>
+      <span class="d"><%= day(item.date) %></span>
+      <span class="y"><%= yr(item.date) %></span>
+    </div>
+    <div class="upcoming-body">
+      <div class="kicker">
+        <span class="pill pill--accent">UPCOMING · <%= item.type.toUpperCase() %></span>
+        <span class="muted"><%= item.duration %></span>
+      </div>
+      <h3 class="talk-title">
+        <% if (item.path) { %><a href="<%= item.path %>"><%= item.title %></a>
+        <% } else { %><%= item.title %><% } %>
+      </h3>
+      <div class="byline"><%= (item.speakers||[]).join(' & ') %> · <%= item.venue %>, <%= item.location %></div>
+      <p class="summary"><%= item.description %></p>
+      <div class="materials">
+        <% (item.materials||[]).forEach(m => { %>
+          <a href="<%= m.href %>" class="btn <%= m.primary ? 'btn--primary' : 'btn--ghost' %>">
+            <%= m.label %> <%= m.primary ? '→' : '↗' %>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+    <% if (item.image) { %>
+      <img class="upcoming-art" src="<%= item.image %>" alt="" aria-hidden="true">
+    <% } %>
+  </div>
+  <% }) %>
+</div>
+<% } %>
+
+<% /* ---- ARCHIVE TIMELINE (grouped by year) ---- */ %>
+<% if (past.length) { %>
+<div class="talks-section">
+  <div class="section-label section-label--leaf">↳ Archive</div>
+  <div class="timeline">
+    <% let lastYear = null; %>
+    <% past.forEach(item => { %>
+      <% const y = yr(item.date); if (y !== lastYear) { lastYear = y; %>
+        <div class="year-marker"><span class="year"><%= y %></span><span class="dot"></span></div>
+      <% } %>
+
+      <div class="talk-row">
+        <div class="row-date"><span class="m"><%= mo(item.date) %></span><span class="d"><%= day(item.date) %></span></div>
+        <div class="row-dot"></div>
+        <article class="talk-card color-<%= item.color || 'leaf' %>">
+          <% if (item.image) { %><img class="corner-stamp" src="<%= item.image %>" alt="" aria-hidden="true"><% } %>
+          <div class="kicker">
+            <span class="pill pill--type"><%= item.type %></span>
+            <span class="muted-italic"><%= item.venue %> · <%= item.location %></span>
+            <span class="muted-mono"><%= item.duration %></span>
+          </div>
+          <h3 class="talk-title">
+            <% if (item.path) { %><a href="<%= item.path %>"><%= item.title %></a><% } else { %><%= item.title %><% } %>
+          </h3>
+          <div class="byline"><%= (item.speakers||[]).join(' & ') %></div>
+          <p class="summary"><%= item.description %></p>
+          <div class="row-footer">
+            <div class="materials">
+              <% (item.materials||[]).forEach((m,i) => { %>
+                <a href="<%= m.href %>" class="btn-sm <%= i===0 ? 'btn--primary':'btn--ghost' %>"><%= m.label %> ↗</a>
+              <% }) %>
+            </div>
+            <div class="tags">
+              <% (item.categories||[]).slice(0,3).forEach(c => { %><span class="tag">#<%= c.toLowerCase().replace(/[^a-z0-9]/g,'') %></span><% }) %>
+            </div>
+          </div>
+
+          <% /* hidden fields so Quarto's search / sort / filter UI works */ %>
+          <div class="listing-fields hidden">
+            <span class="listing-title"><%= item.title %></span>
+            <span class="listing-date"><%= item.date %></span>
+            <span class="venue"><%= item.venue %></span>
+            <span class="type"><%= item.type %></span>
+            <% (item.categories||[]).forEach(c => { %><span class="listing-category"><%= c %></span><% }) %>
+          </div>
+        </article>
+      </div>
+    <% }) %>
+  </div>
+</div>
+<% } %>
+
+```
