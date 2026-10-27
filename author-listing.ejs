@@ -12,7 +12,6 @@ const n  = String(i + 1).padStart(2, '0');
 <article class="author-card">
 <% /* portrait: gradient + monogram + corner illustration */ %>
 <div class="author-portrait" style="--bg-1: <%= bg[0] %>; --bg-2: <%= bg[1] %>;">
-<span class="author-index"><%= n %> / <%= String(items.length).padStart(2,'0') %></span>
 <% if (item.headshot) { %>
 <img class="author-photo" src="<%= item.headshot %>" alt="<%= item.name %>">
 <% } else { %>
