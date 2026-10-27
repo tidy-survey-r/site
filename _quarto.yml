@@ -6,7 +6,7 @@ website:
   search: false
   navbar:
     pinned: true
-    background: $brand-lightblue
+    background: $brand-blue
     left:
       - text: "Tidy Survey Analysis in R"
     right:

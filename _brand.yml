@@ -26,6 +26,7 @@ color:
     pink: "#ff8484"
     purple: "#8d6b94"
     lightblue2: "#ecf3f9"
+    lightteal: "#cadee1"
   foreground: blue
   background: lightblue
   primary: blue
@@ -39,7 +40,7 @@ typography:
       source: google
     - family: Source Code Pro
       source: google
-    - family: Diphylleia
+    - family: Kurale
       source: google
   base: Telex
   headings: Ubuntu
