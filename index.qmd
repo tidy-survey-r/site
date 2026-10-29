@@ -57,8 +57,10 @@ A Tidy Introduction with {srvyr} and {survey}
 
 ::::: {.white-bg}
 
-::: {.section-deco}
+::: {.section-deco-behind}
 ![](images/allison/trees.svg){.deco .deco-about-1 .float fig-alt=""}
+:::
+::: {.section-deco}
 ![](images/allison/heatmap-ship.svg){.deco .deco-about-2 .float fig-alt=""}
 :::
 
@@ -107,7 +109,7 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 :::::
 
-:::::: {.lightblue-bg}
+:::::: {.lightblue-bg #buy-book}
 
 ::: {.section-deco}
 ![](images/allison/table-ship.svg){.deco .deco-buy-1 .float fig-alt=""}
@@ -115,7 +117,7 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 [Where to get the book]{.section-label}
 
-# [Read it free on the web, or [ship one home]{.wavy-underline} in print]{#buy-book}
+# Read it free on the web, or [ship one home]{.wavy-underline} in print
 
 Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and eBook.
 

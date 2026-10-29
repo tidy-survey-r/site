@@ -95,16 +95,22 @@
 .section-deco {
   position: absolute;
   inset: 0;
-  overflow: hidden;
   pointer-events: none;
-  z-index: -1;              /* above the section background (::before is -2), behind the text */
+  z-index: 1;              /* above the section background (::before is -2), behind the text */
 }
 
-.deco-about-1   { bottom: -24px; left: -36px;  width: 200px; opacity: 0.70; --rot: -5deg; transform: rotate(-5deg); animation-delay: -1s;   }
-.deco-about-2   { top: 28px;     right: -44px;  width: 150px; opacity: 0.70; --rot: 6deg;  transform: rotate(6deg);  animation-delay: -3s;   }
-.deco-buy-1     { top: -30px;    right: -28px;  width: 200px; opacity: 0.70; --rot: 5deg;  transform: rotate(5deg);  animation-delay: -2s;   }
-.deco-data-1    { bottom: -28px; left: -34px;   width: 210px; opacity: 0.70; --rot: -4deg; transform: rotate(-4deg); animation-delay: -4s;   }
-.deco-authors-1 { bottom: -26px; right: -36px;  width: 190px; opacity: 0.70; --rot: 4deg;  transform: rotate(4deg);  animation-delay: -1.5s; }
+.section-deco-behind {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;              /* above the section background (::before is -2), behind the text */
+}
+
+.deco-about-1   { bottom: -24px; left: -36px;  width: 200px; opacity: 0.75; --rot: -5deg; transform: rotate(-5deg); animation-delay: -1s;   }
+.deco-about-2   { top: 28px;     right: -44px;  width: 200px; opacity: 0.75; --rot: 6deg;  transform: rotate(6deg);  animation-delay: -3s;   }
+.deco-buy-1     { top: -30px;    right: -28px;  width: 200px; opacity: 0.75; --rot: 5deg;  transform: rotate(5deg);  animation-delay: -2s;   }
+.deco-data-1    { bottom: -28px; left: -34px;   width: 210px; opacity: 0.75; --rot: -4deg; transform: rotate(-4deg); animation-delay: -4s;   }
+.deco-authors-1 { bottom: -26px; right: -36px;  width: 190px; opacity: 0.75; --rot: 4deg;  transform: rotate(4deg);  animation-delay: -1.5s; }
 
 /* gentle float on the donut */
 .float { animation: float-slow 8s ease-in-out infinite; }
