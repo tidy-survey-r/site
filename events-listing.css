@@ -137,6 +137,12 @@
 .btn--primary { background: var(--blue); color: var(--lightblue2); box-shadow: var(--shadow-sm); }
 .btn--ghost   { background: var(--lightblue2); color: var(--blue);
                 box-shadow: 0 4px 0 -1px color-mix(in oklab, var(--blue) 40%, transparent); }
+                
+.btn--pink      { background: color-mix(in oklab, var(--pink) 50%, var(--lightblue2)); color: var(--blue); 
+                  box-shadow: var(--shadow-sm); }
+.btn--pinkghost { background: var(--pink); color: var(--blue);
+                  box-shadow: 0 4px 0 -1px color-mix(in oklab, var(--pink) 40%, transparent); }
+
 .btn:hover, .btn-sm:hover { transform: translateY(-1px); }
 .btn:active, .btn-sm:active { transform: translateY(2px); box-shadow: none; }
 
@@ -169,9 +175,9 @@
   box-shadow: var(--shadow-sm);
   transform: rotate(2deg);
 }
-.date-stamp .m { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); }
+.date-stamp .m { display: block; font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); }
 .date-stamp .d { display: block; font-family: var(--font-head); font-style: italic; font-weight: 500; font-size: 48px; line-height: 1; margin: 4px 0; }
-.date-stamp .y { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; opacity: 0.85; }
+.date-stamp .y { display: block; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.12em; opacity: 0.85; }
 
 .upcoming-body { min-width: 0; }
 .upcoming-body .talk-title { font-size: 32px; margin-top: 2px; }
@@ -185,7 +191,7 @@
 }
 
 /* ============================================================
-   ARCHIVE — timeline
+   PAST EVENTS — timeline
    ============================================================ */
 .timeline { position: relative; }
 /* dashed spine */
@@ -239,7 +245,7 @@
   margin-bottom: 18px;
 }
 .row-date { text-align: right; padding: 22px 4px 0 0; }
-.row-date .m { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: color-mix(in oklab, var(--blue) 75%, transparent); }
+.row-date .m { display: block; font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.08em; color: color-mix(in oklab, var(--blue) 75%, transparent); }
 .row-date .d { display: block; font-family: var(--font-head); font-style: italic; font-weight: 500; font-size: 26px; line-height: 1; margin-top: 2px; color: var(--blue); }
 
 .row-dot { display: flex; justify-content: center; padding-top: 26px; }

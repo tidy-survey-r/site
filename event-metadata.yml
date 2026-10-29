@@ -1,3 +1,16 @@
+- title: "Working with Weights and Sampling Designs for Official Statistics"
+  type: Tutorial
+  speakers: [Stephanie Zimmer, Rebecca J. Powell, Isabella Velásquez]
+  venue: "2026 Use of R in Official Statistics (uRos) Conference"
+  location: Paris, France
+  date: 2026-11-18
+  upcoming: true
+  image: images/allison/table-ship.svg
+  path: "https://tidy-survey-r.github.io/uros-2026-tutorial/"
+  materials:
+    - { label: "Slides",   href: "https://tidy-survey-r.github.io/uros-2026-tutorial/"}
+    - { label: "GitHub repo", href: "https://github.com/tidy-survey-r/uros-2026-tutorial" }
+
 - title: "Tidy Data, Weighted Insights"
   type: Talk
   speakers: [Stephanie Zimmer, Rebecca J. Powell, Isabella Velásquez]
@@ -5,7 +18,7 @@
   location: Virtual
   date: 2026-03-20
   upcoming: false
-  image: images/allison/bar-whisker-building.svg
+  image: images/allison/stack-bar-building.svg
   path: "talks/statcan-ug.html"
   materials:
     - { label: "Slides",   href: "./talks/statcan-ug.html" }
@@ -18,7 +31,7 @@
   location: Virtual
   date: 2025-02-25
   upcoming: false
-  image: images/allison/bar-whisker-building.svg
+  image: images/allison/matrix-fields.svg
   path: "talks/talk-rladies-ams-rtp.html"
   materials:
     - { label: "Slides",   href: "./talks/talk-rladies-ams-rtp.html" }
@@ -32,7 +45,7 @@
   location: Virtual
   date: 2025-01-28
   upcoming: false
-  image: images/allison/bar-whisker-building.svg
+  image: images/allison/stack-bar-building.svg
   path: "talks/talk-nchs-show-tell.html"
   materials:
     - { label: "Slides",   href: "./talks/talk-nchs-show-tell.html" }
@@ -45,7 +58,7 @@
   location: Durham, NC
   date: 2025-08-08
   upcoming: false
-  image: images/allison/bar-whisker-building.svg
+  image: images/allison/heatmap-ship.svg
   path: "https://tidy-survey-r.github.io/user-2025-survey-data-tutorial/"
   materials:
     - { label: "Materials",   href: "https://tidy-survey-r.github.io/user-2025-survey-data-tutorial/" }
@@ -65,13 +78,13 @@
     - { label: "GitHub repo", href: "https://github.com/tidy-survey-r/mapor-2025-short-course" }
 
 - title: "Tidy Survey Analysis in R: Workshop Series"
-  type: Short Course
+  type: Webinar Series
   speakers: [Stephanie Zimmer, Rebecca J. Powell, Isabella Velásquez]
   venue: "2022 MAPOR Spring Webinar Series"
   location: Virtual
   date: 2022-04-15
   upcoming: false
-  image: images/allison/bar-whisker-building.svg
+  image: images/allison/hospital.svg
   path: "https://tidy-survey-r.github.io/tidy-survey-short-course/"
   materials:
     - { label: "Materials",   href: "https://tidy-survey-r.github.io/tidy-survey-short-course/" }
@@ -80,14 +93,14 @@
 - title: "Tidy Survey Analysis in R using the srvyr Package"
   type: Short Course
   speakers: [Stephanie Zimmer, Rebecca J. Powell]
-  venue: "2021 American Association for Public Opinion Research Conferences"
+  venue: "2021 American Association for Public Opinion Research Annual Conference"
   location: Virtual
   date: 2021-05-06
   upcoming: false
   image: images/allison/bar-whisker-building.svg
   path: "https://github.com/szimmer/tidy-survey-aapor-2021/blob/main/Presentation/Slides.pdf"
   materials:
-    - { label: "Materials",   href: "https://github.com/szimmer/tidy-survey-aapor-2021/blob/main/Presentation/Slides.pdf" }
+    - { label: "Slides",   href: "https://github.com/szimmer/tidy-survey-aapor-2021/blob/main/Presentation/Slides.pdf" }
     - { label: "GitHub repo", href: "https://github.com/szimmer/tidy-survey-aapor-2021/" }
 
 
