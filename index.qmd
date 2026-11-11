@@ -17,8 +17,6 @@ listing:
     max-description-length: 2000
 ---
 
-<br>
-
 ::::: {.hero}
 
 :::: {.hero-banner}
@@ -68,9 +66,9 @@ A Tidy Introduction with {srvyr} and {survey}
 
 # From raw weights to [weighted]{.wavy-underline} publishable findings
 
-:::: columns
+:::: {.grid}
 
-::: {.column width="48%"} 
+::: {.g-col-12 .g-col-md-7} 
 
 Surveys are powerful tools for gathering information, uncovering insights, and facilitating decision-making. However, to ensure the accurate interpretation of results, they require specific analysis methods.
 
@@ -78,10 +76,7 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 :::
 
-::: {.column width="4%"}
-:::
-
-:::: {.column width="48%"}
+:::: {.g-col-12 .g-col-md-5}
 ::: {.dataset-box}
 [Featured datasets]{.feature-title}
 
@@ -121,9 +116,9 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and eBook.
 
-::::: columns
+::::: {.grid}
 
-:::: {.column width="48%"}
+:::: {.g-col-12 .g-col-md-6}
 
 ::: {.rounded-box}
 [FREE ONLINE EDITION<br>OPEN ACCESS]{.feature-title}
@@ -136,10 +131,7 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 
 ::::
 
-:::: {.column width="4%"}
-::::
-
-:::: {.column width="48%"}
+:::: {.g-col-12 .g-col-md-6}
 
 ::: {.rounded-box}
 
@@ -172,9 +164,9 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 
 # All the datasets in one tidy [R package]{.wavy-underline}
 
-:::: columns
+:::: {.grid}
 
-::: {.column width="48%"}
+::: {.g-col-12 .g-col-md-7}
 
 Examples throughout the book use publicly available datasets. Most of these datasets are included in the R package {srvyrexploR} available on GitHub.
 
@@ -184,10 +176,7 @@ Examples throughout the book use publicly available datasets. Most of these data
 
 :::
 
-::: {.column width="4%"}
-:::
-
-::: {.column width="48%"}
+::: {.g-col-12 .g-col-md-5}
 
 ::: {.code-card}
 
