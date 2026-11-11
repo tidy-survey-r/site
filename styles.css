@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Telex&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 /*--- HERO ON FRONTPAGE ---*/
 
@@ -187,6 +188,25 @@
   padding-bottom: 2px;
 }
 
+/* Menu Dropdown */
+@media (min-width: 500px) {
+  .navbar-nav .dropdown:hover > .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Prevents a 1px gap issue */
+  }
+  .navbar-nav .dropdown > .dropdown-toggle:active {
+    /* Allows click to still function if needed */
+    pointer-events: auto;
+  }
+}
+
+.navbar .dropdown-menu {
+  background-color: var(--brand-blue) !important;
+}
+.navbar .dropdown-text {
+  color: #BBC8CF !important;
+}
+
 /*--- BOOK LABEL ---*/
 
 .book-label {
@@ -213,14 +233,21 @@
 .section-label {
   font-family: Source Code Pro;
   font-size: 36px;
-  text-transform: uppercase;
+  text-transform: lowercase;
   color: var(--brand-pink);
 }
 
 .section-label-nocolor {
   font-family: Source Code Pro;
   font-size: 36px;
+  text-transform: lowercase;
+}
+
+.section-label-upper {
+  font-family: Source Code Pro;
+  font-size: 36px;
   text-transform: uppercase;
+  color: var(--brand-pink);
 }
 
 /*-- LINK BUTTONS --*/
@@ -273,7 +300,7 @@
 .wavy-underline {
   position: relative;
   display: inline-block;
-  font-family: Kurale;
+  /*font-family: Ubuntu;*/
   color: var(--brand-pink);
   font-style: italic;
 

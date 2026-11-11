@@ -55,7 +55,7 @@ A Tidy Introduction with {srvyr} and {survey}
 
 :::::
 
-::::: {.white-bg}
+::::: {.white-bg  #about-book}
 
 ::: {.section-deco-behind}
 ![](images/allison/trees.svg){.deco .deco-about-1 .float fig-alt=""}
@@ -64,7 +64,7 @@ A Tidy Introduction with {srvyr} and {survey}
 ![](images/allison/heatmap-ship.svg){.deco .deco-about-2 .float fig-alt=""}
 :::
 
-[About the book]{.section-label}
+[\{About the book\}]{.section-label}
 
 # From raw weights to [weighted]{.wavy-underline} publishable findings
 
@@ -83,7 +83,7 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 
 :::: {.column width="48%"}
 ::: {.dataset-box}
-[Featured datasets]{.section-label-nocolor}
+[Featured datasets]{.feature-title}
 
 ::: {#tbl-no-header .list-table header-rows=0}
 * - [American National election Studies]{.desc}<br>[Demographics and voting]{.sub}
@@ -115,7 +115,7 @@ In this book, readers embark on an in-depth journey into conducting complex surv
 ![](images/allison/table-ship.svg){.deco .deco-buy-1 .float fig-alt=""}
 :::
 
-[Where to get the book]{.section-label}
+[\{Get the book\}]{.section-label}
 
 # Read it free on the web, or [ship one home]{.wavy-underline} in print
 
@@ -126,7 +126,7 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 :::: {.column width="48%"}
 
 ::: {.rounded-box}
-[FREE ONLINE EDITION · OPEN ACCESS]{.section-label}
+[FREE ONLINE EDITION<br>OPEN ACCESS]{.feature-title}
 
 [The full book, on the web]{.span style="font-size: 1.5rem; font-weight: 600;"}
 
@@ -143,7 +143,7 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 
 ::: {.rounded-box}
 
-[PRINT & EBOOK<br>RETAILERS]{.section-label}
+[PRINT & EBOOK<br>RETAILERS]{.feature-title}
 
 - [Routledge](https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867){target="_blank"}
 - [Your local bookstore in USA](https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867){target="_blank"}
@@ -159,13 +159,13 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 
 ::::::
 
-::::: {.darkblue-bg}
+::::: {.darkblue-bg #data-pkg}
 
 ::: {.section-deco}
 ![](images/allison/stack-bar-building.svg){.deco .deco-data-1 .float fig-alt=""}
 :::
 
-[Companion data package]{.section-label}
+[\{Companion data package\}]{.section-label}
 
 # All the datasets in one tidy [R package]{.wavy-underline}
 
@@ -215,13 +215,14 @@ anes_des <- anes_adjwgt %>%
 
 :::::
 
-::::: {.white-bg}
+
+::::: {.white-bg #authors}
 
 ::: {.section-deco}
 ![](images/allison/pie-hills.svg){.deco .deco-authors-1 .float fig-alt=""}
 :::
 
-[About the authors]{.section-label}
+[\{About the authors\}]{.section-label}
 
 # We ♡ what we do
 

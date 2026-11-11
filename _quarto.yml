@@ -9,9 +9,18 @@ website:
     background: $brand-blue
     left:
       - text: "Tidy Survey Analysis in R"
+        href: index.qmd
     right:
       - text: "Home"
-        href: index.qmd
+        menu:
+          - text: "About the Book"
+            href: index.qmd#about-book
+          - text: "Get the Book"
+            href: index.qmd#buy-book
+          - text: "Companion Data Package"
+            href: index.qmd#data-pkg
+          - text: "About the Authors"
+            href: index.qmd#authors
       - text: "Events"
         href: events.qmd
       - text: "<button class='nav-btn'>Read the book →</button>"
