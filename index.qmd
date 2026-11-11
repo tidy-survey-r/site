@@ -160,6 +160,9 @@ Published by Chapman & Hall / CRC Press. Available in hardcover, paperback, and 
 ::::::
 
 ::::: {.darkblue-bg #data-pkg}
+::: {.section-deco}
+![](images/srvyrexploR.png){.deco .deco-data-hex fig-alt=""}
+:::
 
 ::: {.section-deco}
 ![](images/allison/stack-bar-building.svg){.deco .deco-data-1 .float fig-alt=""}
