@@ -240,7 +240,7 @@
 
 .talk-row {
   display: grid;
-  grid-template-columns: 76px 28px 1fr;
+  grid-template-columns: 76px 28px minmax(0, 1fr);
   align-items: start;
   margin-bottom: 18px;
 }
@@ -333,10 +333,54 @@
 
 /* ---- responsive ------------------------------------------ */
 @media (max-width: 720px) {
-  .upcoming-card { grid-template-columns: 1fr; }
+  .quarto-listing { padding: 16px 0 48px; }
+  .talks-section + .talks-section { margin-top: 44px; }
+
+  /* upcoming: stack, with a compact horizontal date stamp */
+  .upcoming-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding: 22px 20px;
+    border-radius: 18px;
+    transform: none;
+  }
   .upcoming-art  { display: none; }
-  .talk-row      { grid-template-columns: 56px 20px 1fr; }
-  .timeline::before { left: 64px; }
-  .talk-card .talk-title { padding-right: 0; }
+  .date-stamp {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    justify-self: start;
+    padding: 8px 16px;
+    transform: rotate(-1.5deg);
+  }
+  .date-stamp .m { font-size: 14px; }
+  .date-stamp .d { font-size: 28px; margin: 0; }
+  .date-stamp .y { font-size: 12px; }
+  .upcoming-body .talk-title { font-size: 24px; }
+  .upcoming-body .materials { margin-top: 16px; }
+
+  /* timeline: narrower date gutter */
+  .talk-row      { grid-template-columns: 44px 16px minmax(0, 1fr); }
+  .timeline::before { left: 50px; }
+  .year-marker   { gap: 10px; margin: 28px 0 12px -10px; }
+  .year-marker .year { width: 58px; font-size: 28px; }
+  .year-marker .dot  { width: 14px; height: 14px; }
+  .row-date      { padding-top: 18px; }
+  .row-date .m   { font-size: 13px; }
+  .row-date .d   { font-size: 20px; }
+  .row-dot       { padding-top: 22px; }
+
+  /* card: let content wrap instead of overflowing */
+  .talk-card {
+    margin-left: 6px;
+    padding: 16px 16px 18px;
+    transform: none !important;
+  }
+  .talk-card .kicker { flex-wrap: wrap; padding-right: 0; row-gap: 6px; }
+  .talk-card .muted-italic { white-space: normal; flex-basis: 100%; font-size: 13px; order: 3; }
+  .talk-card .muted-mono::before { content: none; }
+  .talk-card .talk-title { font-size: 20px; padding-right: 0; overflow-wrap: anywhere; }
+  .talk-card .summary { font-size: 14px; }
+  .tags { margin-left: 0; flex-wrap: wrap; }
   .corner-stamp { display: none; }
 }
