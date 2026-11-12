@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a14e345711173c227b21482e2eb4cc70.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f7376f6761d92b5ee6f0ac2ff05c530e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.20">
 
   <title>Tidy Data, Weighted Insights</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,10 +17,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -95,7 +101,7 @@
     code span.vs { color: #da4453; } /* VerbatimString */
     code span.wa { color: #da4453; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-e245aca1a93a2c5565dc2f71a60f4883.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-75a813ffc094c2b1bd94b0d37a9e34e8.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -278,12 +284,12 @@
 </ul>
 <h3 id="dplyr">dplyr</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|1|2|3,6|4,5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>towny <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a></a>  <span class="fu">group_by</span>(status) <span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb1-4"><a></a>    <span class="at">area_mean =</span> <span class="fu">mean</span>(land_area_km2),</span>
-<span id="cb1-5"><a></a>    <span class="at">area_median =</span> <span class="fu">median</span>(land_area_km2)</span>
-<span id="cb1-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|1|2|3,6|4,5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>towny <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(status) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb1-4"><a aria-label="4"></a>    <span class="at">area_mean =</span> <span class="fu">mean</span>(land_area_km2),</span>
+<span id="cb1-5"><a aria-label="5"></a>    <span class="at">area_median =</span> <span class="fu">median</span>(land_area_km2)</span>
+<span id="cb1-6"><a aria-label="6"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   status      area_mean area_median
@@ -300,12 +306,12 @@
 </ul>
 <h3 id="srvyr">srvyr</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|1|2|3,6|4,5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>apistrat_des <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">group_by</span>(stype) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb3-4"><a></a>    <span class="at">api00_mean =</span> <span class="fu">survey_mean</span>(api00),</span>
-<span id="cb3-5"><a></a>    <span class="at">api00_med =</span> <span class="fu">survey_median</span>(api00)</span>
-<span id="cb3-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|1|2|3,6|4,5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>apistrat_des <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(stype) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb3-4"><a aria-label="4"></a>    <span class="at">api00_mean =</span> <span class="fu">survey_mean</span>(api00),</span>
+<span id="cb3-5"><a aria-label="5"></a>    <span class="at">api00_med =</span> <span class="fu">survey_median</span>(api00)</span>
+<span id="cb3-6"><a aria-label="6"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   stype api00_mean api00_mean_se api00_med api00_med_se
@@ -419,12 +425,12 @@
 <section id="load-packages" class="slide level2">
 <h2>Load packages</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># install.packages(c("survey", "srvyr", "duckdb", "dbplyr", "gt"))</span></span>
-<span id="cb5-2"><a></a><span class="fu">library</span>(survey)</span>
-<span id="cb5-3"><a></a><span class="fu">library</span>(srvyr)</span>
-<span id="cb5-4"><a></a><span class="fu">library</span>(duckdb)</span>
-<span id="cb5-5"><a></a><span class="fu">library</span>(dbplyr)</span>
-<span id="cb5-6"><a></a><span class="fu">library</span>(gt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="co"># install.packages(c("survey", "srvyr", "duckdb", "dbplyr", "gt"))</span></span>
+<span id="cb5-2"><a aria-label="2"></a><span class="fu">library</span>(survey)</span>
+<span id="cb5-3"><a aria-label="3"></a><span class="fu">library</span>(srvyr)</span>
+<span id="cb5-4"><a aria-label="4"></a><span class="fu">library</span>(duckdb)</span>
+<span id="cb5-5"><a aria-label="5"></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb5-6"><a aria-label="6"></a><span class="fu">library</span>(gt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="todays-data" class="slide level2">
@@ -445,14 +451,14 @@
 <li>nread creates a small check that the number of records loaded as expected</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">duckdb</span>())</span>
-<span id="cb6-2"><a></a>nread <span class="ot">&lt;-</span> <span class="fu">duckdb_read_csv</span>(</span>
-<span id="cb6-3"><a></a>  <span class="at">conn =</span> con,</span>
-<span id="cb6-4"><a></a>  <span class="at">name =</span> <span class="st">"c2021_ind"</span>,</span>
-<span id="cb6-5"><a></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"RawDat"</span>, <span class="st">"data_donnees_2021_ind_v2.csv"</span>)</span>
-<span id="cb6-6"><a></a>)</span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a>nread</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">duckdb</span>())</span>
+<span id="cb6-2"><a aria-label="2"></a>nread <span class="ot">&lt;-</span> <span class="fu">duckdb_read_csv</span>(</span>
+<span id="cb6-3"><a aria-label="3"></a>  <span class="at">conn =</span> con,</span>
+<span id="cb6-4"><a aria-label="4"></a>  <span class="at">name =</span> <span class="st">"c2021_ind"</span>,</span>
+<span id="cb6-5"><a aria-label="5"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"RawDat"</span>, <span class="st">"data_donnees_2021_ind_v2.csv"</span>)</span>
+<span id="cb6-6"><a aria-label="6"></a>)</span>
+<span id="cb6-7"><a aria-label="7"></a></span>
+<span id="cb6-8"><a aria-label="8"></a>nread</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 980868</code></pre>
 </div>
@@ -480,12 +486,12 @@
 <li>This R object is NOT a data.frame</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>c2021_ind_db <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con, <span class="fu">I</span>(<span class="st">"c2021_ind"</span>))</span>
-<span id="cb8-2"><a></a><span class="fu">object.size</span>(c2021_ind_db) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">units=</span><span class="st">"Gb"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>c2021_ind_db <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tbl</span>(con, <span class="fu">I</span>(<span class="st">"c2021_ind"</span>))</span>
+<span id="cb8-2"><a aria-label="2"></a><span class="fu">object.size</span>(c2021_ind_db) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">units=</span><span class="st">"Gb"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 Gb</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>c2021_ind_db</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a>c2021_ind_db</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A query:  ?? x 144
 # Database: DuckDB 1.4.4 [root@Darwin 22.5.0:R 4.5.2/:memory:]
@@ -537,47 +543,47 @@
 <section id="syntax-replicate-weights" class="slide level2">
 <h2>Syntax: replicate weights</h2>
 <p>For studies with replicate weights, create the survey object using the <code>as_survey_rep()</code> function.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">as_survey_rep</span>(</span>
-<span id="cb12-2"><a></a>  .data,</span>
-<span id="cb12-3"><a></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-4"><a></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-5"><a></a>  <span class="at">repweights =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-6"><a></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"BRR"</span>, <span class="st">"Fay"</span>, <span class="st">"JK1"</span>, <span class="st">"JKn"</span>, <span class="st">"bootstrap"</span>, </span>
-<span id="cb12-7"><a></a>           <span class="st">"successive-difference"</span>, <span class="st">"ACS"</span>, <span class="st">"other"</span>),</span>
-<span id="cb12-8"><a></a>  <span class="at">combined_weights =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-9"><a></a>  <span class="at">rho =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-10"><a></a>  <span class="at">bootstrap_average =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-11"><a></a>  <span class="at">scale =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-12"><a></a>  <span class="at">rscales =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-13"><a></a>  <span class="at">fpc =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-14"><a></a>  <span class="at">fpctype =</span> <span class="fu">c</span>(<span class="st">"fraction"</span>, <span class="st">"correction"</span>),</span>
-<span id="cb12-15"><a></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
-<span id="cb12-16"><a></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-17"><a></a>  ...</span>
-<span id="cb12-18"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">as_survey_rep</span>(</span>
+<span id="cb12-2"><a aria-label="2"></a>  .data,</span>
+<span id="cb12-3"><a aria-label="3"></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-4"><a aria-label="4"></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-5"><a aria-label="5"></a>  <span class="at">repweights =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-6"><a aria-label="6"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"BRR"</span>, <span class="st">"Fay"</span>, <span class="st">"JK1"</span>, <span class="st">"JKn"</span>, <span class="st">"bootstrap"</span>, </span>
+<span id="cb12-7"><a aria-label="7"></a>           <span class="st">"successive-difference"</span>, <span class="st">"ACS"</span>, <span class="st">"other"</span>),</span>
+<span id="cb12-8"><a aria-label="8"></a>  <span class="at">combined_weights =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-9"><a aria-label="9"></a>  <span class="at">rho =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-10"><a aria-label="10"></a>  <span class="at">bootstrap_average =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-11"><a aria-label="11"></a>  <span class="at">scale =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-12"><a aria-label="12"></a>  <span class="at">rscales =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-13"><a aria-label="13"></a>  <span class="at">fpc =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-14"><a aria-label="14"></a>  <span class="at">fpctype =</span> <span class="fu">c</span>(<span class="st">"fraction"</span>, <span class="st">"correction"</span>),</span>
+<span id="cb12-15"><a aria-label="15"></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
+<span id="cb12-16"><a aria-label="16"></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-17"><a aria-label="17"></a>  ...</span>
+<span id="cb12-18"><a aria-label="18"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="syntax-replicate-weights-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Syntax: replicate weights</h2>
 <p>For studies with replicate weights, create the survey object using the <code>as_survey_rep()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-code-line-numbers="4|5|6,7|9,11,12,15"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb13-1" class="hljs-ln-code"><a></a><span class="fu">as_survey_rep</span>(</span>
-<span id="cb13-2" class="hljs-ln-code"><a></a>  .data,</span>
-<span id="cb13-3" class="hljs-ln-code"><a></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-4" class="hljs-ln-code"><a></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-5" class="hljs-ln-code"><a></a>  <span class="at">repweights =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-6" class="hljs-ln-code"><a></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"BRR"</span>, <span class="st">"Fay"</span>, <span class="st">"JK1"</span>, <span class="st">"JKn"</span>, <span class="st">"bootstrap"</span>, </span>
-<span id="cb13-7" class="hljs-ln-code"><a></a>           <span class="st">"successive-difference"</span>, <span class="st">"ACS"</span>,<span class="st">"other"</span>),</span>
-<span id="cb13-8" class="hljs-ln-code"><a></a>  <span class="at">combined_weights =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb13-9" class="hljs-ln-code"><a></a>  <span class="at">rho =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-10" class="hljs-ln-code"><a></a>  <span class="at">bootstrap_average =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-11" class="hljs-ln-code"><a></a>  <span class="at">scale =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-12" class="hljs-ln-code"><a></a>  <span class="at">rscales =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-13" class="hljs-ln-code"><a></a>  <span class="at">fpc =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-14" class="hljs-ln-code"><a></a>  <span class="at">fpctype =</span> <span class="fu">c</span>(<span class="st">"fraction"</span>, <span class="st">"correction"</span>),</span>
-<span id="cb13-15" class="hljs-ln-code"><a></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
-<span id="cb13-16" class="hljs-ln-code"><a></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-17" class="hljs-ln-code"><a></a>  ...</span>
-<span id="cb13-18" class="hljs-ln-code"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-code-line-numbers="4|5|6,7|9,11,12,15"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb13-1" class="hljs-ln-code"><a aria-label="1"></a><span class="fu">as_survey_rep</span>(</span>
+<span id="cb13-2" class="hljs-ln-code"><a aria-label="2"></a>  .data,</span>
+<span id="cb13-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="at">variables =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-5" class="hljs-ln-code"><a aria-label="5"></a>  <span class="at">repweights =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-6" class="hljs-ln-code"><a aria-label="6"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"BRR"</span>, <span class="st">"Fay"</span>, <span class="st">"JK1"</span>, <span class="st">"JKn"</span>, <span class="st">"bootstrap"</span>, </span>
+<span id="cb13-7" class="hljs-ln-code"><a aria-label="7"></a>           <span class="st">"successive-difference"</span>, <span class="st">"ACS"</span>,<span class="st">"other"</span>),</span>
+<span id="cb13-8" class="hljs-ln-code"><a aria-label="8"></a>  <span class="at">combined_weights =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-9" class="hljs-ln-code"><a aria-label="9"></a>  <span class="at">rho =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-10" class="hljs-ln-code"><a aria-label="10"></a>  <span class="at">bootstrap_average =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-11" class="hljs-ln-code"><a aria-label="11"></a>  <span class="at">scale =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-12" class="hljs-ln-code"><a aria-label="12"></a>  <span class="at">rscales =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-13" class="hljs-ln-code"><a aria-label="13"></a>  <span class="at">fpc =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-14" class="hljs-ln-code"><a aria-label="14"></a>  <span class="at">fpctype =</span> <span class="fu">c</span>(<span class="st">"fraction"</span>, <span class="st">"correction"</span>),</span>
+<span id="cb13-15" class="hljs-ln-code"><a aria-label="15"></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>),</span>
+<span id="cb13-16" class="hljs-ln-code"><a aria-label="16"></a>  <span class="at">degf =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-17" class="hljs-ln-code"><a aria-label="17"></a>  ...</span>
+<span id="cb13-18" class="hljs-ln-code"><a aria-label="18"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -601,14 +607,14 @@
 <section id="implementation---design-object" class="slide level2">
 <h2>Implementation - design object</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a>cens_des <span class="ot">&lt;-</span> c2021_ind_db <span class="sc">%&gt;%</span></span>
-<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2"></a>  <span class="fu">as_survey_rep</span>(</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3"></a>    <span class="at">weights =</span> WEIGHT,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a>    <span class="at">repweights =</span> WT1<span class="sc">:</span>WT16,</span>
-<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a>    <span class="at">type =</span> <span class="st">"other"</span>,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6"></a>    <span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">35</span>,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span>,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-9-8" class="code-annotation-target"><a href="#annotated-cell-9-8"></a>    <span class="at">rscales =</span> <span class="dv">1</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-label="1"></a>cens_des <span class="ot">&lt;-</span> c2021_ind_db <span class="sc">%&gt;%</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-label="2"></a>  <span class="fu">as_survey_rep</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-label="3"></a>    <span class="at">weights =</span> WEIGHT,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4" aria-label="4"></a>    <span class="at">repweights =</span> WT1<span class="sc">:</span>WT16,</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-label="5"></a>    <span class="at">type =</span> <span class="st">"other"</span>,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6" aria-label="6"></a>    <span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">35</span>,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7" aria-label="7"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span>,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-9-8" class="code-annotation-target"><a href="#annotated-cell-9-8" aria-label="8"></a>    <span class="at">rscales =</span> <span class="dv">1</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
@@ -658,11 +664,11 @@
 <li>Efficiency opportunity: specify degrees of freedom when creating design object</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">object.size</span>(cens_des) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">units=</span><span class="st">"Gb"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">object.size</span>(cens_des) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">units=</span><span class="st">"Gb"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.2 Gb</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>cens_des</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>cens_des</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: Called via srvyr
 with 16 replicates and MSE variances.
@@ -711,16 +717,16 @@ Data variables:
 <h2>Syntax</h2>
 <p>The <code>survey_mean()</code> calculates means while taking into account the survey design elements.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|2|4,5|6,7|8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">survey_mean</span>(</span>
-<span id="cb18-2"><a></a>  x,</span>
-<span id="cb18-3"><a></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb18-4"><a></a>  <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"var"</span>, <span class="st">"cv"</span>),</span>
-<span id="cb18-5"><a></a>  <span class="at">level =</span> <span class="fl">0.95</span>,</span>
-<span id="cb18-6"><a></a>  <span class="at">proportion =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb18-7"><a></a>  <span class="at">prop_method =</span> <span class="fu">c</span>(<span class="st">"logit"</span>, <span class="st">"likelihood"</span>, <span class="st">"asin"</span>, <span class="st">"beta"</span>, <span class="st">"mean"</span>),</span>
-<span id="cb18-8"><a></a>  <span class="at">deff =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb18-9"><a></a>  <span class="at">df =</span> <span class="cn">NULL</span></span>
-<span id="cb18-10"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|2|4,5|6,7|8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="fu">survey_mean</span>(</span>
+<span id="cb18-2"><a aria-label="2"></a>  x,</span>
+<span id="cb18-3"><a aria-label="3"></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-4"><a aria-label="4"></a>  <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"var"</span>, <span class="st">"cv"</span>),</span>
+<span id="cb18-5"><a aria-label="5"></a>  <span class="at">level =</span> <span class="fl">0.95</span>,</span>
+<span id="cb18-6"><a aria-label="6"></a>  <span class="at">proportion =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-7"><a aria-label="7"></a>  <span class="at">prop_method =</span> <span class="fu">c</span>(<span class="st">"logit"</span>, <span class="st">"likelihood"</span>, <span class="st">"asin"</span>, <span class="st">"beta"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb18-8"><a aria-label="8"></a>  <span class="at">deff =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-9"><a aria-label="9"></a>  <span class="at">df =</span> <span class="cn">NULL</span></span>
+<span id="cb18-10"><a aria-label="10"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="implementation" class="slide level2">
@@ -728,9 +734,9 @@ Data variables:
 <p>Calculate the estimated average cost of housing (<code>SHELCO</code>) in Canada:</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
-<span id="cb19-3"><a></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a aria-label="2"></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
+<span id="cb19-3"><a aria-label="3"></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -743,9 +749,9 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Calculate the estimated average cost of housing (<code>SHELCO</code>) in Canada:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb20-2" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
-<span id="cb20-3" class="hljs-ln-code"><a></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb20-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
+<span id="cb20-3" class="hljs-ln-code"><a aria-label="3"></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Use the survey design object, not raw data</li>
@@ -756,9 +762,9 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Calculate the estimated average cost of housing (<code>SHELCO</code>) in Canada:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb21-1" class="hljs-ln-code"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb21-2" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
-<span id="cb21-3" class="hljs-ln-code"><a></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb21-1" class="hljs-ln-code"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb21-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
+<span id="cb21-3" class="hljs-ln-code"><a aria-label="3"></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Use the survey design object, not raw data</li>
@@ -770,9 +776,9 @@ Data variables:
 <h2>Results</h2>
 <p>Calculate the estimated average cost of housing (<code>SHELCO</code>) in Canada:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
-<span id="cb22-3"><a></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a aria-label="2"></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
+<span id="cb22-3"><a aria-label="3"></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   housing_cost housing_cost_se housing_cost_low housing_cost_upp
@@ -803,10 +809,10 @@ Data variables:
 <h2>Calculate means with groups</h2>
 <p>Calculate the estimated average cost of housing (<code>SHELCO</code>) in Canada <strong>by each province</strong> (<code>PR</code>) by including a <code>group_by()</code> function with the variable of interest <em>before</em> the <code>summarize()</code> function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a></a>  <span class="fu">group_by</span>(PR) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
-<span id="cb24-4"><a></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(PR) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
+<span id="cb24-4"><a aria-label="4"></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -860,21 +866,21 @@ Data variables:
 <section id="factorslabelled-data---option-1" class="slide level2 smaller">
 <h2>Factors/Labelled Data - Option 1</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-code-line-numbers="2-12|13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a></a>  <span class="fu">mutate</span>(<span class="at">Province =</span> <span class="fu">case_when</span>(PR <span class="sc">==</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"Newfoundland and Labrador"</span>,</span>
-<span id="cb26-3"><a></a>                              PR <span class="sc">==</span> <span class="dv">11</span> <span class="sc">~</span> <span class="st">"Prince Edward Island"</span>,</span>
-<span id="cb26-4"><a></a>                              PR <span class="sc">==</span> <span class="dv">12</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
-<span id="cb26-5"><a></a>                              PR <span class="sc">==</span> <span class="dv">13</span> <span class="sc">~</span> <span class="st">"New Brunswick"</span>,</span>
-<span id="cb26-6"><a></a>                              PR <span class="sc">==</span> <span class="dv">24</span> <span class="sc">~</span> <span class="st">"Quebec"</span>,</span>
-<span id="cb26-7"><a></a>                              PR <span class="sc">==</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
-<span id="cb26-8"><a></a>                              PR <span class="sc">==</span> <span class="dv">46</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
-<span id="cb26-9"><a></a>                              PR <span class="sc">==</span> <span class="dv">47</span> <span class="sc">~</span> <span class="st">"Saskatchewan"</span>,</span>
-<span id="cb26-10"><a></a>                              PR <span class="sc">==</span> <span class="dv">48</span> <span class="sc">~</span> <span class="st">"Alberta"</span>,</span>
-<span id="cb26-11"><a></a>                              PR <span class="sc">==</span> <span class="dv">59</span> <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
-<span id="cb26-12"><a></a>                              PR <span class="sc">==</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"Northern Canada"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-13"><a></a>  <span class="fu">group_by</span>(Province) <span class="sc">%&gt;%</span></span>
-<span id="cb26-14"><a></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
-<span id="cb26-15"><a></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-code-line-numbers="2-12|13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">Province =</span> <span class="fu">case_when</span>(PR <span class="sc">==</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"Newfoundland and Labrador"</span>,</span>
+<span id="cb26-3"><a aria-label="3"></a>                              PR <span class="sc">==</span> <span class="dv">11</span> <span class="sc">~</span> <span class="st">"Prince Edward Island"</span>,</span>
+<span id="cb26-4"><a aria-label="4"></a>                              PR <span class="sc">==</span> <span class="dv">12</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
+<span id="cb26-5"><a aria-label="5"></a>                              PR <span class="sc">==</span> <span class="dv">13</span> <span class="sc">~</span> <span class="st">"New Brunswick"</span>,</span>
+<span id="cb26-6"><a aria-label="6"></a>                              PR <span class="sc">==</span> <span class="dv">24</span> <span class="sc">~</span> <span class="st">"Quebec"</span>,</span>
+<span id="cb26-7"><a aria-label="7"></a>                              PR <span class="sc">==</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
+<span id="cb26-8"><a aria-label="8"></a>                              PR <span class="sc">==</span> <span class="dv">46</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
+<span id="cb26-9"><a aria-label="9"></a>                              PR <span class="sc">==</span> <span class="dv">47</span> <span class="sc">~</span> <span class="st">"Saskatchewan"</span>,</span>
+<span id="cb26-10"><a aria-label="10"></a>                              PR <span class="sc">==</span> <span class="dv">48</span> <span class="sc">~</span> <span class="st">"Alberta"</span>,</span>
+<span id="cb26-11"><a aria-label="11"></a>                              PR <span class="sc">==</span> <span class="dv">59</span> <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
+<span id="cb26-12"><a aria-label="12"></a>                              PR <span class="sc">==</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"Northern Canada"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-13"><a aria-label="13"></a>  <span class="fu">group_by</span>(Province) <span class="sc">%&gt;%</span></span>
+<span id="cb26-14"><a aria-label="14"></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
+<span id="cb26-15"><a aria-label="15"></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -913,17 +919,17 @@ Data variables:
 <section id="factorslabelled-data---option-2" class="slide level2 smaller">
 <h2>Factors/Labelled Data - Option 2</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" data-code-line-numbers="2|5-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a></a>  <span class="fu">group_by</span>(PR) <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
-<span id="cb28-4"><a></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a></a>  <span class="fu">mutate</span>(<span class="at">PR =</span> <span class="fu">factor</span>(<span class="fu">as.character</span>(PR),</span>
-<span id="cb28-6"><a></a>                     <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"10"</span>, <span class="st">"11"</span>, <span class="st">"12"</span>, <span class="st">"13"</span>, <span class="st">"24"</span>, <span class="st">"35"</span>, <span class="st">"46"</span>,</span>
-<span id="cb28-7"><a></a>                              <span class="st">"47"</span>, <span class="st">"48"</span>, <span class="st">"59"</span>, <span class="st">"70"</span>),</span>
-<span id="cb28-8"><a></a>                     <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Newfoundland and Labrador"</span>, <span class="st">"Prince Edward Island"</span>, </span>
-<span id="cb28-9"><a></a>                              <span class="st">"Nova Scotia"</span>, <span class="st">"New Brunswick"</span>, <span class="st">"Quebec"</span>, <span class="st">"Ontario"</span>,</span>
-<span id="cb28-10"><a></a>                              <span class="st">"Manitoba"</span>, <span class="st">"Saskatchewan"</span>, <span class="st">"Alberta"</span>, </span>
-<span id="cb28-11"><a></a>                              <span class="st">"British Columbia"</span>, <span class="st">"Northern Canada"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" data-code-line-numbers="2|5-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(PR) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a aria-label="3"></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span> <span class="fu">survey_mean</span>(SHELCO, </span>
+<span id="cb28-4"><a aria-label="4"></a>                                       <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb28-5"><a aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">PR =</span> <span class="fu">factor</span>(<span class="fu">as.character</span>(PR),</span>
+<span id="cb28-6"><a aria-label="6"></a>                     <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"10"</span>, <span class="st">"11"</span>, <span class="st">"12"</span>, <span class="st">"13"</span>, <span class="st">"24"</span>, <span class="st">"35"</span>, <span class="st">"46"</span>,</span>
+<span id="cb28-7"><a aria-label="7"></a>                              <span class="st">"47"</span>, <span class="st">"48"</span>, <span class="st">"59"</span>, <span class="st">"70"</span>),</span>
+<span id="cb28-8"><a aria-label="8"></a>                     <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Newfoundland and Labrador"</span>, <span class="st">"Prince Edward Island"</span>, </span>
+<span id="cb28-9"><a aria-label="9"></a>                              <span class="st">"Nova Scotia"</span>, <span class="st">"New Brunswick"</span>, <span class="st">"Quebec"</span>, <span class="st">"Ontario"</span>,</span>
+<span id="cb28-10"><a aria-label="10"></a>                              <span class="st">"Manitoba"</span>, <span class="st">"Saskatchewan"</span>, <span class="st">"Alberta"</span>, </span>
+<span id="cb28-11"><a aria-label="11"></a>                              <span class="st">"British Columbia"</span>, <span class="st">"Northern Canada"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -970,11 +976,11 @@ Data variables:
 <p>Use the <code>svyttest()</code> function to compare two proportions or means.</p>
 <p>Syntax:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" data-code-line-numbers="|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">svyttest</span>(</span>
-<span id="cb30-2"><a></a>  formula,</span>
-<span id="cb30-3"><a></a>  design,</span>
-<span id="cb30-4"><a></a>  ...</span>
-<span id="cb30-5"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" data-code-line-numbers="|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="fu">svyttest</span>(</span>
+<span id="cb30-2"><a aria-label="2"></a>  formula,</span>
+<span id="cb30-3"><a aria-label="3"></a>  design,</span>
+<span id="cb30-4"><a aria-label="4"></a>  ...</span>
+<span id="cb30-5"><a aria-label="5"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1000,13 +1006,13 @@ Data variables:
 <li>Need to specify with dot notation in pipes</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-code-line-numbers="1-3|5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>design_obj <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a></a>  <span class="fu">svyttest</span>(<span class="at">formula =</span> var1 <span class="sc">~</span> var2,</span>
-<span id="cb31-3"><a></a>           <span class="at">design =</span> .)</span>
-<span id="cb31-4"><a></a></span>
-<span id="cb31-5"><a></a>design_obj <span class="sc">%&gt;%</span></span>
-<span id="cb31-6"><a></a>  <span class="fu">svyttest</span>(<span class="at">design =</span> .,</span>
-<span id="cb31-7"><a></a>           <span class="at">formula =</span> var1 <span class="sc">~</span> var2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-code-line-numbers="1-3|5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>design_obj <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a aria-label="2"></a>  <span class="fu">svyttest</span>(<span class="at">formula =</span> var1 <span class="sc">~</span> var2,</span>
+<span id="cb31-3"><a aria-label="3"></a>           <span class="at">design =</span> .)</span>
+<span id="cb31-4"><a aria-label="4"></a></span>
+<span id="cb31-5"><a aria-label="5"></a>design_obj <span class="sc">%&gt;%</span></span>
+<span id="cb31-6"><a aria-label="6"></a>  <span class="fu">svyttest</span>(<span class="at">design =</span> .,</span>
+<span id="cb31-7"><a aria-label="7"></a>           <span class="at">formula =</span> var1 <span class="sc">~</span> var2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="syntax-pipeline-with-databases" class="slide level2">
@@ -1017,23 +1023,23 @@ Data variables:
 <li>Perform the test</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32" data-code-line-numbers="1,4,5|2,3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>design_obj <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a></a>  <span class="fu">select</span>(var1, var2) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a></a>  <span class="fu">svyttest</span>(<span class="at">formula =</span> var1 <span class="sc">~</span> var2,</span>
-<span id="cb32-5"><a></a>           <span class="at">design =</span> .)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32" data-code-line-numbers="1,4,5|2,3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>design_obj <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a aria-label="2"></a>  <span class="fu">select</span>(var1, var2) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a aria-label="3"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a aria-label="4"></a>  <span class="fu">svyttest</span>(<span class="at">formula =</span> var1 <span class="sc">~</span> var2,</span>
+<span id="cb32-5"><a aria-label="5"></a>           <span class="at">design =</span> .)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="implementation-one-sample-t-test" class="slide level2 smaller">
 <h2>Implementation: one-sample t-test</h2>
 <p>Is the proportion of females<sup>1</sup> in Canada different from 50% among those 65 years old and over?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb33-5"><a></a>    <span class="at">WomenPct=</span><span class="fu">survey_mean</span>(Woman, <span class="at">proportion =</span> <span class="cn">TRUE</span>, <span class="at">vartype =</span> <span class="st">"ci"</span>)</span>
-<span id="cb33-6"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a aria-label="4"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb33-5"><a aria-label="5"></a>    <span class="at">WomenPct=</span><span class="fu">survey_mean</span>(Woman, <span class="at">proportion =</span> <span class="cn">TRUE</span>, <span class="at">vartype =</span> <span class="st">"ci"</span>)</span>
+<span id="cb33-6"><a aria-label="6"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   WomenPct WomenPct_low WomenPct_upp
@@ -1063,15 +1069,15 @@ Data variables:
 <h2>Implementation: one-sample t-test</h2>
 <p>Is the proportion of women in Canada different from 50% among those 65 years old and over?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" data-code-line-numbers="1-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-4"><a></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
-<span id="cb35-5"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb35-6"><a></a>  <span class="fu">svyttest</span>(</span>
-<span id="cb35-7"><a></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb35-8"><a></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb35-9"><a></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" data-code-line-numbers="1-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-4"><a aria-label="4"></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
+<span id="cb35-5"><a aria-label="5"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb35-6"><a aria-label="6"></a>  <span class="fu">svyttest</span>(</span>
+<span id="cb35-7"><a aria-label="7"></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb35-8"><a aria-label="8"></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb35-9"><a aria-label="9"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Subset data to those age 65 and older</li>
@@ -1082,15 +1088,15 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation: one-sample t-test</h2>
 <p>Is the proportion of women in Canada different from 50% among those 65 years old and over?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb36-1" class="hljs-ln-code"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb36-2" class="hljs-ln-code"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-3" class="hljs-ln-code"><a></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-4" class="hljs-ln-code"><a></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
-<span id="cb36-5" class="hljs-ln-code"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb36-6" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
-<span id="cb36-7" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb36-8" class="hljs-ln-code"><a></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb36-9" class="hljs-ln-code"><a></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb36-1" class="hljs-ln-code"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb36-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
+<span id="cb36-5" class="hljs-ln-code"><a aria-label="5"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb36-6" class="hljs-ln-code"><a aria-label="6"></a>  <span class="fu">svyttest</span>(</span>
+<span id="cb36-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb36-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb36-9" class="hljs-ln-code"><a aria-label="9"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Subset data to those age 65 and older</li>
@@ -1102,15 +1108,15 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation: one-sample t-test</h2>
 <p>Is the proportion of women in Canada different from 50% among those 65 years old and over?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb37-1" class="hljs-ln-code"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb37-2" class="hljs-ln-code"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb37-3" class="hljs-ln-code"><a></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-4" class="hljs-ln-code"><a></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
-<span id="cb37-5" class="hljs-ln-code"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb37-6" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
-<span id="cb37-7" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb37-8" class="hljs-ln-code"><a></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb37-9" class="hljs-ln-code"><a></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb37-1" class="hljs-ln-code"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb37-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
+<span id="cb37-5" class="hljs-ln-code"><a aria-label="5"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb37-6" class="hljs-ln-code"><a aria-label="6"></a>  <span class="fu">svyttest</span>(</span>
+<span id="cb37-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb37-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb37-9" class="hljs-ln-code"><a aria-label="9"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Subset data to those age 65 and older</li>
@@ -1123,15 +1129,15 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation: one-sample t-test</h2>
 <p>Is the proportion of women in Canada different from 50% among those 65 years old and over?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" data-code-line-numbers="6-8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb38-1" class="hljs-ln-code"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb38-2" class="hljs-ln-code"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb38-3" class="hljs-ln-code"><a></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-4" class="hljs-ln-code"><a></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
-<span id="cb38-5" class="hljs-ln-code"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb38-6" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
-<span id="cb38-7" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb38-8" class="hljs-ln-code"><a></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb38-9" class="hljs-ln-code"><a></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" data-code-line-numbers="6-8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb38-1" class="hljs-ln-code"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb38-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
+<span id="cb38-5" class="hljs-ln-code"><a aria-label="5"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb38-6" class="hljs-ln-code"><a aria-label="6"></a>  <span class="fu">svyttest</span>(</span>
+<span id="cb38-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb38-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb38-9" class="hljs-ln-code"><a aria-label="9"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Subset data to those age 65 and older</li>
@@ -1145,15 +1151,15 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation: one-sample t-test</h2>
 <p>Is the proportion of women in Canada different from 50% among those 65 years old and over?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb39-1" class="hljs-ln-code"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb39-2" class="hljs-ln-code"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb39-3" class="hljs-ln-code"><a></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-4" class="hljs-ln-code"><a></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
-<span id="cb39-5" class="hljs-ln-code"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb39-6" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
-<span id="cb39-7" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb39-8" class="hljs-ln-code"><a></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb39-9" class="hljs-ln-code"><a></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb39-1" class="hljs-ln-code"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb39-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb39-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
+<span id="cb39-5" class="hljs-ln-code"><a aria-label="5"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-6" class="hljs-ln-code"><a aria-label="6"></a>  <span class="fu">svyttest</span>(</span>
+<span id="cb39-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb39-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb39-9" class="hljs-ln-code"><a aria-label="9"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Subset data to those age 65 and older</li>
@@ -1168,15 +1174,15 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation: one-sample t-test</h2>
 <p>Is the proportion of women in Canada different from 50% among those 65 years old and over?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb40-1" class="hljs-ln-code"><a></a>cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb40-2" class="hljs-ln-code"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb40-3" class="hljs-ln-code"><a></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb40-4" class="hljs-ln-code"><a></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
-<span id="cb40-5" class="hljs-ln-code"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb40-6" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
-<span id="cb40-7" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb40-8" class="hljs-ln-code"><a></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb40-9" class="hljs-ln-code"><a></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb40-1" class="hljs-ln-code"><a aria-label="1"></a>cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb40-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">17</span>, <span class="dv">21</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">Woman=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">select</span>(Woman) <span class="sc">%&gt;%</span></span>
+<span id="cb40-5" class="hljs-ln-code"><a aria-label="5"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-6" class="hljs-ln-code"><a aria-label="6"></a>  <span class="fu">svyttest</span>(</span>
+<span id="cb40-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">formula =</span> Woman <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb40-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">design =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb40-9" class="hljs-ln-code"><a aria-label="9"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 8
   estimate statistic  p.value parameter conf.low conf.high method    alternative
@@ -1191,18 +1197,18 @@ Data variables:
 <div class="fragment">
 <p>First, look at the estimated average employment income for women and men, who are adult full-time employees.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" data-code-line-numbers="|2-5|6|8-12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb42-1" class="hljs-ln-code"><a></a>cenc_des_ftw_adult <span class="ot">&lt;-</span> cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb42-2" class="hljs-ln-code"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">7</span>, <span class="dv">21</span>), </span>
-<span id="cb42-3" class="hljs-ln-code"><a></a>         COW <span class="sc">==</span> <span class="dv">1</span>, </span>
-<span id="cb42-4" class="hljs-ln-code"><a></a>         <span class="sc">!</span>EmpIn <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">88888888</span>, <span class="dv">99999999</span>), </span>
-<span id="cb42-5" class="hljs-ln-code"><a></a>         FPTWK <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb42-6" class="hljs-ln-code"><a></a>  <span class="fu">mutate</span>(<span class="at">GenderC=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Woman"</span>, <span class="st">"Man"</span>))</span>
-<span id="cb42-7" class="hljs-ln-code"><a></a></span>
-<span id="cb42-8" class="hljs-ln-code"><a></a>cenc_des_ftw_adult <span class="sc">%&gt;%</span></span>
-<span id="cb42-9" class="hljs-ln-code"><a></a>  <span class="fu">group_by</span>(GenderC) <span class="sc">%&gt;%</span></span>
-<span id="cb42-10" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb42-11" class="hljs-ln-code"><a></a>    <span class="at">EmpInMn =</span> <span class="fu">survey_mean</span>(EmpIn)</span>
-<span id="cb42-12" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" data-code-line-numbers="|2-5|6|8-12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb42-1" class="hljs-ln-code"><a aria-label="1"></a>cenc_des_ftw_adult <span class="ot">&lt;-</span> cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb42-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="fu">between</span>(AGEGRP, <span class="dv">7</span>, <span class="dv">21</span>), </span>
+<span id="cb42-3" class="hljs-ln-code"><a aria-label="3"></a>         COW <span class="sc">==</span> <span class="dv">1</span>, </span>
+<span id="cb42-4" class="hljs-ln-code"><a aria-label="4"></a>         <span class="sc">!</span>EmpIn <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">88888888</span>, <span class="dv">99999999</span>), </span>
+<span id="cb42-5" class="hljs-ln-code"><a aria-label="5"></a>         FPTWK <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-6" class="hljs-ln-code"><a aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">GenderC=</span><span class="fu">if_else</span>(Gender<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Woman"</span>, <span class="st">"Man"</span>))</span>
+<span id="cb42-7" class="hljs-ln-code"><a aria-label="7"></a></span>
+<span id="cb42-8" class="hljs-ln-code"><a aria-label="8"></a>cenc_des_ftw_adult <span class="sc">%&gt;%</span></span>
+<span id="cb42-9" class="hljs-ln-code"><a aria-label="9"></a>  <span class="fu">group_by</span>(GenderC) <span class="sc">%&gt;%</span></span>
+<span id="cb42-10" class="hljs-ln-code"><a aria-label="10"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb42-11" class="hljs-ln-code"><a aria-label="11"></a>    <span class="at">EmpInMn =</span> <span class="fu">survey_mean</span>(EmpIn)</span>
+<span id="cb42-12" class="hljs-ln-code"><a aria-label="12"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1237,14 +1243,14 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation: two-sample t-test</h2>
 <p>Test if the employment income is significantly different for women and men:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" data-code-line-numbers="|1|2-3|5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb44-1" class="hljs-ln-code"><a></a>cenc_des_ftw_adult <span class="sc">%&gt;%</span></span>
-<span id="cb44-2" class="hljs-ln-code"><a></a>  <span class="fu">select</span>(EmpIn, GenderC)  <span class="sc">%&gt;%</span></span>
-<span id="cb44-3" class="hljs-ln-code"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb44-4" class="hljs-ln-code"><a></a>  <span class="fu">svyttest</span>(</span>
-<span id="cb44-5" class="hljs-ln-code"><a></a>    <span class="at">formula =</span> EmpIn <span class="sc">~</span> GenderC,</span>
-<span id="cb44-6" class="hljs-ln-code"><a></a>    <span class="at">design =</span> .</span>
-<span id="cb44-7" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb44-8" class="hljs-ln-code"><a></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" data-code-line-numbers="|1|2-3|5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb44-1" class="hljs-ln-code"><a aria-label="1"></a>cenc_des_ftw_adult <span class="sc">%&gt;%</span></span>
+<span id="cb44-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">select</span>(EmpIn, GenderC)  <span class="sc">%&gt;%</span></span>
+<span id="cb44-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">svyttest</span>(</span>
+<span id="cb44-5" class="hljs-ln-code"><a aria-label="5"></a>    <span class="at">formula =</span> EmpIn <span class="sc">~</span> GenderC,</span>
+<span id="cb44-6" class="hljs-ln-code"><a aria-label="6"></a>    <span class="at">design =</span> .</span>
+<span id="cb44-7" class="hljs-ln-code"><a aria-label="7"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-8" class="hljs-ln-code"><a aria-label="8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1278,21 +1284,21 @@ Data variables:
 <section id="syntax-2" class="slide level2">
 <h2>Syntax</h2>
 <p>With the {gt} package, supply the input data table to <code>gt()</code> and add options to modify and format your table.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb46-2"><a></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb46-3"><a></a>  ... add options here...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a aria-label="2"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a aria-label="3"></a>  ... add options here...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="implementation-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Create a table for estimated monthly cost of housing in Canada by province:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb47-1" class="hljs-ln-code"><a></a>cens_tab <span class="ot">&lt;-</span> cens_des <span class="sc">%&gt;%</span></span>
-<span id="cb47-2" class="hljs-ln-code"><a></a>  <span class="fu">group_by</span>(PR) <span class="sc">%&gt;%</span></span>
-<span id="cb47-3" class="hljs-ln-code"><a></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span></span>
-<span id="cb47-4" class="hljs-ln-code"><a></a>              <span class="fu">survey_mean</span>(SHELCO, <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb47-5" class="hljs-ln-code"><a></a>  <span class="fu">mutate</span>(<span class="at">PR =</span> <span class="fu">as.character</span>(PR))</span>
-<span id="cb47-6" class="hljs-ln-code"><a></a></span>
-<span id="cb47-7" class="hljs-ln-code"><a></a>cens_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb47-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="ot">&lt;-</span> cens_des <span class="sc">%&gt;%</span></span>
+<span id="cb47-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">group_by</span>(PR) <span class="sc">%&gt;%</span></span>
+<span id="cb47-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">summarize</span>(<span class="at">housing_cost =</span></span>
+<span id="cb47-4" class="hljs-ln-code"><a aria-label="4"></a>              <span class="fu">survey_mean</span>(SHELCO, <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb47-5" class="hljs-ln-code"><a aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">PR =</span> <span class="fu">as.character</span>(PR))</span>
+<span id="cb47-6" class="hljs-ln-code"><a aria-label="6"></a></span>
+<span id="cb47-7" class="hljs-ln-code"><a aria-label="7"></a>cens_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 5
    PR    housing_cost housing_cost_se housing_cost_low housing_cost_upp
@@ -1315,8 +1321,8 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Pipe (<code>%&gt;%</code>) your data frame (<code>cens_tab</code>) into the <code>gt()</code> function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb49-1" class="hljs-ln-code"><a></a>cens_tab <span class="sc">%&gt;%</span></span>
-<span id="cb49-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb49-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="sc">%&gt;%</span></span>
+<span id="cb49-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="nymovynhul" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#nymovynhul table {
@@ -1867,8 +1873,8 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Continue adding to your table, for example, designating Province as a “stub”:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb50-1" class="hljs-ln-code"><a></a>cens_tab <span class="sc">%&gt;%</span></span>
-<span id="cb50-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb50-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="sc">%&gt;%</span></span>
+<span id="cb50-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="hrvrbesgyv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#hrvrbesgyv table {
@@ -2419,9 +2425,9 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Add a title:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb51-1" class="hljs-ln-code"><a></a>cens_tab <span class="sc">%&gt;%</span></span>
-<span id="cb51-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-3" class="hljs-ln-code"><a></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Monthly cost of housing in Canada by province"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb51-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="sc">%&gt;%</span></span>
+<span id="cb51-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Monthly cost of housing in Canada by province"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="wqpzubpewo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#wqpzubpewo table {
@@ -2975,15 +2981,15 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Add more informative labels:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52" data-code-line-numbers="4-9"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb52-1" class="hljs-ln-code"><a></a>cens_tab <span class="sc">%&gt;%</span></span>
-<span id="cb52-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-3" class="hljs-ln-code"><a></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-4" class="hljs-ln-code"><a></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb52-5" class="hljs-ln-code"><a></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
-<span id="cb52-6" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
-<span id="cb52-7" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
-<span id="cb52-8" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
-<span id="cb52-9" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52" data-code-line-numbers="4-9"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb52-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="sc">%&gt;%</span></span>
+<span id="cb52-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb52-5" class="hljs-ln-code"><a aria-label="5"></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
+<span id="cb52-6" class="hljs-ln-code"><a aria-label="6"></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
+<span id="cb52-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
+<span id="cb52-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
+<span id="cb52-9" class="hljs-ln-code"><a aria-label="9"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -3539,19 +3545,19 @@ Data variables:
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Label certain columns using spanners:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53" data-code-line-numbers="10-13"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb53-1" class="hljs-ln-code"><a></a>cens_tab <span class="sc">%&gt;%</span></span>
-<span id="cb53-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb53-3" class="hljs-ln-code"><a></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb53-4" class="hljs-ln-code"><a></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb53-5" class="hljs-ln-code"><a></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
-<span id="cb53-6" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
-<span id="cb53-7" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
-<span id="cb53-8" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
-<span id="cb53-9" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb53-10" class="hljs-ln-code"><a></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb53-11" class="hljs-ln-code"><a></a>    <span class="at">label =</span> <span class="st">"Dollars"</span>,</span>
-<span id="cb53-12" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)</span>
-<span id="cb53-13" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53" data-code-line-numbers="10-13"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb53-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="sc">%&gt;%</span></span>
+<span id="cb53-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb53-5" class="hljs-ln-code"><a aria-label="5"></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
+<span id="cb53-6" class="hljs-ln-code"><a aria-label="6"></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
+<span id="cb53-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
+<span id="cb53-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
+<span id="cb53-9" class="hljs-ln-code"><a aria-label="9"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb53-10" class="hljs-ln-code"><a aria-label="10"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb53-11" class="hljs-ln-code"><a aria-label="11"></a>    <span class="at">label =</span> <span class="st">"Dollars"</span>,</span>
+<span id="cb53-12" class="hljs-ln-code"><a aria-label="12"></a>    <span class="at">columns =</span> <span class="fu">c</span>(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)</span>
+<span id="cb53-13" class="hljs-ln-code"><a aria-label="13"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -4119,20 +4125,20 @@ Dollars
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Format numbers with the <code>fmt_*()</code> functions:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54" data-code-line-numbers="14"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb54-1" class="hljs-ln-code"><a></a>cens_tab <span class="sc">%&gt;%</span></span>
-<span id="cb54-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb54-3" class="hljs-ln-code"><a></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb54-4" class="hljs-ln-code"><a></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb54-5" class="hljs-ln-code"><a></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
-<span id="cb54-6" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
-<span id="cb54-7" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
-<span id="cb54-8" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
-<span id="cb54-9" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb54-10" class="hljs-ln-code"><a></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb54-11" class="hljs-ln-code"><a></a>    <span class="at">label =</span> <span class="st">"Dollars"</span>,</span>
-<span id="cb54-12" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)</span>
-<span id="cb54-13" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb54-14" class="hljs-ln-code"><a></a>  <span class="fu">fmt_number</span>(<span class="at">decimals =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54" data-code-line-numbers="14"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb54-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="sc">%&gt;%</span></span>
+<span id="cb54-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb54-5" class="hljs-ln-code"><a aria-label="5"></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
+<span id="cb54-6" class="hljs-ln-code"><a aria-label="6"></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
+<span id="cb54-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
+<span id="cb54-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
+<span id="cb54-9" class="hljs-ln-code"><a aria-label="9"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb54-10" class="hljs-ln-code"><a aria-label="10"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb54-11" class="hljs-ln-code"><a aria-label="11"></a>    <span class="at">label =</span> <span class="st">"Dollars"</span>,</span>
+<span id="cb54-12" class="hljs-ln-code"><a aria-label="12"></a>    <span class="at">columns =</span> <span class="fu">c</span>(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)</span>
+<span id="cb54-13" class="hljs-ln-code"><a aria-label="13"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb54-14" class="hljs-ln-code"><a aria-label="14"></a>  <span class="fu">fmt_number</span>(<span class="at">decimals =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -4700,34 +4706,34 @@ Dollars
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Change row labels (without editing your data):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55" data-code-line-numbers="15-28"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb55-1" class="hljs-ln-code"><a></a>cens_tab <span class="sc">%&gt;%</span></span>
-<span id="cb55-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-3" class="hljs-ln-code"><a></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-4" class="hljs-ln-code"><a></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb55-5" class="hljs-ln-code"><a></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
-<span id="cb55-6" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
-<span id="cb55-7" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
-<span id="cb55-8" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
-<span id="cb55-9" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb55-10" class="hljs-ln-code"><a></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb55-11" class="hljs-ln-code"><a></a>    <span class="at">label =</span> <span class="st">"Dollars"</span>,</span>
-<span id="cb55-12" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)</span>
-<span id="cb55-13" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb55-14" class="hljs-ln-code"><a></a>  <span class="fu">fmt_number</span>(<span class="at">decimals =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-15" class="hljs-ln-code"><a></a>  <span class="fu">text_case_match</span>(</span>
-<span id="cb55-16" class="hljs-ln-code"><a></a>    <span class="st">"10"</span> <span class="sc">~</span> <span class="st">"Newfoundland and Labrador"</span>,</span>
-<span id="cb55-17" class="hljs-ln-code"><a></a>    <span class="st">"11"</span> <span class="sc">~</span> <span class="st">"Prince Edward Island"</span>,</span>
-<span id="cb55-18" class="hljs-ln-code"><a></a>    <span class="st">"12"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
-<span id="cb55-19" class="hljs-ln-code"><a></a>    <span class="st">"13"</span> <span class="sc">~</span> <span class="st">"New Brunswick"</span>,</span>
-<span id="cb55-20" class="hljs-ln-code"><a></a>    <span class="st">"24"</span> <span class="sc">~</span> <span class="st">"Quebec"</span>, </span>
-<span id="cb55-21" class="hljs-ln-code"><a></a>    <span class="st">"35"</span> <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
-<span id="cb55-22" class="hljs-ln-code"><a></a>    <span class="st">"46"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
-<span id="cb55-23" class="hljs-ln-code"><a></a>    <span class="st">"47"</span> <span class="sc">~</span> <span class="st">"Saskatchewan"</span>,</span>
-<span id="cb55-24" class="hljs-ln-code"><a></a>    <span class="st">"48"</span> <span class="sc">~</span> <span class="st">"Alberta"</span>,</span>
-<span id="cb55-25" class="hljs-ln-code"><a></a>    <span class="st">"59"</span> <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
-<span id="cb55-26" class="hljs-ln-code"><a></a>    <span class="st">"70"</span> <span class="sc">~</span> <span class="st">"Northern Canada"</span>,</span>
-<span id="cb55-27" class="hljs-ln-code"><a></a>    <span class="at">.locations =</span> <span class="fu">cells_stub</span>()</span>
-<span id="cb55-28" class="hljs-ln-code"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55" data-code-line-numbers="15-28"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb55-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="sc">%&gt;%</span></span>
+<span id="cb55-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb55-5" class="hljs-ln-code"><a aria-label="5"></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
+<span id="cb55-6" class="hljs-ln-code"><a aria-label="6"></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
+<span id="cb55-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
+<span id="cb55-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
+<span id="cb55-9" class="hljs-ln-code"><a aria-label="9"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb55-10" class="hljs-ln-code"><a aria-label="10"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb55-11" class="hljs-ln-code"><a aria-label="11"></a>    <span class="at">label =</span> <span class="st">"Dollars"</span>,</span>
+<span id="cb55-12" class="hljs-ln-code"><a aria-label="12"></a>    <span class="at">columns =</span> <span class="fu">c</span>(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)</span>
+<span id="cb55-13" class="hljs-ln-code"><a aria-label="13"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb55-14" class="hljs-ln-code"><a aria-label="14"></a>  <span class="fu">fmt_number</span>(<span class="at">decimals =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-15" class="hljs-ln-code"><a aria-label="15"></a>  <span class="fu">text_case_match</span>(</span>
+<span id="cb55-16" class="hljs-ln-code"><a aria-label="16"></a>    <span class="st">"10"</span> <span class="sc">~</span> <span class="st">"Newfoundland and Labrador"</span>,</span>
+<span id="cb55-17" class="hljs-ln-code"><a aria-label="17"></a>    <span class="st">"11"</span> <span class="sc">~</span> <span class="st">"Prince Edward Island"</span>,</span>
+<span id="cb55-18" class="hljs-ln-code"><a aria-label="18"></a>    <span class="st">"12"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
+<span id="cb55-19" class="hljs-ln-code"><a aria-label="19"></a>    <span class="st">"13"</span> <span class="sc">~</span> <span class="st">"New Brunswick"</span>,</span>
+<span id="cb55-20" class="hljs-ln-code"><a aria-label="20"></a>    <span class="st">"24"</span> <span class="sc">~</span> <span class="st">"Quebec"</span>, </span>
+<span id="cb55-21" class="hljs-ln-code"><a aria-label="21"></a>    <span class="st">"35"</span> <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
+<span id="cb55-22" class="hljs-ln-code"><a aria-label="22"></a>    <span class="st">"46"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
+<span id="cb55-23" class="hljs-ln-code"><a aria-label="23"></a>    <span class="st">"47"</span> <span class="sc">~</span> <span class="st">"Saskatchewan"</span>,</span>
+<span id="cb55-24" class="hljs-ln-code"><a aria-label="24"></a>    <span class="st">"48"</span> <span class="sc">~</span> <span class="st">"Alberta"</span>,</span>
+<span id="cb55-25" class="hljs-ln-code"><a aria-label="25"></a>    <span class="st">"59"</span> <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
+<span id="cb55-26" class="hljs-ln-code"><a aria-label="26"></a>    <span class="st">"70"</span> <span class="sc">~</span> <span class="st">"Northern Canada"</span>,</span>
+<span id="cb55-27" class="hljs-ln-code"><a aria-label="27"></a>    <span class="at">.locations =</span> <span class="fu">cells_stub</span>()</span>
+<span id="cb55-28" class="hljs-ln-code"><a aria-label="28"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -5295,35 +5301,35 @@ Dollars
 <h2 data-id="quarto-animate-title">Implementation</h2>
 <p>Finish by adding a source ✨</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56" data-code-line-numbers="29"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb56-1" class="hljs-ln-code"><a></a>cens_tab <span class="sc">%&gt;%</span></span>
-<span id="cb56-2" class="hljs-ln-code"><a></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-3" class="hljs-ln-code"><a></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-4" class="hljs-ln-code"><a></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb56-5" class="hljs-ln-code"><a></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
-<span id="cb56-6" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
-<span id="cb56-7" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
-<span id="cb56-8" class="hljs-ln-code"><a></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
-<span id="cb56-9" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb56-10" class="hljs-ln-code"><a></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb56-11" class="hljs-ln-code"><a></a>    <span class="at">label =</span> <span class="st">"Dollars"</span>,</span>
-<span id="cb56-12" class="hljs-ln-code"><a></a>    <span class="at">columns =</span> <span class="fu">c</span>(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)</span>
-<span id="cb56-13" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb56-14" class="hljs-ln-code"><a></a>  <span class="fu">fmt_number</span>(<span class="at">decimals =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-15" class="hljs-ln-code"><a></a>  <span class="fu">text_case_match</span>(</span>
-<span id="cb56-16" class="hljs-ln-code"><a></a>    <span class="st">"10"</span> <span class="sc">~</span> <span class="st">"Newfoundland and Labrador"</span>,</span>
-<span id="cb56-17" class="hljs-ln-code"><a></a>    <span class="st">"11"</span> <span class="sc">~</span> <span class="st">"Prince Edward Island"</span>,</span>
-<span id="cb56-18" class="hljs-ln-code"><a></a>    <span class="st">"12"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
-<span id="cb56-19" class="hljs-ln-code"><a></a>    <span class="st">"13"</span> <span class="sc">~</span> <span class="st">"New Brunswick"</span>,</span>
-<span id="cb56-20" class="hljs-ln-code"><a></a>    <span class="st">"24"</span> <span class="sc">~</span> <span class="st">"Quebec"</span>, </span>
-<span id="cb56-21" class="hljs-ln-code"><a></a>    <span class="st">"35"</span> <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
-<span id="cb56-22" class="hljs-ln-code"><a></a>    <span class="st">"46"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
-<span id="cb56-23" class="hljs-ln-code"><a></a>    <span class="st">"47"</span> <span class="sc">~</span> <span class="st">"Saskatchewan"</span>,</span>
-<span id="cb56-24" class="hljs-ln-code"><a></a>    <span class="st">"48"</span> <span class="sc">~</span> <span class="st">"Alberta"</span>,</span>
-<span id="cb56-25" class="hljs-ln-code"><a></a>    <span class="st">"59"</span> <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
-<span id="cb56-26" class="hljs-ln-code"><a></a>    <span class="st">"70"</span> <span class="sc">~</span> <span class="st">"Northern Canada"</span>,</span>
-<span id="cb56-27" class="hljs-ln-code"><a></a>    <span class="at">.locations =</span> <span class="fu">cells_stub</span>()</span>
-<span id="cb56-28" class="hljs-ln-code"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb56-29" class="hljs-ln-code"><a></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">"Statistica Canada. 2021 Canadian Census of Population."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56" data-code-line-numbers="29"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb56-1" class="hljs-ln-code"><a aria-label="1"></a>cens_tab <span class="sc">%&gt;%</span></span>
+<span id="cb56-2" class="hljs-ln-code"><a aria-label="2"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"PR"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-3" class="hljs-ln-code"><a aria-label="3"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Cost of housing in Canada by province"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-4" class="hljs-ln-code"><a aria-label="4"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb56-5" class="hljs-ln-code"><a aria-label="5"></a>    <span class="at">housing_cost =</span> <span class="st">"Average"</span>,</span>
+<span id="cb56-6" class="hljs-ln-code"><a aria-label="6"></a>    <span class="at">housing_cost_se =</span> <span class="st">"SE"</span>,</span>
+<span id="cb56-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="at">housing_cost_low =</span> <span class="st">"Lower"</span>,</span>
+<span id="cb56-8" class="hljs-ln-code"><a aria-label="8"></a>    <span class="at">housing_cost_upp =</span> <span class="st">"Upper"</span></span>
+<span id="cb56-9" class="hljs-ln-code"><a aria-label="9"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb56-10" class="hljs-ln-code"><a aria-label="10"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb56-11" class="hljs-ln-code"><a aria-label="11"></a>    <span class="at">label =</span> <span class="st">"Dollars"</span>,</span>
+<span id="cb56-12" class="hljs-ln-code"><a aria-label="12"></a>    <span class="at">columns =</span> <span class="fu">c</span>(housing_cost, housing_cost_se, housing_cost_low, housing_cost_upp)</span>
+<span id="cb56-13" class="hljs-ln-code"><a aria-label="13"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb56-14" class="hljs-ln-code"><a aria-label="14"></a>  <span class="fu">fmt_number</span>(<span class="at">decimals =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-15" class="hljs-ln-code"><a aria-label="15"></a>  <span class="fu">text_case_match</span>(</span>
+<span id="cb56-16" class="hljs-ln-code"><a aria-label="16"></a>    <span class="st">"10"</span> <span class="sc">~</span> <span class="st">"Newfoundland and Labrador"</span>,</span>
+<span id="cb56-17" class="hljs-ln-code"><a aria-label="17"></a>    <span class="st">"11"</span> <span class="sc">~</span> <span class="st">"Prince Edward Island"</span>,</span>
+<span id="cb56-18" class="hljs-ln-code"><a aria-label="18"></a>    <span class="st">"12"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
+<span id="cb56-19" class="hljs-ln-code"><a aria-label="19"></a>    <span class="st">"13"</span> <span class="sc">~</span> <span class="st">"New Brunswick"</span>,</span>
+<span id="cb56-20" class="hljs-ln-code"><a aria-label="20"></a>    <span class="st">"24"</span> <span class="sc">~</span> <span class="st">"Quebec"</span>, </span>
+<span id="cb56-21" class="hljs-ln-code"><a aria-label="21"></a>    <span class="st">"35"</span> <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
+<span id="cb56-22" class="hljs-ln-code"><a aria-label="22"></a>    <span class="st">"46"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
+<span id="cb56-23" class="hljs-ln-code"><a aria-label="23"></a>    <span class="st">"47"</span> <span class="sc">~</span> <span class="st">"Saskatchewan"</span>,</span>
+<span id="cb56-24" class="hljs-ln-code"><a aria-label="24"></a>    <span class="st">"48"</span> <span class="sc">~</span> <span class="st">"Alberta"</span>,</span>
+<span id="cb56-25" class="hljs-ln-code"><a aria-label="25"></a>    <span class="st">"59"</span> <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
+<span id="cb56-26" class="hljs-ln-code"><a aria-label="26"></a>    <span class="st">"70"</span> <span class="sc">~</span> <span class="st">"Northern Canada"</span>,</span>
+<span id="cb56-27" class="hljs-ln-code"><a aria-label="27"></a>    <span class="at">.locations =</span> <span class="fu">cells_stub</span>()</span>
+<span id="cb56-28" class="hljs-ln-code"><a aria-label="28"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb56-29" class="hljs-ln-code"><a aria-label="29"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">"Statistica Canada. 2021 Canadian Census of Population."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section><section id="implementation-11-output" class="slide level2 output-location-slide"><h2>Implementation</h2><div class="cell output-location-slide">

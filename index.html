@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exploring Complex Survey Data Analysis</title>
+<title>index</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -20,45 +26,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
 <link href="./images/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-43432e8dd1da631333f206005affc73f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-32c38bb10ad0b5f2d6a697412acf088c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-43432e8dd1da631333f206005affc73f.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-53f09fb57017d84478306c44c48e7ce9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f36e80cfa6669925609b42de89d92730.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-53f09fb57017d84478306c44c48e7ce9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-03984436befecbac5a164c1b6a2c6d8b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-03984436befecbac5a164c1b6a2c6d8b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-03984436befecbac5a164c1b6a2c6d8b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-79f75fee9aa967955cb6575247b65fa2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-d88eea43e899b9be40b28978889d8eb7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-79f75fee9aa967955cb6575247b65fa2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -73,11 +98,98 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-chapter-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-image','listing-color',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-title","listing-description","listing-image","listing-color"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-chapter-listing'] = new List('listing-chapter-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-author-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-name','listing-title-line','listing-role','listing-bg','listing-headshot','listing-image','listing-bio','listing-socials',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-name","listing-title-line","listing-role","listing-bg","listing-headshot","listing-image","listing-bio","listing-socials"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-author-listing'] = new List('listing-author-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -89,7 +201,6 @@ ul.task-list li input[type="checkbox"] {
     <img src="./images/favicon.png" alt="" class="navbar-logo dark-content">
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -97,15 +208,40 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+<span class="menu-text">Tidy Survey Analysis in R</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-home" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Home</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-home">    
+        <li>
+    <a class="dropdown-item" href="./index.html#about-book">
+ <span class="dropdown-text">About the Book</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./index.html#buy-book">
+ <span class="dropdown-text">Get the Book</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./index.html#data-pkg">
+ <span class="dropdown-text">Companion Data Package</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./index.html#authors">
+ <span class="dropdown-text">About the Authors</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./events.html"> 
+<span class="menu-text">Events</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./talks/Talks.html"> 
-<span class="menu-text">Talks</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./short-courses.html"> 
-<span class="menu-text">Short courses</span></a>
+    <a class="nav-link" href="https://tidy-survey-r.github.io/tidy-survey-book/" target="_blank"> 
+<span class="menu-text"><button class="nav-btn">Read the book →</button></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -115,77 +251,320 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Exploring Complex Survey Data Analysis</h1>
-<p class="subtitle lead">A Tidy Introduction with {srvyr} and {survey}</p>
+
+
+
+<div class="hero">
+<div class="hero-banner">
+<div class="hero-deco">
+<p><img src="images/allison/donut-serpent.svg" class="deco deco-donut float img-fluid" alt=""></p>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<div class="quarto-layout-panel" data-layout="[ 70, 30 ]">
-<div class="quarto-layout-row">
-<div id="abstract" class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
-<p>Surveys are powerful tools for gathering information, uncovering insights, and facilitating decision-making. However, to ensure the accurate interpretation of results, they require specific analysis methods. In this book, readers embark on an in-depth journey into conducting complex survey analysis with the {srvyr} package and tidyverse family of functions from the R programming language. Intended for intermediate R users familiar with the basics of the tidyverse, this book gives readers a deeper understanding of applying appropriate survey analysis techniques using {srvyr}, {survey}, and other related packages. With practical walkthroughs featuring real-world datasets, such as the American National Election Studies and Residential Energy Consumption Survey, readers will develop the skills necessary to perform impactful survey analysis on survey data collected through a randomized sample design. Additionally, this book teaches readers how to interpret and communicate results of survey data effectively.</p>
-<p>Key Features:</p>
+<div class="hero-text">
+<p><span class="book-label">A Chapman &amp; Hall / CRC Book · 2024</span></p>
+<section id="exploring-complex-survey-data-analysis-using-r" class="level1">
+<h1>Exploring<br><span class="wavy-underline">Complex Survey</span><br>Data Analysis<br>Using R</h1>
+<p>A Tidy Introduction with {srvyr} and {survey}</p>
+<p><a href="https://tidy-survey-r.github.io/tidy-survey-book/" class="btn btn-dark" target="_blank">Read the book — free →</a> <a href="#buy-book" class="btn btn-light">Where to buy</a></p>
+</section>
+</div>
+<div class="hero-image">
+<div class="cover-stage">
+<p><img src="images/allison/survey-data-outside-bounds.png" class="tilt img-float img-fluid"></p>
+<p><span class="chip chip-1">library(srvyrexploR)</span> <span class="chip chip-2 chip-dark">survey_count()</span> <span class="chip chip-3 chip-accent">as_survey_design()</span></p>
+</div>
+</div>
+</div>
+</div>
+<div id="about-book" class="white-bg">
+<div class="section-deco-behind">
+<p><img src="images/allison/trees.svg" class="deco deco-about-1 float img-fluid" alt=""></p>
+</div>
+<div class="section-deco">
+<p><img src="images/allison/heatmap-ship.svg" class="deco deco-about-2 float img-fluid" alt=""></p>
+</div>
+<p><span class="section-label">{About the book}</span></p>
+<section id="from-raw-weights-to-weighted-publishable-findings" class="level1">
+<h1>From raw weights to <span class="wavy-underline">weighted</span> publishable findings</h1>
+<div class="grid">
+<div class="g-col-12 g-col-md-7">
+<p>Surveys are powerful tools for gathering information, uncovering insights, and facilitating decision-making. However, to ensure the accurate interpretation of results, they require specific analysis methods.</p>
+<p>In this book, readers embark on an in-depth journey into conducting complex survey analysis with the {srvyr} package and tidyverse family of functions from the R programming language. Intended for intermediate R users familiar with the basics of the tidyverse, this book gives readers a deeper understanding of applying appropriate survey analysis techniques using {srvyr}, {survey}, and other related packages.</p>
+</div>
+<div class="g-col-12 g-col-md-5">
+<div class="dataset-box">
+<p><span class="feature-title">Featured datasets</span></p>
+<table id="tbl-no-header" class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><span class="desc">American National election Studies</span><br><span class="sub">Demographics and voting</span></td>
+<td><span class="code">ANES</span></td>
+</tr>
+<tr class="even">
+<td><span class="desc">Residential Energy Consumption Survey</span><br><span class="sub">Energy and housing</span></td>
+<td><span class="code">RECS</span></td>
+</tr>
+<tr class="odd">
+<td><span class="desc">National Crime Victimization Survey</span><br><span class="sub">Public safety</span></td>
+<td><span class="code">NCVS</span></td>
+</tr>
+<tr class="even">
+<td><span class="desc">AmericasBarometer</span><br><span class="sub">Public opinion</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<div id="listing-chapter-listing" class="quarto-listing quarto-listing-container-custom">
+<div class="feature-grid">
+<article class="feature-card color-purple">
+<div class="feature-art">
+<p><img src="images/allison/matrix-fields.svg" alt="" aria-hidden="true"></p>
+</div>
+<div class="feature-title" role="heading" aria-level="3">
+Tidyverse principles
+</div>
+<div class="feature-body">
+Uses familiar tidyverse style synax to analyze survey data with the {srvyr} package.
+</div>
+<div class="hidden">
+<p><span class="listing-title">Tidyverse principles</span></p>
+</div>
+</article>
+<article class="feature-card color-teal">
+<div class="feature-art">
+<p><img src="images/allison/bar-whisker-building.svg" alt="" aria-hidden="true"></p>
+</div>
+<div class="feature-title" role="heading" aria-level="3">
+Statistical understanding
+</div>
+<div class="feature-body">
+Grants a conceptual understanding of statistical methods behind the functions.
+</div>
+<div class="hidden">
+<p><span class="listing-title">Statistical understanding</span></p>
+</div>
+</article>
+<article class="feature-card color-purple">
+<div class="feature-art">
+<p><img src="images/allison/heatmap-ship.svg" alt="" aria-hidden="true"></p>
+</div>
+<div class="feature-title" role="heading" aria-level="3">
+Public, reproducible data
+</div>
+<div class="feature-body">
+Includes practical walkthroughs using publicly available survey data.
+</div>
+<div class="hidden">
+<p><span class="listing-title">Public, reproducible data</span></p>
+</div>
+</article>
+<article class="feature-card color-teal">
+<div class="feature-art">
+<p><img src="images/allison/donut-serpent.svg" alt="" aria-hidden="true"></p>
+</div>
+<div class="feature-title" role="heading" aria-level="3">
+End-to-end examples
+</div>
+<div class="feature-body">
+Provides the reader with the tools for interpreting, visualizing, and presenting results.
+</div>
+<div class="hidden">
+<p><span class="listing-title">End-to-end examples</span></p>
+</div>
+</article>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</section>
+</div>
+<div id="buy-book" class="lightblue-bg">
+<div class="section-deco">
+<p><img src="images/allison/table-ship.svg" class="deco deco-buy-1 float img-fluid" alt=""></p>
+</div>
+<p><span class="section-label">{Get the book}</span></p>
+<section id="read-it-free-on-the-web-or-ship-one-home-in-print" class="level1">
+<h1>Read it free on the web, or <span class="wavy-underline">ship one home</span> in print</h1>
+<p>Published by Chapman &amp; Hall / CRC Press. Available in hardcover, paperback, and eBook.</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<div class="rounded-box">
+<p><span class="feature-title">FREE ONLINE EDITION<br>OPEN ACCESS</span></p>
+<p><span class="span" style="font-size: 1.5rem; font-weight: 600;">The full book, on the web</span></p>
+<p><a href="https://tidy-survey-r.github.io/tidy-survey-book/" class="btn btn-dark" target="_blank">Open the book ↗</a></p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-6">
+<div class="rounded-box">
+<p><span class="feature-title">PRINT &amp; EBOOK<br>RETAILERS</span></p>
 <ul>
-<li>Uses the {srvyr} package and tidyverse family of packages.</li>
-<li>Grants a conceptual understanding of the statistical methods that the functions apply to.</li>
-<li>Includes practical walkthroughs using publicly available survey data.</li>
-<li>Provides the reader with the tools for interpreting, visualizing, and presenting results.</li>
+<li><a href="https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867" target="_blank">Routledge</a></li>
+<li><a href="https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867" target="_blank">Your local bookstore in USA</a></li>
+<li><a href="https://www.indiebookstores.ca/book/9781032302867/" target="_blank">Your local bookstore in Canada</a></li>
+<li><a href="https://uk.bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-isabella-velasquez/7688018" target="_blank">Your local bookstore in the UK</a></li>
+<li><a href="https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860" target="_blank">Amazon</a></li>
 </ul>
 </div>
-<div id="cover" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
-<p><img src="images/cover.png" class="img-fluid" style="border: 5px solid white" alt="Book cover with author names, title, and imaginative map drawing with fields that look like bar charts, buildings with error bars, and pie chart hills."></p>
 </div>
 </div>
-</div>
-<section id="where-to-get-the-book" class="level1">
-<h1>Where to get the book</h1>
-<p>Print copies:</p>
-<ul>
-<li><a href="https://www.routledge.com/Exploring-Complex-Survey-Data-Analysis-Using-R-A-Tidy-Introduction-with-srvyr-and-survey/Zimmer-Powell-Velasquez/p/book/9781032302867">Routledge</a></li>
-<li><a href="https://bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-rebecca-powell/21474544?ean=9781032302867">Your local bookstore in USA</a></li>
-<li><a href="https://www.indiebookstores.ca/book/9781032302867/">Your local bookstore in Canada</a></li>
-<li><a href="https://uk.bookshop.org/p/books/exploring-complex-survey-data-analysis-using-r-a-tidy-introduction-with-srvyr-and-survey-isabella-velasquez/7688018">Your local bookstore in the UK</a></li>
-<li><a href="https://www.amazon.com/Exploring-Complex-Survey-Analysis-Using/dp/1032302860">Amazon</a></li>
-</ul>
-<p>Online version:</p>
-<ul>
-<li><a href="https://tidy-survey-r.github.io/tidy-survey-book/" class="uri">https://tidy-survey-r.github.io/tidy-survey-book/</a></li>
-</ul>
 </section>
-<section id="data-package" class="level1">
-<h1>Data package</h1>
-<p>Examples throughout the book include usage of several datasets. Most of these datasets are included in the R package {srvyrexploR} available on <a href="https://tidy-survey-r.github.io/srvyrexploR/">GitHub</a>.</p>
+</div>
+<div id="data-pkg" class="darkblue-bg">
+<div class="section-deco">
+<p><img src="images/srvyrexploR.png" class="deco deco-data-hex img-fluid" alt=""></p>
+</div>
+<div class="section-deco">
+<p><img src="images/allison/stack-bar-building.svg" class="deco deco-data-1 float img-fluid" alt=""></p>
+</div>
+<p><span class="section-label">{Companion data package}</span></p>
+<section id="all-the-datasets-in-one-tidy-r-package" class="level1">
+<h1>All the datasets in one tidy <span class="wavy-underline">R package</span></h1>
+<div class="grid">
+<div class="g-col-12 g-col-md-7">
+<p>Examples throughout the book use publicly available datasets. Most of these datasets are included in the R package {srvyrexploR} available on GitHub.</p>
+<p><a href="https://tidy-survey-r.github.io/srvyrexploR/" class="btn btn-light" target="_blank">Package documentation ↗</a></p>
+<p><a href="https://github.com/tidy-survey-r/srvyrexploR/" class="btn btn-dark" target="_blank">View on GitHub ↗</a></p>
+</div>
+<div class="g-col-12 g-col-md-5">
+<div class="code-card">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(srvyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(srvyrexploR)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>targetpop <span class="ot">&lt;-</span> <span class="dv">231592693</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>anes_adjwgt <span class="ot">&lt;-</span> anes_2020 <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> Weight <span class="sc">/</span> <span class="fu">sum</span>(Weight) <span class="sc">*</span> targetpop)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>anes_des <span class="ot">&lt;-</span> anes_adjwgt <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">weights =</span> Weight,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">strata =</span> Stratum,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">ids =</span> VarUnit,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">nest =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </section>
-<section id="authors" class="level1">
-<h1>Authors</h1>
-<p><strong>Stephanie Zimmer</strong>, PhD, is a senior survey statistician with 10 years experience in survey sampling and design, survey weighting and analysis, and data management. She is an expert statistical programmer in R, SAS, and SUDAAN. She earned her PhD in Statistics from Iowa State University and her BS in Statistics from NC State. After earning the RStudio Tidyverse Trainer certification, she co-taught two courses on tidy survey analysis in R. She is currently a Senior Research Statistician at RTI International. Connect with her on <a href="https://www.linkedin.com/in/stephanie-zimmer/">LinkedIn</a> or <a href="https://bsky.app/profile/statsteph.bsky.social">BlueSky</a>.</p>
-<p><strong>Rebecca J. Powell</strong>, PhD, is the Director of Data &amp; Research Operations at Fors Marsh. Her research interests focus on visual design of questionnaires and contact materials. Dr.&nbsp;Powell is a Certified RStudio Tidyverse Trainer and has taught courses and webinars on data management in R and tidy survey analysis in R at both AAPOR and MAPOR. She has a PhD in Survey Research and Methodology from the University of Nebraska-Lincoln and a BS and MS in Applied Statistics from Rochester Institute of Technology. Connect with her on <a href="https://www.linkedin.com/in/rebecca-powell-1416226b/">LinkedIn</a>.</p>
-<p><strong>Isabella Velásquez</strong> is a content strategist, data enthusiast, and author. Her experience spans data collection, grantmaking, strategy development, and survey instrument development. She earned her MSc in Analytics and BA in Economics and East Asian Languages and Civilizations from the University of Chicago. She currently works as a Sr.&nbsp;Product Marketing Manager at Posit Software, PBC. Follow her <a href="https://ivelasq.rbind.io/">blog</a> or connect with her on <a href="https://www.linkedin.com/in/ivelasq/">LinkedIn</a> or <a href="https://bsky.app/profile/ivelasq3.bsky.social">BlueSky</a>.</p>
+</div>
+<div id="authors" class="white-bg">
+<div class="section-deco">
+<p><img src="images/allison/pie-hills.svg" class="deco deco-authors-1 float img-fluid" alt=""></p>
+</div>
+<p><span class="section-label">{About the authors}</span></p>
+<section id="we-what-we-do" class="level1">
+<h1>We ♡ what we do</h1>
+<div id="listing-author-listing" class="quarto-listing quarto-listing-container-custom">
+<div class="author-grid">
+<article class="author-card">
+<div class="author-portrait" style="--bg-1: #e8d28b; --bg-2: #ff8484;">
+<p><img class="author-photo" src="images/StephanieZimmer_Headshot.jpeg" alt="Stephanie Zimmer"></p>
+<p><span class="author-stamp"><img src="images/allison/bar-whisker-building.svg" alt="" aria-hidden="true"></span></p>
+</div>
+<div class="author-id">
+<div class="author-name" role="heading" aria-level="3">
+Stephanie Zimmer
+</div>
+<div class="author-titleline">
+PhD · Senior Survey Statistician
+</div>
+<div class="author-role">
+RTI International
+</div>
+</div>
+<div class="author-bio">
+<p>A senior survey statistician with 10 years experience in survey sampling and design, weighting and analysis, and data management. An expert statistical programmer in R, SAS, and SUDAAN. PhD in Statistics from Iowa State University, BS from NC State. After earning the RStudio Tidyverse Trainer certification, she co-taught two courses on tidy survey analysis in R.</p>
+</div>
+<ul class="author-socials">
+<li>
+<a href="https://www.linkedin.com/in/stephanie-zimmer/">LinkedIn ↗</a>
+</li>
+<li>
+<a href="https://bsky.app/profile/statsteph.bsky.social">BlueSky ↗</a>
+</li>
+</ul>
+<div class="hidden">
+<span class="listing-title">Stephanie Zimmer</span>
+</div>
+</article>
+<article class="author-card">
+<div class="author-portrait" style="--bg-1: #b9d4dc; --bg-2: #087e8b;">
+<p><img class="author-photo" src="images/RebeccaPowell_Headshot.jpeg" alt="Rebecca J. Powell"></p>
+<p><span class="author-stamp"><img src="images/allison/hospital.svg" alt="" aria-hidden="true"></span></p>
+</div>
+<div class="author-id">
+<div class="author-name" role="heading" aria-level="3">
+Rebecca J. Powell
+</div>
+<div class="author-titleline">
+PhD · Director, Data &amp; Research Ops
+</div>
+<div class="author-role">
+Fors Marsh
+</div>
+</div>
+<div class="author-bio">
+<p>Director of Data &amp; Research Operations at Fors Marsh. Research interests focus on visual design of questionnaires and contact materials. A Certified RStudio Tidyverse Trainer who has taught courses and webinars on data management in R and tidy survey analysis at both AAPOR and MAPOR. PhD in Survey Research and Methodology from the University of Nebraska–Lincoln; BS and MS in Applied Statistics from Rochester Institute of Technology.</p>
+</div>
+<ul class="author-socials">
+<li>
+<a href="https://www.linkedin.com/in/rebecca-powell-1416226b/">LinkedIn ↗</a>
+</li>
+</ul>
+<div class="hidden">
+<span class="listing-title">Rebecca J. Powell</span>
+</div>
+</article>
+<article class="author-card">
+<div class="author-portrait" style="--bg-1: #ffa8a8; --bg-2: #087e8b;">
+<p><img class="author-photo" src="images/IsabellaVelasquez_Headshot.jpeg" alt="Isabella Velásquez"></p>
+<p><span class="author-stamp"><img src="images/allison/heatmap-ship.svg" alt="" aria-hidden="true"></span></p>
+</div>
+<div class="author-id">
+<div class="author-name" role="heading" aria-level="3">
+Isabella Velásquez
+</div>
+<div class="author-titleline">
+Sr.&nbsp;PMM
+</div>
+<div class="author-role">
+Posit Software, PBC
+</div>
+</div>
+<div class="author-bio">
+<p>A content strategist, data enthusiast, and author. Experience spans data collection, grantmaking, strategy development, and survey instrument development. Sr.&nbsp;Product Marketing Manager at Posit Software, PBC. MSc in Analytics and BA in Economics and East Asian Languages and Civilizations from the University of Chicago.</p>
+</div>
+<ul class="author-socials">
+<li>
+<a href="https://www.linkedin.com/in/ivelasq/">LinkedIn ↗</a>
+</li>
+<li>
+<a href="https://bsky.app/profile/ivelasq3.bsky.social">BlueSky ↗</a>
+</li>
+</ul>
+<div class="hidden">
+<span class="listing-title">Isabella Velásquez</span>
+</div>
+</article>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</section>
+</div>
 
 
-</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -589,6 +968,19 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>TIDY SURVEY ANALYSIS IN R © 2024-2026. CC-BY-NC-ND 4.0.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
