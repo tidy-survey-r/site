@@ -1,0 +1,47 @@
+- name: "Stephanie Zimmer"
+  title-line: "PhD · Senior Survey Statistician"
+  role: "RTI International"
+  bg: ["#e8d28b", "#ff8484"]
+  headshot: images/StephanieZimmer_Headshot.jpeg
+  image: images/allison/bar-whisker-building.svg
+  bio: >
+    A senior survey statistician with 10 years experience in survey sampling
+    and design, weighting and analysis, and data management. An expert
+    statistical programmer in R, SAS, and SUDAAN. PhD in Statistics from Iowa
+    State University, BS from NC State. After earning the RStudio Tidyverse
+    Trainer certification, she co-taught two courses on tidy survey analysis in R.
+  socials:
+    - { label: "LinkedIn", href: "https://www.linkedin.com/in/stephanie-zimmer/" }
+    - { label: "BlueSky",  href: "https://bsky.app/profile/statsteph.bsky.social" }
+
+- name: "Rebecca J. Powell"
+  title-line: "PhD · Director, Data & Research Ops"
+  role: "Fors Marsh"
+  bg: ["#b9d4dc", "#087e8b"]
+  headshot: images/RebeccaPowell_Headshot.jpeg
+  image: images/allison/hospital.svg
+  bio: >
+    Director of Data & Research Operations at Fors Marsh. Research interests
+    focus on visual design of questionnaires and contact materials. A Certified
+    RStudio Tidyverse Trainer who has taught courses and webinars on data
+    management in R and tidy survey analysis at both AAPOR and MAPOR. PhD in
+    Survey Research and Methodology from the University of Nebraska–Lincoln;
+    BS and MS in Applied Statistics from Rochester Institute of Technology.
+  socials:
+    - { label: "LinkedIn", href: "https://www.linkedin.com/in/rebecca-powell-1416226b/" }
+
+- name: "Isabella Velásquez"
+  title-line: "Sr. PMM"
+  role: "Posit Software, PBC"
+  bg: ["#ffa8a8", "#087e8b"]
+  headshot: images/IsabellaVelasquez_Headshot.jpeg
+  image: images/allison/heatmap-ship.svg
+  bio: >
+    A content strategist, data enthusiast, and author. Experience spans data
+    collection, grantmaking, strategy development, and survey instrument
+    development. Sr. Product Marketing Manager at Posit Software, PBC. MSc in
+    Analytics and BA in Economics and East Asian Languages and Civilizations
+    from the University of Chicago.
+  socials:
+    - { label: "LinkedIn", href: "https://www.linkedin.com/in/ivelasq/" }
+    - { label: "BlueSky",  href: "https://bsky.app/profile/ivelasq3.bsky.social" }
