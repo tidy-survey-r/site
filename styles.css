@@ -559,18 +559,6 @@
     letter-spacing: 0.16em;
     color: #ff8484;                 /* pink accent */
   }
-
-  /* top-right "• • •" dots */
-  div.sourceCode::after {
-    content: "• • •";
-    position: absolute;
-    top: 14px;
-    right: 22px;
-    font-family: "Source Code Pro", monospace;
-    font-size: 16px;
-    letter-spacing: 0.2em;
-    color: rgba(11, 57, 84, 0.35);
-  }
 }
 
 /*-- FEATURE LISTING --*/
