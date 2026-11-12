@@ -60,15 +60,13 @@
 /*--- DECORATIVE IMAGES ---*/
 
 .hero {
-  position: relative;       // anchor for absolute children
-  overflow: hidden;         // clip decorations that bleed off the edges
-  padding: 88px 48px 120px;
+  position: relative;       /* anchor for absolute children */
   background: linear-gradient(180deg, #bfd7ea 0%, #a8c3d8 100%);
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;               // sits above decorations
+  z-index: 2;               /* sits above decorations */
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -361,8 +359,8 @@
   padding: 9px 14px;
   border-radius: 999px;
 
-  background: #ecf3f9;             // lightblue2
-  color: #0b3954;                  // blue
+  background: #ecf3f9;             /* lightblue2 */
+  color: #0b3954;                  /* blue */
   border: 1.5px solid #0b3954;
   box-shadow: 0 4px 0 -1px #0b3954,
               0 10px 24px -10px rgba(0, 0, 0, 0.25);
@@ -521,22 +519,22 @@
 /*--- CODE SNIPPET ---*/
 .code-card {
   position: relative;
-  transform: rotate(1deg);          // playful tilt — drop if not wanted
+  transform: rotate(1deg);          /* playful tilt — drop if not wanted */
   margin: 2rem 0;
 
-  // overwrite Quarto's default sourceCode wrapper styling
+  /* overwrite Quarto's default sourceCode wrapper styling */
   div.sourceCode {
-    background: #ecf3f9;            // lightblue2
+    background: #ecf3f9;            /* lightblue2 */
     border: 1.5px solid var(--blue, #0b3954);
     border-radius: 18px;
-    padding: 56px 28px 28px;        // top padding leaves room for the chrome
+    padding: 56px 28px 28px;        /* top padding leaves room for the chrome */
     box-shadow: 0 6px 0 -2px var(--blue, #0b3954);
-    overflow: visible;              // let chrome bits poke out
+    overflow: visible;              /* let chrome bits poke out */
     position: relative;
     margin: 0;
   }
 
-  // tame the inner <pre>
+  /* tame the inner <pre> */
   pre.sourceCode,
   div.sourceCode pre {
     background: transparent;
@@ -546,9 +544,10 @@
     font-family: "Source Code Pro", monospace;
     font-size: 14px;
     line-height: 1.75;
+    overflow-x: auto;               /* long lines scroll inside the card */
   }
 
-  // top-left "R" label
+  /* top-left "R" label */
   div.sourceCode::before {
     content: "R";
     position: absolute;
@@ -558,10 +557,10 @@
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 0.16em;
-    color: #ff8484;                 // pink accent
+    color: #ff8484;                 /* pink accent */
   }
 
-  // top-right "• • •" dots
+  /* top-right "• • •" dots */
   div.sourceCode::after {
     content: "• • •";
     position: absolute;
