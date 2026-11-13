@@ -1,5 +1,11 @@
 ---
 title: "Talks and short courses"
+image: images/social-preview.png
+image-alt: "Book title 'Exploring Complex Survey Data Analysis Using R' beside an illustrated map of farms, cities, and coastline."
+open-graph:
+  description: "Talks, workshops, and short courses on tidy survey analysis in R with {srvyr} and {survey}, with slides and materials."
+twitter-card:
+  description: "Talks, workshops, and short courses on tidy survey analysis in R with {srvyr} and {survey}, with slides and materials."
 listing:
   contents:
     - "event-metadata.yml"
