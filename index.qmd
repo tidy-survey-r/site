@@ -1,6 +1,13 @@
 ---
+pagetitle: "Exploring Complex Survey Data Analysis Using R"
+image: images/social-preview.png
+image-alt: "Book title 'Exploring Complex Survey Data Analysis Using R' beside an illustrated map of farms, cities, and coastline."
+open-graph:
+  description: "A tidy introduction to complex survey analysis in R with {srvyr} and {survey}. Read the book free online, get the companion data package, and meet the authors."
+twitter-card:
+  description: "A tidy introduction to complex survey analysis in R with {srvyr} and {survey}. Read the book free online, get the companion data package, and meet the authors."
 page-layout: full
-listing: 
+listing:
   - id: chapter-listing
     contents: chapter-metadata.yml
     template: chapter-listing.ejs
