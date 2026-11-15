@@ -823,3 +823,43 @@
   .author-grid { grid-template-columns: 1fr; max-width: 480px; }
   .author-card { transform: none !important; }
 }
+
+/*--- MOBILE TWEAKS: HOME PAGE ---*/
+
+@media (max-width: 900px) {
+  /* hero: stay within the screen, center everything, drop the tall min-height */
+  .hero { overflow-x: clip; }
+  .content .hero-banner {
+    margin-inline: -1.5rem;
+    min-height: 0;
+    padding: 2.5rem 1.5rem 1.5rem;
+  }
+  .hero-text p {
+    text-align: center;
+    margin-inline: auto;
+  }
+  .hero-text .btn { margin: 6px 4px; }
+
+  .cover-stage {
+    min-height: 0;
+    padding-block: 2rem 1rem;
+  }
+  .chip { font-size: 12px; padding: 7px 12px; }
+  .chip-1 { left: 0; }
+  .chip-2 { left: 0; }
+  .chip-3 { right: 0; bottom: 4%; }
+}
+
+@media (max-width: 600px) {
+  /* section labels like {about the book} */
+  .section-label,
+  .section-label-nocolor,
+  .section-label-upper { font-size: 26px; }
+
+  /* code sample: smaller text, scroll sideways instead of cutting off */
+  .code-card div.sourceCode pre,
+  .code-card pre.sourceCode {
+    font-size: 12px;
+    overflow-x: auto;
+  }
+}
