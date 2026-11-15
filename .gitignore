@@ -10,3 +10,6 @@
 /_site/
 
 **/*.quarto_ipynb
+
+# link-preview card template (built by _social/make-card.R)
+!_social/card.html
